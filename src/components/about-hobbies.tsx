@@ -8,6 +8,7 @@ type HobbyProps = {
   aspect: string;
   crop: { top: string; left: string; width: string; height: string };
   alt: string;
+  gapClassName?: string;
   children: ReactNode;
 };
 
@@ -18,6 +19,7 @@ function Hobby({
   aspect,
   crop,
   alt,
+  gapClassName = "gap-6",
   children,
 }: HobbyProps) {
   const imageBox = (
@@ -37,7 +39,7 @@ function Hobby({
   );
 
   return (
-    <div className="flex items-center gap-6">
+    <div className={`flex items-center ${gapClassName}`}>
       {imageBox}
       <div className="flex max-w-[221px] flex-col items-start">
         <p className="font-urbanist text-xs font-medium tracking-[-0.2px] text-[#212121] sm:text-base">
@@ -74,6 +76,7 @@ export function AboutHobbies() {
           aspect="165/181"
           crop={{ top: "-51.54%", left: "-99.27%", width: "298.25%", height: "181.24%" }}
           alt="Headphones"
+          gapClassName="gap-[38px]"
         >
           I have a soft spot for music filled with light, warmth, and gentle
           flow.
