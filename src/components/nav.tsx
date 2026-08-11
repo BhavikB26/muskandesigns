@@ -12,6 +12,9 @@ export function Nav({ active }: NavProps) {
 
   return (
     <nav className="relative flex w-full items-center justify-between border-b border-[#e4e7ec] px-6 py-4 sm:border-none sm:px-10 sm:pb-0 sm:pt-10 md:px-[120px] md:pt-[64px]">
+      <a href="/" className="font-urbanist text-base font-bold text-ink sm:text-3xl md:text-[24px]">
+        musk<span className="text-accent">a</span>n.
+      </a>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -28,9 +31,6 @@ export function Nav({ active }: NavProps) {
           <Image src="/icons/menu.svg" alt="" width={32} height={32} />
         )}
       </button>
-      <a href="/" className="font-urbanist text-base font-bold text-ink sm:text-3xl md:text-[24px]">
-        musk<span className="text-accent">a</span>n.
-      </a>
       <div className="hidden items-center gap-8 font-urbanist text-base font-semibold sm:flex sm:gap-12 md:gap-[60px] md:text-base">
         <a
           href="/work"
