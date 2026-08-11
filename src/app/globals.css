@@ -20,3 +20,42 @@ body {
   font-family: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
   color: var(--color-ink);
 }
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+
+.typewriter {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  border-right: 0.08em solid currentColor;
+  width: 0;
+  animation:
+    typing 1.2s steps(16, end) 0.6s forwards,
+    blink-caret 0.75s step-end infinite 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typewriter {
+    width: 100%;
+    border-right: none;
+    animation: none;
+  }
+}

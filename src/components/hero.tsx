@@ -20,7 +20,7 @@ export function Hero() {
           />
         </div>
         <p className="font-urbanist text-lg font-semibold text-ink sm:text-4xl md:text-[40px]">
-          product designer
+          <span className="typewriter">product designer</span>
         </p>
         <p className="max-w-[220px] font-urbanist text-xs font-medium text-muted sm:max-w-sm sm:text-xl md:max-w-md md:text-base">
           based in delhi, practising yoga,
