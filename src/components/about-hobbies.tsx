@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import { SparkleIcon } from "./sparkle-icon";
 
 type HobbyProps = {
   image: string;
@@ -41,7 +42,8 @@ function Hobby({
   return (
     <div className={`flex items-center ${gapClassName}`}>
       {imageBox}
-      <div className="flex max-w-[221px] flex-col items-start">
+      <div className="flex max-w-[221px] flex-col items-start gap-1.5">
+        <SparkleIcon className="hidden h-5 w-[15px] sm:block" />
         <p className="font-urbanist text-xs font-medium tracking-[-0.2px] text-[#212121] sm:text-base">
           {children}
         </p>
