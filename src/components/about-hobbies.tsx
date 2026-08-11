@@ -1,6 +1,5 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { SparkleIcon } from "./sparkle-icon";
 
 type HobbyProps = {
   image: string;
@@ -25,7 +24,7 @@ function Hobby({
 }: HobbyProps) {
   const imageBox = (
     <div
-      className="relative h-[90px] shrink-0 overflow-hidden rounded-2xl sm:h-[110px] md:h-[135px]"
+      className="relative h-16 shrink-0 overflow-hidden rounded-2xl sm:h-[110px] md:h-[135px]"
       style={{ aspectRatio: aspect }}
     >
       <Image
@@ -46,8 +45,7 @@ function Hobby({
       ) : (
         imageBox
       )}
-      <div className="flex max-w-[221px] flex-col items-start gap-1.5">
-        <SparkleIcon />
+      <div className="flex max-w-[221px] flex-col items-start">
         <p className="font-urbanist text-xs font-medium tracking-[-0.2px] text-[#212121] sm:text-base">
           {children}
         </p>
@@ -62,7 +60,7 @@ export function AboutHobbies() {
       <h2 className="font-urbanist text-xl font-bold text-ink sm:text-[28px]">
         Things I probably didn&rsquo;t need to include
       </h2>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 md:gap-x-[160px] md:gap-y-[160px]">
+      <div className="grid grid-cols-1 gap-5 px-3 sm:grid-cols-2 sm:gap-x-12 sm:gap-y-14 sm:px-0 md:gap-x-[160px] md:gap-y-[160px]">
         <Hobby
           image="/about/hobby-badminton.png"
           imageWidth={1536}

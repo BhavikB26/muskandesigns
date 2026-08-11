@@ -14,11 +14,11 @@ function Value({ children }: { children: ReactNode }) {
 
 export function AboutDesignValues() {
   return (
-    <section className="flex flex-col items-start gap-8 px-6 sm:gap-8 md:px-0">
+    <section className="flex flex-col items-start gap-5 px-6 sm:gap-8 md:px-0">
       <h2 className="font-urbanist text-xl font-bold text-ink sm:text-[24px]">
         How my design stands out
       </h2>
-      <div className="flex max-w-[650px] flex-col items-start gap-5 sm:gap-10">
+      <div className="flex max-w-[650px] flex-col items-start gap-5 px-3 sm:gap-10 sm:px-0">
         <Value>
           Iterate, Iterate and Iterate more. I aim for perfection and
           don&rsquo;t stop until the final solution is absolutely spot-on.
