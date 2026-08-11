@@ -12,32 +12,12 @@ export function Hero() {
             <span className="block">port</span>
             <span className="block">folio</span>
           </h1>
-          <div className="pointer-events-none absolute inset-0 translate-x-[11.5%]">
-            <Image
-              src="/hero/leaf.png"
-              alt=""
-              fill
-              className="object-contain"
-              style={{ filter: "drop-shadow(6px 12px 14px rgba(120,45,0,0.35))" }}
-            />
-            <div
-              aria-hidden
-              className="absolute inset-0"
-              style={{
-                mixBlendMode: "soft-light",
-                WebkitMaskImage: "url(/hero/leaf.png)",
-                WebkitMaskSize: "contain",
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskPosition: "center",
-                maskImage: "url(/hero/leaf.png)",
-                maskSize: "contain",
-                maskRepeat: "no-repeat",
-                maskPosition: "center",
-                background:
-                  "linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.35) 14%, rgba(0,0,0,0) 38%, rgba(40,15,0,0.55) 100%)",
-              }}
-            />
-          </div>
+          <Image
+            src="/hero/leaf.png"
+            alt=""
+            fill
+            className="pointer-events-none translate-x-[11.5%] object-contain"
+          />
         </div>
         <p className="font-urbanist text-lg font-semibold text-ink sm:text-4xl md:text-[40px]">
           <span className="typewriter">product designer</span>
