@@ -109,7 +109,7 @@ export default function WildflowerCaseStudy() {
           result="Clearer workflows, improved usability, and a scalable foundation for their new tech stack to set the stage for stronger engagement and a path toward their goal."
           note="Note: The team is in development, so any ROI metrics are an estimate."
           details={[
-            { label: "Role", value: "Fractional Product Designer" },
+            { label: "Role", value: "Product Designer" },
             { label: "Timeframe", value: "~6 weeks" },
             {
               label: "Team",
