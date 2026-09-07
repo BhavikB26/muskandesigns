@@ -1,5 +1,6 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/home/hero";
+import { LogoMarquee } from "@/components/home/logo-marquee";
 import { Work } from "@/components/home/work";
 import { About } from "@/components/home/about";
 import { Approach } from "@/components/home/approach";
@@ -15,6 +16,7 @@ export default function Home() {
       <Nav />
       <main className="flex w-full flex-col items-center">
         <Hero />
+        <LogoMarquee />
         <Work />
         <About />
         <Approach />

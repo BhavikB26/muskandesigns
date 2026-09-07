@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 type DetailRow = {
   label: string;
@@ -87,13 +87,14 @@ export function CaseStudyHero({
           )}
         </div>
         <div
-          className={`flex flex-col justify-center rounded-2xl bg-pink/10 p-6 ${
-            detailsWidth ? "shrink-0" : ""
+          className={`flex w-full flex-col justify-center rounded-2xl bg-pink/10 p-6 ${
+            detailsWidth ? "md:w-[var(--details-w)] md:shrink-0" : ""
           }`}
           style={{
             gap: `${detailsGap}px`,
-            width: detailsWidth ? `${detailsWidth}px` : undefined,
-            flex: detailsWidth ? undefined : `${detailsFlex} 0 0%`,
+            ...(detailsWidth
+              ? ({ "--details-w": `${detailsWidth}px` } as CSSProperties)
+              : { flex: `${detailsFlex} 0 0%` }),
           }}
         >
           {details.map((d) => (

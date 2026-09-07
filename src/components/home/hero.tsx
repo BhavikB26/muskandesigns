@@ -16,11 +16,16 @@ export function Hero() {
           I blend UX craft with growth strategy to help startups and small
           businesses boost conversion and retention.
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 md:justify-start">
-          <PillButton href="#work" variant="white">
+        <div className="flex w-full flex-col items-stretch gap-3 md:w-auto md:flex-row md:items-center md:justify-start md:gap-4">
+          <PillButton href="#work" variant="white" className="w-full md:w-auto">
             View my work
           </PillButton>
-          <PillButton href="#contact" variant="pink">
+          <PillButton
+            href="https://cal.com/muskandesigns/30min"
+            variant="pink"
+            target="_blank"
+            className="w-full md:w-auto"
+          >
             Book a free discovery call
           </PillButton>
         </div>

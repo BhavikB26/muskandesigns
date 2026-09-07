@@ -1,23 +1,22 @@
 import Link from "next/link";
-import { PillButton } from "@/components/ui/pill-button";
 import { caseStudies } from "@/content/case-studies";
 
 const socials = [
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/",
+    href: "https://www.linkedin.com/in/thisismuskan/",
     icon: "/home/icon-linkedin.svg",
-    from: "rgba(255,173,173,0.15)",
-    to: "rgba(202,187,233,0.1)",
+    from: "rgba(255,173,173,0.45)",
+    to: "rgba(202,187,233,0.35)",
     iconFrom: "rgba(202,187,233,0.4)",
     iconTo: "rgba(255,173,173,0.4)",
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/",
+    href: "https://www.instagram.com/_muskanb07_/",
     icon: "/home/icon-instagram.svg",
-    from: "rgba(179,222,193,0.15)",
-    to: "rgba(202,187,233,0.15)",
+    from: "rgba(179,222,193,0.45)",
+    to: "rgba(202,187,233,0.45)",
     iconFrom: "rgba(202,187,233,0.4)",
     iconTo: "rgba(179,222,193,0.4)",
   },
@@ -31,18 +30,13 @@ export function Footer() {
     >
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-6">
         <div className="flex w-full flex-col items-center gap-16 rounded-[40px] border-[0.8px] border-border bg-white p-8 shadow-[0.24px_0.6px_0.65px_-1.25px_rgba(199,199,199,0.36),0.92px_2.29px_2.47px_-2.5px_rgba(199,199,199,0.32),4px_10px_10.77px_-3.75px_rgba(199,199,199,0.13)] md:p-[72px]">
-          <div className="flex w-full flex-col items-start gap-8">
-            <div className="flex flex-col items-start gap-3">
-              <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-[40px] md:leading-[46px]">
-                Let&rsquo;s connect
-              </h2>
-              <p className="text-base tracking-[0.2px] text-muted">
-                Open to new projects, collaborations, and conversations.
-              </p>
-            </div>
-            <PillButton href="mailto:hello@muskandesigns.com" variant="white">
-              Contact me
-            </PillButton>
+          <div className="flex w-full flex-col items-start gap-3">
+            <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-[40px] md:leading-[46px]">
+              Let&rsquo;s connect
+            </h2>
+            <p className="text-base tracking-[0.2px] text-muted">
+              Open to new projects, collaborations, and conversations.
+            </p>
           </div>
           <div className="flex w-full flex-col gap-10 md:flex-row">
             <div className="flex flex-1 flex-col gap-8 sm:flex-row">
@@ -55,7 +49,11 @@ export function Footer() {
                     Home
                   </Link>
                   <Link href="/#about">About</Link>
-                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                  <a
+                    href="https://drive.google.com/file/d/1PpXBLjS9VdTh667NuuyxUoaD12YokxnK/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Resume
                   </a>
                 </div>
@@ -70,6 +68,13 @@ export function Footer() {
                       {study.shortName}
                     </Link>
                   ))}
+                  <a
+                    href="https://www.figma.com/proto/KEABZM1GitiLCq9YTXJdu6/Portfolio-projects?node-id=12-27&t=AEx2XrQmEeZD8e6M-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=12%3A27&show-proto-sidebar=1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View more...
+                  </a>
                 </div>
               </div>
             </div>

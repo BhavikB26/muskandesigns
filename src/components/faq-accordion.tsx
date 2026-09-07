@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export type FaqItem = {
   q: string;
-  a: string;
+  a: string | string[];
 };
 
 export function FaqAccordion({
@@ -44,9 +44,11 @@ export function FaqAccordion({
                 />
               </button>
               {isOpen && (
-                <p className="pb-6 text-base tracking-[0.2px] text-muted">
-                  {item.a}
-                </p>
+                <div className="flex flex-col gap-4 pb-6 text-base tracking-[0.2px] text-muted">
+                  {(Array.isArray(item.a) ? item.a : [item.a]).map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
+                </div>
               )}
             </div>
           );

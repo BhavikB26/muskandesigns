@@ -14,7 +14,6 @@ import {
   TwoColImageText,
   StatCallout,
   PersonaCards,
-  TestimonialQuote,
   KeepReading,
 } from "@/components/work/sections";
 import { FaqAccordion } from "@/components/faq-accordion";
@@ -29,19 +28,33 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How did you balance user needs with business goals, especially in a health product?",
-    a: "I anchored every recommendation in both the clinical priorities the care team cared about and the engagement data users were actually generating, so tradeoffs were made with evidence rather than opinion.",
+    a: [
+      "Users often dropped off after giving birth because they didn't realize postpartum features were available. That meant they missed helpful trackers and support, and the business lost engagement right when it needed to grow adoption of postpartum care plans.",
+      "To solve this, I added subtle moments in the design that showed what features would unlock after birth, like baby milestones and recovery tools. This helped educate users without distracting them from their pregnancy tasks. It kept them focused on what mattered now while setting up stronger engagement later.",
+    ],
   },
   {
     q: "How did you handle ambiguity when requirements are still shifting?",
-    a: "I ran strategy workshops early to align stakeholders on personas, flows, and scope, then kept the redesign plan modular so shifting requirements didn't require starting over.",
+    a: [
+      "The team was evolving beyond pregnancy into multiple care plans, but early workshops made it clear they hadn't fully defined how that would work yet. Instead of designing everything upfront, I paced my work to match their decision-making. I held off on finalizing certain flows until there was enough clarity to move forward with confidence.",
+      "With a tight budget, I couldn't afford to redesign every time a new idea came up. I asked the right questions to separate long-term requirements from in-the-moment ideas. For example, one stakeholder wanted to introduce an avatar named Poppy to guide users. While creative, it wasn't connected to the core need—helping users manage multiple care plans like pregnancy, nutrition, and mental health without confusion. I focused on solving for that need first, building a system that could visually support and separate care plans without unnecessary complexity.",
+      "This approach helped the team make progress even as things evolved, and kept the work grounded in what users and the business actually needed.",
+    ],
   },
   {
     q: "How did you work within the existing tech stack and team capacity?",
-    a: "I scoped the UX audit and redesign plan around what the engineering team could realistically ship in six weeks, prioritizing high-impact changes over a full rebuild.",
+    a: [
+      "I worked within a tight budget and a fast-moving timeline while the team was still figuring out how to evolve their care plans beyond pregnancy. Instead of over-designing or creating throwaway UI, I built a flexible, modular component system (what they called “widgets”) that could scale as their roadmap evolved. This gave them a foundation to adapt and test new care plan logic without needing a full-time designer.",
+      "I also kept their React stack in mind like avoiding overly custom UI, sticking to accessible patterns, and following WCAG best practices throughout. Every component was clearly labeled and annotated, with handoff documentation built for longevity. I knew it might be months before another designer joined, so I set them up with something clean, scalable, and easy for engineers to maintain and extend.",
+    ],
   },
   {
     q: "How do you ensure your designs scale across complex user types?",
-    a: "I designed a modular system that reorders and emphasizes components based on user state — routine pregnancy, high-risk pregnancy, or postpartum — rather than building separate flows for each.",
+    a: [
+      "The core challenge was information overload on a small screen. Engagement was already low, but the business wanted to add more features, care plans, and trackers. I restructured the UI to reduce cognitive load, prioritizing clarity, visual hierarchy, and contextual content, so users could focus on what mattered most without feeling overwhelmed.",
+      "I also accounted for a wide range of user types and edge cases, from different insurance coverage and medical concerns to users who weren't pregnant at all. Rather than forcing a one-size-fits-all layout, I created a modular, personalized experience that adapted to the user's needs while staying accessible and intuitive.",
+      "I built a flexible component system aligned with their React stack to ensure long-term scalability. I kept the UI simple and accessible, followed WCAG guidelines throughout, and provided clear annotations so the engineering team could maintain and evolve the product even without a designer on staff.",
+    ],
   },
 ];
 
@@ -82,7 +95,7 @@ export default function WildflowerCaseStudy() {
           logoHeight={103}
           textFlex={656.4}
           detailsFlex={612.8}
-          eyebrow="Cross-Platform Mobile App Redesign • 2026"
+          eyebrow="Cross-Platform Mobile App Redesign"
           title={
             <>
               One app, many journeys: Building a flexible system for
@@ -308,7 +321,7 @@ export default function WildflowerCaseStudy() {
           />
         </SectionShell>
 
-        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.4), rgba(179,222,193,0.4))">
+        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.7), rgba(179,222,193,0.7))">
           <SectionHeading>
             Revamped trackers to boost engagement and retention
           </SectionHeading>
@@ -396,32 +409,6 @@ export default function WildflowerCaseStudy() {
                 ]}
               />
             </div>
-          </div>
-        </SectionShell>
-
-        <SectionShell bg="linear-gradient(to bottom, rgba(255,173,173,0.2), rgba(202,187,233,0.2), rgba(179,222,193,0.2))">
-          <div className="flex flex-col items-start gap-10 md:flex-row">
-            <h2 className="w-full shrink-0 text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:w-[454px] md:text-[40px] md:leading-[46px]">
-              Real feedback from the team
-            </h2>
-            <TestimonialQuote>
-              <p>
-                &ldquo;Muskan took the time to &lsquo;teach&rsquo; us,
-                explaining concepts and ensuring we understood the rationale
-                behind her recommendations.
-              </p>
-              <p>
-                This educational aspect was invaluable. We&rsquo;ve come away
-                with a wealth of good design thinking principles and
-                practical tips that we can confidently apply to our future
-                projects.
-              </p>
-              <p>
-                I highly recommend Muskan at Brewer Digital to anyone seeking
-                top-tier UI/UX expertise delivered with professionalism,
-                efficiency, and collaborative spirit.&rdquo;
-              </p>
-            </TestimonialQuote>
           </div>
         </SectionShell>
 

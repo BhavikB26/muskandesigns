@@ -25,6 +25,7 @@ export function PillButton({
     <Link
       href={href}
       target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
       className={`relative inline-flex items-center justify-center whitespace-nowrap rounded-full px-6 py-3 text-base font-semibold tracking-[0.3px] text-ink ${variantClasses[variant]} ${className}`}
     >
       {children}

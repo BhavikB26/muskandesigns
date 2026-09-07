@@ -302,7 +302,7 @@ type RelatedCase = {
 
 export function KeepReading({ cases }: { cases: RelatedCase[] }) {
   return (
-    <section className="flex w-full flex-col items-center gap-8 px-6 pb-16 pt-4 md:px-[72px] md:pb-[100px] md:pt-4">
+    <section className="flex w-full flex-col items-center gap-16 px-6 pb-16 pt-16 md:px-[72px] md:pb-[100px] md:pt-[72px]">
       <div className="flex w-full max-w-[1376.8px] flex-col gap-2">
         <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
           Keep reading

@@ -13,7 +13,7 @@ export function About() {
       className="flex w-full flex-col items-center px-6 py-16 md:px-[72px] md:py-[100px]"
     >
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-10 md:flex-row md:gap-16">
-        <div className="relative grid w-full max-w-[656px] grid-cols-2 gap-4">
+        <div className="relative grid w-full max-w-[656px] grid-cols-2 gap-x-4 gap-y-6 md:gap-y-8">
           <div className="relative row-span-2 h-[420px] overflow-hidden rounded-[16px] md:h-[655px]">
             <Image
               src="/home/about-photo-1.png"
@@ -35,7 +35,7 @@ export function About() {
               src="/home/about-photo-3.png"
               alt="Muskan"
               fill
-              className="object-cover object-top"
+              className="object-cover object-[center_20%]"
             />
           </div>
         </div>

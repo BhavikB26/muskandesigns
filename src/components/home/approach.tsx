@@ -1,27 +1,29 @@
+import type { CSSProperties } from "react";
+
 const principles = [
   {
     icon: "/home/icon-approach-1.svg",
     text: "Good design builds trust.",
-    from: "rgba(255,173,173,0.2)",
-    to: "rgba(255,173,173,0.35)",
+    from: "rgba(255,173,173,0.4)",
+    to: "rgba(255,173,173,0.65)",
   },
   {
     icon: "/home/icon-approach-2.svg",
     text: "Strategic design beats over-design.",
-    from: "rgba(179,222,193,0.2)",
-    to: "rgba(179,222,193,0.35)",
+    from: "rgba(179,222,193,0.4)",
+    to: "rgba(179,222,193,0.65)",
   },
   {
     icon: "/home/icon-approach-3.svg",
     text: "Done > perfect",
-    from: "rgba(202,187,233,0.2)",
-    to: "rgba(202,187,233,0.35)",
+    from: "rgba(202,187,233,0.4)",
+    to: "rgba(202,187,233,0.65)",
   },
   {
     icon: "/home/icon-approach-4.svg",
     text: "Don't design in a vacuum",
-    from: "rgba(255,173,173,0.2)",
-    to: "rgba(255,173,173,0.35)",
+    from: "rgba(255,173,173,0.4)",
+    to: "rgba(255,173,173,0.65)",
   },
 ];
 
@@ -44,15 +46,18 @@ export function Approach() {
           {principles.map((p) => (
             <div
               key={p.text}
-              className="flex flex-col items-start gap-4 rounded-2xl p-6"
-              style={{
-                backgroundImage: `linear-gradient(to bottom, ${p.from}, ${p.to})`,
-              }}
+              className="flex flex-row items-center gap-4 rounded-2xl bg-[linear-gradient(to_right,var(--from),var(--to))] p-6 sm:flex-col sm:items-start sm:bg-[linear-gradient(to_bottom,var(--from),var(--to))]"
+              style={
+                {
+                  "--from": p.from,
+                  "--to": p.to,
+                } as CSSProperties
+              }
             >
               <img
                 src={p.icon}
                 alt=""
-                className="h-[50px] w-12 object-contain object-left"
+                className="h-[50px] w-12 shrink-0 object-contain sm:object-left"
               />
               <p className="text-lg font-semibold tracking-[0.18px] text-ink">
                 {p.text}

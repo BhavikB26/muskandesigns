@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CaseStudiesDropdown } from "@/components/case-studies-dropdown";
+import { MobileMenu } from "@/components/mobile-menu";
 
 export function Nav() {
   return (
@@ -11,24 +13,17 @@ export function Nav() {
             alt="Muskan Designs"
             width={1536}
             height={1024}
-            className="absolute left-[-14.72%] top-[9.08%] h-[81.92%] w-[122.88%] max-w-none"
+            className="absolute left-[-14.72%] top-[9.08%] h-[81.92%] w-[122.88%] max-w-none saturate-[1.8] contrast-[1.3] brightness-[0.9]"
             priority
           />
         </Link>
-        <nav className="flex items-center gap-6 text-base text-ink-soft md:gap-10">
-          <Link href="/#work" className="flex items-center gap-2 hover:text-ink">
-            Case studies
-            <img
-              src="/home/icon-nav-chevron.svg"
-              alt=""
-              className="h-1.5 w-3 object-contain"
-            />
-          </Link>
+        <nav className="hidden items-center gap-6 text-base text-ink-soft md:flex md:gap-10">
+          <CaseStudiesDropdown />
           <Link href="/#about" className="text-ink hover:text-ink-soft">
             About
           </Link>
           <a
-            href="/resume.pdf"
+            href="https://drive.google.com/file/d/1PpXBLjS9VdTh667NuuyxUoaD12YokxnK/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ink"
@@ -36,6 +31,7 @@ export function Nav() {
             Resume
           </a>
         </nav>
+        <MobileMenu />
       </div>
     </header>
   );

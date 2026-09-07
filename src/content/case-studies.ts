@@ -6,6 +6,7 @@ export type CaseStudyStat = {
 export type CaseStudy = {
   slug: string;
   shortName: string;
+  navLabel: string;
   logo: string;
   logoWidth: number;
   logoHeight: number;
@@ -23,6 +24,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "wildflower",
     shortName: "Wildflower",
+    navLabel: "Wildflower App Redesign",
     logo: "/home/wildflower-logo.png",
     logoWidth: 512,
     logoHeight: 67,
@@ -39,6 +41,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "gusto",
     shortName: "Gusto",
+    navLabel: "Gusto Sign Up Testing",
     logo: "/home/gusto-logo.png",
     logoWidth: 512,
     logoHeight: 194,
@@ -58,6 +61,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "therabody",
     shortName: "Therabody PLP",
+    navLabel: "Therabody PDP Testing",
     logo: "/home/therabody-logo.png",
     logoWidth: 512,
     logoHeight: 99,

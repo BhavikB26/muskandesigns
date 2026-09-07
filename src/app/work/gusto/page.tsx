@@ -28,15 +28,15 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "What inspired the \"How Gusto Works\" CTA and content placement?",
-    a: "Diary study data showed small business owners needed time to compare options before committing, so I designed a low-commitment entry point that let them self-educate before being asked to create an account.",
+    a: "Our research showed users wanted to understand Gusto's value upfront. The \"How Gusto Works\" CTA provided key product information in a concise format, which reduced friction and improved conversion rates by addressing user concerns before they signed up.",
   },
   {
     q: "How did you ensure the redesign wouldn't negatively impact the user journey?",
-    a: "I ran the changes as phased A/B tests against a control, so every change was validated with real traffic before being rolled out further.",
+    a: "I carefully tested each iteration and used a phased approach to measure impact. By observing user behavior through tools like Fullstory, I was able to adjust quickly if issues arose, ensuring that the redesign improved rather than hindered the experience.",
   },
   {
     q: "How did you prioritize what information to include in the lead form experience?",
-    a: "I kept the lead form to only what Sales needed to qualify a prospect, and pushed everything else (detailed product info) into the self-serve content instead.",
+    a: "I carefully tested each iteration and used a phased approach to measure impact. By observing user behavior through tools like Fullstory, I was able to adjust quickly if issues arose, ensuring that the redesign improved rather than hindered the experience.",
   },
 ];
 
@@ -75,7 +75,7 @@ export default function GustoCaseStudy() {
           logoHeight={194}
           textFlex={1088.8}
           detailsFlex={612.8}
-          eyebrow="Responsive Web Growth Experimentation • 2023"
+          eyebrow="Responsive Web Growth Experimentation"
           title={
             <>
               Boosting Gusto&rsquo;s signup flow: 15% conversion growth via
@@ -105,7 +105,7 @@ export default function GustoCaseStudy() {
           ]}
         />
 
-        <SectionShell bg="linear-gradient(to bottom, rgba(255,173,173,0.4), rgba(202,187,233,0.4))">
+        <SectionShell bg="linear-gradient(to bottom, rgba(255,173,173,0.7), rgba(202,187,233,0.7))">
           <Eyebrow>Up first…</Eyebrow>
           <SectionHeading center>
             Audit the original flow and identify key pain points and areas of
@@ -411,7 +411,7 @@ export default function GustoCaseStudy() {
           />
         </SectionShell>
 
-        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.4), rgba(179,222,193,0.4))">
+        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.7), rgba(179,222,193,0.7))">
           <SectionHeading>Analyze impact</SectionHeading>
           <BodyText>
             <p>

@@ -91,19 +91,19 @@ const tests = [
 const learnings = [
   {
     q: "Scrappy solutions work",
-    a: "I didn't need a full engineering build to prove or disprove a hypothesis — CMS-level changes were enough to move real metrics fast.",
+    a: "Leveraging CMS tools allowed me to iterate quickly and deliver impactful changes without heavy engineering involvement.",
   },
   {
     q: "Value of data-driven decisions",
-    a: "RICE scoring kept the roadmap honest about what to test first, instead of chasing the loudest opinion in the room.",
+    a: "Working within the limitations of our CMS pushed me to find creative solutions, a skill that carried over to future projects, like the cart and checkout redesigns.",
   },
   {
     q: "User-centered design wins",
-    a: "The tests that performed best were the ones that directly answered a confusion customers had already told us about in surveys.",
+    a: "Simplifying content and focusing on user needs drove significant lifts in conversion and revenue.",
   },
   {
     q: "Adaptability matters",
-    a: "Not every test won outright, and the follow-up design shows the process kept iterating even after the initial result.",
+    a: "Working within constraints fostered creativity and inspired solutions that carried over into future projects.",
   },
 ];
 
@@ -145,7 +145,7 @@ export default function TherabodyCaseStudy() {
           columnGap={40}
           detailsWidth={248}
           detailsGap={40}
-          eyebrow="Responsive Web Growth Experimentation • 2022"
+          eyebrow="Responsive Web Growth Experimentation"
           title={
             <>
               Optimizing Therabody&rsquo;s PDP: Driving growth through
@@ -409,7 +409,7 @@ export default function TherabodyCaseStudy() {
           </div>
         </SectionShell>
 
-        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.4), rgba(179,222,193,0.4))">
+        <SectionShell bg="linear-gradient(to bottom, rgba(202,187,233,0.7), rgba(179,222,193,0.7))">
           <h2 className="mx-auto max-w-[700px] text-center text-[40px] leading-[1.15] tracking-[-0.56px] text-ink">
             Learnings and takeaways
           </h2>
