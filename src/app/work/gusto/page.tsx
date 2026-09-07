@@ -87,7 +87,7 @@ export default function GustoCaseStudy() {
             "This work reinforced the value of lean UX and thoughtful testing. Even with limited resources, I was able to deliver measurable growth by aligning stakeholders, using CMS tools effectively, and designing experiences that met users where they were.",
           ]}
           details={[
-            { label: "Role", value: "Senior Product Designer" },
+            { label: "Role", value: "Product Designer" },
             { label: "Timeframe", value: "~3 months" },
             {
               label: "Team",
