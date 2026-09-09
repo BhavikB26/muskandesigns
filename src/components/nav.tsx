@@ -23,7 +23,7 @@ export function Nav() {
             About
           </Link>
           <a
-            href="https://drive.google.com/file/d/1PpXBLjS9VdTh667NuuyxUoaD12YokxnK/view?usp=sharing"
+            href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ink"

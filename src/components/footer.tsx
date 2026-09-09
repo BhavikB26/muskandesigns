@@ -49,11 +49,7 @@ export function Footer() {
                     Home
                   </Link>
                   <Link href="/#about">About</Link>
-                  <a
-                    href="https://drive.google.com/file/d/1PpXBLjS9VdTh667NuuyxUoaD12YokxnK/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                     Resume
                   </a>
                 </div>
