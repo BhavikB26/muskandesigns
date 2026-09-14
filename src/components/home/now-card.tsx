@@ -1,9 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+function currentMonthLabel() {
+  const now = new Date();
+  const month = now.toLocaleString("en-US", { month: "short" }).toUpperCase();
+  const year = now.getFullYear().toString().slice(-2);
+  return `${month} ’${year}`;
+}
 
 export function NowCard() {
   const [open, setOpen] = useState(true);
+  // Computed client-side only (this page is statically generated, so a
+  // build-time date would go stale until the next deploy; deferring to an
+  // effect also avoids a hydration mismatch once the month rolls over).
+  const [dateLabel, setDateLabel] = useState<string | null>(null);
+
+  useEffect(() => {
+    setDateLabel(currentMonthLabel());
+  }, []);
 
   return (
     <div className="w-full rounded-2xl border border-border bg-purple/10 p-5">
@@ -21,7 +36,7 @@ export function NowCard() {
         </span>
         <span className="flex shrink-0 items-center gap-3">
           <span className="text-[13px] tracking-[0.13px] text-muted">
-            SEP &rsquo;26
+            {dateLabel}
           </span>
           <img
             src="/home/icon-chevron.svg"
