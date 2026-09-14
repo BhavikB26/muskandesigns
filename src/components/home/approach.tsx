@@ -2,25 +2,25 @@ import type { CSSProperties } from "react";
 
 const principles = [
   {
-    icon: "/home/icon-approach-1.svg",
+    icon: "/home/icon-approach-1.png",
     text: "Good design builds trust.",
     from: "rgba(255,173,173,0.4)",
     to: "rgba(255,173,173,0.65)",
   },
   {
-    icon: "/home/icon-approach-2.svg",
+    icon: "/home/icon-approach-2.png",
     text: "Strategic design beats over-design.",
     from: "rgba(179,222,193,0.4)",
     to: "rgba(179,222,193,0.65)",
   },
   {
-    icon: "/home/icon-approach-3.svg",
+    icon: "/home/icon-approach-3.png",
     text: "Done > perfect",
     from: "rgba(202,187,233,0.4)",
     to: "rgba(202,187,233,0.65)",
   },
   {
-    icon: "/home/icon-approach-4.svg",
+    icon: "/home/icon-approach-4.png",
     text: "Don't design in a vacuum",
     from: "rgba(255,173,173,0.4)",
     to: "rgba(255,173,173,0.65)",

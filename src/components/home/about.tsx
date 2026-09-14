@@ -43,14 +43,18 @@ export function About() {
           <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
             About me
           </h2>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-nowrap items-center gap-2 md:flex-wrap md:gap-4">
             {traits.map((trait) => (
               <div
                 key={trait.label}
-                className={`flex items-center gap-2 rounded-lg px-3 py-2 ${trait.bg}`}
+                className={`flex items-center gap-1.5 rounded-lg px-2 py-1.5 md:gap-2 md:px-3 md:py-2 ${trait.bg}`}
               >
-                <img src={trait.icon} alt="" className="size-5 object-contain" />
-                <p className="text-base font-semibold tracking-[0.3px] text-ink">
+                <img
+                  src={trait.icon}
+                  alt=""
+                  className="size-3.5 shrink-0 object-contain md:size-5"
+                />
+                <p className="whitespace-nowrap text-xs font-semibold tracking-[0.3px] text-ink md:text-base">
                   {trait.label}
                 </p>
               </div>
