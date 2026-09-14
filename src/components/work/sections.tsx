@@ -315,7 +315,7 @@ export function KeepReading({ cases }: { cases: RelatedCase[] }) {
         {cases.map((c) => (
           <div
             key={c.slug}
-            className="flex flex-1 flex-col items-start justify-center gap-6 rounded-2xl p-10"
+            className="flex flex-1 flex-col items-start justify-center gap-6 rounded-2xl px-10 py-14"
             style={{
               backgroundImage: `linear-gradient(to bottom, ${c.gradientFrom}, ${c.gradientTo})`,
             }}
@@ -325,7 +325,7 @@ export function KeepReading({ cases }: { cases: RelatedCase[] }) {
               alt=""
               width={c.logoWidth}
               height={c.logoHeight}
-              className="h-6 w-auto object-contain"
+              className="h-3.5 w-auto object-contain"
             />
             <h3 className="text-[28px] leading-[1.15] tracking-[-0.4px] text-ink">
               {c.title}
@@ -333,7 +333,11 @@ export function KeepReading({ cases }: { cases: RelatedCase[] }) {
             <p className="text-base tracking-[0.2px] text-ink-soft">
               {c.summary}
             </p>
-            <PillButton href={`/work/${c.slug}`} variant="white">
+            <PillButton
+              href={`/work/${c.slug}`}
+              variant="white"
+              className="w-full md:w-auto"
+            >
               Read case study
             </PillButton>
           </div>

@@ -38,7 +38,7 @@ export function FaqAccordion({
                 <img
                   src="/home/icon-chevron.svg"
                   alt=""
-                  className={`size-5 shrink-0 object-contain transition-transform ${
+                  className={`size-3.5 shrink-0 object-contain transition-transform ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />

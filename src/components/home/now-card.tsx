@@ -41,7 +41,7 @@ export function NowCard() {
           <img
             src="/home/icon-chevron.svg"
             alt=""
-            className={`size-4 object-contain transition-transform ${
+            className={`size-3.5 object-contain transition-transform ${
               open ? "rotate-180" : ""
             }`}
           />
