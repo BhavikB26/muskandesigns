@@ -23,7 +23,7 @@ export function Work() {
                 alt=""
                 width={study.logoWidth}
                 height={study.logoHeight}
-                className="h-3.5 w-auto object-contain"
+                className="h-3.5 w-auto object-contain md:h-5"
               />
               <h3 className="text-[28px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
                 {study.title}
