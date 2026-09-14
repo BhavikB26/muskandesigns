@@ -62,8 +62,8 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <section className="flex w-full flex-col items-start gap-10 px-6 py-16 md:gap-16 md:px-[72px] md:py-[100px]">
-      <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-[40px] md:leading-[46px]">
+    <section className="flex w-full flex-col items-start gap-10 px-6 py-16 md:items-center md:gap-16 md:px-[72px] md:py-[100px]">
+      <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-center md:text-[40px] md:leading-[46px]">
         My design process
       </h2>
       <div className="flex w-full max-w-[800px] flex-col gap-10">
