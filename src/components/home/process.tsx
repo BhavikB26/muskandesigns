@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 type Step = {
   icon: string;
+  iconSize?: string;
   lineColor: string;
   title: string;
   body: ReactNode;
@@ -10,6 +11,7 @@ type Step = {
 const steps: Step[] = [
   {
     icon: "/home/icon-process-1.png",
+    iconSize: "size-10",
     lineColor: "bg-pink",
     title: "Understand and align",
     body: (
@@ -42,6 +44,7 @@ const steps: Step[] = [
   },
   {
     icon: "/home/icon-process-3.png",
+    iconSize: "size-10",
     lineColor: "bg-green",
     title: "Test and adapt",
     body: (
@@ -70,7 +73,7 @@ export function Process() {
               <img
                 src={step.icon}
                 alt=""
-                className="size-11 object-contain"
+                className={`${step.iconSize ?? "size-11"} object-contain`}
               />
               <div className={`w-1 flex-1 rounded ${step.lineColor}`} />
             </div>
