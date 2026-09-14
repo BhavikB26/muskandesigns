@@ -11,7 +11,7 @@ export function Work() {
       {caseStudies.map((study) => (
         <article
           key={study.slug}
-          className="flex w-full max-w-[1376.8px] flex-col items-center gap-10 rounded-[24px] px-6 py-10 md:flex-row md:gap-16 md:p-16"
+          className="flex w-full max-w-[1376.8px] flex-col items-center gap-10 rounded-[24px] px-8 py-10 md:flex-row md:gap-16 md:px-20 md:py-16"
           style={{
             backgroundImage: `linear-gradient(to bottom, ${study.gradientFrom}, ${study.gradientTo})`,
           }}
@@ -25,7 +25,7 @@ export function Work() {
                 height={study.logoHeight}
                 className="h-3.5 w-auto object-contain"
               />
-              <h3 className="text-[28px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
+              <h3 className="text-[28px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
                 {study.title}
               </h3>
               <p className="text-base tracking-[0.2px] text-ink-soft">
