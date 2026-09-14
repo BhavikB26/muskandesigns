@@ -29,12 +29,14 @@ export function Hero() {
             Book a free discovery call
           </PillButton>
         </div>
-        <NowCard />
+        <div className="w-full md:max-w-[420px]">
+          <NowCard />
+        </div>
       </div>
-      <div className="relative size-[220px] shrink-0 overflow-hidden rounded-full md:size-[345px]">
+      <div className="relative size-[260px] shrink-0 overflow-hidden rounded-full md:size-[400px]">
         <Image
-          src="/home/hero-illustration.png"
-          alt="Illustration of Muskan"
+          src="/home/hero-illustration-circle.png"
+          alt="Illustration of Muskan at her desk"
           fill
           className="object-cover"
           priority
