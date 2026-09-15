@@ -63,7 +63,7 @@ const steps: Step[] = [
 export function Process() {
   return (
     <section className="flex w-full flex-col items-start gap-10 px-6 py-16 md:items-center md:gap-16 md:px-[72px] md:py-[100px]">
-      <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-center md:text-[40px] md:leading-[46px]">
+      <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-center md:text-[40px] md:leading-[46px]">
         My design process
       </h2>
       <div className="flex w-full max-w-[800px] flex-col gap-10">
@@ -78,10 +78,10 @@ export function Process() {
               <div className={`w-1 flex-1 rounded ${step.lineColor}`} />
             </div>
             <div className="flex flex-col items-start gap-2 pb-4">
-              <h3 className="text-xl font-medium leading-[26px] text-ink">
+              <h3 className="text-xl font-semibold leading-[26px] text-ink">
                 {step.title}
               </h3>
-              <p className="text-base tracking-[0.2px] text-muted">
+              <p className="text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
                 {step.body}
               </p>
             </div>

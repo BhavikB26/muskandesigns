@@ -25,7 +25,7 @@ export function Testimonials() {
     <section className="relative flex w-full items-center justify-center overflow-hidden bg-gradient-to-b from-[rgba(255,173,173,0.55)] via-[rgba(202,187,233,0.55)] to-[rgba(179,222,193,0.55)] px-6 py-16 md:px-[72px] md:py-[100px]">
       <div className="pointer-events-none absolute right-[10%] top-[20%] size-[200px] rounded-full bg-[#cc9bff] opacity-60 blur-[100px]" />
       <div className="relative flex w-full max-w-[1376.8px] flex-col items-start gap-10">
-        <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
+        <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
           Testimonials
         </h2>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">

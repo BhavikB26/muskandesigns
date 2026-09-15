@@ -31,10 +31,10 @@ export function Footer() {
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-6">
         <div className="flex w-full flex-col items-center gap-16 rounded-[40px] border-[0.8px] border-border bg-white p-8 shadow-[0.24px_0.6px_0.65px_-1.25px_rgba(199,199,199,0.36),0.92px_2.29px_2.47px_-2.5px_rgba(199,199,199,0.32),4px_10px_10.77px_-3.75px_rgba(199,199,199,0.13)] md:p-[72px]">
           <div className="flex w-full flex-col items-start gap-3">
-            <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-[40px] md:leading-[46px]">
+            <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-[40px] md:leading-[46px]">
               Let&rsquo;s connect
             </h2>
-            <p className="text-base tracking-[0.2px] text-muted">
+            <p className="text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
               Open to new projects, collaborations, and conversations.
             </p>
           </div>
@@ -108,7 +108,7 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="flex w-full flex-col items-center justify-between gap-2 text-[13px] italic tracking-[0.13px] text-[#544f4f] md:flex-row">
+        <div className="flex w-full flex-col items-center justify-between gap-2 text-[13px] italic tracking-[0.13px] text-[#494343] md:flex-row">
           <p>© 2026 – Muskan Designs</p>
           <p>Crafting impactful design solutions with empathy and strategy.</p>
         </div>

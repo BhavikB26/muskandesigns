@@ -40,8 +40,8 @@ export function About() {
           </div>
         </div>
         <div className="flex flex-1 flex-col items-start gap-6">
-          <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
-            About me
+          <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
+            I design like I have something to prove. I do.
           </h2>
           <div className="flex flex-nowrap items-center gap-2 md:flex-wrap md:gap-4">
             {traits.map((trait) => (
@@ -60,13 +60,21 @@ export function About() {
               </div>
             ))}
           </div>
-          <p className="text-base tracking-[0.2px] text-muted">
-            I&rsquo;m a Delhi-based product designer and growth strategist. I
-            help mission-driven teams turn ideas into digital experiences
-            that drive growth, build loyalty, and keep users coming back.
-            Outside of Figma, I&rsquo;m usually working on becoming a little
-            stronger in body and mind.
-          </p>
+          <div className="flex flex-col gap-4 text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
+            <p>
+              I&rsquo;ve always been better at making things than explaining
+              myself. Design was the first place that made sense to me, a
+              blank page doesn&rsquo;t need you to perform, it just needs you
+              to be honest.
+            </p>
+            <p>
+              I worked across products, brands, and industries that had
+              nothing in common except they all needed someone who cared too
+              much. Recently I&rsquo;ve learned that being good at what you
+              do isn&rsquo;t the same as being known for it. This site is me
+              closing that gap.
+            </p>
+          </div>
         </div>
       </div>
     </section>

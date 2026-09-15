@@ -8,7 +8,7 @@ export function Cta() {
     >
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-8 rounded-[24px] bg-gradient-to-br from-pink/40 via-purple/40 to-green/40 p-10 text-center md:p-16">
         <div className="flex flex-col items-center gap-4">
-          <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
+          <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
             Let&rsquo;s work together
           </h2>
           <p className="text-base tracking-[0.2px] text-ink-soft">

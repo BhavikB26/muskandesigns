@@ -32,10 +32,10 @@ export function Approach() {
     <section className="flex w-full flex-col items-center px-6 py-16 md:px-[72px] md:py-[100px]">
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-10 md:flex-row md:gap-16">
         <div className="flex flex-1 flex-col items-start gap-6">
-          <h2 className="text-[32px] leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
+          <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
             My approach
           </h2>
-          <p className="text-base tracking-[0.2px] text-muted">
+          <p className="text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
             I combine UX thinking with product strategy to design scalable
             solutions that solve real user needs, align with business goals,
             and are built to last (not just sit in Figma). No fluff. No
