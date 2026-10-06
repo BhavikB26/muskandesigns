@@ -47,15 +47,6 @@ export function CaseStudiesDropdown() {
               {study.navLabel}
             </Link>
           ))}
-          <a
-            href="https://www.figma.com/proto/KEABZM1GitiLCq9YTXJdu6/Portfolio-projects?node-id=12-27&t=AEx2XrQmEeZD8e6M-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=12%3A27&show-proto-sidebar=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setOpen(false)}
-            className="block px-6 py-4 text-base text-ink-soft hover:bg-black/[0.02] hover:text-ink"
-          >
-            View more...
-          </a>
         </div>
       )}
     </div>

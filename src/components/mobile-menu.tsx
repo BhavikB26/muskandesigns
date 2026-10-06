@@ -4,9 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { caseStudies } from "@/content/case-studies";
 
-const VIEW_MORE_URL =
-  "https://www.figma.com/proto/KEABZM1GitiLCq9YTXJdu6/Portfolio-projects?node-id=12-27&t=AEx2XrQmEeZD8e6M-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=12%3A27&show-proto-sidebar=1";
-
 const RESUME_URL = "/resume.pdf";
 
 const aboutItems = [
@@ -107,15 +104,6 @@ export function MobileMenu() {
                   {study.shortName}
                 </Link>
               ))}
-              <a
-                href={VIEW_MORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setOpen(false)}
-                className="block border-b border-black/[0.08] py-3 pl-10 pr-6 text-base text-ink-soft hover:text-ink"
-              >
-                View more...
-              </a>
             </div>
           )}
           <button

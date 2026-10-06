@@ -31,6 +31,11 @@ export function Work() {
                   className="h-3.5 w-auto object-contain md:h-5"
                 />
               )}
+              {study.label && (
+                <p className="text-sm font-semibold uppercase tracking-[0.8px] text-ink-soft/70">
+                  {study.label}
+                </p>
+              )}
               <h3 className="text-[28px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
                 {study.title}
               </h3>

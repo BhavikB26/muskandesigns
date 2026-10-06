@@ -258,6 +258,7 @@ const faqs = [
 
 const related = caseStudies
   .filter((s) => s.slug !== "ai-mentor")
+  .slice(0, 2)
   .map((s) => ({
     slug: s.slug,
     logo: s.logo,
