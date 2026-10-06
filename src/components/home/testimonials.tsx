@@ -12,8 +12,11 @@ const testimonials = [
     role: "Senior Product Designer, Builder.ai",
   },
   {
+    // TODO(testimonial): The copied opening sentence was removed. The next
+    // sentence ("She is an expert in her craft and always takes the time to
+    // make the best recommendations.") was dropped too because it didn't read
+    // naturally on its own. Confirm with Prachi what she actually wrote.
     quote: [
-      "“Working with Muskan is a dream! She is an expert in her craft and always takes the time to make the best recommendations.",
       "I worked with Muskan at Builder.ai. Her ability to communicate design ideas stood out the most to me. We also collaborated on the design system where she created several key components. I’m confident that she’ll continue to thrive in her ux design career.",
     ],
     tint: "rgba(202,187,233,0.08)",

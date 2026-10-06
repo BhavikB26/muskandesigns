@@ -295,9 +295,9 @@ export default function AiMentorCaseStudy() {
                   TIMELINE
                 </p>
                 <p className="font-satoshi text-base text-black">
-                  Mar - May 2025
+                  Oct – Dec 2023
                   <br />
-                  (3 months)
+                  (3 months, during my Preplaced term)
                 </p>
               </div>
               <div className="flex flex-col gap-1">
@@ -310,7 +310,7 @@ export default function AiMentorCaseStudy() {
                 <p className="font-satoshi text-[11px] tracking-[0.56px] text-black/60">
                   MY ROLE
                 </p>
-                <p className="font-satoshi text-base text-black">Founding Product Designer</p>
+                <p className="font-satoshi text-base text-black">Product Designer</p>
               </div>
             </div>
             <Divider />
