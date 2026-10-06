@@ -1,162 +1,192 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Nav } from "@/components/nav";
-import { Footer } from "@/components/footer";
-import { PrevNext } from "@/components/work/prev-next";
-import { KeepReading } from "@/components/work/sections";
-import { caseStudies, getCaseStudy } from "@/content/case-studies";
-import { deckSlides, type DeckSlide } from "@/content/deck-slides";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
 
-// Case studies presented as their original Figma slides. ProPilot has its own
-// hand-built page at /work/ai-mentor, which takes precedence over this route.
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return Object.keys(deckSlides).map((slug) => ({ slug }));
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
-  if (!study) return {};
+  const p = getProject(slug);
+  if (!p) return {};
   return {
-    title: `${study.shortName} — Muskan Designs`,
-    description: study.summary,
+    title: `${p.name}: ${p.meta.type} — Muskan Bhatia`,
+    description: p.tagline,
+    openGraph: { title: p.name, description: p.tagline, images: [{ url: p.cover.src }] },
   };
 }
 
-const LINK_LABELS: [RegExp, string][] = [
-  [/figma\.com\/proto/, "Open the interactive prototype"],
-  [/./, "Source"],
-];
-
-function linkLabel(href: string) {
-  return LINK_LABELS.find(([re]) => re.test(href))![1];
+function MetaStrip({ p }: { p: Project }) {
+  const items = [
+    ["Company", p.meta.company],
+    ["My role", p.meta.role],
+    ["Timeline", p.meta.timeline],
+    ["Type", p.meta.type],
+  ].filter((i): i is [string, string] => Boolean(i[1]));
+  return (
+    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 border-y border-line py-6 md:grid-cols-4">
+      {items.map(([k, v]) => (
+        <div key={k} className="flex flex-col gap-1">
+          <dt className="text-[12px] font-semibold uppercase tracking-[0.8px] text-muted">{k}</dt>
+          <dd className="text-[16px] leading-[1.4]">{v}</dd>
+        </div>
+      ))}
+    </dl>
+  );
 }
 
-// Internal working files (not meant for public sharing) are not linked.
-const HIDDEN_LINKS = /figma\.com\/design\//;
-
-function SlideText({ slide }: { slide: DeckSlide }) {
-  const links = (slide.links ?? []).filter((l) => !HIDDEN_LINKS.test(l));
-  if (!slide.text && links.length === 0) return null;
+function Figure({ image, tint, priority = false }: { image: Img; tint: string; priority?: boolean }) {
+  const tall = image.height > image.width * 1.15;
   return (
-    <div className="flex flex-col gap-3 px-1">
-      {links.length > 0 && (
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          {links.map((href) => (
-            <a
-              key={href}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-base tracking-[0.2px] text-ink-soft underline underline-offset-4 hover:text-ink"
-            >
-              {linkLabel(href)} ↗
-            </a>
-          ))}
-        </div>
-      )}
-      {slide.text && (
-        <details className="group text-base tracking-[0.2px] text-muted">
-          <summary className="cursor-pointer select-none text-sm text-ink-soft/80 hover:text-ink">
-            Read the text on this slide
-          </summary>
-          <div className="mt-3 flex max-w-[800px] flex-col gap-3">
-            {slide.text.map((t, i) => (
-              <p key={i}>{t}</p>
+    <figure className="flex flex-col gap-3">
+      <div className="flex items-center justify-center overflow-hidden rounded-[20px]" style={{ backgroundColor: tint }}>
+        <Image
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          preload={priority}
+          sizes="(min-width: 1320px) 1240px, 100vw"
+          className={tall ? "h-auto max-h-[720px] w-auto max-w-full py-8" : "h-auto w-full"}
+        />
+      </div>
+      {image.caption && <figcaption className="px-1 text-[14px] text-muted">{image.caption}</figcaption>}
+    </figure>
+  );
+}
+
+function BlockView({ block, tint }: { block: Block; tint: string }) {
+  if (block.kind === "images") {
+    const [first, ...rest] = block.images;
+    const single = block.images.length === 1;
+    const odd = block.images.length % 2 === 1;
+    return (
+      <div className="rise-on-scroll flex flex-col gap-4">
+        {single || odd ? <Figure image={first} tint={tint} /> : null}
+        {!single && (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {(odd ? rest : block.images).map((img) => (
+              <Figure key={img.src} image={img} tint={tint} />
             ))}
           </div>
-        </details>
-      )}
+        )}
+      </div>
+    );
+  }
+  if (block.kind === "quote") {
+    return (
+      <figure className="rise-on-scroll mx-auto flex max-w-[860px] flex-col gap-4 py-6 text-center">
+        <blockquote className="font-display text-[26px] leading-[1.3] tracking-[-0.4px] md:text-[32px]">
+          &ldquo;{block.text}&rdquo;
+        </blockquote>
+        <figcaption className="text-[15px] text-muted">{block.by}</figcaption>
+      </figure>
+    );
+  }
+  return (
+    <div className="rise-on-scroll grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:gap-10">
+      <h2 className="font-display text-[24px] leading-[1.15] tracking-[-0.4px] md:text-[28px]">{block.heading}</h2>
+      <div className="flex max-w-[760px] flex-col gap-5 text-[18px] leading-[1.65] text-ink-soft">
+        {block.body.map((t, i) => (
+          <p key={i}>{t}</p>
+        ))}
+        {block.list && (
+          <ul className="flex flex-col gap-3">
+            {block.list.map((t, i) => (
+              <li key={i} className="relative pl-6 before:absolute before:left-0 before:top-[0.7em] before:h-[2px] before:w-3 before:bg-accent">
+                {t}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 }
 
-export default async function DeckCaseStudy({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const study = getCaseStudy(slug);
-  const slides = deckSlides[slug];
-  if (!study || !slides) notFound();
-
-  const seamless = slides.every((s) => s.seamless);
-  const total = slides.length;
-  const related = caseStudies
-    .filter((s) => s.slug !== slug)
-    .slice(0, 2)
-    .map(({ slug, logo, logoWidth, logoHeight, title, summary, gradientFrom, gradientTo }) => ({
-      slug, logo, logoWidth, logoHeight, title, summary, gradientFrom, gradientTo,
-    }));
+  const p = getProject(slug);
+  if (!p) notFound();
+  const next = getNextProject(slug);
 
   return (
     <>
-      <Nav />
-      <main className="flex w-full flex-col items-center overflow-x-hidden">
-        <PrevNext slug={slug} />
-
-        <section className="flex w-full justify-center px-6 pb-10 pt-12 md:px-[72px] md:pb-16 md:pt-16">
-          <div className="flex w-full max-w-[1376.8px] flex-col items-start gap-5">
-            {study.label && (
-              <p className="text-sm font-semibold uppercase tracking-[0.8px] text-ink-soft/70">
-                {study.label}
-              </p>
-            )}
-            <h1 className="max-w-[1000px] text-[36px] font-medium leading-[1.1] tracking-[-0.4px] text-ink md:text-[56px] md:leading-[64px]">
-              {study.title}
-            </h1>
-            <p className="max-w-[800px] text-lg tracking-[0.2px] text-muted">
-              {study.summary}
-            </p>
-          </div>
-        </section>
-
-        <section className="flex w-full justify-center px-4 pb-16 md:px-[72px] md:pb-[100px]">
-          <div
-            className={`flex w-full max-w-[1376.8px] flex-col ${
-              seamless ? "gap-0 overflow-hidden rounded-[20px] shadow-[0px_20px_30px_-8px_rgba(0,0,0,0.15)]" : "gap-8 md:gap-12"
-            }`}
-          >
-            {slides.map((slide, i) => (
-              <figure key={slide.src} className={seamless ? "contents" : "flex flex-col gap-4"}>
-                <Image
-                  src={slide.src}
-                  alt={`${study.shortName}, slide ${i + 1} of ${total}`}
-                  width={slide.width}
-                  height={slide.height}
-                  sizes="(min-width: 1520px) 1377px, (min-width: 768px) calc(100vw - 144px), calc(100vw - 32px)"
-                  preload={i === 0}
-                  className={`h-auto w-full ${
-                    seamless ? "block" : "rounded-[16px] shadow-[0px_12px_24px_-10px_rgba(0,0,0,0.2)]"
-                  }`}
-                />
-                {!seamless && <SlideText slide={slide} />}
-              </figure>
-            ))}
-          </div>
-        </section>
-
-        {seamless && slides.some((s) => s.text || s.links) && (
-          <section className="flex w-full justify-center px-6 pb-16 md:px-[72px]">
-            <div className="flex w-full max-w-[1376.8px] flex-col">
-              {slides.map((slide) => (
-                <SlideText key={slide.src} slide={slide} />
-              ))}
+      <SiteHeader />
+      <main id="main" className="w-full px-5 md:px-10">
+        <article className="mx-auto flex w-full max-w-[1240px] flex-col gap-16 pb-10 pt-10 md:gap-24 md:pt-16">
+          <header className="rise flex flex-col gap-8">
+            <Link href="/#work" className="self-start text-[15px] text-muted underline-offset-4 hover:text-ink hover:underline">
+              ← All work
+            </Link>
+            <div className="flex flex-col gap-5">
+              <span className="self-start rounded-full bg-accent-soft px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.8px] text-accent">
+                {p.tag === "Concept" ? p.meta.type : "Case study"}
+              </span>
+              <h1 className="font-display text-[48px] font-normal leading-[1] tracking-[-1.6px] md:text-[88px] md:tracking-[-3.4px]">
+                {p.name}
+              </h1>
+              <p className="max-w-[820px] text-[22px] leading-[1.35] text-muted md:text-[28px]">{p.tagline}</p>
             </div>
-          </section>
-        )}
+            <MetaStrip p={p} />
+            {p.links && (
+              <div className="flex flex-wrap gap-3">
+                {p.links.map((l) => (
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full bg-ink px-5 py-2.5 text-[15px] text-white transition-opacity hover:opacity-85"
+                  >
+                    {l.label} ↗
+                  </a>
+                ))}
+              </div>
+            )}
+          </header>
 
-        <KeepReading cases={related} />
+          <Figure image={p.cover} tint={p.tint} priority />
+
+          <p className="rise-on-scroll max-w-[920px] font-display text-[26px] leading-[1.35] tracking-[-0.4px] md:text-[34px]">
+            {p.intro}
+          </p>
+
+          {p.blocks.map((b, i) => (
+            <BlockView key={i} block={b} tint={p.tint} />
+          ))}
+
+          <Link
+            href={`/work/${next.slug}`}
+            className="group mt-6 grid grid-cols-1 items-center gap-6 rounded-[24px] bg-card p-5 md:grid-cols-[280px_1fr] md:p-6"
+          >
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[16px]" style={{ backgroundColor: next.tint }}>
+              <Image
+                src={next.cover.src}
+                alt=""
+                fill
+                sizes="280px"
+                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-[13px] font-semibold uppercase tracking-[0.8px] text-muted">Next project</span>
+              <span className="font-display text-[32px] leading-[1.1] tracking-[-0.8px] group-hover:underline group-hover:underline-offset-4">
+                {next.name} →
+              </span>
+              <span className="text-[16px] text-muted">{next.tagline}</span>
+            </div>
+          </Link>
+        </article>
       </main>
-      <Footer />
+      <SiteFooter />
     </>
   );
 }

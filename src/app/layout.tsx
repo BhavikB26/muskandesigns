@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
-import {
-  Albert_Sans,
-  Playwrite_US_Modern,
-  Fraunces,
-  Gochi_Hand,
-  Instrument_Serif,
-} from "next/font/google";
+import { Albert_Sans, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
 const albertSans = Albert_Sans({
@@ -15,37 +9,19 @@ const albertSans = Albert_Sans({
   subsets: ["latin"],
 });
 
-const playwriteUsModern = Playwrite_US_Modern({
-  variable: "--font-playwrite-us-modern",
-  weight: "400",
-});
-
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  weight: ["500", "600"],
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
 });
 
-const gochiHand = Gochi_Hand({
-  variable: "--font-gochi-hand",
-  weight: "400",
-  subsets: ["latin"],
-});
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  weight: "400",
-  style: "italic",
-  subsets: ["latin"],
-});
-
-const title = "Muskan Designs — Product Designer";
+const title = "Muskan Bhatia — Product Designer";
 const description =
-  "Muskan is a Delhi-based product designer helping mission-driven teams turn ideas into digital experiences that drive growth.";
+  "Muskan Bhatia is an early-career product designer with a computer science background. She has designed real products at Preplaced and Builder.ai, from an AI mentor extension to a design system.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://muskandesigns.vercel.app"
   ),
   title,
   description,
@@ -53,7 +29,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: "website",
-    siteName: "Muskan Designs",
+    siteName: "Muskan Bhatia",
     url: "/",
     images: [
       { url: "/og/banner.jpg", width: 1200, height: 630, type: "image/jpeg" },
@@ -72,15 +48,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${albertSans.variable} ${playwriteUsModern.variable} ${fraunces.variable} ${gochiHand.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${albertSans.variable} ${bricolage.variable} h-full antialiased`}
     >
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap"
-        />
-      </head>
-      <body className="min-h-full flex flex-col bg-white" suppressHydrationWarning>
+      <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="sr-only z-50 rounded-full bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+        >
+          Skip to content
+        </a>
         {children}
       </body>
     </html>

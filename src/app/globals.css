@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #2d2b2a;
+  --background: #f3f2ef;
+  --foreground: #161514;
 
-  --color-ink: #2d2b2a;
-  --color-ink-soft: #302e2c;
-  --color-muted: rgba(48, 46, 44, 0.75);
-  --color-border: #c7c7c7;
-
-  --color-pink: #ffadad;
-  --color-purple: #cabbe9;
-  --color-green: #b3dec1;
+  --color-ink: #161514;
+  --color-ink-soft: #2b2a28;
+  --color-muted: #5f5c57;
+  --color-line: #d6d3cc;
+  --color-card: #ffffff;
+  --color-accent: #5b3fd6;
+  --color-accent-soft: #e9e4fb;
+  --color-live: #1f9d55;
 }
 
 @theme inline {
@@ -20,16 +20,17 @@
   --color-ink: var(--color-ink);
   --color-ink-soft: var(--color-ink-soft);
   --color-muted: var(--color-muted);
-  --color-border: var(--color-border);
-  --color-pink: var(--color-pink);
-  --color-purple: var(--color-purple);
-  --color-green: var(--color-green);
+  --color-line: var(--color-line);
+  --color-card: var(--color-card);
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-live: var(--color-live);
   --font-sans: var(--font-albert-sans);
-  --font-script: var(--font-playwrite-us-modern);
-  --font-fraunces: var(--font-fraunces);
-  --font-gochi: var(--font-gochi-hand);
-  --font-instrument: var(--font-instrument-serif);
-  --font-satoshi: "Satoshi", var(--font-albert-sans), Arial, sans-serif;
+  --font-display: var(--font-bricolage);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -38,22 +39,49 @@ body {
   font-family: var(--font-albert-sans), Arial, Helvetica, sans-serif;
 }
 
-@keyframes gradient-wave {
-  0% {
-    background-position: 0% 50%;
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Gentle reveal for sections as they enter the viewport. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
   }
-  100% {
-    background-position: 100% 50%;
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
-.gradient-wave {
-  background-size: 250% 250%;
-  background-position: 0% 50%;
-  transition: background-position 0.3s ease-out;
+.rise {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-.gradient-wave:hover {
-  animation: gradient-wave 1s ease-in-out infinite alternate;
+@supports (animation-timeline: view()) {
+  .rise-on-scroll {
+    animation: rise linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
