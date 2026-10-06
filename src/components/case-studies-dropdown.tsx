@@ -23,7 +23,7 @@ export function CaseStudiesDropdown() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-2 hover:text-ink"
+        className="flex items-center gap-3 hover:text-ink"
         aria-expanded={open}
       >
         Case studies

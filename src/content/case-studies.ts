@@ -53,10 +53,24 @@ export const caseStudies: CaseStudy[] = [
     shotHeight: 1200,
     gradientFrom: "rgba(202,187,233,0.4)",
     gradientTo: "rgba(202,187,233,0.6)",
-    stats: [
-      { label: "Visit-to-lead CvR", value: "+15%" },
-      { label: "Sign-up increase", value: "+25%" },
-    ],
+    stats: [],
+  },
+  {
+    slug: "ai-mentor",
+    shortName: "ProPilot AI",
+    navLabel: "ProPilot AI Mentor",
+    logo: "",
+    logoWidth: 560,
+    logoHeight: 180,
+    title: "Designing the AI Mentor experience from 0→1 for the first 50,000 learners",
+    summary:
+      "Designed ProPilot's always-available AI mentor across LeetCode, GFG, and YouTube, lifting message initiation from 17% to 84% and Week 4 retention from 3% to 38%.",
+    shot: "/work/ai-mentor/shot.png",
+    shotWidth: 606,
+    shotHeight: 398,
+    gradientFrom: "rgba(255,229,126,0.6)",
+    gradientTo: "rgba(255,174,102,0.4)",
+    stats: [],
   },
   {
     slug: "therabody",
@@ -73,10 +87,7 @@ export const caseStudies: CaseStudy[] = [
     shotHeight: 1200,
     gradientFrom: "rgba(179,222,193,0.6)",
     gradientTo: "rgba(179,222,193,0.4)",
-    stats: [
-      { label: "Product Page CvR", value: "+22%" },
-      { label: "Revenue per visitor", value: "+30%" },
-    ],
+    stats: [],
   },
 ];
 

@@ -24,5 +24,11 @@ const faqs = [
 ];
 
 export function Faq() {
-  return <FaqAccordion title="FAQs" items={faqs} />;
+  return (
+    <FaqAccordion
+      title="FAQs"
+      items={faqs}
+      className="bg-[linear-gradient(161.84deg,rgba(179,222,193,0.102)_0%,rgba(202,187,233,0.102)_50%,rgba(255,173,173,0.078)_100%)]"
+    />
+  );
 }

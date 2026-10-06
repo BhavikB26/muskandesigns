@@ -10,38 +10,22 @@ export function About() {
   return (
     <section
       id="about"
-      className="flex w-full flex-col items-center px-6 py-16 md:px-[72px] md:py-[100px]"
+      className="flex w-full flex-col items-center bg-[linear-gradient(150.53deg,rgba(202,187,233,0.149)_0%,rgba(255,173,173,0.102)_50%,rgba(179,222,193,0.102)_100%)] px-6 py-16 md:px-[72px] md:py-[100px]"
     >
       <div className="flex w-full max-w-[1376.8px] flex-col items-center gap-10 md:flex-row md:gap-16">
-        <div className="relative grid w-full max-w-[656px] grid-cols-2 gap-x-4 gap-y-6 md:gap-y-8">
-          <div className="relative row-span-2 h-[420px] overflow-hidden rounded-[16px] md:h-[655px]">
-            <Image
-              src="/home/about-photo-1.png"
-              alt="Muskan"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative h-[200px] overflow-hidden rounded-[24px] md:h-[313px]">
-            <Image
-              src="/home/about-photo-2.png"
-              alt="Muskan with friends"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="relative h-[200px] overflow-hidden rounded-[24px] md:h-[313px]">
-            <Image
-              src="/home/about-photo-3.png"
-              alt="Muskan"
-              fill
-              className="object-cover object-[center_20%]"
-            />
-          </div>
+        <div className="relative h-[420px] w-full shrink-0 md:h-[659px] md:flex-1">
+          <Image
+            src="/home/about-photo.jpg"
+            alt="Muskan"
+            fill
+            className="rounded-[8px] object-contain drop-shadow-[0px_10px_30px_rgba(0,0,0,0.15)]"
+            priority
+          />
         </div>
         <div className="flex flex-1 flex-col items-start gap-6">
           <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:text-[40px] md:leading-[46px]">
-            I design like I have something to prove. I do.
+            I design like I have something to prove.{" "}
+            <span className="whitespace-nowrap">I do.</span>
           </h2>
           <div className="flex flex-nowrap items-center gap-2 md:flex-wrap md:gap-4">
             {traits.map((trait) => (
@@ -60,7 +44,7 @@ export function About() {
               </div>
             ))}
           </div>
-          <div className="flex flex-col gap-4 text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
+          <div className="flex flex-col gap-4 text-base tracking-[0.2px] text-[rgba(48,46,44,0.75)]">
             <p>
               I&rsquo;ve always been better at making things than explaining
               myself. Design was the first place that made sense to me, a

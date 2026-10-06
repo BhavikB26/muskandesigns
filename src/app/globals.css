@@ -26,6 +26,10 @@
   --color-green: var(--color-green);
   --font-sans: var(--font-albert-sans);
   --font-script: var(--font-playwrite-us-modern);
+  --font-fraunces: var(--font-fraunces);
+  --font-gochi: var(--font-gochi-hand);
+  --font-instrument: var(--font-instrument-serif);
+  --font-satoshi: "Satoshi", var(--font-albert-sans), Arial, sans-serif;
 }
 
 body {
@@ -34,15 +38,22 @@ body {
   font-family: var(--font-albert-sans), Arial, Helvetica, sans-serif;
 }
 
-@keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
+@keyframes gradient-wave {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    background-position: 100% 50%;
   }
 }
 
-.animate-marquee {
-  animation: marquee-scroll 28s linear infinite;
+.gradient-wave {
+  background-size: 250% 250%;
+  background-position: 0% 50%;
+  transition: background-position 0.3s ease-out;
 }
+
+.gradient-wave:hover {
+  animation: gradient-wave 1s ease-in-out infinite alternate;
+}
+

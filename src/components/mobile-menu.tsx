@@ -9,9 +9,24 @@ const VIEW_MORE_URL =
 
 const RESUME_URL = "/resume.pdf";
 
+const aboutItems = [
+  { label: "My Story", href: "/#about", icon: null },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/thisismuskan/",
+    icon: "/home/icon-linkedin.svg",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/_muskanb07_/",
+    icon: "/home/icon-instagram.svg",
+  },
+];
+
 export function MobileMenu() {
   const [open, setOpen] = useState(false);
   const [caseStudiesOpen, setCaseStudiesOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -26,7 +41,10 @@ export function MobileMenu() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    if (!open) setCaseStudiesOpen(false);
+    if (!open) {
+      setCaseStudiesOpen(false);
+      setAboutOpen(false);
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -100,9 +118,51 @@ export function MobileMenu() {
               </a>
             </div>
           )}
-          <Link href="/#about" onClick={() => setOpen(false)} className={linkClass}>
+          <button
+            type="button"
+            onClick={() => setAboutOpen((v) => !v)}
+            aria-expanded={aboutOpen}
+            className="flex w-full items-center justify-between border-b border-black/[0.08] px-6 py-4 text-base text-ink-soft hover:bg-black/[0.02] hover:text-ink"
+          >
             About
-          </Link>
+            <img
+              src="/home/icon-nav-chevron.svg"
+              alt=""
+              className={`h-1.5 w-3 object-contain transition-transform ${
+                aboutOpen ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+          {aboutOpen && (
+            <div className="bg-black/[0.02]">
+              {aboutItems.map((item) =>
+                item.href.startsWith("/") ? (
+                  <Link
+                    key={item.label}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block border-b border-black/[0.08] py-3 pl-10 pr-6 text-base text-ink-soft hover:text-ink"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-3 border-b border-black/[0.08] py-3 pl-10 pr-6 text-base text-ink-soft hover:text-ink"
+                  >
+                    {item.icon && (
+                      <img src={item.icon} alt="" className="size-4 object-contain" />
+                    )}
+                    {item.label}
+                  </a>
+                )
+              )}
+            </div>
+          )}
           <a
             href={RESUME_URL}
             target="_blank"

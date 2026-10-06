@@ -10,14 +10,18 @@ export type FaqItem = {
 export function FaqAccordion({
   title,
   items,
+  className = "",
 }: {
   title: string;
   items: FaqItem[];
+  className?: string;
 }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="flex w-full flex-col items-start gap-10 px-6 py-16 md:flex-row md:gap-16 md:px-[72px] md:py-[100px]">
+    <section
+      className={`flex w-full flex-col items-start gap-10 px-6 py-16 md:flex-row md:gap-16 md:px-[72px] md:py-[100px] ${className}`}
+    >
       <h2 className="w-full shrink-0 text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink md:w-[454px] md:text-[40px] md:leading-[46px]">
         {title}
       </h2>

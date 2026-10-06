@@ -344,6 +344,7 @@ export default function WildflowerCaseStudy() {
             width={1376}
             height={781}
             rounded={false}
+            bordered={false}
           />
         </SectionShell>
 

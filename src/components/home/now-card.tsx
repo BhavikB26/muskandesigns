@@ -21,7 +21,7 @@ export function NowCard() {
   }, []);
 
   return (
-    <div className="w-full rounded-2xl border border-border bg-purple/10 p-5">
+    <div className="w-full rounded-2xl border-[0.8px] border-purple/50 bg-[linear-gradient(162.85deg,rgba(202,187,233,0.2)_0%,rgba(255,173,173,0.149)_50%,rgba(179,222,193,0.149)_100%)] p-5">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
@@ -29,12 +29,12 @@ export function NowCard() {
         className="flex w-full items-center justify-between gap-4 text-left"
       >
         <span className="flex items-center gap-2.5">
-          <span className="size-1.5 shrink-0 rounded-full bg-pink" />
+          <span className="hidden size-1.5 shrink-0 rounded-full bg-pink md:block" />
           <span className="text-base font-semibold tracking-[0.18px] text-ink">
             What I&rsquo;m up to
           </span>
         </span>
-        <span className="flex shrink-0 items-center gap-3">
+        <span className="flex shrink-0 items-center gap-1.5">
           <span className="text-[13px] tracking-[0.13px] text-muted">
             {dateLabel}
           </span>
@@ -48,7 +48,7 @@ export function NowCard() {
         </span>
       </button>
       {open && (
-        <div className="flex flex-col gap-1 pt-3 text-left text-base tracking-[0.2px] text-ink-soft">
+        <div className="flex flex-col gap-1 pt-3 text-left text-[clamp(10.5px,calc((100vw-140px)/18.2),13px)] tracking-[0.2px] text-ink-soft md:text-base">
           <p>
             Bringing{" "}
             <span className="rounded bg-green/40 px-1 font-semibold">
@@ -56,7 +56,7 @@ export function NowCard() {
             </span>{" "}
             closer.
           </p>
-          <p>Building AI tools that scale. Learning by shipping.</p>
+          <p>Dedicated to accessibility and inclusive design.</p>
         </div>
       )}
     </div>

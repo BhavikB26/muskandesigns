@@ -11,7 +11,7 @@ type Step = {
 const steps: Step[] = [
   {
     icon: "/home/icon-process-1.png",
-    iconSize: "size-10",
+    iconSize: "size-6 md:size-[52px]",
     lineColor: "bg-pink",
     title: "Understand and align",
     body: (
@@ -28,6 +28,7 @@ const steps: Step[] = [
   },
   {
     icon: "/home/icon-process-2.png",
+    iconSize: "h-[19px] w-7 md:h-11 md:w-16",
     lineColor: "bg-purple",
     title: "Design and collaborate",
     body: (
@@ -44,7 +45,7 @@ const steps: Step[] = [
   },
   {
     icon: "/home/icon-process-3.png",
-    iconSize: "size-10",
+    iconSize: "h-6 w-[25px] md:h-[52px] md:w-[54px]",
     lineColor: "bg-green",
     title: "Test and adapt",
     body: (
@@ -62,26 +63,28 @@ const steps: Step[] = [
 
 export function Process() {
   return (
-    <section className="flex w-full flex-col items-start gap-10 px-6 py-16 md:items-center md:gap-16 md:px-[72px] md:py-[100px]">
+    <section className="flex w-full flex-col items-start gap-10 bg-[linear-gradient(151.43deg,rgba(179,222,193,0.102)_0%,rgba(255,173,173,0.102)_50%,rgba(202,187,233,0.149)_100%)] px-6 py-16 md:items-center md:gap-16 md:px-[72px] md:py-[100px]">
       <h2 className="text-[32px] font-medium leading-[1.15] tracking-[-0.4px] text-ink-soft md:text-center md:text-[40px] md:leading-[46px]">
         My design process
       </h2>
-      <div className="flex w-full max-w-[800px] flex-col gap-10">
+      <div className="flex w-full max-w-[800px] flex-col gap-10 rounded-[24px] bg-[linear-gradient(147.08deg,rgba(255,173,173,0.051)_0%,rgba(202,187,233,0.051)_50%,rgba(179,222,193,0.051)_100%)] p-5 md:p-0">
         {steps.map((step) => (
-          <div key={step.title} className="flex gap-6">
-            <div className="flex shrink-0 flex-col items-center gap-2.5">
-              <img
-                src={step.icon}
-                alt=""
-                className={`${step.iconSize ?? "size-11"} object-contain`}
-              />
+          <div key={step.title} className="flex gap-4 md:gap-6">
+            <div className="flex w-8 shrink-0 flex-col items-center gap-2 md:w-16 md:gap-2.5">
+              <div className="flex size-8 shrink-0 items-center justify-center md:size-16">
+                <img
+                  src={step.icon}
+                  alt=""
+                  className={`${step.iconSize} object-contain`}
+                />
+              </div>
               <div className={`w-1 flex-1 rounded ${step.lineColor}`} />
             </div>
             <div className="flex flex-col items-start gap-2 pb-4">
-              <h3 className="text-xl font-semibold leading-[26px] text-ink">
+              <h3 className="text-xl font-medium leading-[26px] text-ink">
                 {step.title}
               </h3>
-              <p className="text-base tracking-[0.2px] text-[rgba(48,46,44,0.85)]">
+              <p className="text-base tracking-[0.2px] text-[rgba(48,46,44,0.75)]">
                 {step.body}
               </p>
             </div>

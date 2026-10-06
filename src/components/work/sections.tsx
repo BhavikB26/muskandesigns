@@ -72,6 +72,7 @@ export function FullImage({
   alt = "",
   rounded = true,
   fit = "cover",
+  bordered = true,
 }: {
   src: string;
   width: number;
@@ -79,12 +80,13 @@ export function FullImage({
   alt?: string;
   rounded?: boolean;
   fit?: "cover" | "contain";
+  bordered?: boolean;
 }) {
   return (
     <div
-      className={`relative w-full overflow-hidden border border-black/[0.16] ${
-        rounded ? "rounded-2xl" : ""
-      }`}
+      className={`relative w-full overflow-hidden ${
+        bordered ? "border border-black/[0.16]" : ""
+      } ${rounded ? "rounded-2xl" : ""}`}
       style={{ aspectRatio: `${width} / ${height}` }}
     >
       <Image
@@ -318,15 +320,18 @@ export function KeepReading({ cases }: { cases: RelatedCase[] }) {
             className="flex flex-1 flex-col items-start justify-center gap-6 rounded-2xl px-12 py-14"
             style={{
               backgroundImage: `linear-gradient(to bottom, ${c.gradientFrom}, ${c.gradientTo})`,
+              boxShadow: "0px 20px 30px -8px rgba(0, 0, 0, 0.15), 0px 8px 12px -6px rgba(0, 0, 0, 0.15)",
             }}
           >
-            <Image
-              src={c.logo}
-              alt=""
-              width={c.logoWidth}
-              height={c.logoHeight}
-              className="h-3.5 w-auto object-contain"
-            />
+            {c.logo && (
+              <Image
+                src={c.logo}
+                alt=""
+                width={c.logoWidth}
+                height={c.logoHeight}
+                className="h-3.5 w-auto object-contain"
+              />
+            )}
             <h3 className="text-[28px] font-medium leading-[1.15] tracking-[-0.4px] text-ink">
               {c.title}
             </h3>
