@@ -1,18 +1,29 @@
 import type { Metadata } from "next";
-import { Albert_Sans, Inter_Tight } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const albertSans = Albert_Sans({
-  variable: "--font-albert-sans",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+// Headings
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-display-face",
   subsets: ["latin"],
+  axes: ["opsz"],
+  display: "swap",
 });
 
-const interTight = Inter_Tight({
-  variable: "--font-display-face",
-  weight: ["400", "500"],
-  subsets: ["latin"],
+// Body text: Gilroy, self-hosted from the files used in portfolio-v2.
+// TODO(gilroy): confirm the Gilroy licence covers web use.
+const bodyFont = localFont({
+  variable: "--font-body",
+  display: "swap",
+  src: [
+    { path: "../fonts/gilroy/Gilroy-Regular.woff", weight: "400", style: "normal" },
+    { path: "../fonts/gilroy/Gilroy-RegularItalic.woff", weight: "400", style: "italic" },
+    { path: "../fonts/gilroy/Gilroy-Medium.woff", weight: "500", style: "normal" },
+    { path: "../fonts/gilroy/Gilroy-SemiBold.woff", weight: "600", style: "normal" },
+    { path: "../fonts/gilroy/Gilroy-Bold.woff", weight: "700", style: "normal" },
+  ],
+  fallback: ["Arial", "Helvetica", "sans-serif"],
 });
 
 const title = "Muskan Bhatia — Product Designer";
@@ -48,7 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${albertSans.variable} ${interTight.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a

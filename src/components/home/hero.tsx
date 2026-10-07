@@ -17,9 +17,6 @@ function GrowthIcon() {
   );
 }
 
-// TODO(confirm): Muskan to confirm or change this aside (degree not yet confirmed).
-const ASIDE = ["a CS grad", "who designs 🎨"];
-
 export function Hero() {
   return (
     <>
@@ -41,8 +38,8 @@ export function Hero() {
             </p>
           </div>
 
-          <div className="relative flex flex-col gap-6 lg:block">
-            <h1 className="rise font-display text-[44px] font-normal leading-[0.98] tracking-[-0.055em] [animation-delay:80ms] sm:text-[64px] lg:pr-[220px] lg:text-[clamp(2.75rem,6.4vw,6.6rem)] lg:leading-[0.95]">
+          <div>
+            <h1 className="rise font-display text-[44px] font-normal leading-[0.98] tracking-[-0.04em] [animation-delay:80ms] sm:text-[64px] lg:text-[clamp(2.75rem,6.4vw,6.6rem)] lg:leading-[0.95]">
               <span className="sr-only">{HEADLINE}</span>
               <span aria-hidden>
                 Translating human insights <br className="hidden lg:block" />
@@ -55,11 +52,6 @@ export function Hero() {
                 for impact.
               </span>
             </h1>
-            <p className="rise font-display text-[18px] leading-[1.2] tracking-[-0.01em] [animation-delay:160ms] lg:absolute lg:bottom-[0.6em] lg:right-0 lg:text-[22px]">
-              {ASIDE[0]}
-              <br />
-              {ASIDE[1]}
-            </p>
           </div>
         </div>
       </section>
