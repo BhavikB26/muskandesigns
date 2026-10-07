@@ -27,6 +27,7 @@
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
   --font-serif: var(--font-serif-face), Georgia, serif;
+  --font-editorial: var(--font-editorial-face), Georgia, serif;
   --font-display: var(--font-serif-face), var(--font-deva), var(--font-sc), var(--font-jp), Georgia, serif;
 }
 

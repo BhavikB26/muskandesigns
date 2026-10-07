@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Caveat,
+  Fraunces,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
   Noto_Sans_SC,
@@ -12,6 +13,17 @@ import "./globals.css";
 const caveat = Caveat({
   variable: "--font-serif-face",
   weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Hero headline: stand-in for PP Editorial New (Pangram Pangram), which needs
+// its official files. TODO(editorial): add PP Editorial New .woff2 files to
+// src/fonts and load them here with next/font/local under the same variable.
+const editorial = Fraunces({
+  variable: "--font-editorial-face",
+  style: ["italic"],
+  axes: ["opsz", "SOFT"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -63,7 +75,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${caveat.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${caveat.variable} ${editorial.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a

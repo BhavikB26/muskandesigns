@@ -6,10 +6,7 @@ import { RollingHello } from "@/components/home/rolling-hello";
  * Not "I design and develop interfaces, products, and beyond." That line is
  * another designer's (joonassandell.com), so it isn't reused here.
  */
-const HEADLINE = "I design products, interfaces, and the systems behind them.";
-
-/** Words set in italic inside the headline. */
-const ITALIC = new Set(["products", "interfaces", "systems"]);
+const HEADLINE = "I like orchestrating intentional designs.";
 
 export function Hero() {
   return (
@@ -37,18 +34,8 @@ export function Hero() {
           </p>
         </div>
 
-        <h1 className="rise font-serif text-[15vw] font-medium leading-[0.95] tracking-[0.005em] text-[#111] [animation-delay:80ms] md:text-[7.6vw] md:leading-[0.95]">
-          {HEADLINE.split(" ").map((word, i) => {
-            const bare = word.replace(/[,.]$/, "");
-            const punct = word.slice(bare.length);
-            return (
-              <span key={i}>
-                {i > 0 && " "}
-                {ITALIC.has(bare) ? <em className="italic">{bare}</em> : bare}
-                {punct}
-              </span>
-            );
-          })}
+        <h1 className="rise font-editorial text-[11vw] font-light italic leading-[1.05] tracking-[-0.01em] text-[#111] [animation-delay:80ms] [font-variation-settings:'opsz'_144,'SOFT'_0] md:text-[5.4vw] md:leading-[1.02]">
+          {HEADLINE}
         </h1>
       </div>
     </section>
