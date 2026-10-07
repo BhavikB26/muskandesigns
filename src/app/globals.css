@@ -74,19 +74,21 @@ body {
   }
 }
 
-/* A slow, gentle left-to-right drift inside the tilted frame. */
-@keyframes portrait-drift {
+/* The portrait card turns gently left and right in 3D, keeping its slant. */
+@keyframes portrait-swivel {
   0%,
   100% {
-    transform: scale(1.08) translateX(-3%);
+    transform: rotateY(-14deg);
   }
   50% {
-    transform: scale(1.08) translateX(3%);
+    transform: rotateY(14deg);
   }
 }
 
-.portrait-drift {
-  animation: portrait-drift 6s ease-in-out infinite;
+.portrait-swivel {
+  animation: portrait-swivel 6s ease-in-out infinite;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -15,7 +15,8 @@ export function Hero() {
         <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 md:gap-12">
           <div className="rise flex items-center gap-5 md:gap-8">
             {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
-            <div className="h-[80px] w-[64px] shrink-0 -rotate-[4deg] overflow-hidden rounded-[10px] md:h-[140px] md:w-[112px]">
+            <div className="shrink-0 [perspective:700px]">
+            <div className="portrait-swivel h-[80px] w-[64px] -rotate-[4deg] overflow-hidden rounded-[10px] md:h-[140px] md:w-[112px]">
               <Image
                 src="/home/muskan-portrait-4x5.webp"
                 alt="Muskan Bhatia smiling, in a black and white photo"
@@ -23,8 +24,9 @@ export function Hero() {
                 height={500}
                 sizes="(min-width: 768px) 112px, 64px"
                 preload
-                className="portrait-drift size-full object-cover object-[50%_30%]"
+                className="size-full object-cover object-[50%_30%]"
               />
+            </div>
             </div>
             <p className="font-display text-[22px] font-light leading-[1.15] md:text-[40px]">
               <RollingHello />
