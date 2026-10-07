@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RollingHello } from "@/components/home/rolling-hello";
 import { OpenToWork } from "@/components/site-header";
 
 const HEADLINE = "Translating human insights to create experiences that scale for impact.";
@@ -32,7 +33,7 @@ export function Hero() {
               className="h-[88px] w-[72px] -rotate-[4deg] rounded-[8px] object-cover grayscale md:h-[170px] md:w-[140px]"
             />
             <p className="font-display text-[22px] font-normal leading-[1.15] tracking-[-0.02em] md:text-[40px]">
-              Hi there,
+              <RollingHello />
               <br />
               I&rsquo;m Muskan Bhatia
             </p>

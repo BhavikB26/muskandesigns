@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
+import {
+  Bricolage_Grotesque,
+  Noto_Sans_Devanagari,
+  Noto_Sans_JP,
+  Noto_Sans_SC,
+  Plus_Jakarta_Sans,
+} from "next/font/google";
 import "./globals.css";
 
 // Headings
@@ -9,6 +15,11 @@ const bricolage = Bricolage_Grotesque({
   axes: ["opsz"],
   display: "swap",
 });
+
+// Fallbacks for the rolling greeting's Hindi, Chinese and Japanese words.
+const notoDevanagari = Noto_Sans_Devanagari({ variable: "--font-deva", weight: "400", subsets: ["devanagari"], preload: false, display: "swap" });
+const notoSC = Noto_Sans_SC({ variable: "--font-sc", weight: "400", preload: false, display: "swap" });
+const notoJP = Noto_Sans_JP({ variable: "--font-jp", weight: "400", preload: false, display: "swap" });
 
 // Body text
 const bodyFont = Plus_Jakarta_Sans({
@@ -52,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a
