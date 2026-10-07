@@ -26,6 +26,7 @@
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
+  --font-serif: var(--font-serif-face), Georgia, serif;
   --font-display: var(--font-display-face), var(--font-deva), var(--font-sc), var(--font-jp);
 }
 

@@ -6,11 +6,14 @@ import { RollingHello } from "@/components/home/rolling-hello";
  * Not "I design and develop interfaces, products, and beyond." That line is
  * another designer's (joonassandell.com), so it isn't reused here.
  */
-const HEADLINE = ["I design products, interfaces,", "and the systems behind them."];
+const HEADLINE = "I design products, interfaces, and the systems behind them.";
+
+/** Words set in italic inside the headline. */
+const ITALIC = new Set(["products", "interfaces", "systems"]);
 
 export function Hero() {
   return (
-    <section className="flex w-full flex-col justify-center px-page pb-16 pt-10 md:min-h-[calc(100svh-108px)] md:pb-0 md:pt-[86px]">
+    <section className="flex w-full flex-col justify-center px-page pb-16 pt-10 md:pb-24 md:pt-[96px]">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-[19px] md:gap-[22px]">
         <div className="rise flex items-center gap-4 md:gap-8">
           {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
@@ -34,8 +37,18 @@ export function Hero() {
           </p>
         </div>
 
-        <h1 className="rise font-display text-[15.36vw] font-light leading-[0.95] tracking-[-0.0833em] text-[#111] [animation-delay:80ms] md:text-[8vw] md:leading-[0.9] md:tracking-[-0.0625em]">
-          {HEADLINE.join(" ")}
+        <h1 className="rise font-serif text-[13vw] font-normal leading-[1] tracking-[-0.03em] text-[#111] [animation-delay:80ms] md:text-[7vw] md:leading-[0.98]">
+          {HEADLINE.split(" ").map((word, i) => {
+            const bare = word.replace(/[,.]$/, "");
+            const punct = word.slice(bare.length);
+            return (
+              <span key={i}>
+                {i > 0 && " "}
+                {ITALIC.has(bare) ? <em className="italic">{bare}</em> : bare}
+                {punct}
+              </span>
+            );
+          })}
         </h1>
       </div>
     </section>
