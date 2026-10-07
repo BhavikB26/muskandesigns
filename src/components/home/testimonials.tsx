@@ -22,7 +22,7 @@ export function Testimonials() {
   return (
     <section aria-labelledby="kind-words" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <h2 id="kind-words" className="font-display text-[34px] leading-[1.08] tracking-[-0.8px] md:text-[44px]">
+        <h2 id="kind-words" className="font-display text-[34px] leading-[1.08] md:text-[44px]">
           From people I&rsquo;ve worked with
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

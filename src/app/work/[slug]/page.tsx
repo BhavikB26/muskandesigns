@@ -83,7 +83,7 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
   if (block.kind === "quote") {
     return (
       <figure className="rise-on-scroll mx-auto flex max-w-[860px] flex-col gap-4 py-6 text-center">
-        <blockquote className="font-display text-[26px] leading-[1.3] tracking-[-0.4px] md:text-[32px]">
+        <blockquote className="font-display text-[26px] leading-[1.3] md:text-[32px]">
           &ldquo;{block.text}&rdquo;
         </blockquote>
         <figcaption className="text-[15px] text-muted">{block.by}</figcaption>
@@ -92,7 +92,7 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
   }
   return (
     <div className="rise-on-scroll grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:gap-10">
-      <h2 className="font-display text-[24px] leading-[1.15] tracking-[-0.4px] md:text-[28px]">{block.heading}</h2>
+      <h2 className="font-display text-[24px] leading-[1.15] md:text-[28px]">{block.heading}</h2>
       <div className="flex max-w-[760px] flex-col gap-5 text-[18px] leading-[1.65] text-ink-soft">
         {block.body.map((t, i) => (
           <p key={i}>{t}</p>
@@ -130,7 +130,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <span className="self-start rounded-full bg-accent-soft px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.8px] text-accent">
                 {p.tag === "Concept" ? p.meta.type : "Case study"}
               </span>
-              <h1 className="font-display text-[48px] font-normal leading-[1] tracking-[-1.6px] md:text-[88px] md:tracking-[-3.4px]">
+              <h1 className="font-display text-[48px] font-normal leading-[1] md:text-[88px]">
                 {p.name}
               </h1>
               <p className="max-w-[820px] text-[22px] leading-[1.35] text-muted md:text-[28px]">{p.tagline}</p>
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <Figure image={p.cover} tint={p.tint} priority />
 
-          <p className="rise-on-scroll max-w-[920px] font-display text-[26px] leading-[1.35] tracking-[-0.4px] md:text-[34px]">
+          <p className="rise-on-scroll max-w-[920px] font-display text-[26px] leading-[1.35] md:text-[34px]">
             {p.intro}
           </p>
 
@@ -178,7 +178,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
             <div className="flex flex-col gap-2">
               <span className="text-[13px] font-semibold uppercase tracking-[0.8px] text-muted">Next project</span>
-              <span className="font-display text-[32px] leading-[1.1] tracking-[-0.8px] group-hover:underline group-hover:underline-offset-4">
+              <span className="font-display text-[32px] leading-[1.1] group-hover:underline group-hover:underline-offset-4">
                 {next.name} →
               </span>
               <span className="text-[16px] text-muted">{next.tagline}</span>

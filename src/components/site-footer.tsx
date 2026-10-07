@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer id="contact" className="w-full scroll-mt-20 px-page pb-10 pt-24  md:pt-32">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-14">
         <div className="flex flex-col gap-6 border-t border-line pt-10 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-display text-[44px] font-medium leading-[1] tracking-[-1.5px] md:text-[80px] md:tracking-[-3px]">
+          <h2 className="font-display text-[44px] font-medium leading-[1] md:text-[80px]">
             Let&rsquo;s talk.
           </h2>
           <p className="max-w-[420px] text-[17px] leading-[1.55] text-muted">

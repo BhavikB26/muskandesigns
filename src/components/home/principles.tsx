@@ -19,7 +19,7 @@ export function Principles() {
   return (
     <section aria-labelledby="principles-heading" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <h2 id="principles-heading" className="max-w-[560px] font-display text-[34px] leading-[1.08] tracking-[-0.8px] md:text-[44px]">
+        <h2 id="principles-heading" className="max-w-[560px] font-display text-[34px] leading-[1.08] md:text-[44px]">
           How I like to work
         </h2>
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -29,7 +29,7 @@ export function Principles() {
                 tabIndex={0}
                 className="group relative flex h-[220px] flex-col justify-between overflow-hidden rounded-[18px] bg-card p-5 outline-none"
               >
-                <p className="font-display text-[21px] leading-[1.15] tracking-[-0.3px] transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
+                <p className="font-display text-[21px] leading-[1.15] transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
                   {p.title}
                 </p>
                 <p className="absolute inset-5 text-[15px] leading-[1.5] text-ink-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">

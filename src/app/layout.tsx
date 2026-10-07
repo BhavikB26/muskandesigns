@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  Bricolage_Grotesque,
   Instrument_Serif,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
@@ -9,15 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 
-// Headings
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-display-face",
-  subsets: ["latin"],
-  axes: ["opsz"],
-  display: "swap",
-});
-
-// Hero headline
+// Headings (and the hero headline)
 const instrumentSerif = Instrument_Serif({
   variable: "--font-serif-face",
   weight: "400",
@@ -73,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${instrumentSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${instrumentSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a

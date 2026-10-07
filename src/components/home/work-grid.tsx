@@ -12,7 +12,7 @@ export function WorkGrid() {
           <h2 id="work-heading" className="sr-only">
             Selected work
           </h2>
-          <p className="font-display text-[30px] leading-[1.1] tracking-[-0.6px]">I do</p>
+          <p className="font-display text-[30px] leading-[1.1]">I do</p>
           <ul className="mt-3 flex flex-wrap gap-2 lg:flex-col lg:items-start">
             {skills.map((s) => (
               <li key={s} className="rounded-full border border-line bg-card px-3.5 py-1.5 text-[14px] text-ink-soft">
@@ -20,7 +20,7 @@ export function WorkGrid() {
               </li>
             ))}
           </ul>
-          <p className="mt-3 font-display text-[30px] leading-[1.1] tracking-[-0.6px]">
+          <p className="mt-3 font-display text-[30px] leading-[1.1]">
             and the product
             <br className="hidden lg:block" /> thinking in between.
           </p>
@@ -47,7 +47,7 @@ export function WorkGrid() {
                   </span>
                 </div>
                 <div className="flex flex-col gap-1 px-1">
-                  <h3 className="font-display text-[22px] leading-[1.15] tracking-[-0.4px] underline-offset-4 group-hover:underline">
+                  <h3 className="font-display text-[22px] leading-[1.15] underline-offset-4 group-hover:underline">
                     {p.name}
                   </h3>
                   <p className="text-[15px] leading-[1.5] text-muted">{p.tagline}</p>
@@ -66,7 +66,7 @@ export function WorkGrid() {
               className="group flex aspect-square flex-col justify-between rounded-[20px] border border-line bg-card p-7 transition-shadow duration-300 hover:shadow-[0_16px_40px_-16px_rgba(0,0,0,0.25)]"
             >
               <span className="text-[13px] font-semibold uppercase tracking-[0.8px] text-muted">Short on time?</span>
-              <span className="font-display text-[34px] leading-[1.05] tracking-[-0.8px]">
+              <span className="font-display text-[34px] leading-[1.05]">
                 Read the one-page version
                 <span aria-hidden className="ml-2 inline-block transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   ↗

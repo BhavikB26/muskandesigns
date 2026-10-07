@@ -30,7 +30,7 @@ export function Hero() {
               />
             </div>
           </div>
-          <p className="font-display text-[32px] font-light leading-[1] tracking-[-1.6px] md:text-[40px]">
+          <p className="font-display text-[32px] font-normal leading-[1.05] md:text-[40px]">
             <RollingHello />
             <br />
             I&rsquo;m Muskan Bhatia
