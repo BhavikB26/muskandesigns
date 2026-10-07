@@ -271,7 +271,7 @@ export const projects: Project[] = [
       // TODO(embee): confirm the timeline for this project.
       type: "Web platform, 0 → 1 (beta)",
     },
-    cover: img(w("builder-university", "cover"), "Builder University's learner dashboard"),
+    cover: img(w("builder-university", "cover-v2"), "Builder University's learner dashboard"),
     tint: "#2b223a",
     intro:
       "Builder.ai brings in a steady stream of new employees and third-party experts to deliver client projects. I designed Builder University, an internal learning platform that gets them up to speed without someone teaching every person by hand.",

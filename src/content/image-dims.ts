@@ -16,7 +16,7 @@ export const imageDims: Record<string, [number, number]> = {
   "/work/builder-design-system/img-spacing.webp": [720, 950],
   "/work/builder-design-system/img-typography.webp": [1200, 960],
   "/work/builder-university/img-badges.webp": [1540, 740],
-  "/work/builder-university/img-cover.webp": [808, 930],
+  "/work/builder-university/img-cover-v2.webp": [808, 930],
   "/work/builder-university/img-dashboard.webp": [1560, 685],
   "/work/builder-university/img-flow.webp": [1600, 638],
   "/work/builder-university/img-hub.webp": [720, 740],
