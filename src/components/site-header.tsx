@@ -13,20 +13,6 @@ function LinkedInIcon() {
   );
 }
 
-export function OpenToWork({ className = "" }: { className?: string }) {
-  return (
-    <p
-      className={`items-center gap-2 rounded-full border border-line bg-card px-3 py-1.5 text-[13px] text-ink-soft ${className}`}
-    >
-      <span className="relative flex size-2" aria-hidden>
-        <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-50 motion-reduce:hidden" />
-        <span className="relative inline-flex size-2 rounded-full bg-live" />
-      </span>
-      Open to Product / UX roles
-    </p>
-  );
-}
-
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-transparent px-5 md:px-10 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
@@ -44,7 +30,6 @@ export function SiteHeader() {
           </span>
         </Link>
         <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
-          <OpenToWork className="hidden lg:inline-flex" />
           <a
             href={LINKEDIN}
             target="_blank"
