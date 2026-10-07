@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f3f2ef;
+  --background: #f4f4f4;
   --foreground: #161514;
 
   --color-ink: #161514;
@@ -26,7 +26,7 @@
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-albert-sans);
-  --font-display: var(--font-bricolage);
+  --font-display: var(--font-display-face);
 }
 
 html {

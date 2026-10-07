@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Albert_Sans, Bricolage_Grotesque } from "next/font/google";
+import { Albert_Sans, Inter_Tight } from "next/font/google";
 import "./globals.css";
 
 const albertSans = Albert_Sans({
@@ -9,9 +9,9 @@ const albertSans = Albert_Sans({
   subsets: ["latin"],
 });
 
-const bricolage = Bricolage_Grotesque({
-  variable: "--font-bricolage",
-  weight: ["400", "500", "600"],
+const interTight = Inter_Tight({
+  variable: "--font-display-face",
+  weight: ["400", "500"],
   subsets: ["latin"],
 });
 
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${albertSans.variable} ${bricolage.variable} h-full antialiased`}
+      className={`${albertSans.variable} ${interTight.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a
