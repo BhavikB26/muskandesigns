@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import {
-  Besley,
   Bricolage_Grotesque,
+  Instrument_Serif,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
   Noto_Sans_SC,
@@ -18,8 +18,9 @@ const bricolage = Bricolage_Grotesque({
 });
 
 // Hero headline
-const besley = Besley({
+const instrumentSerif = Instrument_Serif({
   variable: "--font-serif-face",
+  weight: "400",
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -72,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${bricolage.variable} ${besley.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${bricolage.variable} ${instrumentSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a
