@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
-import localFont from "next/font/local";
+import { Bricolage_Grotesque, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
 // Headings
@@ -11,19 +10,13 @@ const bricolage = Bricolage_Grotesque({
   display: "swap",
 });
 
-// Body text: Gilroy, self-hosted from the files used in portfolio-v2.
-// TODO(gilroy): confirm the Gilroy licence covers web use.
-const bodyFont = localFont({
+// Body text
+const bodyFont = Plus_Jakarta_Sans({
   variable: "--font-body",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
   display: "swap",
-  src: [
-    { path: "../fonts/gilroy/Gilroy-Regular.woff", weight: "400", style: "normal" },
-    { path: "../fonts/gilroy/Gilroy-RegularItalic.woff", weight: "400", style: "italic" },
-    { path: "../fonts/gilroy/Gilroy-Medium.woff", weight: "500", style: "normal" },
-    { path: "../fonts/gilroy/Gilroy-SemiBold.woff", weight: "600", style: "normal" },
-    { path: "../fonts/gilroy/Gilroy-Bold.woff", weight: "700", style: "normal" },
-  ],
-  fallback: ["Arial", "Helvetica", "sans-serif"],
 });
 
 const title = "Muskan Bhatia — Product Designer";
