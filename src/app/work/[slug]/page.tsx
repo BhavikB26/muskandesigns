@@ -122,7 +122,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
       <SiteHeader />
       <main id="main" className="page-in w-full px-page">
         <article className="mx-auto flex w-full max-w-[1240px] flex-col gap-16 pb-10 pt-10 md:gap-24 md:pt-16">
-          <header className="rise flex flex-col gap-8">
+          <header className="settle flex flex-col gap-8">
             <Link href="/#work" className="label-mono inline-flex min-h-6 items-center self-start text-muted underline-offset-4 hover:text-ink hover:underline">
               ← All work
             </Link>

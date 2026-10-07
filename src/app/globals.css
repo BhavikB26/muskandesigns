@@ -27,9 +27,11 @@
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
   --font-editorial: var(--font-editorial-face), Georgia, serif;
-  --font-display: var(--font-heading-face), var(--font-deva), var(--font-sc), var(--font-jp), Arial, sans-serif;
+  --font-display: var(--font-heading-face), Arial, sans-serif;
+  /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
+  --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
-  --font-accent: var(--font-accent-face), var(--font-deva), var(--font-sc), var(--font-jp), cursive;
+  --font-accent: var(--font-accent-face), var(--font-scripts), cursive;
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -71,6 +73,19 @@ body {
   animation: rise 0.9s var(--ease-out-expo) both;
 }
 
+/* Above-the-fold entrance: movement only, never hidden, so first paint isn't delayed. */
+@keyframes settle {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+.settle {
+  animation: settle 0.9s var(--ease-out-expo) both;
+}
+
 /* Scroll reveal (driven by <Motion />): fade + small rise, expo-out, staggered.
    Without JS the content simply shows. */
 .js [data-reveal]:not([data-revealed]) {
@@ -91,10 +106,10 @@ html[data-motion="paused"] .portrait-swivel {
 /* Gentle page entrance on every route. */
 @keyframes page-in {
   from {
-    opacity: 0;
+    transform: translateY(8px);
   }
   to {
-    opacity: 1;
+    transform: none;
   }
 }
 .page-in {

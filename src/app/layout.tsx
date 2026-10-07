@@ -4,9 +4,6 @@ import {
   Fraunces,
   Geist,
   Geist_Mono,
-  Noto_Sans_Devanagari,
-  Noto_Sans_JP,
-  Noto_Sans_SC,
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import "./globals.css";
@@ -14,7 +11,7 @@ import { Motion } from "@/components/motion";
 
 // Headings: a clean, highly legible grotesk; labels and metadata: its mono.
 const geist = Geist({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
-const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap", preload: false });
 
 // Small handwritten accent (the hero greeting only). Never used for headings or body.
 const caveat = Caveat({
@@ -30,21 +27,15 @@ const caveat = Caveat({
 const editorial = Fraunces({
   variable: "--font-editorial-face",
   style: ["italic"],
-  axes: ["opsz", "SOFT"],
+  axes: ["opsz"],
   subsets: ["latin"],
   display: "swap",
 });
-
-// Fallbacks for the rolling greeting's Hindi, Chinese and Japanese words.
-const notoDevanagari = Noto_Sans_Devanagari({ variable: "--font-deva", weight: "400", subsets: ["devanagari"], preload: false, display: "swap" });
-const notoSC = Noto_Sans_SC({ variable: "--font-sc", weight: "400", preload: false, display: "swap" });
-const notoJP = Noto_Sans_JP({ variable: "--font-jp", weight: "400", preload: false, display: "swap" });
 
 // Body text
 const bodyFont = Plus_Jakarta_Sans({
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -88,7 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${geist.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
