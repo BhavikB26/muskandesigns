@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import {
   Caveat,
-  Fraunces,
   Geist_Mono,
+  Instrument_Serif,
   Inter,
   Inter_Tight,
 } from "next/font/google";
@@ -22,13 +22,11 @@ const caveat = Caveat({
   display: "swap",
 });
 
-// Hero headline: stand-in for PP Editorial New (Pangram Pangram), which needs
-// its official files. TODO(editorial): add PP Editorial New .woff2 files to
-// src/fonts and load them here with next/font/local under the same variable.
-const editorial = Fraunces({
+// Italic accents (headline, section highlights, quotes): Instrument Serif.
+const editorial = Instrument_Serif({
   variable: "--font-editorial-face",
-  style: ["italic"],
-  axes: ["opsz"],
+  weight: "400",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });

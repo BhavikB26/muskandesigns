@@ -79,7 +79,7 @@ export function Hero() {
               text={EMPHASIS}
               delay={220}
               start={3}
-              className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]"
+              className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent"
             />
           </h1>
 

@@ -43,7 +43,7 @@ export function Background() {
         <div className="grid grid-cols-1 items-end gap-6 border-t border-line pt-4 md:grid-cols-12">
           <p className="label-mono text-muted md:col-span-3">(02) About</p>
           <h2 id="about-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-9">
-            A little background, if you&rsquo;re <em className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]">still here</em>
+            A little background, if you&rsquo;re <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">still here</em>
           </h2>
         </div>
 

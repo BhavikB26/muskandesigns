@@ -84,7 +84,7 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
   if (block.kind === "quote") {
     return (
       <figure data-reveal className="mx-auto flex max-w-[860px] flex-col gap-4 py-6 text-center">
-        <blockquote className="font-editorial text-[clamp(1.5rem,1.1rem+1.4vw,2.25rem)] font-light italic leading-[1.3]">
+        <blockquote className="font-editorial text-[clamp(1.5rem,1.1rem+1.4vw,2.25rem)] font-normal italic leading-[1.3]">
           &ldquo;{block.text}&rdquo;
         </blockquote>
         <figcaption className="text-[15px] text-muted">{block.by}</figcaption>
@@ -168,7 +168,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </ViewTransition>
           </div>
 
-          <p data-reveal className="max-w-[34ch] font-editorial text-[clamp(1.6rem,1.1rem+1.8vw,2.6rem)] font-light italic leading-[1.3]">
+          <p data-reveal className="max-w-[34ch] font-editorial text-[clamp(1.6rem,1.1rem+1.8vw,2.6rem)] font-normal italic leading-[1.3]">
             {p.intro}
           </p>
 

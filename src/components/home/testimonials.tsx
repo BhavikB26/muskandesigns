@@ -25,7 +25,7 @@ export function Testimonials() {
         <div className="grid grid-cols-1 items-end gap-6 border-t border-line pt-4 md:grid-cols-12">
           <p className="label-mono text-muted md:col-span-3">(03) Kind words</p>
           <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-9">
-            From people I&rsquo;ve <em className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]">worked with</em>
+            From people I&rsquo;ve <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">worked with</em>
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">

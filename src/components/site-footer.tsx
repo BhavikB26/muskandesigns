@@ -11,7 +11,7 @@ export function SiteFooter() {
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-14">
         <p className="label-mono border-t border-line pt-4 text-muted">(04) Contact</p>
         <div data-reveal className="-mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h2 className="font-editorial text-[clamp(3rem,1.6rem+5.4vw,7rem)] font-light italic leading-[0.95] tracking-[-0.02em]">
+          <h2 className="font-editorial text-[clamp(3rem,1.6rem+5.4vw,7rem)] font-normal italic leading-[0.95] tracking-[-0.02em]">
             Let&rsquo;s talk.
           </h2>
           <p className="max-w-[420px] text-[17px] leading-[1.55] text-muted">

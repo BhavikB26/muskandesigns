@@ -180,7 +180,7 @@ export function Work({ projects }: { projects: Project[] }) {
             <p className="label-mono text-muted">(01) Work</p>
           </div>
           <h2 id="work-heading" className="font-display text-[clamp(2.6rem,1.4rem+4.4vw,6.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-6">
-            Selected <em className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]">work</em>
+            Selected <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">work</em>
           </h2>
           <div className="flex md:col-span-3 md:justify-end" role="group" aria-label="Choose how to view projects">
             {(["grid", "index"] as View[]).map((v) => (
@@ -219,7 +219,7 @@ export function Work({ projects }: { projects: Project[] }) {
         >
           <span className="flex flex-col gap-3">
             <span className="label-mono text-accent">Short on time?</span>
-            <span className="font-editorial text-[clamp(2rem,1.4rem+2.6vw,4rem)] font-light italic leading-[1.02]">
+            <span className="font-editorial text-[clamp(2rem,1.4rem+2.6vw,4rem)] font-normal italic leading-[1.02]">
               Read the one-page version
             </span>
           </span>
