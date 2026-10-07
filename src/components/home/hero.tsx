@@ -37,7 +37,7 @@ export function Hero() {
           </p>
         </div>
 
-        <h1 className="rise font-serif text-[12vw] font-normal leading-[1] tracking-[0.005em] text-[#111] [animation-delay:80ms] md:text-[6.2vw] md:leading-[1]">
+        <h1 className="rise font-serif text-[15vw] font-medium leading-[0.95] tracking-[0.005em] text-[#111] [animation-delay:80ms] md:text-[7.6vw] md:leading-[0.95]">
           {HEADLINE.split(" ").map((word, i) => {
             const bare = word.replace(/[,.]$/, "");
             const punct = word.slice(bare.length);

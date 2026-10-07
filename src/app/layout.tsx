@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Young_Serif,
+  Caveat,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
   Noto_Sans_SC,
@@ -8,10 +8,10 @@ import {
 } from "next/font/google";
 import "./globals.css";
 
-// Headings (and the hero headline)
-const youngSerif = Young_Serif({
+// Headings (and the hero headline): a readable handwritten face
+const caveat = Caveat({
   variable: "--font-serif-face",
-  weight: "400",
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -63,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${youngSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${caveat.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a
