@@ -78,10 +78,10 @@ body {
 @keyframes portrait-drift {
   0%,
   100% {
-    transform: scale(1.08) translateX(-4px);
+    transform: scale(1.08) translateX(-3%);
   }
   50% {
-    transform: scale(1.08) translateX(4px);
+    transform: scale(1.08) translateX(3%);
   }
 }
 
