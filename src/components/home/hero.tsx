@@ -24,16 +24,19 @@ export function Hero() {
       <section className="w-full px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-16 lg:min-h-[calc(100svh-72px)] lg:pt-20">
         <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 md:gap-12">
           <div className="rise flex items-center gap-5 md:gap-8">
-            <Image
-              src="/home/muskan-portrait-4x5.webp"
-              alt="Muskan Bhatia smiling, in a black and white photo"
-              width={400}
-              height={500}
-              sizes="(min-width: 768px) 112px, 64px"
-              preload
-              className="h-[80px] w-[64px] -rotate-[4deg] rounded-[10px] object-cover object-[50%_30%] md:h-[140px] md:w-[112px]"
-            />
-            <p className="font-display text-[22px] font-normal leading-[1.15] tracking-[-0.02em] md:text-[40px]">
+            {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
+            <div className="h-[80px] w-[64px] shrink-0 -rotate-[4deg] overflow-hidden rounded-[10px] md:h-[140px] md:w-[112px]">
+              <Image
+                src="/home/muskan-portrait-4x5.webp"
+                alt="Muskan Bhatia smiling, in a black and white photo"
+                width={400}
+                height={500}
+                sizes="(min-width: 768px) 112px, 64px"
+                preload
+                className="portrait-drift size-full object-cover object-[50%_30%]"
+              />
+            </div>
+            <p className="font-display text-[22px] font-light leading-[1.15] md:text-[40px]">
               <RollingHello />
               <br />
               I&rsquo;m Muskan Bhatia

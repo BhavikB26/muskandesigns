@@ -74,6 +74,24 @@ body {
   }
 }
 
+/* A slow, barely-there sway so the portrait feels alive. */
+@keyframes portrait-drift {
+  0%,
+  100% {
+    transform: scale(1.04) translate(0, 0) rotate(0deg);
+  }
+  35% {
+    transform: scale(1.07) translate(-2px, -1px) rotate(-1.2deg);
+  }
+  70% {
+    transform: scale(1.055) translate(2px, 1px) rotate(1deg);
+  }
+}
+
+.portrait-drift {
+  animation: portrait-drift 6.5s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
