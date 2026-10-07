@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState, ViewTransition } from "react";
 import type { Project } from "@/content/projects";
 
-type View = "feature" | "index";
+type View = "grid" | "index";
 
 const num = (i: number) => String(i + 1).padStart(2, "0");
 
@@ -18,46 +18,87 @@ function kind(p: Project) {
   return p.tag === "Concept" ? p.meta.type : "Case study";
 }
 
-/* ---------- Feature view: full-width images, Pear-style reveals, Inkwell labels ---------- */
+/* ---------- Grid view: consistent 4:3 thumbnails, tilt + cursor label on hover, lift on focus ---------- */
 
-function FeatureRow({ p, i, shown }: { p: Project; i: number; shown: boolean }) {
+function GridCard({ p, i, shown }: { p: Project; i: number; shown: boolean }) {
   const meta = [p.meta.role, p.meta.company, year(p)].filter(Boolean).join(" · ");
+  const frame = useRef<HTMLDivElement>(null);
+  const label = useRef<HTMLSpanElement>(null);
+
+  const canMove = () =>
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    document.documentElement.dataset.motion !== "paused";
+
   return (
-    <li data-reveal {...(shown ? { "data-revealed": "" } : {})} className="group relative grid grid-cols-1 gap-5 border-t border-line pt-4 md:grid-cols-12 md:gap-x-6 md:pt-5">
-      <div className="flex flex-col gap-2 md:col-span-3">
-        <p className="label-mono text-accent">{num(i)}</p>
-        <p className="label-mono text-muted">{kind(p)}</p>
-        <p className="label-mono text-muted">{meta}</p>
+    <li
+      data-reveal
+      {...(shown ? { "data-revealed": "" } : {})}
+      className="group relative flex flex-col gap-5"
+      onPointerMove={(e) => {
+        const f = frame.current;
+        if (!f || !canMove()) return;
+        const r = f.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        f.style.transform = `perspective(1100px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg) translateY(-4px)`;
+        if (label.current) {
+          label.current.style.opacity = "1";
+          label.current.style.transform = `translate3d(${e.clientX - r.left + 16}px, ${e.clientY - r.top + 16}px, 0)`;
+        }
+      }}
+      onPointerLeave={() => {
+        if (frame.current) frame.current.style.transform = "";
+        if (label.current) label.current.style.opacity = "0";
+      }}
+    >
+      <div
+        ref={frame}
+        className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line transition-transform duration-700 ease-[var(--ease-out-expo)] will-change-transform group-has-[a:focus-visible]:-translate-y-1"
+        style={{ backgroundColor: p.tint }}
+      >
+        <div data-parallax className="absolute inset-x-0 -inset-y-[5%]">
+          <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
+          <Image
+            src={`/work/${p.slug}/thumb.webp`}
+            alt=""
+            fill
+            sizes="(min-width: 1280px) 44vw, (min-width: 768px) 46vw, 92vw"
+            preload={i < 2}
+            className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.045] group-has-[a:focus-visible]:scale-[1.045]"
+          />
+          </ViewTransition>
+        </div>
+        <span className="label-mono absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-[#151412] backdrop-blur">
+          {kind(p)}
+        </span>
+        {/* Cursor-following label (decorative; the real cursor stays visible). */}
+        <span
+          ref={label}
+          aria-hidden
+          className="label-mono pointer-events-none absolute left-0 top-0 rounded-full bg-[#151412] px-3 py-2 text-white opacity-0 transition-opacity duration-300"
+        >
+          View case study ↗
+        </span>
       </div>
-      <div className="flex flex-col gap-5 md:col-span-9">
-        <h3 className="font-display text-[clamp(2rem,1.2rem+3vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.035em]">
-          {/* One link per project; its ::after makes the whole row clickable. */}
+      <div className="flex flex-col gap-2 px-1">
+        <p className="label-mono flex gap-3 text-muted">
+          <span className="text-accent">{num(i)}</span>
+          <span>{meta}</span>
+        </p>
+        <h3 className="font-display text-[clamp(1.5rem,1.15rem+1vw,2.25rem)] font-medium leading-[1.1] tracking-[-0.03em]">
+          {/* One link per card; its ::after makes the whole card clickable. */}
           <Link
             href={`/work/${p.slug}`}
-            className="outline-none after:absolute after:inset-0 after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
+            className="outline-none after:absolute after:inset-0 after:rounded-[20px] after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
           >
             {p.name}
-            <span aria-hidden className="ml-3 inline-block text-accent transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-2 group-has-[a:focus-visible]:translate-x-2">
+            <span aria-hidden className="ml-2 inline-block text-accent transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5 group-has-[a:focus-visible]:translate-x-1.5">
               →
             </span>
           </Link>
         </h3>
-        <p className="max-w-[52ch] text-[clamp(1rem,0.95rem+0.3vw,1.2rem)] leading-[1.55] text-ink-soft">{p.tagline}</p>
-        <div
-          className="reveal-media relative aspect-[16/10] overflow-hidden rounded-[6px] md:aspect-[16/8]"
-          style={{ backgroundColor: p.tint }}
-        >
-          <div data-parallax className="absolute inset-x-0 -inset-y-[7%]">
-          <Image
-            src={p.cover.src}
-            alt=""
-            fill
-            sizes="(min-width: 768px) 72vw, 92vw"
-            preload={i === 0}
-            className={`${p.coverFit === "contain" ? "object-contain p-8" : "object-cover"} transition-transform duration-[1.6s] ease-[var(--ease-out-expo)] group-hover:scale-[1.035] group-has-[a:focus-visible]:scale-[1.035]`}
-          />
-          </div>
-        </div>
+        <p className="max-w-[48ch] text-[clamp(0.98rem,0.95rem+0.2vw,1.1rem)] leading-[1.55] text-ink-soft">{p.tagline}</p>
       </div>
     </li>
   );
@@ -114,11 +155,11 @@ function IndexList({ projects }: { projects: Project[] }) {
           style={{ left: pos.x + 24, top: pos.y - 100, backgroundColor: current.tint }}
         >
           <Image
-            src={current.cover.src}
+            src={`/work/${current.slug}/thumb.webp`}
             alt=""
             fill
             sizes="260px"
-            className={current.coverFit === "contain" ? "object-contain p-3" : "object-cover"}
+            className="object-cover"
           />
         </div>
       )}
@@ -127,7 +168,7 @@ function IndexList({ projects }: { projects: Project[] }) {
 }
 
 export function Work({ projects }: { projects: Project[] }) {
-  const [view, setView] = useState<View>("feature");
+  const [view, setView] = useState<View>("grid");
   // After switching views, re-rendered rows appear immediately (the scroll observer only runs once per page).
   const [switched, setSwitched] = useState(false);
 
@@ -138,11 +179,11 @@ export function Work({ projects }: { projects: Project[] }) {
           <div className="md:col-span-3">
             <p className="label-mono text-muted">(01) Work</p>
           </div>
-          <h2 id="work-heading" className="font-editorial text-[clamp(2.6rem,1.4rem+4.4vw,6.5rem)] font-light italic leading-[0.95] tracking-[-0.02em] md:col-span-6">
-            Selected work
+          <h2 id="work-heading" className="font-display text-[clamp(2.6rem,1.4rem+4.4vw,6.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-6">
+            Selected <em className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]">work</em>
           </h2>
           <div className="flex md:col-span-3 md:justify-end" role="group" aria-label="Choose how to view projects">
-            {(["feature", "index"] as View[]).map((v) => (
+            {(["grid", "index"] as View[]).map((v) => (
               <button
                 key={v}
                 type="button"
@@ -153,16 +194,16 @@ export function Work({ projects }: { projects: Project[] }) {
                 }}
                 className="label-mono min-h-11 border border-line-strong px-4 text-muted transition-colors first:rounded-l-full last:rounded-r-full hover:text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-background"
               >
-                {v === "feature" ? "Feature" : "Index"}
+                {v === "grid" ? "Grid" : "Index"}
               </button>
             ))}
           </div>
         </div>
 
-        {view === "feature" ? (
-          <ul className="flex flex-col gap-20 md:gap-28">
+        {view === "grid" ? (
+          <ul data-reveal-group className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 md:gap-y-20">
             {projects.map((p, i) => (
-              <FeatureRow key={p.slug} p={p} i={i} shown={switched} />
+              <GridCard key={p.slug} p={p} i={i} shown={switched} />
             ))}
           </ul>
         ) : (

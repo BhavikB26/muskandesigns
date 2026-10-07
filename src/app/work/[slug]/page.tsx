@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
@@ -153,7 +154,19 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             )}
           </header>
 
-          <Figure image={p.cover} tint={p.tint} priority />
+          {/* The card thumbnail morphs into this hero when arriving from the work grid. */}
+          <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line md:aspect-[16/9]" style={{ backgroundColor: p.tint }}>
+            <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
+              <Image
+                src={`/work/${p.slug}/thumb.webp`}
+                alt={`Screens from the ${p.name} project`}
+                fill
+                preload
+                sizes="(min-width: 1320px) 1240px, 100vw"
+                className="object-cover"
+              />
+            </ViewTransition>
+          </div>
 
           <p data-reveal className="max-w-[34ch] font-editorial text-[clamp(1.6rem,1.1rem+1.8vw,2.6rem)] font-light italic leading-[1.3]">
             {p.intro}

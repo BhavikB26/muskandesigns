@@ -1,21 +1,41 @@
 @import "tailwindcss";
 
+/* Light is the default theme; html[data-theme="dark"] switches to dark.
+   Every text pair passes WCAG AA in both themes. */
 :root {
-  /* Dark, warm editorial theme (Pear mood) with one sharp accent (Inkwell precision).
-     All text pairs pass WCAG AA on the background: ink 16.7:1, muted 7.1:1, accent 7.0:1. */
-  --background: #0b0a09;
-  --foreground: #f2ebdd;
+  --background: #f6f5f2;
+  --foreground: #151412;
 
-  --color-ink: #f2ebdd;
-  --color-ink-soft: #d8cfbf;
-  --color-muted: #a39a8a;
-  --color-line: #2c2824;
-  --color-line-strong: #6b6459;
-  --color-card: #151311;
-  --color-accent: #ff6b2c;
-  --color-accent-soft: #2a1710;
+  --color-ink: #151412;
+  --color-ink-soft: #3a3733;
+  --color-muted: #5f5a53;
+  --color-line: #e3e0d9;
+  --color-line-strong: #8f8a82;
+  --color-card: #ffffff;
+  --color-accent: #b23c0b;
+  --color-accent-soft: #fbebe2;
+  --color-live: #1f8a4c;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] {
+  --background: #0e0d0c;
+  --foreground: #f3efe7;
+
+  --color-ink: #f3efe7;
+  --color-ink-soft: #d6d0c4;
+  --color-muted: #a59e91;
+  --color-line: #2b2825;
+  --color-line-strong: #6f685e;
+  --color-card: #181614;
+  --color-accent: #ff7a3d;
+  --color-accent-soft: #2b1810;
   --color-live: #5fd38d;
   color-scheme: dark;
+}
+
+body {
+  transition: background-color 0.5s var(--ease-out-expo), color 0.5s var(--ease-out-expo);
 }
 
 @theme inline {
@@ -33,6 +53,7 @@
   --font-sans: var(--font-body);
   --font-editorial: var(--font-editorial-face), Georgia, serif;
   --font-display: var(--font-heading-face), Arial, sans-serif;
+  --font-serif: var(--font-editorial-face), Georgia, serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
@@ -76,6 +97,19 @@ body {
 
 .rise {
   animation: rise 0.9s var(--ease-out-expo) both;
+}
+
+/* Hero portrait pops in with a little spring (movement only, never hidden). */
+@keyframes pop-in {
+  from {
+    transform: scale(0.86) rotate(-6deg);
+  }
+  to {
+    transform: none;
+  }
+}
+.pop-in {
+  animation: pop-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
 /* Above-the-fold entrance: movement only, never hidden, so first paint isn't delayed. */
@@ -153,6 +187,7 @@ html[data-motion="paused"] .portrait-swivel {
     transform: none;
   }
   .mask-word > span,
+  .pop-in,
   .js [data-reveal]:not([data-revealed]) .reveal-media img {
     transform: none !important;
   }
@@ -244,4 +279,25 @@ html.lenis body {
 }
 html[data-motion="paused"] .marquee-track {
   animation-play-state: paused;
+}
+
+/* Shared-element morph from a work card into its case study. */
+::view-transition-group(.morph) {
+  animation-duration: 700ms;
+  animation-timing-function: var(--ease-out-expo);
+}
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+}
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }

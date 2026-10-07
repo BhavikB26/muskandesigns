@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import {
   Caveat,
   Fraunces,
-  Geist,
   Geist_Mono,
-  Plus_Jakarta_Sans,
+  Inter,
+  Inter_Tight,
 } from "next/font/google";
 import "./globals.css";
 import { Motion } from "@/components/motion";
 
-// Headings: a clean, highly legible grotesk; labels and metadata: its mono.
-const geist = Geist({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
+// Headings: a tight, highly legible grotesk (the pattern most inspiration sites share).
+const interTight = Inter_Tight({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
+// Labels and metadata
 const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap", preload: false });
 
 // Small handwritten accent (the hero greeting only). Never used for headings or body.
@@ -33,12 +34,7 @@ const editorial = Fraunces({
 });
 
 // Body text
-const bodyFont = Plus_Jakarta_Sans({
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
+const bodyFont = Inter({ variable: "--font-body", subsets: ["latin"], display: "swap" });
 
 const title = "Muskan Bhatia — Product Designer";
 const description =
@@ -79,10 +75,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geist.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${interTight.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
-        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+          }}
+        />
         <Motion />
         <a
           href="#main"

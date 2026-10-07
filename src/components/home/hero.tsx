@@ -2,8 +2,11 @@ import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
 import { MaskedText } from "@/components/masked-text";
 import { MotionToggle } from "@/components/motion";
+import { Magnetic } from "@/components/magnetic";
 
-const HEADLINE = "I like orchestrating intentional designs.";
+// Headline text stays exactly: "I like orchestrating intentional designs."
+const LEAD = "I like orchestrating";
+const EMPHASIS = "intentional designs.";
 const SKILLS = ["UX & product design", "UI & visual design", "Design systems", "Prototyping", "Product thinking", "Research", "Working with engineers"];
 
 function Marquee() {
@@ -44,9 +47,9 @@ export function Hero() {
 
       <div className="flex flex-1 flex-col justify-center px-page py-12 md:py-16">
         <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-8 md:gap-10">
-          <div className="settle flex items-center gap-4 md:gap-7">
+          <div className="flex items-center gap-4 md:gap-7">
             {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
-            <div className="shrink-0 [perspective:700px]">
+            <div className="pop-in shrink-0 [perspective:700px]">
               <div className="portrait-swivel h-[87px] w-[66px] -rotate-[5deg] overflow-hidden rounded-[6px] ring-1 ring-line md:h-[127px] md:w-[96px]">
                 <Image
                   src="/home/muskan-portrait-4x5.webp"
@@ -59,41 +62,54 @@ export function Hero() {
                 />
               </div>
             </div>
-            <p className="font-accent text-[clamp(1.75rem,1.2rem+1.6vw,2.6rem)] font-medium leading-[1.05] text-ink">
+            <p className="settle font-accent text-[clamp(1.75rem,1.2rem+1.6vw,2.6rem)] font-medium leading-[1.05] text-ink [animation-delay:120ms]">
               <RollingHello />
               <br />
               I&rsquo;m Muskan Bhatia
             </p>
           </div>
 
-          <MaskedText
-            as="h1"
-            text={HEADLINE}
-            delay={150}
-            className="max-w-[14ch] font-editorial text-[clamp(3.1rem,0.9rem+8.6vw,11.5rem)] font-light italic leading-[0.98] tracking-[-0.025em] text-ink [font-variation-settings:'opsz'_144]"
-          />
+          <h1 className="max-w-[16ch] text-[clamp(2.9rem,0.9rem+7.4vw,9.75rem)] leading-[0.98] text-ink">
+            <MaskedText
+              text={LEAD}
+              delay={220}
+              className="font-display font-medium tracking-[-0.045em]"
+            />{" "}
+            <MaskedText
+              text={EMPHASIS}
+              delay={220}
+              start={3}
+              className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]"
+            />
+          </h1>
 
-          <div className="settle flex flex-wrap items-center gap-3 [animation-delay:200ms] md:gap-4">
-            <a
-              href="#work"
-              className="inline-flex min-h-14 items-center gap-3 rounded-full bg-ink px-7 text-[17px] font-medium text-background transition-[transform,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:bg-accent focus-visible:bg-accent"
-            >
-              See my work <span aria-hidden>↓</span>
-            </a>
-            <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
-            >
-              Resume (PDF) <span aria-hidden>↗</span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
-            >
-              Get in touch
-            </a>
+          <div className="settle flex flex-wrap items-center gap-3 [animation-delay:520ms] md:gap-4">
+            <Magnetic>
+              <a
+                href="#work"
+                className="inline-flex min-h-14 items-center gap-3 rounded-full bg-ink px-7 text-[17px] font-medium text-background transition-[transform,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:bg-accent focus-visible:bg-accent"
+              >
+                See my work <span aria-hidden>↓</span>
+              </a>
+              </Magnetic>
+            <Magnetic>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
+              >
+                Resume (PDF) <span aria-hidden>↗</span>
+              </a>
+              </Magnetic>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
+              >
+                Get in touch
+              </a>
+              </Magnetic>
             <MotionToggle className="sm:ml-auto" />
           </div>
         </div>

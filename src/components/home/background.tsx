@@ -42,8 +42,8 @@ export function Background() {
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-16 md:gap-20">
         <div className="grid grid-cols-1 items-end gap-6 border-t border-line pt-4 md:grid-cols-12">
           <p className="label-mono text-muted md:col-span-3">(02) About</p>
-          <h2 id="about-heading" className="font-editorial text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-light italic leading-[0.98] tracking-[-0.02em] md:col-span-9">
-            A little background, if you&rsquo;re still here
+          <h2 id="about-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-9">
+            A little background, if you&rsquo;re <em className="font-serif font-light italic tracking-[-0.02em] text-accent [font-variation-settings:'opsz'_144]">still here</em>
           </h2>
         </div>
 

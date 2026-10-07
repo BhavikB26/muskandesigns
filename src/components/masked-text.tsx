@@ -11,12 +11,15 @@ export function MaskedText({
   className = "",
   delay = 0,
   onReveal = false,
+  start = 0,
 }: {
   text: string;
   as?: ElementType;
   className?: string;
   delay?: number;
   onReveal?: boolean;
+  /** Word index to start the stagger from (when several MaskedTexts share one line). */
+  start?: number;
 }) {
   const words = text.split(" ");
   return (
@@ -25,7 +28,7 @@ export function MaskedText({
       <span aria-hidden>
         {words.map((w, i) => (
           <span key={i}>
-            <span className={`mask-word${onReveal ? " on-reveal" : ""}`} style={{ "--w": i } as CSSProperties}>
+            <span className={`mask-word${onReveal ? " on-reveal" : ""}`} style={{ "--w": i + start } as CSSProperties}>
               <span>{w}</span>
             </span>
             {i < words.length - 1 ? " " : null}

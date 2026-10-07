@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const LINKEDIN = "https://www.linkedin.com/in/thisismuskan/";
 
@@ -15,7 +16,7 @@ function LinkedInIcon() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-transparent px-page  bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-40 w-full px-page bg-background/80 backdrop-blur-md transition-colors duration-500 supports-[backdrop-filter]:bg-background/65">
       <div className="mx-auto flex w-full max-w-[1760px] items-center justify-between gap-3 py-[30px] md:py-[38px]">
         <Link
           href="/"
@@ -24,12 +25,13 @@ export function SiteHeader() {
         >
           <span
             aria-hidden
-            className="flex size-8 items-center justify-center rounded-[2px] bg-ink pb-[3px] font-display text-[19px] font-semibold leading-none text-background"
+            className="flex size-8 items-center justify-center rounded-[2px] bg-ink pb-[2px] font-display text-[19px] font-semibold leading-none text-background transition-transform duration-500 ease-[var(--ease-out-expo)] hover:-rotate-6 hover:scale-105"
           >
             m
           </span>
         </Link>
-        <div className="flex items-center gap-3 sm:gap-6 lg:gap-8">
+        <div className="flex items-center gap-3 sm:gap-5">
+          <ThemeToggle />
           <a
             href={LINKEDIN}
             target="_blank"
