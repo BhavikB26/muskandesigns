@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Instrument_Serif,
+  Young_Serif,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
   Noto_Sans_SC,
@@ -9,10 +9,9 @@ import {
 import "./globals.css";
 
 // Headings (and the hero headline)
-const instrumentSerif = Instrument_Serif({
+const youngSerif = Young_Serif({
   variable: "--font-serif-face",
   weight: "400",
-  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -64,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${instrumentSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      className={`${youngSerif.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <a

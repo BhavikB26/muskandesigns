@@ -113,5 +113,8 @@ body {
 /* Instrument Serif only has a regular weight; never let the browser fake bold. */
 .font-display,
 .font-serif {
-  font-synthesis-weight: none;
+  font-synthesis: none;
+  /* Young Serif has a single weight: a hairline outline in the page colour
+     shaves the strokes so it reads lighter. */
+  -webkit-text-stroke: 0.032em var(--background);
 }
