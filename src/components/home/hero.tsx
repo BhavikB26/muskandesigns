@@ -25,12 +25,13 @@ export function Hero() {
         <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 md:gap-12">
           <div className="rise flex items-center gap-5 md:gap-8">
             <Image
-              src="/home/about-photo.jpg"
-              alt="Portrait of Muskan Bhatia"
-              width={140}
-              height={170}
+              src="/home/muskan-portrait-face.webp"
+              alt="Muskan Bhatia smiling, in a black and white photo"
+              width={440}
+              height={440}
+              sizes="(min-width: 768px) 160px, 80px"
               preload
-              className="h-[88px] w-[72px] -rotate-[4deg] rounded-[8px] object-cover grayscale md:h-[170px] md:w-[140px]"
+              className="size-[80px] -rotate-[4deg] rounded-[10px] object-cover md:size-[160px]"
             />
             <p className="font-display text-[22px] font-normal leading-[1.15] tracking-[-0.02em] md:text-[40px]">
               <RollingHello />

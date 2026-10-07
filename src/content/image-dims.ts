@@ -67,5 +67,4 @@ export const imageDims: Record<string, [number, number]> = {
   "/work/ai-mentor/exact/sol2-before-small.png": [548, 1024],
   "/work/ai-mentor/exact/sol3-quiz.png": [1024, 796],
   "/work/ai-mentor/exact/sol4-summary.png": [910, 520],
-  "/home/about-photo.jpg": [1086, 1448],
 };
