@@ -21,17 +21,17 @@ function GrowthIcon() {
 export function Hero() {
   return (
     <>
-      <section className="w-full px-5 pb-14 pt-12 md:px-10 md:pb-20 md:pt-24 lg:min-h-[calc(100svh-72px)] lg:pt-32">
+      <section className="w-full px-5 pb-14 pt-8 md:px-10 md:pb-20 md:pt-16 lg:min-h-[calc(100svh-72px)] lg:pt-20">
         <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-8 md:gap-12">
           <div className="rise flex items-center gap-5 md:gap-8">
             <Image
-              src="/home/muskan-portrait-face.webp"
+              src="/home/muskan-portrait-4x5.webp"
               alt="Muskan Bhatia smiling, in a black and white photo"
-              width={440}
-              height={440}
-              sizes="(min-width: 768px) 160px, 80px"
+              width={400}
+              height={500}
+              sizes="(min-width: 768px) 112px, 64px"
               preload
-              className="size-[80px] -rotate-[4deg] rounded-[10px] object-cover md:size-[160px]"
+              className="h-[80px] w-[64px] -rotate-[4deg] rounded-[10px] object-cover object-[50%_30%] md:h-[140px] md:w-[112px]"
             />
             <p className="font-display text-[22px] font-normal leading-[1.15] tracking-[-0.02em] md:text-[40px]">
               <RollingHello />
