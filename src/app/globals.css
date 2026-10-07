@@ -1,17 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f4f4;
-  --foreground: #161514;
+  /* Dark, warm editorial theme (Pear mood) with one sharp accent (Inkwell precision).
+     All text pairs pass WCAG AA on the background: ink 16.7:1, muted 7.1:1, accent 7.0:1. */
+  --background: #0b0a09;
+  --foreground: #f2ebdd;
 
-  --color-ink: #161514;
-  --color-ink-soft: #2b2a28;
-  --color-muted: #5f5c57;
-  --color-line: #d6d3cc;
-  --color-card: #ffffff;
-  --color-accent: #5b3fd6;
-  --color-accent-soft: #e9e4fb;
-  --color-live: #1f9d55;
+  --color-ink: #f2ebdd;
+  --color-ink-soft: #d8cfbf;
+  --color-muted: #a39a8a;
+  --color-line: #2c2824;
+  --color-line-strong: #6b6459;
+  --color-card: #151311;
+  --color-accent: #ff6b2c;
+  --color-accent-soft: #2a1710;
+  --color-live: #5fd38d;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -21,6 +25,7 @@
   --color-ink-soft: var(--color-ink-soft);
   --color-muted: var(--color-muted);
   --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
   --color-card: var(--color-card);
   --color-accent: var(--color-accent);
   --color-accent-soft: var(--color-accent-soft);
@@ -47,8 +52,8 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent-soft);
-  color: var(--color-ink);
+  background: var(--color-accent);
+  color: var(--background);
 }
 
 :focus-visible {
@@ -147,6 +152,13 @@ html[data-motion="paused"] .portrait-swivel {
     opacity: 1;
     transform: none;
   }
+  .mask-word > span,
+  .js [data-reveal]:not([data-revealed]) .reveal-media img {
+    transform: none !important;
+  }
+  .js [data-reveal]:not([data-revealed]) .reveal-media {
+    clip-path: none;
+  }
 }
 
 /* Lenis */
@@ -178,4 +190,58 @@ html.lenis body {
   line-height: 1.3;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+/* ---------- Bold editorial layer ---------- */
+
+/* Masked word reveal: each word slides up from behind its own mask. */
+.mask-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding: 0 0.08em 0.14em;
+  margin: 0 -0.08em -0.14em;
+}
+.mask-word > span {
+  display: inline-block;
+  transform: translateY(105%);
+  animation: mask-up 1.1s var(--ease-out-expo) forwards;
+  animation-delay: calc(var(--w, 0) * 60ms + var(--mask-delay, 0ms));
+}
+@keyframes mask-up {
+  to {
+    transform: none;
+  }
+}
+/* On-scroll variant: words wait until their block is revealed. */
+[data-reveal]:not([data-revealed]) .mask-word.on-reveal > span {
+  animation-play-state: paused;
+}
+
+/* Media reveal: image opens from the bottom edge and settles from a slight zoom. */
+.reveal-media {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 1.4s var(--ease-out-expo);
+}
+.reveal-media img {
+  transition: transform 1.8s var(--ease-out-expo);
+}
+.js [data-reveal]:not([data-revealed]) .reveal-media {
+  clip-path: inset(100% 0 0 0);
+}
+.js [data-reveal]:not([data-revealed]) .reveal-media img {
+  transform: scale(1.12);
+}
+
+/* Skills marquee (paused by the visitor, static under reduced motion). */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  animation: marquee 38s linear infinite;
+}
+html[data-motion="paused"] .marquee-track {
+  animation-play-state: paused;
 }

@@ -23,9 +23,9 @@ const strengths = [
 
 function Row({ count, label, children }: { count: string; label: string; children: ReactNode }) {
   return (
-    <div data-reveal className="flex flex-col gap-8 border-t border-[#111]/15 pt-5 md:pt-6">
+    <div data-reveal className="flex flex-col gap-8 border-t border-line pt-5 md:pt-6">
       <p className="label-mono flex items-center gap-3 text-ink-soft">
-        <span className="rounded-full bg-[#111] px-2.5 py-0.5 text-white">{count}</span>
+        <span className="text-accent">{count}</span>
         {label}
       </p>
       <div className="md:pl-[33%]">{children}</div>
@@ -38,11 +38,14 @@ export function Background() {
   const companies = rows.filter((r) => r.where === "Preplaced" || r.where === "Builder.ai").length;
 
   return (
-    <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-page pt-28  md:pt-40">
+    <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-page pt-28 md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-16 md:gap-20">
-        <h2 id="about-heading" className="max-w-[20ch] font-display text-[clamp(1.75rem,1.3rem+1.4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.02em]">
-          A little background, if you&rsquo;re still here
-        </h2>
+        <div className="grid grid-cols-1 items-end gap-6 border-t border-line pt-4 md:grid-cols-12">
+          <p className="label-mono text-muted md:col-span-3">(02) About</p>
+          <h2 id="about-heading" className="font-editorial text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-light italic leading-[0.98] tracking-[-0.02em] md:col-span-9">
+            A little background, if you&rsquo;re still here
+          </h2>
+        </div>
 
         <Row count={String(companies).padStart(2, "0")} label="Product teams I&rsquo;ve designed for">
           <div className="flex max-w-[720px] flex-col gap-5 text-[19px] leading-[1.55] md:text-[21px]">

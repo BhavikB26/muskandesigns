@@ -31,7 +31,7 @@ function MetaStrip({ p }: { p: Project }) {
     ["Type", p.meta.type],
   ].filter((i): i is [string, string] => Boolean(i[1]));
   return (
-    <dl className="grid grid-cols-1 gap-x-6 gap-y-5 border-y border-[#111]/15 py-6 min-[400px]:grid-cols-2 md:grid-cols-4">
+    <dl className="grid grid-cols-1 gap-x-6 gap-y-5 border-y border-line py-6 min-[400px]:grid-cols-2 md:grid-cols-4">
       {items.map(([k, v]) => (
         <div key={k} className="flex flex-col gap-1">
           <dt className="label-mono text-muted">{k}</dt>
@@ -144,7 +144,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex min-h-11 items-center rounded-full bg-[#111] px-5 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
+                    className="inline-flex min-h-11 items-center rounded-full bg-ink px-6 text-[15px] font-medium text-background hover:bg-accent focus-visible:bg-accent transition-transform duration-300 hover:-translate-y-0.5"
                   >
                     {l.label} ↗
                   </a>

@@ -1,60 +1,105 @@
 import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
+import { MaskedText } from "@/components/masked-text";
 import { MotionToggle } from "@/components/motion";
 
 const HEADLINE = "I like orchestrating intentional designs.";
+const SKILLS = ["UX & product design", "UI & visual design", "Design systems", "Prototyping", "Product thinking", "Research", "Working with engineers"];
+
+function Marquee() {
+  const row = SKILLS.map((s) => (
+    <span key={s} className="flex items-center gap-6 pr-6">
+      {s}
+      <span aria-hidden className="text-accent">
+        ✦
+      </span>
+    </span>
+  ));
+  return (
+    <div className="overflow-hidden border-y border-line py-4">
+      <ul className="sr-only">
+        {SKILLS.map((s) => (
+          <li key={s}>{s}</li>
+        ))}
+      </ul>
+      <div aria-hidden className="marquee-track label-mono flex w-max text-ink-soft motion-reduce:w-auto motion-reduce:flex-wrap">
+        <div className="flex">{row}</div>
+        <div className="flex motion-reduce:hidden">{row}</div>
+      </div>
+    </div>
+  );
+}
 
 export function Hero() {
   return (
-    <section className="flex w-full flex-col justify-center px-page pb-16 pt-10 md:pb-24 md:pt-[96px]">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-[19px] md:gap-[22px]">
-        <div className="settle flex items-center gap-4 md:gap-8">
-          {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
-          <div className="shrink-0 [perspective:700px]">
-            <div className="portrait-swivel h-[87px] w-[66px] -rotate-[5deg] overflow-hidden rounded-[8px] md:h-[127px] md:w-[96px]">
-              <Image
-                src="/home/muskan-portrait-4x5.webp"
-                alt="Muskan Bhatia smiling, in a black and white photo"
-                width={400}
-                height={500}
-                sizes="(min-width: 768px) 96px, 66px"
-                preload
-                className="size-full object-cover object-[50%_30%]"
-              />
-            </div>
-          </div>
-          <p className="font-accent text-[clamp(1.75rem,1.2rem+1.6vw,2.6rem)] font-medium leading-[1.05]">
-            <RollingHello />
-            <br />
-            I&rsquo;m Muskan Bhatia
-          </p>
-        </div>
-
-        <h1 className="settle font-editorial text-[clamp(2.4rem,1rem+5.2vw,6.4rem)] font-light italic leading-[1.04] tracking-[-0.01em] text-[#111] [animation-delay:80ms] [font-variation-settings:'opsz'_144]">
-          {HEADLINE}
-        </h1>
-
-        <div className="settle mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 [animation-delay:160ms] md:mt-8">
-          <a
-            href="#work"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#111] px-5 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
-          >
-            See my work <span aria-hidden>↓</span>
-          </a>
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#111]/25 px-5 text-[15px] font-medium transition-colors duration-300 hover:border-[#111]"
-          >
-            Resume (PDF) <span aria-hidden>↗</span>
-          </a>
-          <a href="#contact" className="inline-flex min-h-11 items-center text-[15px] font-medium underline underline-offset-4 decoration-[#111]/30 hover:decoration-[#111]">
-            Get in touch
-          </a>
-          <MotionToggle className="ml-auto" />
+    <section aria-label="Introduction" className="flex w-full flex-col md:min-h-[calc(100svh-108px)]">
+      <div className="px-page">
+        <div className="mx-auto grid w-full max-w-[1760px] grid-cols-2 gap-4 border-t border-line pt-3 md:grid-cols-4">
+          <p className="label-mono text-muted">(00) Intro</p>
+          <p className="label-mono hidden text-muted md:block">Product designer</p>
+          <p className="label-mono hidden text-muted md:block">UX · UI · Design systems</p>
+          <p className="label-mono text-right text-muted">Case studies 01–08 ↓</p>
         </div>
       </div>
+
+      <div className="flex flex-1 flex-col justify-center px-page py-12 md:py-16">
+        <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-8 md:gap-10">
+          <div className="settle flex items-center gap-4 md:gap-7">
+            {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
+            <div className="shrink-0 [perspective:700px]">
+              <div className="portrait-swivel h-[87px] w-[66px] -rotate-[5deg] overflow-hidden rounded-[6px] ring-1 ring-line md:h-[127px] md:w-[96px]">
+                <Image
+                  src="/home/muskan-portrait-4x5.webp"
+                  alt="Muskan Bhatia smiling, in a black and white photo"
+                  width={400}
+                  height={500}
+                  sizes="(min-width: 768px) 96px, 66px"
+                  preload
+                  className="size-full object-cover object-[50%_30%]"
+                />
+              </div>
+            </div>
+            <p className="font-accent text-[clamp(1.75rem,1.2rem+1.6vw,2.6rem)] font-medium leading-[1.05] text-ink">
+              <RollingHello />
+              <br />
+              I&rsquo;m Muskan Bhatia
+            </p>
+          </div>
+
+          <MaskedText
+            as="h1"
+            text={HEADLINE}
+            delay={150}
+            className="max-w-[14ch] font-editorial text-[clamp(3.1rem,0.9rem+8.6vw,11.5rem)] font-light italic leading-[0.98] tracking-[-0.025em] text-ink [font-variation-settings:'opsz'_144]"
+          />
+
+          <div className="settle flex flex-wrap items-center gap-3 [animation-delay:200ms] md:gap-4">
+            <a
+              href="#work"
+              className="inline-flex min-h-14 items-center gap-3 rounded-full bg-ink px-7 text-[17px] font-medium text-background transition-[transform,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:bg-accent focus-visible:bg-accent"
+            >
+              See my work <span aria-hidden>↓</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
+            >
+              Resume (PDF) <span aria-hidden>↗</span>
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex min-h-14 items-center gap-3 rounded-full border border-line-strong px-7 text-[17px] font-medium text-ink transition-colors duration-500 hover:border-ink focus-visible:border-ink"
+            >
+              Get in touch
+            </a>
+            <MotionToggle className="sm:ml-auto" />
+          </div>
+        </div>
+      </div>
+
+      <Marquee />
     </section>
   );
 }

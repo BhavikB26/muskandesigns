@@ -24,7 +24,7 @@ export function SiteHeader() {
         >
           <span
             aria-hidden
-            className="flex size-8 items-center justify-center rounded-[2px] bg-[#111] pb-[3px] font-display text-[27px] font-semibold leading-none text-white"
+            className="flex size-8 items-center justify-center rounded-[2px] bg-ink pb-[3px] font-display text-[19px] font-semibold leading-none text-background"
           >
             m
           </span>
@@ -35,7 +35,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Muskan Bhatia on LinkedIn"
-            className="-my-1.5 -mr-2.5 inline-flex size-11 items-center justify-center rounded-lg text-[#111] transition-opacity duration-200 hover:opacity-70"
+            className="-my-1.5 -mr-2.5 inline-flex size-11 items-center justify-center rounded-lg text-ink transition-opacity duration-200 hover:opacity-70"
           >
             <LinkedInIcon />
           </a>
