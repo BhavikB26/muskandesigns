@@ -22,18 +22,18 @@ export function Testimonials() {
   return (
     <section aria-labelledby="kind-words" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <h2 id="kind-words" className="font-display text-[34px] leading-[1.08] md:text-[44px]">
+        <h2 id="kind-words" className="font-display text-[clamp(1.75rem,1.3rem+1.4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.02em]">
           From people I&rsquo;ve worked with
         </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {testimonials.map((t) => (
-            <figure key={t.name} className="rise-on-scroll flex flex-col justify-between gap-8 rounded-[20px] bg-card p-7 md:p-9">
+            <figure key={t.name} data-reveal className="flex flex-col justify-between gap-8 rounded-[24px] bg-card p-7 md:p-9">
               <blockquote className="text-[17px] leading-[1.6] text-ink-soft">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="flex items-center gap-3">
                 <Image src={t.avatar} alt="" width={48} height={48} className="size-12 rounded-full object-cover" />
                 <span className="flex flex-col">
                   <span className="text-[16px] font-semibold">{t.name}</span>
-                  <span className="text-[14px] text-muted">{t.role}</span>
+                  <span className="label-mono normal-case tracking-normal text-muted">{t.role}</span>
                 </span>
               </figcaption>
             </figure>

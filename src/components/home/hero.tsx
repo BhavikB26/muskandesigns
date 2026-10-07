@@ -1,11 +1,7 @@
 import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
+import { MotionToggle } from "@/components/motion";
 
-/*
- * Hero headline, split into the two lines shown on large screens.
- * Not "I design and develop interfaces, products, and beyond." That line is
- * another designer's (joonassandell.com), so it isn't reused here.
- */
 const HEADLINE = "I like orchestrating intentional designs.";
 
 export function Hero() {
@@ -27,16 +23,37 @@ export function Hero() {
               />
             </div>
           </div>
-          <p className="font-display text-[32px] font-normal leading-[1.05] md:text-[40px]">
+          <p className="font-accent text-[clamp(1.75rem,1.2rem+1.6vw,2.6rem)] font-medium leading-[1.05]">
             <RollingHello />
             <br />
             I&rsquo;m Muskan Bhatia
           </p>
         </div>
 
-        <h1 className="rise font-editorial text-[11vw] font-light italic leading-[1.05] tracking-[-0.01em] text-[#111] [animation-delay:80ms] [font-variation-settings:'opsz'_144,'SOFT'_0] md:text-[5.4vw] md:leading-[1.02]">
+        <h1 className="rise font-editorial text-[clamp(2.4rem,1rem+5.2vw,6.4rem)] font-light italic leading-[1.04] tracking-[-0.01em] text-[#111] [animation-delay:80ms] [font-variation-settings:'opsz'_144,'SOFT'_0]">
           {HEADLINE}
         </h1>
+
+        <div className="rise mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 [animation-delay:160ms] md:mt-8">
+          <a
+            href="#work"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#111] px-5 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
+          >
+            See my work <span aria-hidden>↓</span>
+          </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[#111]/25 px-5 text-[15px] font-medium transition-colors duration-300 hover:border-[#111]"
+          >
+            Resume (PDF) <span aria-hidden>↗</span>
+          </a>
+          <a href="#contact" className="inline-flex min-h-11 items-center text-[15px] font-medium underline underline-offset-4 decoration-[#111]/30 hover:decoration-[#111]">
+            Get in touch
+          </a>
+          <MotionToggle className="ml-auto" />
+        </div>
       </div>
     </section>
   );

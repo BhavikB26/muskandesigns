@@ -26,13 +26,16 @@
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
-  --font-serif: var(--font-serif-face), Georgia, serif;
   --font-editorial: var(--font-editorial-face), Georgia, serif;
-  --font-display: var(--font-serif-face), var(--font-deva), var(--font-sc), var(--font-jp), Georgia, serif;
+  --font-display: var(--font-heading-face), var(--font-deva), var(--font-sc), var(--font-jp), Arial, sans-serif;
+  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+  --font-accent: var(--font-accent-face), var(--font-deva), var(--font-sc), var(--font-jp), cursive;
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -65,15 +68,37 @@ body {
 }
 
 .rise {
-  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 0.9s var(--ease-out-expo) both;
 }
 
-@supports (animation-timeline: view()) {
-  .rise-on-scroll {
-    animation: rise linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
+/* Scroll reveal (driven by <Motion />): fade + small rise, expo-out, staggered.
+   Without JS the content simply shows. */
+.js [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+[data-reveal] {
+  transition:
+    opacity 0.7s var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform 0.9s var(--ease-out-expo) var(--reveal-delay, 0ms);
+}
+
+/* Looping motion stops when the visitor presses "Pause motion". */
+html[data-motion="paused"] .portrait-swivel {
+  animation-play-state: paused;
+}
+
+/* Gentle page entrance on every route. */
+@keyframes page-in {
+  from {
+    opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+.page-in {
+  animation: page-in 0.6s var(--ease-out-expo) both;
 }
 
 /* The portrait card turns gently left and right in 3D, keeping its slant. */
@@ -103,6 +128,19 @@ body {
     animation: none !important;
     transition: none !important;
   }
+  .js [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
 }
 
 /* Page gutter shared by the header, hero and home sections. */
@@ -111,8 +149,18 @@ body {
 }
 
 
-/* Never let the browser fake bold or italic on the heading face. */
+/* Never let the browser fake bold or italic on the display faces. */
 .font-display,
-.font-serif {
+.font-editorial,
+.font-accent {
   font-synthesis: none;
+}
+
+/* Small uppercase mono labels (metadata, tags), in the spirit of Inkwell. */
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }

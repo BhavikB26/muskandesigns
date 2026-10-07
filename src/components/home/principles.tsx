@@ -19,7 +19,7 @@ export function Principles() {
   return (
     <section aria-labelledby="principles-heading" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <h2 id="principles-heading" className="max-w-[560px] font-display text-[34px] leading-[1.08] md:text-[44px]">
+        <h2 id="principles-heading" className="max-w-[560px] font-display text-[clamp(1.75rem,1.3rem+1.4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.02em]">
           How I like to work
         </h2>
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
@@ -35,7 +35,7 @@ export function Principles() {
                 <p className="absolute inset-5 text-[15px] leading-[1.5] text-ink-soft opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
                   {p.detail}
                 </p>
-                <span aria-hidden className="text-[13px] text-muted">Hover to read</span>
+                <span aria-hidden className="text-[13px] text-muted">Hover or focus to read</span>
               </div>
             </li>
           ))}

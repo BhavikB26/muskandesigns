@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex w-full flex-col">
+      <main id="main" className="page-in flex w-full flex-col">
         <Hero />
         <WorkGrid />
         <Background />

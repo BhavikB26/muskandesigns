@@ -2,16 +2,23 @@ import type { Metadata } from "next";
 import {
   Caveat,
   Fraunces,
+  Geist,
+  Geist_Mono,
   Noto_Sans_Devanagari,
   Noto_Sans_JP,
   Noto_Sans_SC,
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import "./globals.css";
+import { Motion } from "@/components/motion";
 
-// Headings (and the hero headline): a readable handwritten face
+// Headings: a clean, highly legible grotesk; labels and metadata: its mono.
+const geist = Geist({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
+const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap" });
+
+// Small handwritten accent (the hero greeting only). Never used for headings or body.
 const caveat = Caveat({
-  variable: "--font-serif-face",
+  variable: "--font-accent-face",
   weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
@@ -50,8 +57,13 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://muskandesigns.vercel.app"
   ),
-  title,
+  title: { default: title, template: "%s — Muskan Bhatia" },
   description,
+  applicationName: "Muskan Bhatia",
+  authors: [{ name: "Muskan Bhatia", url: "https://www.linkedin.com/in/thisismuskan/" }],
+  keywords: ["Product Designer", "UX Designer", "UI Designer", "Design Systems", "Portfolio", "Muskan Bhatia"],
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
     title,
     description,
@@ -75,9 +87,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${caveat.variable} ${editorial.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
+      suppressHydrationWarning
+      className={`${geist.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} ${notoDevanagari.variable} ${notoSC.variable} ${notoJP.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        <Motion />
         <a
           href="#main"
           className="sr-only z-50 rounded-full bg-ink px-4 py-2 text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

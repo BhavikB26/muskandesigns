@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useMotionPaused } from "@/components/motion";
 
 const GREETINGS = [
   { text: "Hello", lang: "en" },
@@ -22,6 +23,7 @@ export function RollingHello() {
   const [i, setI] = useState(0);
   const [animate, setAnimate] = useState(true);
   const [reduced, setReduced] = useState(false);
+  const paused = useMotionPaused();
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -32,14 +34,14 @@ export function RollingHello() {
   }, []);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || paused) return;
     const id = window.setInterval(() => {
       if (document.hidden) return; // pause while the tab is in the background
       setAnimate(true);
       setI((n) => n + 1);
     }, HOLD_MS + ROLL_MS);
     return () => window.clearInterval(id);
-  }, [reduced]);
+  }, [reduced, paused]);
 
   // After rolling onto the duplicate first item, jump back to the real one without animating.
   useEffect(() => {

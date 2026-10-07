@@ -23,9 +23,9 @@ const strengths = [
 
 function Row({ count, label, children }: { count: string; label: string; children: ReactNode }) {
   return (
-    <div className="rise-on-scroll flex flex-col gap-8 border-t border-line pt-5 md:pt-6">
-      <p className="flex items-center gap-3 text-[16px]">
-        <span className="rounded-full bg-ink px-2.5 py-0.5 text-[12px] font-semibold text-white">{count}</span>
+    <div data-reveal className="flex flex-col gap-8 border-t border-[#111]/15 pt-5 md:pt-6">
+      <p className="label-mono flex items-center gap-3 text-ink-soft">
+        <span className="rounded-full bg-[#111] px-2.5 py-0.5 text-white">{count}</span>
         {label}
       </p>
       <div className="md:pl-[33%]">{children}</div>
@@ -40,7 +40,7 @@ export function Background() {
   return (
     <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-16 md:gap-20">
-        <h2 id="about-heading" className="max-w-[640px] font-display text-[34px] leading-[1.08] md:text-[44px]">
+        <h2 id="about-heading" className="max-w-[20ch] font-display text-[clamp(1.75rem,1.3rem+1.4vw,2.75rem)] font-medium leading-[1.1] tracking-[-0.02em]">
           A little background, if you&rsquo;re still here
         </h2>
 

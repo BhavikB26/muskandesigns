@@ -31,10 +31,10 @@ function MetaStrip({ p }: { p: Project }) {
     ["Type", p.meta.type],
   ].filter((i): i is [string, string] => Boolean(i[1]));
   return (
-    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 border-y border-line py-6 md:grid-cols-4">
+    <dl className="grid grid-cols-1 gap-x-6 gap-y-5 border-y border-[#111]/15 py-6 min-[400px]:grid-cols-2 md:grid-cols-4">
       {items.map(([k, v]) => (
         <div key={k} className="flex flex-col gap-1">
-          <dt className="text-[12px] font-semibold uppercase tracking-[0.8px] text-muted">{k}</dt>
+          <dt className="label-mono text-muted">{k}</dt>
           <dd className="text-[16px] leading-[1.4]">{v}</dd>
         </div>
       ))}
@@ -57,7 +57,7 @@ function Figure({ image, tint, priority = false }: { image: Img; tint: string; p
           className={tall ? "h-auto max-h-[720px] w-auto max-w-full py-8" : "h-auto w-full"}
         />
       </div>
-      {image.caption && <figcaption className="px-1 text-[14px] text-muted">{image.caption}</figcaption>}
+      {image.caption && <figcaption className="label-mono px-1 normal-case tracking-normal text-muted">{image.caption}</figcaption>}
     </figure>
   );
 }
@@ -68,7 +68,7 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
     const single = block.images.length === 1;
     const odd = block.images.length % 2 === 1;
     return (
-      <div className="rise-on-scroll flex flex-col gap-4">
+      <div data-reveal className="flex flex-col gap-4">
         {single || odd ? <Figure image={first} tint={tint} /> : null}
         {!single && (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -82,8 +82,8 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
   }
   if (block.kind === "quote") {
     return (
-      <figure className="rise-on-scroll mx-auto flex max-w-[860px] flex-col gap-4 py-6 text-center">
-        <blockquote className="font-display text-[26px] leading-[1.3] md:text-[32px]">
+      <figure data-reveal className="mx-auto flex max-w-[860px] flex-col gap-4 py-6 text-center">
+        <blockquote className="font-editorial text-[clamp(1.5rem,1.1rem+1.4vw,2.25rem)] font-light italic leading-[1.3]">
           &ldquo;{block.text}&rdquo;
         </blockquote>
         <figcaption className="text-[15px] text-muted">{block.by}</figcaption>
@@ -91,9 +91,9 @@ function BlockView({ block, tint }: { block: Block; tint: string }) {
     );
   }
   return (
-    <div className="rise-on-scroll grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:gap-10">
-      <h2 className="font-display text-[24px] leading-[1.15] md:text-[28px]">{block.heading}</h2>
-      <div className="flex max-w-[760px] flex-col gap-5 text-[18px] leading-[1.65] text-ink-soft">
+    <div data-reveal className="grid grid-cols-1 gap-4 md:grid-cols-[1fr_2fr] md:gap-10">
+      <h2 className="font-display text-[clamp(1.4rem,1.15rem+0.8vw,1.85rem)] font-medium leading-[1.15] tracking-[-0.015em]">{block.heading}</h2>
+      <div className="flex max-w-[68ch] flex-col gap-5 text-[clamp(1rem,0.95rem+0.25vw,1.125rem)] leading-[1.7] text-ink-soft">
         {block.body.map((t, i) => (
           <p key={i}>{t}</p>
         ))}
@@ -120,20 +120,20 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   return (
     <>
       <SiteHeader />
-      <main id="main" className="w-full px-page ">
+      <main id="main" className="page-in w-full px-page">
         <article className="mx-auto flex w-full max-w-[1240px] flex-col gap-16 pb-10 pt-10 md:gap-24 md:pt-16">
           <header className="rise flex flex-col gap-8">
-            <Link href="/#work" className="self-start text-[15px] text-muted underline-offset-4 hover:text-ink hover:underline">
+            <Link href="/#work" className="label-mono inline-flex min-h-6 items-center self-start text-muted underline-offset-4 hover:text-ink hover:underline">
               ← All work
             </Link>
             <div className="flex flex-col gap-5">
-              <span className="self-start rounded-full bg-accent-soft px-3 py-1 text-[12px] font-semibold uppercase tracking-[0.8px] text-accent">
+              <span className="label-mono self-start rounded-full bg-accent-soft px-3 py-1 text-accent">
                 {p.tag === "Concept" ? p.meta.type : "Case study"}
               </span>
-              <h1 className="font-display text-[48px] font-normal leading-[1] md:text-[88px]">
+              <h1 className="font-display text-[clamp(2.6rem,1.4rem+5vw,6rem)] font-medium leading-[0.98] tracking-[-0.035em]">
                 {p.name}
               </h1>
-              <p className="max-w-[820px] text-[22px] leading-[1.35] text-muted md:text-[28px]">{p.tagline}</p>
+              <p className="max-w-[40ch] text-[clamp(1.2rem,1rem+0.8vw,1.75rem)] leading-[1.35] text-muted">{p.tagline}</p>
             </div>
             <MetaStrip p={p} />
             {p.links && (
@@ -144,7 +144,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="rounded-full bg-ink px-5 py-2.5 text-[15px] text-white transition-opacity hover:opacity-85"
+                    className="inline-flex min-h-11 items-center rounded-full bg-[#111] px-5 text-[15px] font-medium text-white transition-transform duration-300 hover:-translate-y-0.5"
                   >
                     {l.label} ↗
                   </a>
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <Figure image={p.cover} tint={p.tint} priority />
 
-          <p className="rise-on-scroll max-w-[920px] font-display text-[26px] leading-[1.35] md:text-[34px]">
+          <p data-reveal className="max-w-[34ch] font-editorial text-[clamp(1.6rem,1.1rem+1.8vw,2.6rem)] font-light italic leading-[1.3]">
             {p.intro}
           </p>
 
@@ -173,12 +173,12 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 alt=""
                 fill
                 sizes="280px"
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
               />
             </div>
             <div className="flex flex-col gap-2">
-              <span className="text-[13px] font-semibold uppercase tracking-[0.8px] text-muted">Next project</span>
-              <span className="font-display text-[32px] leading-[1.1] group-hover:underline group-hover:underline-offset-4">
+              <span className="label-mono text-muted">Next project</span>
+              <span className="font-display text-[clamp(1.6rem,1.2rem+1.2vw,2.4rem)] font-medium leading-[1.1] tracking-[-0.02em] group-hover:underline group-hover:underline-offset-4">
                 {next.name} →
               </span>
               <span className="text-[16px] text-muted">{next.tagline}</span>
