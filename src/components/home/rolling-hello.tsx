@@ -71,11 +71,7 @@ export function RollingHello() {
             key={n}
             lang={g.lang}
             className="block h-[1.25em] whitespace-nowrap leading-[1.25em]"
-            style={{
-              opacity: reduced || n === i ? 1 : 0,
-              // Only the outgoing word fades; the incoming one slides in fully visible.
-              transition: animate && !reduced && n !== i ? `opacity ${ROLL_MS}ms ease-out` : "none",
-            }}
+            // Words stay at full contrast; the clipping box hides the outgoing one as it slides away.
           >
             {g.text},
           </span>
