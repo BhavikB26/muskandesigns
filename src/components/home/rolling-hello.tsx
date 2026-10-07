@@ -54,7 +54,7 @@ export function RollingHello() {
   const items = [...GREETINGS, GREETINGS[0]];
 
   return (
-    <span className="relative inline-block h-[1.25em] overflow-hidden align-bottom">
+    <span className="relative -my-[0.125em] inline-block h-[1.25em] overflow-hidden align-bottom">
       <span className="sr-only">Hello,</span>
       <span
         aria-hidden

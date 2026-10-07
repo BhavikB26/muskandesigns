@@ -6,8 +6,8 @@ const skills = ["UX & product design", "UI & visual design", "Design systems", "
 
 export function WorkGrid() {
   return (
-    <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-20 px-5 md:px-10">
-      <div className="mx-auto grid w-full max-w-[1320px] grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-12">
+    <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-20 px-page ">
+      <div className="mx-auto grid w-full max-w-[1760px] grid-cols-1 gap-10 lg:grid-cols-[220px_1fr] lg:gap-12">
         <div className="lg:sticky lg:top-28 lg:self-start">
           <h2 id="work-heading" className="sr-only">
             Selected work

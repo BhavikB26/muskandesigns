@@ -17,8 +17,8 @@ export function Principles() {
   if (items.length === 0) return null;
 
   return (
-    <section aria-labelledby="principles-heading" className="w-full px-5 pt-28 md:px-10 md:pt-40">
-      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-10">
+    <section aria-labelledby="principles-heading" className="w-full px-page pt-28  md:pt-40">
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
         <h2 id="principles-heading" className="max-w-[560px] font-display text-[34px] leading-[1.08] tracking-[-0.8px] md:text-[44px]">
           How I like to work
         </h2>

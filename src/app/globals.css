@@ -102,3 +102,13 @@ body {
     transition: none !important;
   }
 }
+
+/* Page gutter shared by the header, hero and home sections. */
+@utility px-page {
+  padding-inline: max(24px, 4vw);
+}
+
+/* Bricolage at its smallest optical size: wider, looser letterforms, matching the reference. */
+.font-display {
+  font-variation-settings: "opsz" 12;
+}

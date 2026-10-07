@@ -38,8 +38,8 @@ export function Background() {
   const companies = rows.filter((r) => r.where === "Preplaced" || r.where === "Builder.ai").length;
 
   return (
-    <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-5 pt-28 md:px-10 md:pt-40">
-      <div className="mx-auto flex w-full max-w-[1320px] flex-col gap-16 md:gap-20">
+    <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-page pt-28  md:pt-40">
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-16 md:gap-20">
         <h2 id="about-heading" className="max-w-[640px] font-display text-[34px] leading-[1.08] tracking-[-0.8px] md:text-[44px] md:tracking-[-1.2px]">
           A little background, if you&rsquo;re still here
         </h2>
