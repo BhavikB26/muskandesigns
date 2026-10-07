@@ -54,13 +54,13 @@ export function RollingHello() {
   const items = [...GREETINGS, GREETINGS[0]];
 
   return (
-    <span className="relative inline-block h-[1.15em] overflow-hidden align-bottom">
+    <span className="relative inline-block h-[1.25em] overflow-hidden align-bottom">
       <span className="sr-only">Hello,</span>
       <span
         aria-hidden
         className="flex flex-col"
         style={{
-          transform: `translateY(-${(reduced ? 0 : i) * 1.15}em)`,
+          transform: `translateY(-${(reduced ? 0 : i) * 1.25}em)`,
           transition: animate && !reduced ? `transform ${ROLL_MS}ms cubic-bezier(0.33, 1, 0.68, 1)` : "none",
         }}
       >
@@ -68,7 +68,7 @@ export function RollingHello() {
           <span
             key={n}
             lang={g.lang}
-            className="block h-[1.15em] whitespace-nowrap leading-[1.15em]"
+            className="block h-[1.25em] whitespace-nowrap leading-[1.25em]"
             style={{
               opacity: reduced || n === i ? 1 : 0,
               // Only the outgoing word fades; the incoming one slides in fully visible.

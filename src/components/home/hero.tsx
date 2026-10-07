@@ -15,19 +15,19 @@ export function Hero() {
           <div className="rise flex items-center gap-5 md:gap-8">
             {/* TODO(live-photo): swap in a short muted looping clip of Muskan here if she provides one. */}
             <div className="shrink-0 [perspective:700px]">
-            <div className="portrait-swivel h-[80px] w-[64px] -rotate-[4deg] overflow-hidden rounded-[10px] md:h-[140px] md:w-[112px]">
+            <div className="portrait-swivel h-[64px] w-[52px] -rotate-[4deg] overflow-hidden rounded-[9px] md:h-[110px] md:w-[88px]">
               <Image
                 src="/home/muskan-portrait-4x5.webp"
                 alt="Muskan Bhatia smiling, in a black and white photo"
                 width={400}
                 height={500}
-                sizes="(min-width: 768px) 112px, 64px"
+                sizes="(min-width: 768px) 88px, 52px"
                 preload
                 className="size-full object-cover object-[50%_30%]"
               />
             </div>
             </div>
-            <p className="font-display text-[22px] font-light leading-[1.15] md:text-[40px]">
+            <p className="font-display text-[18px] font-light leading-[1.15] md:text-[32px]">
               <RollingHello />
               <br />
               I&rsquo;m Muskan Bhatia
