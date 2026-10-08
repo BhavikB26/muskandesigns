@@ -58,7 +58,7 @@ function InternshalaJob() {
 function InternshalaSearch() {
   return (
     <div className="flex w-[84cqw] flex-col gap-[3cqw]">
-      <div className="flex items-center gap-[2cqw] rounded-[10px] bg-white px-[4cqw] py-[3cqw] text-[3.6cqw] text-[#5f646d] shadow-[0_24px_50px_-25px_rgba(0,0,0,0.6)]">
+      <div className="flex items-center gap-[2cqw] rounded-[10px] bg-white px-[4cqw] py-[3cqw] text-[3.6cqw] text-[#454952] shadow-[0_24px_50px_-25px_rgba(0,0,0,0.6)]">
         <span aria-hidden className="text-[#333]">⌕</span> Find Jobs and Internships…
       </div>
       <div className="flex flex-wrap gap-[2cqw] text-[3.4cqw] text-[#333]">
@@ -136,7 +136,7 @@ function GustoHome() {
 
 const FRAMES: Record<string, Frame[]> = {
   "ai-mentor": [
-    f("ai-mentor", 1, 425, 966, "ProPilot's AI mentor panel replying to a learner's question"),
+    f("ai-mentor", 4, 425, 932, "ProPilot's AI mentor panel replying to a learner's question"),
     { node: <LeecoTone />, alt: "ProPilot's tone picker: Friendly, Professional, Casual or Strict" },
     f("ai-mentor", 2, 464, 1004, "ProPilot explaining a coding problem step by step"),
   ],
@@ -219,18 +219,20 @@ export function TileArt({ slug, index = 0, cycle = true }: { slug: string; index
     if (!cycle || paused || reduced || frames.length < 2) return;
     let visible = false;
     let timer = 0;
-    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting));
+    let start = 0;
+    const io = new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (!visible || timer || start) return;
+      // First time on screen: mount the other frames (they load lazily), then start cycling.
+      setSeen(frames.length);
+      start = window.setTimeout(() => {
+        timer = window.setInterval(() => {
+          if (visible && !document.hidden) setN((x) => (x + 1) % frames.length);
+        }, 4600);
+      }, (index % 3) * 1500 + 2200);
+    }, { rootMargin: "100px" });
     if (ref.current) io.observe(ref.current);
-    // Mount the next frame early so its image is ready before it slides in.
-    const preload = window.setTimeout(() => setSeen(frames.length), 2500);
-    const start = window.setTimeout(() => {
-      timer = window.setInterval(() => {
-        if (!visible || document.hidden) return;
-        setN((x) => (x + 1) % frames.length);
-      }, 4600);
-    }, (index % 3) * 1500 + 600);
     return () => {
-      window.clearTimeout(preload);
       window.clearTimeout(start);
       window.clearInterval(timer);
       io.disconnect();
@@ -254,7 +256,7 @@ export function TileArt({ slug, index = 0, cycle = true }: { slug: string; index
           className="tile-frame absolute inset-0"
           data-state={i === shown ? "in" : i === (shown - 1 + frames.length) % frames.length ? "out" : "idle"}
         >
-          <FrameView fr={fr} eager={i === 0} />
+          <FrameView fr={fr} eager={i === 0 && index < 3} />
         </div>
       ))}
     </div>
