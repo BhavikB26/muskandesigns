@@ -23,7 +23,7 @@ const BG: Record<string, [string, string]> = {
   internshala: ["#0d86d1", "#04395e"],
   "swiping-loop": ["#b85c40", "#521f13"],
   basecamp: ["#f3cd47", "#cf9e14"],
-  gusto: ["#e7dccb", "#c8b9a1"],
+  gusto: ["#f3a68d", "#c7573f"],
 };
 
 const f = (slug: string, n: number, w: number, h: number, alt: string): Frame => ({ src: `/work/${slug}/frame-${n}.webp`, w, h, alt });
@@ -87,47 +87,99 @@ function LeecoTone() {
   );
 }
 
-function Bar({ w, dark }: { w: string; dark?: boolean }) {
-  return <span className={`block h-[2.2cqw] rounded-full ${dark ? "bg-[#8f8a82]" : "bg-[#d4d0c9]"}`} style={{ width: w }} />;
-}
-function GustoForm() {
+/* Gusto: the signup screens rebuilt from scratch in code (no logo file, illustration, photo or source image).
+   "gusto" is plain text in the site's own type. Labelled on the site as a walkthrough on request. */
+const CORAL = "#c4432d";
+
+function Option({ label, on }: { label: string; on?: boolean }) {
   return (
-    <div className="flex w-[62cqw] flex-col gap-[3cqw] rounded-[10px] bg-[#fafaf9] p-[6cqw] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)]">
-      <Bar w="60%" dark />
-      {[0, 1, 2].map((k) => (
-        <span key={k} className="flex flex-col gap-[1.5cqw]">
-          <Bar w="32%" />
-          <span className="block h-[7cqw] rounded-[6px] border border-[#c9c5be] bg-white" />
-        </span>
-      ))}
-      <span className="mt-[1.5cqw] block h-[8cqw] rounded-full bg-[#3a3733]" />
+    <span className={`relative flex items-center rounded-[0.8em] border bg-white px-[1em] py-[0.75em] text-[#2b2b2b] ${on ? "border-[#2b6f6a] shadow-[inset_0_0_0_1px_#2b6f6a]" : "border-[#cfd6d6]"}`}>
+      {label}
+      {on && <span aria-hidden className="ml-auto text-[#2b6f6a]">✓</span>}
+    </span>
+  );
+}
+
+function GustoQuestion({ big }: { big?: boolean }) {
+  return (
+    <div className={`flex flex-col gap-[0.7em] ${big ? "text-[3.6cqw]" : "text-[1.9cqw]"}`}>
+      <p className="font-serif text-[1.55em] leading-[1.15] text-[#1f1f1f]">Who do you plan to pay with Gusto?</p>
+      <p className="text-[0.85em] text-[#555]">Select all that apply.</p>
+      <Option label="Myself" on={big} />
+      <Option label="W-2 employees" />
+      <Option label="Contractors" />
+      {!big && (
+        <>
+          <p className="mt-[0.6em] font-serif text-[1.55em] leading-[1.15] text-[#1f1f1f]">How many states will you be running payroll in?</p>
+          <Option label="1 state" />
+          <Option label="2 or more states" />
+        </>
+      )}
     </div>
   );
 }
-function GustoPicker() {
+
+function GustoTablet() {
   return (
-    <div className="flex w-[62cqw] flex-col gap-[2.5cqw] rounded-[10px] bg-[#fafaf9] p-[6cqw] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)]">
-      <Bar w="66%" dark />
-      {[1, 0, 1, 0].map((on, k) => (
-        <span key={k} className="flex items-center gap-[2.5cqw] rounded-[8px] border border-[#d4d0c9] p-[2.4cqw]">
-          <span className={`block size-[4cqw] rounded-[4px] ${on ? "bg-[#3a3733]" : "border border-[#8f8a82]"}`} />
-          <Bar w="60%" />
-        </span>
-      ))}
-    </div>
-  );
-}
-function GustoHome() {
-  return (
-    <div className="flex w-[70cqw] flex-col gap-[3cqw] rounded-[10px] bg-[#fafaf9] p-[6cqw] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.45)]">
-      <Bar w="30%" />
-      <span className="block h-[26cqw] rounded-[8px] bg-[#e3e0da]" />
-      <Bar w="85%" dark />
-      <Bar w="60%" />
-      <div className="mt-[2cqw] flex gap-[2.5cqw]">
-        <span className="block h-[8cqw] flex-1 rounded-full bg-[#3a3733]" />
-        <span className="block h-[8cqw] flex-1 rounded-full border-2 border-[#8f8a82]" />
+    <div className="w-[70cqw] rounded-[3cqw] bg-[#1d1d1f] p-[1.4cqw] shadow-[0_34px_60px_-24px_rgba(0,0,0,0.55)]">
+      <div className="overflow-hidden rounded-[1.6cqw] bg-white">
+        <div className="flex items-center justify-between border-b border-[#e6e2dc] px-[2.4cqw] py-[1.4cqw] text-[1.7cqw]">
+          <span className="font-display text-[2.6cqw] font-semibold tracking-[0.01em]" style={{ color: CORAL }}>gusto</span>
+          <span className="rounded-[0.6em] bg-[#f3efe9] px-[0.8em] py-[0.4em] text-[#333]">Create account</span>
+        </div>
+        <div className="grid grid-cols-[0.9fr_1.1fr]">
+          <div className="flex flex-col gap-[1.4cqw] bg-[#f7f5f2] p-[2.6cqw]">
+            <p className="font-serif text-[3.6cqw] leading-[1.1] text-[#1f1f1f]">Learn how Gusto works.</p>
+            <p className="text-[1.6cqw] leading-[1.4] text-[#555]">Gusto&rsquo;s all-in-one people platform puts the tools you need to hire, pay, and manage your team at your fingertips.</p>
+            {/* Neutral shapes where the original has an illustration. */}
+            <div aria-hidden className="mt-[1cqw] grid flex-1 grid-cols-3 items-end gap-[1cqw]">
+              <span className="block h-[10cqw] rounded-t-full bg-[#f4b9a8]" />
+              <span className="block h-[15cqw] rounded-t-full bg-[#e9d4a3]" />
+              <span className="block h-[8cqw] rounded-t-full bg-[#b7d4d0]" />
+            </div>
+          </div>
+          <div className="p-[2.6cqw]">
+            <GustoQuestion />
+          </div>
+        </div>
       </div>
+    </div>
+  );
+}
+
+function GustoPhone() {
+  return (
+    <div className="w-[34cqw] rounded-[5cqw] bg-[#1d1d1f] p-[1.2cqw] shadow-[0_34px_60px_-22px_rgba(0,0,0,0.6)]">
+      <div className="flex aspect-[9/19] flex-col gap-[1.8cqw] overflow-hidden rounded-[4cqw] bg-white px-[2.6cqw] pb-[2.6cqw] pt-[4.6cqw] text-[1.9cqw]">
+        <span aria-hidden className="mx-auto -mt-[2.6cqw] mb-[0.4cqw] block h-[2cqw] w-[11cqw] rounded-full bg-[#1d1d1f]" />
+        <div className="flex items-center justify-between">
+          <span className="font-display text-[3.4cqw] font-semibold tracking-[0.01em]" style={{ color: CORAL }}>gusto</span>
+          <span className="rounded-[0.5em] px-[0.8em] py-[0.45em] text-white" style={{ backgroundColor: CORAL }}>How it works</span>
+        </div>
+        <p className="mt-[1cqw] font-serif text-[4.2cqw] leading-[1.12] text-[#1f1f1f]">Hire, pay, and manage your team all in one place.</p>
+        <p className="leading-[1.4] text-[#444]">Put the joy back in running your business.</p>
+        <span className="mt-[0.6cqw] rounded-[0.5em] py-[0.8em] text-center text-white" style={{ backgroundColor: CORAL }}>How Gusto works</span>
+        <span className="rounded-[0.5em] bg-[#f3efe9] py-[0.8em] text-center text-[#222]">Create account</span>
+        {/* Soft colour block where the original has a photo. */}
+        <span aria-hidden className="mt-[0.6cqw] block flex-1 rounded-[1.2cqw] bg-[linear-gradient(135deg,#f4c7b8,#e9d4a3)]" />
+      </div>
+    </div>
+  );
+}
+
+function GustoDevices() {
+  return (
+    <div className="relative h-[86cqw] w-[96cqw]">
+      <div className="absolute left-0 top-[16cqw] -rotate-[4deg]"><GustoTablet /></div>
+      <div className="absolute right-[1cqw] top-[2cqw] rotate-[5deg]"><GustoPhone /></div>
+    </div>
+  );
+}
+
+function GustoQuestionCard() {
+  return (
+    <div className="w-[76cqw] rounded-[2cqw] bg-white p-[5cqw] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.5)]">
+      <GustoQuestion big />
     </div>
   );
 }
@@ -175,9 +227,9 @@ const FRAMES: Record<string, Frame[]> = {
     f("basecamp", 3, 1126, 1750, "Basecamp feature cards section"),
   ],
   gusto: [
-    { node: <GustoHome />, alt: "Recreated wireframe of a home page with two calls to action" },
-    { node: <GustoPicker />, alt: "Recreated wireframe of a feature picker" },
-    { node: <GustoForm />, alt: "Recreated wireframe of a short lead form with no password field" },
+    { node: <GustoDevices />, alt: "Gusto signup screens rebuilt in code on a tablet and a phone: the 'Learn how Gusto works' questions and the mobile home page" },
+    { node: <GustoQuestionCard />, alt: "Close-up of the question 'Who do you plan to pay with Gusto?' with Myself selected" },
+    { node: <div className="mt-[22cqw] origin-top scale-[1.6]"><GustoPhone /></div>, alt: "Gusto's mobile home page with 'How Gusto works' and 'Create account' buttons" },
   ],
 };
 
