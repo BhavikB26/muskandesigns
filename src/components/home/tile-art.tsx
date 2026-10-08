@@ -69,7 +69,7 @@ function LeecoTone() {
 
 function InternshalaSearch() {
   return (
-    <div className="flex items-center gap-2 bg-white px-[5%] py-[3.5%] text-[3cqw] text-[#8a8f98]">
+    <div className="flex items-center gap-2 bg-white px-[5%] py-[3.5%] text-[3cqw] text-[#5f646d]">
       <span aria-hidden className="text-[1.1em] text-[#333]">⌕</span> Find Jobs and Internships…
     </div>
   );
@@ -93,20 +93,20 @@ function InternshalaJob() {
       <p className="text-[1.3em] font-medium text-[#222]">Product Designer Intern</p>
       <p className="mt-[4%] flex items-center justify-between">
         <span className="font-medium">Unacademy</span>
-        <span className="text-[#008bdc]">Website</span>
+        <span className="text-[#006da8]">Website</span>
       </p>
       <p className="mt-[4%] text-[#666]">Unacademy opens it&rsquo;s doors for this year&rsquo;s summer internship program for talented freshers.</p>
       <div className="mt-[6%] grid grid-cols-4 gap-1">
         {[["Internship", "Type"], ["On-site", "Mode"], ["30K/mo", "Stipend"], ["3 months", "Duration"]].map(([a, b]) => (
           <p key={b}>
             <span className="block font-medium">{a}</span>
-            <span className="block text-[#999]">{b}</span>
+            <span className="block text-[#666]">{b}</span>
           </p>
         ))}
       </div>
       <p className="mt-[6%] flex items-center justify-between">
-        <span className="rounded-full bg-[#e9f7ee] px-[0.8em] py-[0.25em] text-[#1f8a4c]">1 week ago</span>
-        <span className="text-[#008bdc]">Details</span>
+        <span className="rounded-full bg-[#e9f7ee] px-[0.8em] py-[0.25em] text-[#156b39]">1 week ago</span>
+        <span className="text-[#006da8]">Details</span>
       </p>
     </div>
   );
