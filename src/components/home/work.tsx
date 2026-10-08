@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ViewTransition } from "react";
 import type { Project } from "@/content/projects";
-import { LoopVideo } from "@/components/home/loop-video";
 import { MaskedText } from "@/components/masked-text";
 
 function year(p: Project) {
@@ -10,17 +9,16 @@ function year(p: Project) {
   return m ? m[1] : undefined;
 }
 
-/** Tall 4:5 media: the rendered device scene, with its loop playing on top while in view. */
-function Media({ slug, preload, viewName }: { slug: string; preload?: boolean; viewName?: string }) {
-  const base = `/work/${slug}`;
+/** Tall 4:5 media: Muskan's real screens in a device scene on a brand-coloured backdrop, plus a small project tag. */
+function Media({ slug, tag, preload, viewName }: { slug: string; tag: string; preload?: boolean; viewName?: string }) {
   const inner = (
-    <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.025]">
-      <Image src={`${base}/tile.webp`} alt="" fill preload={preload} sizes="(min-width: 768px) 46vw, 92vw" className="object-cover" />
-      <LoopVideo base={base} />
+    <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5 group-hover:scale-[1.03] group-has-[a:focus-visible]:scale-[1.03]">
+      <Image src={`/work/${slug}/cover-tile.webp`} alt="" fill preload={preload} sizes="(min-width: 768px) 46vw, 92vw" className="object-cover" />
     </div>
   );
   return (
-    <div className="reveal-media relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#e9e7e2]">
+    <div className="reveal-media relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#2a2733]">
+      <span className="label-mono absolute right-3 top-3 z-10 rounded-full bg-black/55 px-2.5 py-1 text-[10px] text-white backdrop-blur-sm">{tag}</span>
       {viewName ? (
         <ViewTransition name={viewName} share="morph" default="none">
           {inner}
@@ -59,8 +57,9 @@ function Tile({ p, i }: { p: Project; i: number }) {
   const tags = [p.tag === "Concept" ? p.meta.type : "Case study", p.meta.company.split(" (")[0], year(p)].filter((t): t is string => !!t);
   return (
     <li data-reveal className="group relative flex flex-col gap-5">
-      <Media slug={p.slug} preload={i < 2} viewName={`thumb-${p.slug}`} />
+      <Media slug={p.slug} tag={p.meta.company.split(" (")[0]} preload={i < 2} viewName={`thumb-${p.slug}`} />
       <div className="flex flex-col gap-2">
+        <p className="font-display text-[15px] font-medium tracking-[0.02em] text-accent">#{String(i + 1).padStart(2, "0")}</p>
         <h3 className="font-display text-[clamp(1.5rem,1.2rem+0.9vw,2.1rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
           <Link href={`/work/${p.slug}`} className={linkCover}>
             {p.name}
@@ -75,11 +74,12 @@ function Tile({ p, i }: { p: Project; i: number }) {
 }
 
 /* Gusto: no case study page; Muskan offers a walkthrough. Recreated wireframes only, no Gusto assets or text. */
-function GustoTile() {
+function GustoTile({ index }: { index: number }) {
   return (
     <li data-reveal className="group relative flex flex-col gap-5">
-      <Media slug="gusto" />
+      <Media slug="gusto" tag="Gusto" />
       <div className="flex flex-col gap-2">
+        <p className="font-display text-[15px] font-medium tracking-[0.02em] text-accent">#{String(index).padStart(2, "0")}</p>
         <h3 className="font-display text-[clamp(1.5rem,1.2rem+0.9vw,2.1rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
           <a href="#contact" className={linkCover}>
             Growth experiments on Gusto&rsquo;s signup flow
@@ -111,7 +111,7 @@ export function Work({ projects }: { projects: Project[] }) {
           {projects.map((p, i) => (
             <Tile key={p.slug} p={p} i={i} />
           ))}
-          <GustoTile />
+          <GustoTile index={projects.length + 1} />
         </ul>
       </div>
     </section>

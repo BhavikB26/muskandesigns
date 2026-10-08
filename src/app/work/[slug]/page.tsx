@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
-import { LoopVideo } from "@/components/home/loop-video";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
@@ -156,11 +155,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </header>
 
           {/* The card thumbnail morphs into this hero when arriving from the work grid. */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[linear-gradient(180deg,#f1f0ed,#e6e4df)] sm:aspect-[16/10]">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[720px] overflow-hidden rounded-[8px] bg-[#2a2733]">
             <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
-              <div className="absolute inset-y-0 left-1/2 aspect-[4/5] h-full -translate-x-1/2">
-                <Image src={`/work/${p.slug}/tile.webp`} alt={`Device mockup showing screens from the ${p.name} project`} fill preload sizes="(min-width: 640px) 60vw, 100vw" className="object-cover" />
-                <LoopVideo base={`/work/${p.slug}`} />
+              <div className="absolute inset-0">
+                <Image src={`/work/${p.slug}/cover-tile.webp`} alt={`Device mockup showing screens from the ${p.name} project`} fill preload sizes="(min-width: 768px) 720px, 100vw" className="object-cover" />
               </div>
             </ViewTransition>
           </div>
@@ -179,7 +177,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           >
             <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#e9e7e2]">
               <Image
-                src={`/work/${next.slug}/tile.webp`}
+                src={`/work/${next.slug}/cover-tile.webp`}
                 alt=""
                 fill
                 sizes="280px"
