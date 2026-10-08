@@ -367,3 +367,11 @@ html[data-theme="dark"] .tinted {
   transform: translateY(16%);
   opacity: 0;
 }
+
+/* Scrim over the hero lens: keeps the centre calm behind the text. */
+.hero-scrim {
+  background: radial-gradient(60% 55% at 50% 50%, rgba(246, 245, 242, 0.72), rgba(246, 245, 242, 0.25) 70%, transparent 100%);
+}
+html[data-theme="dark"] .hero-scrim {
+  background: radial-gradient(60% 55% at 50% 50%, rgba(10, 7, 16, 0.72), rgba(10, 7, 16, 0.3) 70%, transparent 100%);
+}
