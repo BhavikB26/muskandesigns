@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
-import { NowCard } from "@/components/home/now-card";
 import { HeroShader } from "@/components/home/hero-shader";
 import { MaskedText } from "@/components/masked-text";
 import { MotionToggle } from "@/components/motion";
@@ -70,10 +69,6 @@ export function Hero() {
           >
             Get in touch
           </a>
-        </div>
-
-        <div className="settle w-full max-w-[420px] [animation-delay:620ms]">
-          <NowCard />
         </div>
 
         <MotionToggle className="absolute bottom-4 right-4" />

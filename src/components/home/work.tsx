@@ -1,23 +1,19 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ViewTransition } from "react";
 import type { Project } from "@/content/projects";
 import { MaskedText } from "@/components/masked-text";
+import { TileArt } from "@/components/home/tile-art";
 
 function year(p: Project) {
   const m = p.meta.timeline?.match(/(20\d\d)(?!.*20\d\d)/);
   return m ? m[1] : undefined;
 }
 
-/** Tall 4:5 media: Muskan's real screens in a device scene on a brand-coloured backdrop, plus a small project tag. */
-function Media({ slug, tag, preload, viewName }: { slug: string; tag: string; preload?: boolean; viewName?: string }) {
-  const inner = (
-    <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5 group-hover:scale-[1.03] group-has-[a:focus-visible]:scale-[1.03]">
-      <Image src={`/work/${slug}/cover-tile.webp`} alt="" fill preload={preload} sizes="(min-width: 768px) 46vw, 92vw" className="object-cover" />
-    </div>
-  );
+/** Square media: signature UI pieces from the project on its brand backdrop, plus a small project tag. */
+function Media({ slug, tag, viewName }: { slug: string; tag: string; viewName?: string }) {
+  const inner = <TileArt slug={slug} />;
   return (
-    <div className="reveal-media relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#2a2733]">
+    <div className="reveal-media relative aspect-square overflow-hidden rounded-[8px] bg-[#2a2733]">
       <span className="label-mono absolute right-3 top-3 z-10 rounded-full bg-black/55 px-2.5 py-1 text-[10px] text-white backdrop-blur-sm">{tag}</span>
       {viewName ? (
         <ViewTransition name={viewName} share="morph" default="none">
@@ -56,17 +52,17 @@ function Tags({ items }: { items: string[] }) {
 function Tile({ p, i }: { p: Project; i: number }) {
   const tags = [p.tag === "Concept" ? p.meta.type : "Case study", p.meta.company.split(" (")[0], year(p)].filter((t): t is string => !!t);
   return (
-    <li data-reveal className="group relative flex flex-col gap-5">
-      <Media slug={p.slug} tag={p.meta.company.split(" (")[0]} preload={i < 2} viewName={`thumb-${p.slug}`} />
+    <li data-reveal className="group relative flex flex-col gap-4">
+      <Media slug={p.slug} tag={p.meta.company.split(" (")[0]} viewName={`thumb-${p.slug}`} />
       <div className="flex flex-col gap-2">
-        <p className="font-display text-[15px] font-medium tracking-[0.02em] text-accent">#{String(i + 1).padStart(2, "0")}</p>
-        <h3 className="font-display text-[clamp(1.5rem,1.2rem+0.9vw,2.1rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
+        <p className="font-display text-[13px] font-medium tracking-[0.02em] text-accent">#{String(i + 1).padStart(2, "0")}</p>
+        <h3 className="font-display text-[clamp(1.25rem,1.1rem+0.5vw,1.6rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
           <Link href={`/work/${p.slug}`} className={linkCover}>
             {p.name}
           </Link>
           <Arrow />
         </h3>
-        <p className="max-w-[46ch] text-[16px] leading-[1.55] text-ink-soft">{p.tagline}</p>
+        <p className="max-w-[46ch] text-[15px] leading-[1.55] text-ink-soft">{p.tagline}</p>
         <Tags items={tags} />
       </div>
     </li>
@@ -76,17 +72,17 @@ function Tile({ p, i }: { p: Project; i: number }) {
 /* Gusto: no case study page; Muskan offers a walkthrough. Recreated wireframes only, no Gusto assets or text. */
 function GustoTile({ index }: { index: number }) {
   return (
-    <li data-reveal className="group relative flex flex-col gap-5">
+    <li data-reveal className="group relative flex flex-col gap-4">
       <Media slug="gusto" tag="Gusto" />
       <div className="flex flex-col gap-2">
-        <p className="font-display text-[15px] font-medium tracking-[0.02em] text-accent">#{String(index).padStart(2, "0")}</p>
-        <h3 className="font-display text-[clamp(1.5rem,1.2rem+0.9vw,2.1rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
+        <p className="font-display text-[13px] font-medium tracking-[0.02em] text-accent">#{String(index).padStart(2, "0")}</p>
+        <h3 className="font-display text-[clamp(1.25rem,1.1rem+0.5vw,1.6rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
           <a href="#contact" className={linkCover}>
             Growth experiments on Gusto&rsquo;s signup flow
           </a>
           <Arrow />
         </h3>
-        <p className="max-w-[46ch] text-[16px] leading-[1.55] text-ink-soft">Happy to walk through it in an interview.</p>
+        <p className="max-w-[46ch] text-[15px] leading-[1.55] text-ink-soft">Happy to walk through it in an interview.</p>
         <Tags items={["Walkthrough on request", "Gusto", "Recreated wireframes"]} />
       </div>
     </li>
@@ -107,7 +103,7 @@ export function Work({ projects }: { projects: Project[] }) {
           </h2>
         </div>
 
-        <ul className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 md:gap-x-10 md:gap-y-24">
+        <ul className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-16">
           {projects.map((p, i) => (
             <Tile key={p.slug} p={p} i={i} />
           ))}

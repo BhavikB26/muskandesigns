@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
+import { TileArt } from "@/components/home/tile-art";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
@@ -155,10 +156,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </header>
 
           {/* The card thumbnail morphs into this hero when arriving from the work grid. */}
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-[720px] overflow-hidden rounded-[8px] bg-[#2a2733]">
+          <div className="relative mx-auto aspect-square w-full max-w-[720px] overflow-hidden rounded-[8px] bg-[#2a2733]">
             <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
               <div className="absolute inset-0">
-                <Image src={`/work/${p.slug}/cover-tile.webp`} alt={`Device mockup showing screens from the ${p.name} project`} fill preload sizes="(min-width: 768px) 720px, 100vw" className="object-cover" />
+                <TileArt slug={p.slug} />
               </div>
             </ViewTransition>
           </div>
@@ -175,14 +176,8 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             href={`/work/${next.slug}`}
             className="group mt-6 grid grid-cols-1 items-center gap-6 border-t border-line pt-8 md:grid-cols-[220px_1fr]"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#e9e7e2]">
-              <Image
-                src={`/work/${next.slug}/cover-tile.webp`}
-                alt=""
-                fill
-                sizes="280px"
-                className="object-cover transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.04] group-focus-visible:scale-[1.04]"
-              />
+            <div className="relative aspect-square overflow-hidden rounded-[8px]">
+              <TileArt slug={next.slug} />
             </div>
             <div className="flex flex-col gap-2">
               <span className="label-mono text-muted">Next project</span>

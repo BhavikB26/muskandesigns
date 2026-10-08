@@ -333,3 +333,25 @@ html[data-theme="dark"] .sky {
 html[data-theme="dark"] .tinted {
   background-color: var(--color-card);
 }
+
+/* ---------- v8b: case-study tile art ---------- */
+.tile-art {
+  container-type: inline-size;
+}
+.tile-grain {
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* Pieces sit at their tilt; on hover they drift apart by depth (stops for Pause motion and reduced motion). */
+.piece {
+  transform: rotate(var(--r));
+  transition: transform 0.9s var(--ease-out-expo);
+}
+.group:hover .piece,
+.group:has(a:focus-visible) .piece {
+  transform: translate3d(calc(var(--d) * -3px), calc(var(--d) * -5px), 0) rotate(calc(var(--r) * 1.4));
+}
+html[data-motion="paused"] .group .piece {
+  transform: rotate(var(--r));
+}
