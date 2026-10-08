@@ -184,6 +184,96 @@ function GustoQuestionCard() {
   );
 }
 
+/* Swiping loop: illustrative dating-app elements drawn in code (a research project, so these are
+   illustrations of the experience being studied, not screens Muskan designed). */
+function Avatar({ hue }: { hue: string }) {
+  return (
+    <div className="relative h-full w-full overflow-hidden" style={{ background: `linear-gradient(160deg, ${hue}, #2a1611)` }}>
+      <span className="absolute left-1/2 top-[22%] block size-[38%] -translate-x-1/2 rounded-full bg-white/80" />
+      <span className="absolute left-1/2 top-[56%] block h-[60%] w-[78%] -translate-x-1/2 rounded-t-[50%] bg-white/80" />
+    </div>
+  );
+}
+
+function ProfileCard({ hue, className = "", style }: { hue: string; className?: string; style?: CSSProperties }) {
+  return (
+    <div className={`absolute w-[46cqw] overflow-hidden rounded-[4cqw] bg-white shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)] ${className}`} style={style}>
+      <div className="aspect-[4/5]">
+        <Avatar hue={hue} />
+      </div>
+      <div className="flex flex-col gap-[1.4cqw] p-[3cqw]">
+        <span className="block h-[2.4cqw] w-[55%] rounded-full bg-[#2b2b2b]" />
+        <span className="block h-[1.8cqw] w-[80%] rounded-full bg-[#d7d2cc]" />
+      </div>
+    </div>
+  );
+}
+
+function ActionButton({ kind }: { kind: "nope" | "like" }) {
+  return (
+    <span className={`grid size-[13cqw] place-items-center rounded-full bg-white text-[6cqw] shadow-[0_18px_30px_-14px_rgba(0,0,0,0.55)] ${kind === "like" ? "text-[#e0475a]" : "text-[#6b6b6b]"}`}>
+      {kind === "like" ? "♥" : "✕"}
+    </span>
+  );
+}
+
+function SwipeStack() {
+  return (
+    <div className="relative h-[82cqw] w-[80cqw]">
+      <ProfileCard hue="#c98b6b" className="left-[2cqw] top-[6cqw] -rotate-[9deg] opacity-90" />
+      <ProfileCard hue="#8b6bc9" className="right-[2cqw] top-[4cqw] rotate-[8deg] opacity-90" />
+      <ProfileCard hue="#e0475a" className="left-1/2 top-0 -translate-x-1/2" />
+      <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-[6cqw]">
+        <ActionButton kind="nope" />
+        <ActionButton kind="like" />
+      </div>
+    </div>
+  );
+}
+
+function SwipeLoop() {
+  return (
+    <div className="relative grid size-[80cqw] place-items-center">
+      {/* The loop: swipe, match, stall, repeat. */}
+      <svg aria-hidden viewBox="0 0 100 100" className="absolute inset-0 size-full">
+        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.2" strokeDasharray="3 3" />
+        <path d="M86 44 l4 7 l-8 -1" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      <ProfileCard hue="#e0475a" className="left-1/2 top-1/2 w-[34cqw] -translate-x-1/2 -translate-y-1/2 rotate-[12deg]" />
+      <span className="absolute left-[6cqw] top-[10cqw] rotate-[-10deg] rounded-[1.6cqw] border-[0.6cqw] border-[#17803f] bg-white px-[2cqw] py-[0.6cqw] text-[4.4cqw] font-bold tracking-[0.06em] text-[#17803f]">LIKE</span>
+      <span className="absolute bottom-[12cqw] right-[4cqw] rotate-[8deg] rounded-[1.6cqw] border-[0.6cqw] border-[#c42d44] bg-white px-[2cqw] py-[0.6cqw] text-[4.4cqw] font-bold tracking-[0.06em] text-[#c42d44]">NOPE</span>
+      <span className="absolute right-[10cqw] top-[6cqw] grid size-[11cqw] place-items-center rounded-full bg-white text-[5.4cqw] text-[#e0475a] shadow-lg">♥</span>
+    </div>
+  );
+}
+
+function ChatBubbles() {
+  return (
+    <div className="flex w-[74cqw] flex-col gap-[3cqw]">
+      <span className="flex items-center gap-[2.4cqw] self-start rounded-full bg-white/95 py-[1.4cqw] pl-[1.4cqw] pr-[4cqw] text-[3.6cqw] font-semibold text-[#c2334a] shadow-lg">
+        <span aria-hidden className="relative flex">
+          <span className="block size-[8cqw] overflow-hidden rounded-full ring-[0.6cqw] ring-white"><Avatar hue="#c98b6b" /></span>
+          <span className="-ml-[3cqw] block size-[8cqw] overflow-hidden rounded-full ring-[0.6cqw] ring-white"><Avatar hue="#8b6bc9" /></span>
+          <span className="absolute -bottom-[1cqw] left-1/2 grid size-[4.4cqw] -translate-x-1/2 place-items-center rounded-full bg-[#e0475a] text-[2.6cqw] text-white">♥</span>
+        </span>
+        It&rsquo;s a match
+      </span>
+      <span className="max-w-[80%] self-start rounded-[4cqw] rounded-bl-[1cqw] bg-white px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
+        <span className="block h-[2cqw] w-[44cqw] rounded-full bg-[#d7d2cc]" />
+        <span className="mt-[1.6cqw] block h-[2cqw] w-[30cqw] rounded-full bg-[#d7d2cc]" />
+      </span>
+      <span className="max-w-[80%] self-end rounded-[4cqw] rounded-br-[1cqw] bg-[#e0475a] px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
+        <span className="block h-[2cqw] w-[36cqw] rounded-full bg-white/70" />
+      </span>
+      <span className="flex gap-[1.4cqw] self-start rounded-full bg-white px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
+        {[0, 1, 2].map((k) => (
+          <span key={k} className="block size-[2.2cqw] rounded-full bg-[#b3aca4]" />
+        ))}
+      </span>
+    </div>
+  );
+}
+
 /* ---------- frames per project ---------- */
 
 const FRAMES: Record<string, Frame[]> = {
@@ -217,9 +307,9 @@ const FRAMES: Record<string, Frame[]> = {
     f("studio-store", 6, 833, 504, "Studio Store's customise-your-organisation form"),
   ],
   "swiping-loop": [
-    f("swiping-loop", 1, 1240, 1392, "Diagram of the swiping loop on dating apps"),
-    f("swiping-loop", 2, 1260, 1137, "Affinity map of research notes"),
-    f("swiping-loop", 3, 1138, 569, "The typical dating-app journey"),
+    { node: <SwipeStack />, alt: "Illustration of a stack of dating-app profile cards with like and pass buttons" },
+    { node: <SwipeLoop />, alt: "Illustration of the swiping loop: a profile card swiped round and round between like and nope" },
+    { node: <div className="translate-x-[4cqw] scale-[1.22]"><ChatBubbles /></div>, alt: "Illustration of a match followed by a stalled chat" },
   ],
   basecamp: [
     f("basecamp", 1, 1096, 686, "Redesigned Basecamp landing page hero"),
