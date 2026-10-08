@@ -9,81 +9,47 @@ function year(p: Project) {
   return m ? m[1] : undefined;
 }
 
-/** Square media: signature UI pieces from the project on its brand backdrop, plus a small project tag. */
-function Media({ slug, tag, viewName }: { slug: string; tag: string; viewName?: string }) {
-  const inner = <TileArt slug={slug} />;
-  return (
-    <div className="reveal-media relative aspect-square overflow-hidden rounded-[8px] bg-[#2a2733]">
-      <span className="label-mono absolute right-3 top-3 z-10 rounded-full bg-black/55 px-2.5 py-1 text-[10px] text-white backdrop-blur-sm">{tag}</span>
-      {viewName ? (
-        <ViewTransition name={viewName} share="morph" default="none">
-          {inner}
-        </ViewTransition>
-      ) : (
-        inner
-      )}
-    </div>
-  );
-}
 
-const linkCover =
-  "outline-none after:absolute after:inset-0 after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)] focus-visible:after:rounded-[8px]";
-
-function Arrow() {
+/**
+ * A mosaic tile: full-bleed project art with a tiny tag. On hover-capable screens the title and tagline
+ * fade in over a softened overlay (also on keyboard focus); on touch screens they sit below the tile.
+ */
+function MosaicTile({
+  slug, href, title, tagline, tag, label, index, viewName,
+}: { slug: string; href: string; title: string; tagline: string; tag: string; label: string; index: number; viewName?: string }) {
+  const art = <TileArt slug={slug} index={index} />;
+  const external = href.startsWith("#");
+  const LinkEl = external ? "a" : Link;
   return (
-    <span aria-hidden className="ml-2 inline-block text-accent transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1">
-      →
-    </span>
-  );
-}
-
-function Tags({ items }: { items: string[] }) {
-  return (
-    <ul className="mt-1 flex flex-wrap gap-x-4 gap-y-1">
-      {items.map((t) => (
-        <li key={t} className="label-mono text-muted">
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Tile({ p, i }: { p: Project; i: number }) {
-  const tags = [p.tag === "Concept" ? p.meta.type : "Case study", p.meta.company.split(" (")[0], year(p)].filter((t): t is string => !!t);
-  return (
-    <li data-reveal className="group relative flex flex-col gap-4">
-      <Media slug={p.slug} tag={p.meta.company.split(" (")[0]} viewName={`thumb-${p.slug}`} />
-      <div className="flex flex-col gap-2">
-        <p className="font-display text-[13px] font-medium tracking-[0.02em] text-accent">#{String(i + 1).padStart(2, "0")}</p>
-        <h3 className="font-display text-[clamp(1.25rem,1.1rem+0.5vw,1.6rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
-          <Link href={`/work/${p.slug}`} className={linkCover}>
-            {p.name}
-          </Link>
-          <Arrow />
-        </h3>
-        <p className="max-w-[46ch] text-[15px] leading-[1.55] text-ink-soft">{p.tagline}</p>
-        <Tags items={tags} />
+    <li data-reveal className="group relative">
+      <div className="reveal-media relative aspect-square overflow-hidden rounded-[6px] bg-[#2a2733]">
+        {viewName ? (
+          <ViewTransition name={viewName} share="morph" default="none">
+            {art}
+          </ViewTransition>
+        ) : (
+          art
+        )}
+        <span className="label-mono absolute right-3 top-3 z-20 rounded-full bg-black/55 px-2.5 py-1 text-[10px] text-white backdrop-blur-sm">{tag}</span>
+        {/* Hover/focus veil (decorative). */}
+        <span
+          aria-hidden
+          className={`pointer-events-none absolute inset-0 z-10 hidden bg-[rgba(14,12,24,0.55)] opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block`}
+        />
       </div>
-    </li>
-  );
-}
-
-/* Gusto: no case study page; Muskan offers a walkthrough. Recreated wireframes only, no Gusto assets or text. */
-function GustoTile({ index }: { index: number }) {
-  return (
-    <li data-reveal className="group relative flex flex-col gap-4">
-      <Media slug="gusto" tag="Gusto" />
-      <div className="flex flex-col gap-2">
-        <p className="font-display text-[13px] font-medium tracking-[0.02em] text-accent">#{String(index).padStart(2, "0")}</p>
-        <h3 className="font-display text-[clamp(1.25rem,1.1rem+0.5vw,1.6rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink">
-          <a href="#contact" className={linkCover}>
-            Growth experiments on Gusto&rsquo;s signup flow
-          </a>
-          <Arrow />
+      <div
+        className={`relative mt-3 flex flex-col gap-1.5 can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-5 can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
+      >
+        <h3 className={`font-display text-[clamp(1.1rem,1rem+0.4vw,1.35rem)] font-medium leading-[1.15] tracking-[0.01em] text-ink can-hover:text-white`}>
+          <LinkEl href={href} className="outline-none after:absolute after:inset-0 after:z-30 after:content-[''] focus-visible:after:rounded-[6px] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]">
+            <span className="sr-only">{String(index + 1).padStart(2, "0")}. </span>
+            {title}
+          </LinkEl>
         </h3>
-        <p className="max-w-[46ch] text-[15px] leading-[1.55] text-ink-soft">Happy to walk through it in an interview.</p>
-        <Tags items={["Walkthrough on request", "Gusto", "Recreated wireframes"]} />
+        <p className={`max-w-[40ch] text-[14px] leading-[1.5] text-ink-soft can-hover:text-white/90`}>{tagline}</p>
+        <p className={`label-mono text-[11px] text-muted can-hover:text-white/80`}>
+          {label} <span aria-hidden>↘</span>
+        </p>
       </div>
     </li>
   );
@@ -103,11 +69,30 @@ export function Work({ projects }: { projects: Project[] }) {
           </h2>
         </div>
 
-        <ul className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-y-16">
+        <ul className="grid grid-cols-1 gap-x-3 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 can-hover:gap-y-3">
           {projects.map((p, i) => (
-            <Tile key={p.slug} p={p} i={i} />
+            <MosaicTile
+              key={p.slug}
+              slug={p.slug}
+              href={`/work/${p.slug}`}
+              title={p.name}
+              tagline={p.tagline}
+              tag={p.meta.company.split(" (")[0]}
+              label={[p.tag === "Concept" ? p.meta.type : "Case study", year(p)].filter(Boolean).join(" · ")}
+              index={i}
+              viewName={`thumb-${p.slug}`}
+            />
           ))}
-          <GustoTile index={projects.length + 1} />
+          {/* Gusto has no case study page: Muskan offers a walkthrough instead. */}
+          <MosaicTile
+            slug="gusto"
+            href="#contact"
+            title="Growth experiments on Gusto’s signup flow"
+            tagline="Happy to walk through it in an interview."
+            tag="Gusto"
+            label="Walkthrough on request"
+            index={projects.length}
+          />
         </ul>
       </div>
     </section>

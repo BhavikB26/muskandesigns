@@ -7,6 +7,9 @@
 
 @import "tailwindcss";
 
+/* Devices with a real hover (mouse/trackpad). */
+@custom-variant can-hover (@media (hover: hover));
+
 /* Light is the default theme; html[data-theme="dark"] switches to dark.
    Every text pair passes WCAG AA in both themes. */
 :root {
@@ -343,15 +346,23 @@ html[data-theme="dark"] .tinted {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-/* Pieces sit at their tilt; on hover they drift apart by depth (stops for Pause motion and reduced motion). */
-.piece {
-  transform: rotate(var(--r));
-  transition: transform 0.9s var(--ease-out-expo);
+/* Tile frames: the current one sits in place; the previous slides up and blurs out; the next waits below. */
+.tile-frame {
+  transition:
+    transform 1s var(--ease-out-expo),
+    opacity 0.8s var(--ease-out-expo),
+    filter 0.8s var(--ease-out-expo);
 }
-.group:hover .piece,
-.group:has(a:focus-visible) .piece {
-  transform: translate3d(calc(var(--d) * -3px), calc(var(--d) * -5px), 0) rotate(calc(var(--r) * 1.4));
+.tile-frame[data-state="in"] {
+  transform: none;
+  opacity: 1;
 }
-html[data-motion="paused"] .group .piece {
-  transform: rotate(var(--r));
+.tile-frame[data-state="out"] {
+  transform: translateY(-14%);
+  opacity: 0;
+  filter: blur(10px);
+}
+.tile-frame[data-state="idle"] {
+  transform: translateY(16%);
+  opacity: 0;
 }
