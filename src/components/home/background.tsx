@@ -1,3 +1,4 @@
+import { MaskedText } from "@/components/masked-text";
 import Image from "next/image";
 
 type Row = { when: string; where: string; what: string };
@@ -42,8 +43,10 @@ export function Background() {
           <div data-reveal className="flex flex-col gap-6">
             <p className="label-mono text-muted">(02) About</p>
             <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.02] tracking-[0.01em]">
-              A little background, if you&rsquo;re{" "}
-              <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">still here</em>
+              <MaskedText text="A little background, if you’re" onReveal />{" "}
+              <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">
+                <MaskedText text="still here" start={6} onReveal />
+              </em>
             </h2>
             <ul className="flex flex-wrap gap-2">
               {chips.map((c) => (

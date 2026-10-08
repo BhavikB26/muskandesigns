@@ -19,7 +19,7 @@ export function NowCard() {
   }, []);
 
   return (
-    <div className="w-full rounded-[20px] border border-line bg-card/80 p-5 text-left backdrop-blur">
+    <div className="w-full rounded-[8px] border border-line bg-card/80 p-5 text-left backdrop-blur">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}

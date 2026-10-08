@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
-import { ProjectMedia } from "@/components/home/work-scenes";
+import { LoopVideo } from "@/components/home/loop-video";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { getNextProject, getProject, projects, thumbOf, type Block, type Img, type Project } from "@/content/projects";
+import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
 
 export const dynamicParams = false;
 
@@ -48,7 +48,7 @@ function Figure({ image, tint, priority = false }: { image: Img; tint: string; p
   const tall = image.height > image.width * 1.15;
   return (
     <figure className="flex flex-col gap-3">
-      <div className="flex items-center justify-center overflow-hidden rounded-[20px]" style={{ backgroundColor: tint }}>
+      <div className="flex items-center justify-center overflow-hidden rounded-[8px]" style={{ backgroundColor: tint }}>
         <Image
           src={image.src}
           alt={image.alt}
@@ -156,10 +156,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </header>
 
           {/* The card thumbnail morphs into this hero when arriving from the work grid. */}
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line md:aspect-[16/9]" style={{ backgroundColor: p.tint }}>
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[linear-gradient(180deg,#f1f0ed,#e6e4df)] sm:aspect-[16/10]">
             <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
-              <div className="absolute inset-0">
-                <ProjectMedia slug={p.slug} src={thumbOf(p)} alt={`Screens from the ${p.name} project`} preload sizes="(min-width: 1320px) 1240px, 100vw" />
+              <div className="absolute inset-y-0 left-1/2 aspect-[4/5] h-full -translate-x-1/2">
+                <Image src={`/work/${p.slug}/tile.webp`} alt={`Device mockup showing screens from the ${p.name} project`} fill preload sizes="(min-width: 640px) 60vw, 100vw" className="object-cover" />
+                <LoopVideo base={`/work/${p.slug}`} />
               </div>
             </ViewTransition>
           </div>
@@ -174,11 +175,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
           <Link
             href={`/work/${next.slug}`}
-            className="group mt-6 grid grid-cols-1 items-center gap-6 rounded-[24px] bg-card p-5 md:grid-cols-[280px_1fr] md:p-6"
+            className="group mt-6 grid grid-cols-1 items-center gap-6 border-t border-line pt-8 md:grid-cols-[220px_1fr]"
           >
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[16px]" style={{ backgroundColor: next.tint }}>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[8px] bg-[#e9e7e2]">
               <Image
-                src={next.cover.src}
+                src={`/work/${next.slug}/tile.webp`}
                 alt=""
                 fill
                 sizes="280px"
