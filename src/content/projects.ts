@@ -35,6 +35,8 @@ export type Project = {
   /** Show the whole cover on the work grid instead of filling the square. */
   coverFit?: "contain";
   links?: { label: string; href: string }[];
+  /** Card image on the work grid; defaults to /work/{slug}/thumb.webp. */
+  thumb?: string;
   /** Background colour behind the cover on the work grid. */
   tint: string;
   intro: string;
@@ -46,6 +48,8 @@ function img(src: string, alt: string, caption?: string): Img {
   if (!dims) throw new Error(`Missing image dimensions for ${src}`);
   return { src, width: dims[0], height: dims[1], alt, caption };
 }
+
+export const thumbOf = (p: Pick<Project, "slug" | "thumb">) => p.thumb ?? `/work/${p.slug}/thumb.webp`;
 
 const pp = (f: string) => `/work/ai-mentor/exact/${f}`;
 const w = (slug: string, name: string) => `/work/${slug}/img-${name}.webp`;
@@ -262,6 +266,8 @@ export const projects: Project[] = [
   // ───────────────────────────── Builder University ───────────────────────────
   {
     slug: "builder-university",
+    // Muskan's own thumbnail design.
+    thumb: "/work/builder-university/cover-v6.webp",
     name: "Builder University",
     tagline: "A learning platform to onboard new hires and third-party experts.",
     tag: "Case study",
@@ -354,6 +360,8 @@ export const projects: Project[] = [
   // ───────────────────────────── Ratings & Reviews ────────────────────────────
   {
     slug: "ratings-reviews",
+    // Muskan's own thumbnail design.
+    thumb: "/work/ratings-reviews/cover-v6.webp",
     name: "Ratings & Reviews",
     tagline: "A reward-led flow that gets guests to leave fuller reviews after checkout.",
     tag: "Case study",
@@ -460,6 +468,8 @@ export const projects: Project[] = [
   // ─────────────────────────────── Studio Store ───────────────────────────────
   {
     slug: "studio-store",
+    // Muskan's own thumbnail design.
+    thumb: "/work/studio-store/cover-v6.webp",
     name: "Studio Store",
     tagline: "Onboarding micro-business owners into their new store dashboard.",
     tag: "Concept",
@@ -676,6 +686,8 @@ export const projects: Project[] = [
   // ───────────────────────────────── Basecamp ─────────────────────────────────
   {
     slug: "basecamp",
+    // Muskan's own thumbnail design.
+    thumb: "/work/basecamp/cover-v6.webp",
     name: "Basecamp",
     tagline: "A landing page that shows what Basecamp can do, faster.",
     tag: "Concept",

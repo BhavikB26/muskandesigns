@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
+import { ProjectMedia } from "@/components/home/work-scenes";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { getNextProject, getProject, projects, type Block, type Img, type Project } from "@/content/projects";
+import { getNextProject, getProject, projects, thumbOf, type Block, type Img, type Project } from "@/content/projects";
 
 export const dynamicParams = false;
 
@@ -157,14 +158,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {/* The card thumbnail morphs into this hero when arriving from the work grid. */}
           <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line md:aspect-[16/9]" style={{ backgroundColor: p.tint }}>
             <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
-              <Image
-                src={`/work/${p.slug}/thumb.webp`}
-                alt={`Screens from the ${p.name} project`}
-                fill
-                preload
-                sizes="(min-width: 1320px) 1240px, 100vw"
-                className="object-cover"
-              />
+              <div className="absolute inset-0">
+                <ProjectMedia slug={p.slug} src={thumbOf(p)} alt={`Screens from the ${p.name} project`} preload sizes="(min-width: 1320px) 1240px, 100vw" />
+              </div>
             </ViewTransition>
           </div>
 

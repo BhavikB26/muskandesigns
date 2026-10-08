@@ -22,15 +22,15 @@ export function Testimonials() {
   return (
     <section aria-labelledby="kind-words" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <div className="grid grid-cols-1 items-end gap-6 border-t border-line pt-4 md:grid-cols-12">
-          <p className="label-mono text-muted md:col-span-3">(03) Kind words</p>
-          <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.6vw,5.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-9">
+        <div className="flex flex-col gap-3">
+          <p className="label-mono text-muted">(03) Kind words</p>
+          <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[-0.045em]">
             From people I&rsquo;ve <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">worked with</em>
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {testimonials.map((t) => (
-            <figure key={t.name} data-reveal className="flex flex-col justify-between gap-8 rounded-[6px] border border-line bg-card p-7 md:p-10">
+            <figure key={t.name} data-reveal className="flex flex-col justify-between gap-8 rounded-[28px] bg-card p-7 ring-1 ring-line md:p-10">
               <blockquote className="text-[clamp(1rem,0.95rem+0.25vw,1.15rem)] leading-[1.65] text-ink-soft">&ldquo;{t.quote}&rdquo;</blockquote>
               <figcaption className="flex items-center gap-3">
                 <Image src={t.avatar} alt="" width={48} height={48} className="size-12 rounded-full object-cover" />

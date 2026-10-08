@@ -1,232 +1,188 @@
-"use client";
-
-import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState, ViewTransition } from "react";
-import type { Project } from "@/content/projects";
+import { ViewTransition } from "react";
+import { thumbOf, type Project } from "@/content/projects";
+import { ProjectMedia } from "@/components/home/work-scenes";
 
-type View = "grid" | "index";
-
-const num = (i: number) => String(i + 1).padStart(2, "0");
+// Soft pastel per project (light theme). Dark theme uses the plain card colour.
+const PASTEL: Record<string, string> = {
+  "ai-mentor": "#fbf0dc",
+  "builder-design-system": "#ebe8f8",
+  "builder-university": "#efe9f8",
+  "ratings-reviews": "#fbe7e5",
+  "studio-store": "#f0ebfb",
+  internshala: "#e4f1f7",
+  "swiping-loop": "#e6f2ea",
+  basecamp: "#e9ebf6",
+};
 
 function year(p: Project) {
   const m = p.meta.timeline?.match(/(20\d\d)(?!.*20\d\d)/);
   return m ? m[1] : undefined;
 }
 
-function kind(p: Project) {
-  return p.tag === "Concept" ? p.meta.type : "Case study";
-}
-
-/* ---------- Grid view: consistent 4:3 thumbnails, tilt + cursor label on hover, lift on focus ---------- */
-
-function GridCard({ p, i, shown }: { p: Project; i: number; shown: boolean }) {
-  const meta = [p.meta.role, p.meta.company, year(p)].filter(Boolean).join(" · ");
-  const frame = useRef<HTMLDivElement>(null);
-  const label = useRef<HTMLSpanElement>(null);
-
-  const canMove = () =>
-    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
-    document.documentElement.dataset.motion !== "paused";
-
+function Card({ p, i }: { p: Project; i: number }) {
+  const meta = [p.tag === "Concept" ? p.meta.type : "Case study", p.meta.company.split(" (")[0], year(p)].filter(Boolean).join(" · ");
   return (
     <li
       data-reveal
-      {...(shown ? { "data-revealed": "" } : {})}
-      className="group relative flex flex-col gap-5"
-      onPointerMove={(e) => {
-        const f = frame.current;
-        if (!f || !canMove()) return;
-        const r = f.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
-        f.style.transform = `perspective(1100px) rotateX(${(-py * 5).toFixed(2)}deg) rotateY(${(px * 6).toFixed(2)}deg) translateY(-4px)`;
-        if (label.current) {
-          label.current.style.opacity = "1";
-          label.current.style.transform = `translate3d(${e.clientX - r.left + 16}px, ${e.clientY - r.top + 16}px, 0)`;
-        }
-      }}
-      onPointerLeave={() => {
-        if (frame.current) frame.current.style.transform = "";
-        if (label.current) label.current.style.opacity = "0";
-      }}
+      className="tinted group relative grid grid-cols-1 items-center gap-8 overflow-hidden rounded-[28px] p-5 ring-1 ring-line transition-shadow duration-700 ease-[var(--ease-out-expo)] hover:shadow-[0_30px_60px_-36px_rgba(0,0,0,0.35)] sm:p-8 md:grid-cols-12 md:gap-12 md:p-12"
+      style={{ "--tint": PASTEL[p.slug] ?? "var(--color-card)" } as React.CSSProperties}
     >
-      <div
-        ref={frame}
-        className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line transition-transform duration-700 ease-[var(--ease-out-expo)] will-change-transform group-has-[a:focus-visible]:-translate-y-1"
-        style={{ backgroundColor: p.tint }}
-      >
-        <div data-parallax className="absolute inset-x-0 -inset-y-[5%]">
-          <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
-          <Image
-            src={`/work/${p.slug}/thumb.webp`}
-            alt=""
-            fill
-            sizes="(min-width: 1280px) 44vw, (min-width: 768px) 46vw, 92vw"
-            preload={i < 2}
-            className="object-cover transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.045] group-has-[a:focus-visible]:scale-[1.045]"
-          />
-          </ViewTransition>
-        </div>
-        <span className="label-mono absolute left-4 top-4 rounded-full bg-white/90 px-2.5 py-1 text-[#151412] backdrop-blur">
-          {kind(p)}
-        </span>
-        {/* Cursor-following label (decorative; the real cursor stays visible). */}
-        <span
-          ref={label}
-          aria-hidden
-          className="label-mono pointer-events-none absolute left-0 top-0 rounded-full bg-[#151412] px-3 py-2 text-white opacity-0 transition-opacity duration-300"
-        >
-          View case study ↗
-        </span>
-      </div>
-      <div className="flex flex-col gap-2 px-1">
-        <p className="label-mono flex gap-3 text-muted">
-          <span className="text-accent">{num(i)}</span>
-          <span>{meta}</span>
-        </p>
-        <h3 className="font-display text-[clamp(1.5rem,1.15rem+1vw,2.25rem)] font-medium leading-[1.1] tracking-[-0.03em]">
+      <div className="order-2 flex flex-col gap-4 md:order-1 md:col-span-5">
+        <p className="label-mono text-muted">{meta}</p>
+        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.035em] text-ink">
           {/* One link per card; its ::after makes the whole card clickable. */}
           <Link
             href={`/work/${p.slug}`}
-            className="outline-none after:absolute after:inset-0 after:rounded-[20px] after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
+            className="outline-none after:absolute after:inset-0 after:rounded-[28px] after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:-outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
           >
             {p.name}
-            <span aria-hidden className="ml-2 inline-block text-accent transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:translate-x-1.5 group-has-[a:focus-visible]:translate-x-1.5">
-              →
-            </span>
           </Link>
         </h3>
-        <p className="max-w-[48ch] text-[clamp(0.98rem,0.95rem+0.2vw,1.1rem)] leading-[1.55] text-ink-soft">{p.tagline}</p>
+        <p className="max-w-[42ch] text-[clamp(1rem,0.95rem+0.25vw,1.15rem)] leading-[1.55] text-ink-soft">{p.tagline}</p>
+        <span
+          aria-hidden
+          className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-ink/80 bg-card px-5 py-2.5 text-[15px] font-medium text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-background"
+        >
+          Read case study
+          <span className="transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+
+      <div className="order-1 md:order-2 md:col-span-7">
+        <div className="reveal-media relative aspect-[4/3] overflow-hidden rounded-[18px] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5" style={{ backgroundColor: p.tint }}>
+          <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
+            <div className="absolute inset-0 transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:scale-[1.03]">
+              <ProjectMedia slug={p.slug} src={thumbOf(p)} alt="" preload={i < 1} sizes="(min-width: 768px) 52vw, 92vw" />
+            </div>
+          </ViewTransition>
+        </div>
       </div>
     </li>
   );
 }
 
-/* ---------- Index view: precise list, floating preview on hover or focus ---------- */
+/* Gusto: no case study page. A walkthrough card with wireframes drawn in code (no Gusto assets or text). */
+function Bar({ w, h = "h-1.5", c = "bg-[#c9c6c0]" }: { w: string; h?: string; c?: string }) {
+  return <span className={`block rounded-full ${h} ${c}`} style={{ width: w }} />;
+}
 
-function IndexList({ projects }: { projects: Project[] }) {
-  const [active, setActive] = useState<number | null>(null);
-  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);
-
-  const current = active !== null ? projects[active] : null;
-
+function Screen({ children, label }: { children: React.ReactNode; label: string }) {
   return (
-    <div className="relative">
-      <ul
-        className="border-b border-line"
-        onPointerMove={(e) => setPos({ x: e.clientX, y: e.clientY })}
-        onPointerLeave={() => {
-          setActive(null);
-          setPos(null);
-        }}
-      >
-        {projects.map((p, i) => (
-          <li key={p.slug} className="border-t border-line">
-            <Link
-              href={`/work/${p.slug}`}
-              onPointerEnter={() => setActive(i)}
-              onFocus={(e) => {
-                setActive(i);
-                const r = e.currentTarget.getBoundingClientRect();
-                setPos({ x: r.right - 260, y: r.top + r.height / 2 });
-              }}
-              onBlur={() => setActive(null)}
-              className="group grid min-h-16 grid-cols-[2.5rem_1fr_auto] items-center gap-x-4 gap-y-1 py-4 transition-colors duration-300 hover:text-accent focus-visible:text-accent md:grid-cols-[3rem_minmax(0,1.4fr)_minmax(0,1fr)_minmax(0,1fr)_4rem] md:py-5"
-            >
-              <span className="label-mono text-muted group-hover:text-accent group-focus-visible:text-accent">{num(i)}</span>
-              <span className="font-display text-[clamp(1.25rem,1rem+1vw,2rem)] font-medium tracking-[-0.02em]">{p.name}</span>
-              <span className="label-mono col-start-2 text-muted md:col-start-auto">
-                {p.meta.role} · {p.meta.company}
-              </span>
-              <span className="label-mono hidden text-muted md:block">{kind(p)}</span>
-              <span className="label-mono row-start-1 text-right text-muted md:row-start-auto">{year(p) ?? "—"}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* Decorative floating preview (desktop pointers, and keyboard focus). */}
-      {current && pos && (
-        <div
-          aria-hidden
-          className="pointer-events-none fixed z-30 hidden h-[200px] w-[260px] overflow-hidden rounded-[6px] shadow-[0_30px_60px_-20px_rgba(0,0,0,0.8)] ring-1 ring-line md:block"
-          style={{ left: pos.x + 24, top: pos.y - 100, backgroundColor: current.tint }}
-        >
-          <Image
-            src={`/work/${current.slug}/thumb.webp`}
-            alt=""
-            fill
-            sizes="260px"
-            className="object-cover"
-          />
-        </div>
-      )}
+    <div className="flex flex-1 flex-col gap-2">
+      <div className="flex aspect-[9/16] flex-col gap-2 rounded-[10px] bg-white p-2.5 shadow-[0_16px_30px_-18px_rgba(0,0,0,0.35)] ring-1 ring-black/10">
+        {children}
+      </div>
+      <span className="text-center font-mono text-[10px] uppercase tracking-[0.06em] text-[#5f5a53]">{label}</span>
     </div>
   );
 }
 
-export function Work({ projects }: { projects: Project[] }) {
-  const [view, setView] = useState<View>("grid");
-  // After switching views, re-rendered rows appear immediately (the scroll observer only runs once per page).
-  const [switched, setSwitched] = useState(false);
+function GustoWireframes() {
+  return (
+    <div aria-hidden className="absolute inset-0 flex flex-col justify-center gap-4 bg-[#eceae6] px-[5%] py-[6%]">
+      <div className="flex items-start gap-[3%] transition-transform duration-[1.2s] ease-[var(--ease-out-expo)] group-hover:-translate-y-1">
+        <Screen label="Home">
+          <Bar w="40%" />
+          <span className="mt-2 block h-[28%] rounded-[6px] bg-[#dedbd5]" />
+          <Bar w="85%" h="h-2" c="bg-[#a8a49d]" />
+          <Bar w="60%" />
+          <div className="mt-auto flex gap-1.5">
+            <span className="h-4 flex-1 rounded-full bg-[#3a3733]" />
+            <span className="h-4 flex-1 rounded-full ring-1 ring-[#8f8a82]" />
+          </div>
+        </Screen>
+        <Screen label="Pick features">
+          <Bar w="70%" h="h-2" c="bg-[#a8a49d]" />
+          {[0, 1, 2, 3].map((k) => (
+            <span key={k} className="flex items-center gap-1.5 rounded-[5px] p-1 ring-1 ring-[#d4d1cb]">
+              <span className={`size-2.5 rounded-[3px] ${k % 2 ? "ring-1 ring-[#8f8a82]" : "bg-[#3a3733]"}`} />
+              <Bar w="60%" />
+            </span>
+          ))}
+          <span className="mt-auto h-4 rounded-full bg-[#3a3733]" />
+        </Screen>
+        <Screen label="Short form">
+          <Bar w="65%" h="h-2" c="bg-[#a8a49d]" />
+          {["Name", "Work email", "Company size"].map((k) => (
+            <span key={k} className="flex flex-col gap-1">
+              <Bar w="35%" h="h-1" />
+              <span className="h-3.5 rounded-[4px] ring-1 ring-[#c9c6c0]" />
+            </span>
+          ))}
+          <span className="mt-auto h-4 rounded-full bg-[#3a3733]" />
+        </Screen>
+        <Screen label="For you">
+          <Bar w="55%" h="h-2" c="bg-[#a8a49d]" />
+          <span className="block h-[22%] rounded-[6px] bg-[#dedbd5]" />
+          <Bar w="90%" />
+          <Bar w="75%" />
+          <span className="block h-[18%] rounded-[6px] bg-[#e6e3de]" />
+          <Bar w="80%" />
+        </Screen>
+      </div>
+      <span className="self-center rounded-full bg-white/80 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-[#3a3733]">
+        Recreated wireframes
+      </span>
+    </div>
+  );
+}
 
+function GustoCard() {
+  return (
+    <li
+      data-reveal
+      className="tinted group relative grid grid-cols-1 items-center gap-8 overflow-hidden rounded-[28px] p-5 ring-1 ring-line transition-shadow duration-700 ease-[var(--ease-out-expo)] hover:shadow-[0_30px_60px_-36px_rgba(0,0,0,0.35)] sm:p-8 md:grid-cols-12 md:gap-12 md:p-12"
+      style={{ "--tint": "#f1efeb" } as React.CSSProperties}
+    >
+      <div className="order-2 flex flex-col gap-4 md:order-1 md:col-span-5">
+        <p className="label-mono text-muted">Walkthrough on request · Gusto</p>
+        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.035em] text-ink">
+          <a
+            href="#contact"
+            className="outline-none after:absolute after:inset-0 after:rounded-[28px] after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:-outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
+          >
+            Growth experiments on Gusto&rsquo;s signup flow
+          </a>
+        </h3>
+        <p className="max-w-[42ch] text-[clamp(1rem,0.95rem+0.25vw,1.15rem)] leading-[1.55] text-ink-soft">
+          Happy to walk through it in an interview.
+        </p>
+        <span
+          aria-hidden
+          className="mt-2 inline-flex w-fit items-center gap-2 rounded-full border border-ink/80 bg-card px-5 py-2.5 text-[15px] font-medium text-ink transition-colors duration-500 group-hover:bg-ink group-hover:text-background"
+        >
+          Ask me about it
+          <span className="transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:translate-x-1">→</span>
+        </span>
+      </div>
+      <div className="order-1 md:order-2 md:col-span-7">
+        <div className="reveal-media relative aspect-[4/3] overflow-hidden rounded-[18px] transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5">
+          <GustoWireframes />
+        </div>
+      </div>
+    </li>
+  );
+}
+
+export function Work({ projects }: { projects: Project[] }) {
   return (
     <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 px-page pt-24 md:pt-32">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10 md:gap-14">
-        <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <div className="md:col-span-3">
-            <p className="label-mono text-muted">(01) Work</p>
-          </div>
-          <h2 id="work-heading" className="font-display text-[clamp(2.6rem,1.4rem+4.4vw,6.5rem)] font-medium leading-[1] tracking-[-0.045em] md:col-span-6">
+        <div className="flex flex-col gap-3">
+          <p className="label-mono text-muted">(01) Work</p>
+          <h2 id="work-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[-0.045em]">
             Selected <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">work</em>
           </h2>
-          <div className="flex md:col-span-3 md:justify-end" role="group" aria-label="Choose how to view projects">
-            {(["grid", "index"] as View[]).map((v) => (
-              <button
-                key={v}
-                type="button"
-                aria-pressed={view === v}
-                onClick={() => {
-                  setView(v);
-                  setSwitched(true);
-                }}
-                className="label-mono min-h-11 border border-line-strong px-4 text-muted transition-colors first:rounded-l-full last:rounded-r-full hover:text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-background"
-              >
-                {v === "grid" ? "Grid" : "Index"}
-              </button>
-            ))}
-          </div>
         </div>
 
-        {view === "grid" ? (
-          <ul data-reveal-group className="grid grid-cols-1 gap-x-8 gap-y-16 md:grid-cols-2 md:gap-y-20">
-            {projects.map((p, i) => (
-              <GridCard key={p.slug} p={p} i={i} shown={switched} />
-            ))}
-          </ul>
-        ) : (
-          <IndexList projects={projects} />
-        )}
-
-        <a
-          href="/resume.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          data-reveal
-          className="group flex flex-col justify-between gap-10 rounded-[6px] border border-line bg-card p-8 transition-colors duration-500 hover:border-line-strong focus-visible:border-line-strong md:flex-row md:items-end md:p-12"
-        >
-          <span className="flex flex-col gap-3">
-            <span className="label-mono text-accent">Short on time?</span>
-            <span className="font-editorial text-[clamp(2rem,1.4rem+2.6vw,4rem)] font-normal italic leading-[1.02]">
-              Read the one-page version
-            </span>
-          </span>
-          <span className="label-mono flex items-center gap-2 text-muted group-hover:text-ink group-focus-visible:text-ink">
-            Resume · PDF <span aria-hidden className="text-[18px] transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
-          </span>
-        </a>
+        <ul className="flex flex-col gap-6 md:gap-8">
+          {projects.map((p, i) => (
+            <Card key={p.slug} p={p} i={i} />
+          ))}
+          {/* Gusto has no case study page: Muskan offers a walkthrough instead. */}
+          <GustoCard />
+        </ul>
       </div>
     </section>
   );

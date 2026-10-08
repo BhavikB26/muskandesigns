@@ -301,3 +301,28 @@ html[data-motion="paused"] .marquee-track {
     animation: none !important;
   }
 }
+
+/* ---------- v7: calm pastel layer ---------- */
+
+/* Soft sky behind the hero card (a nod to the current live site). */
+.sky {
+  background:
+    radial-gradient(60% 50% at 18% 22%, rgba(255, 255, 255, 0.9), transparent 70%),
+    radial-gradient(45% 40% at 82% 70%, rgba(255, 255, 255, 0.75), transparent 70%),
+    radial-gradient(35% 30% at 60% 12%, rgba(255, 255, 255, 0.6), transparent 70%),
+    linear-gradient(180deg, #cfe8fa 0%, #e4f2fc 55%, #f3f8fc 100%);
+}
+html[data-theme="dark"] .sky {
+  background:
+    radial-gradient(55% 45% at 20% 20%, rgba(120, 150, 210, 0.22), transparent 70%),
+    radial-gradient(45% 40% at 80% 75%, rgba(255, 122, 61, 0.1), transparent 70%),
+    linear-gradient(180deg, #121b2c 0%, #151a24 60%, #161513 100%);
+}
+
+/* Pastel cards in light; plain cards in dark so contrast stays even. */
+.tinted {
+  background-color: var(--tint);
+}
+html[data-theme="dark"] .tinted {
+  background-color: var(--color-card);
+}
