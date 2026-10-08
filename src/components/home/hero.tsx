@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
-import { MosaicLens } from "@/components/home/mosaic-lens";
+import { HeroLens } from "@/components/home/hero-lens";
 import { MaskedText } from "@/components/masked-text";
 import { MotionToggle } from "@/components/motion";
 
@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section aria-label="Introduction" className="w-full px-page pt-2">
       <div className="sky relative isolate mx-auto flex w-full max-w-[1760px] flex-col items-center gap-8 overflow-hidden rounded-[8px] px-5 py-14 text-center ring-1 ring-line sm:px-10 md:gap-10 md:py-24">
-        <MosaicLens />
+        <HeroLens />
         {/* Soft scrim so the text stays readable over the moving field. */}
         <div aria-hidden className="hero-scrim pointer-events-none absolute inset-0 -z-[5]" />
         <div className="relative flex items-center gap-4 md:gap-6">
