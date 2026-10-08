@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import {
-  Caveat,
   Geist_Mono,
   Instrument_Serif,
   Inter,
@@ -13,14 +12,6 @@ import { Motion } from "@/components/motion";
 const interTight = Inter_Tight({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
 // Labels and metadata
 const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap", preload: false });
-
-// Small handwritten accent (the hero greeting only). Never used for headings or body.
-const caveat = Caveat({
-  variable: "--font-accent-face",
-  weight: ["400", "500", "600"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 // Italic accents (headline, section highlights, quotes): Instrument Serif.
 const editorial = Instrument_Serif({
@@ -73,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${interTight.variable} ${geistMono.variable} ${caveat.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${interTight.variable} ${geistMono.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <script

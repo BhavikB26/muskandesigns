@@ -24,7 +24,7 @@ export function Testimonials() {
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
         <div className="flex flex-col gap-3">
           <p className="label-mono text-muted">(03) Kind words</p>
-          <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[-0.045em]">
+          <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
             From people I&rsquo;ve <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">worked with</em>
           </h2>
         </div>

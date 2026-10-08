@@ -1,3 +1,10 @@
+/* Degular Display (OH no Type Co) is a commercial font. It loads from the visitor's own install or a
+   local-only file that is git-ignored; it needs a web licence before shipping. Inter Tight is the fallback. */
+@font-face { font-family: "Degular Display"; src: local("Degular Display"), local("DegularDisplay-Regular"), url("/fonts/DegularDisplay-Regular.otf") format("opentype"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Degular Display"; src: local("Degular Display Medium"), local("DegularDisplay-Medium"), url("/fonts/DegularDisplay-Medium.otf") format("opentype"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Degular Display"; src: local("Degular Display Semibold"), local("DegularDisplay-Semibold"), url("/fonts/DegularDisplay-Semibold.otf") format("opentype"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Degular Display"; src: local("Degular Display Bold"), local("DegularDisplay-Bold"), url("/fonts/DegularDisplay-Bold.otf") format("opentype"); font-weight: 700; font-display: swap; }
+
 @import "tailwindcss";
 
 /* Light is the default theme; html[data-theme="dark"] switches to dark.
@@ -12,8 +19,8 @@
   --color-line: #e3e0d9;
   --color-line-strong: #8f8a82;
   --color-card: #ffffff;
-  --color-accent: #b23c0b;
-  --color-accent-soft: #fbebe2;
+  --color-accent: #3b3bd6;
+  --color-accent-soft: #e9e9fc;
   --color-live: #1f8a4c;
   color-scheme: light;
 }
@@ -28,8 +35,8 @@ html[data-theme="dark"] {
   --color-line: #2b2825;
   --color-line-strong: #6f685e;
   --color-card: #181614;
-  --color-accent: #ff7a3d;
-  --color-accent-soft: #2b1810;
+  --color-accent: #a5a8ff;
+  --color-accent-soft: #1d1d3d;
   --color-live: #5fd38d;
   color-scheme: dark;
 }
@@ -52,12 +59,12 @@ body {
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
   --font-editorial: var(--font-editorial-face), Georgia, serif;
-  --font-display: var(--font-heading-face), Arial, sans-serif;
+  --font-display: "Degular Display", var(--font-heading-face), Arial, sans-serif;
   --font-serif: var(--font-editorial-face), Georgia, serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
-  --font-accent: var(--font-accent-face), var(--font-scripts), cursive;
+  --font-accent: var(--font-display);
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 }
 

@@ -42,3 +42,6 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# Degular Display is a commercial font (OH no Type Co). Local preview only; needs a web licence before it can ship.
+/public/fonts/Degular*

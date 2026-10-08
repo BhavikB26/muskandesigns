@@ -41,7 +41,7 @@ export function Background() {
         <div className="flex flex-col gap-12 md:col-span-7">
           <div data-reveal className="flex flex-col gap-6">
             <p className="label-mono text-muted">(02) About</p>
-            <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.045em]">
+            <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.02] tracking-[0.01em]">
               A little background, if you&rsquo;re{" "}
               <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">still here</em>
             </h2>
@@ -87,8 +87,7 @@ export function Background() {
             <p className="label-mono text-muted">Things I lean on</p>
             <ul className="grid grid-cols-1 gap-x-6 gap-y-3 text-[16px] sm:grid-cols-2">
               {strengths.map((s) => (
-                <li key={s} className="flex items-center gap-3">
-                  <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+                <li key={s}>
                   {s}
                 </li>
               ))}

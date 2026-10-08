@@ -12,8 +12,8 @@ export function SiteFooter() {
         <div data-reveal className="flex flex-col gap-10 rounded-[32px] bg-card p-7 ring-1 ring-line sm:p-10 md:gap-14 md:p-16">
           <div className="flex flex-col gap-4">
             <p className="label-mono text-muted">(04) Contact</p>
-            <h2 className="font-display text-[clamp(3rem,1.6rem+5vw,7rem)] font-medium leading-[0.95] tracking-[-0.05em]">
-              Let&rsquo;s <em className="font-serif font-normal italic tracking-[-0.02em] text-accent">talk.</em>
+            <h2 className="font-display text-[clamp(3rem,1.6rem+5vw,7rem)] font-medium leading-[0.95] tracking-[0.01em]">
+              Let&rsquo;s <em className="font-serif font-normal italic tracking-[0.01em] text-accent">talk.</em>
             </h2>
             <p className="max-w-[460px] text-[17px] leading-[1.55] text-ink-soft">
               I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.

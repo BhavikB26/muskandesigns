@@ -26,10 +26,7 @@ export function NowCard() {
         aria-expanded={open}
         className="flex min-h-6 w-full items-center justify-between gap-4 text-left"
       >
-        <span className="flex items-center gap-2.5">
-          <span aria-hidden className="size-1.5 rounded-full bg-accent" />
-          <span className="text-[15px] font-semibold text-ink">What I&rsquo;m up to</span>
-        </span>
+        <span className="text-[15px] font-semibold text-ink">What I&rsquo;m up to</span>
         <span className="flex items-center gap-3">
           <span className="label-mono text-muted">{date}</span>
           <span aria-hidden className={`text-muted transition-transform duration-300 ${open ? "rotate-180" : ""}`}>

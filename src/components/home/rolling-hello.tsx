@@ -3,15 +3,18 @@
 import { useEffect, useState } from "react";
 import { useMotionPaused } from "@/components/motion";
 
+// All in Latin script so every greeting shares one font (Degular Display).
 const GREETINGS = [
   { text: "Hello", lang: "en" },
   { text: "Hola", lang: "es" },
   { text: "Bonjour", lang: "fr" },
-  { text: "नमस्ते", lang: "hi" },
-  { text: "你好", lang: "zh" },
-  { text: "こんにちは", lang: "ja" },
-  { text: "Olá", lang: "pt" },
+  { text: "Namaste", lang: "hi-Latn" },
   { text: "Ciao", lang: "it" },
+  { text: "Konnichiwa", lang: "ja-Latn" },
+  { text: "Olá", lang: "pt" },
+  { text: "Annyeong", lang: "ko-Latn" },
+  { text: "Hallo", lang: "de" },
+  { text: "Merhaba", lang: "tr" },
 ];
 
 const HOLD_MS = 2000;

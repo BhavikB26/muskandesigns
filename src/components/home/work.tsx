@@ -30,7 +30,7 @@ function Card({ p, i }: { p: Project; i: number }) {
     >
       <div className="order-2 flex flex-col gap-4 md:order-1 md:col-span-5">
         <p className="label-mono text-muted">{meta}</p>
-        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.035em] text-ink">
+        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[0.01em] text-ink">
           {/* One link per card; its ::after makes the whole card clickable. */}
           <Link
             href={`/work/${p.slug}`}
@@ -137,7 +137,7 @@ function GustoCard() {
     >
       <div className="order-2 flex flex-col gap-4 md:order-1 md:col-span-5">
         <p className="label-mono text-muted">Walkthrough on request · Gusto</p>
-        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.035em] text-ink">
+        <h3 className="font-display text-[clamp(1.8rem,1.3rem+1.6vw,3rem)] font-medium leading-[1.05] tracking-[0.01em] text-ink">
           <a
             href="#contact"
             className="outline-none after:absolute after:inset-0 after:rounded-[28px] after:content-[''] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:-outline-offset-4 focus-visible:after:outline-[var(--color-accent)]"
@@ -171,7 +171,7 @@ export function Work({ projects }: { projects: Project[] }) {
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10 md:gap-14">
         <div className="flex flex-col gap-3">
           <p className="label-mono text-muted">(01) Work</p>
-          <h2 id="work-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[-0.045em]">
+          <h2 id="work-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
             Selected <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">work</em>
           </h2>
         </div>

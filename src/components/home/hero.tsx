@@ -26,7 +26,7 @@ export function Hero() {
               />
             </div>
           </div>
-          <p className="settle text-left font-accent text-[clamp(1.6rem,1.2rem+1.4vw,2.4rem)] font-medium leading-[1.05] text-ink [animation-delay:120ms]">
+          <p className="settle text-left font-display text-[clamp(1.4rem,1.1rem+1.1vw,2rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink [animation-delay:120ms]">
             <RollingHello />
             <br />
             I&rsquo;m Muskan Bhatia
@@ -34,7 +34,7 @@ export function Hero() {
         </div>
 
         <h1 className="max-w-[14ch] text-[clamp(2.6rem,1.1rem+5.2vw,6.25rem)] leading-[1] text-ink">
-          <MaskedText text={LEAD} delay={220} className="font-display font-medium tracking-[-0.045em]" />{" "}
+          <MaskedText text={LEAD} delay={220} className="font-display font-medium tracking-[0.01em]" />{" "}
           <MaskedText
             text={EMPHASIS}
             delay={220}

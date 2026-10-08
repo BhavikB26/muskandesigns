@@ -132,7 +132,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               <span className="label-mono self-start rounded-full bg-accent-soft px-3 py-1 text-accent">
                 {p.tag === "Concept" ? p.meta.type : "Case study"}
               </span>
-              <h1 className="font-display text-[clamp(2.6rem,1.4rem+5vw,6rem)] font-medium leading-[0.98] tracking-[-0.035em]">
+              <h1 className="font-display text-[clamp(2.6rem,1.4rem+5vw,6rem)] font-medium leading-[0.98] tracking-[0.01em]">
                 {p.name}
               </h1>
               <p className="max-w-[40ch] text-[clamp(1.2rem,1rem+0.8vw,1.75rem)] leading-[1.35] text-muted">{p.tagline}</p>
@@ -187,7 +187,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
             <div className="flex flex-col gap-2">
               <span className="label-mono text-muted">Next project</span>
-              <span className="font-display text-[clamp(1.6rem,1.2rem+1.2vw,2.4rem)] font-medium leading-[1.1] tracking-[-0.02em] group-hover:underline group-hover:underline-offset-4">
+              <span className="font-display text-[clamp(1.6rem,1.2rem+1.2vw,2.4rem)] font-medium leading-[1.1] tracking-[0.01em] group-hover:underline group-hover:underline-offset-4">
                 {next.name} →
               </span>
               <span className="text-[16px] text-muted">{next.tagline}</span>
