@@ -24,7 +24,7 @@ export function Testimonials() {
     <section aria-labelledby="kind-words" className="w-full px-page pt-28  md:pt-40">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
         <div data-reveal className="flex flex-col gap-3">
-          <p className="label-mono text-muted">(03) Kind words</p>
+          <p className="label-mono text-muted">Kind words</p>
           <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
             <MaskedText text="From people I’ve" onReveal />{" "}
             <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">

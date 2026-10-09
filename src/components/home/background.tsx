@@ -43,7 +43,7 @@ export function Background() {
 
         <div className="flex flex-col gap-12 md:col-span-7">
           <div data-reveal className="flex flex-col gap-6">
-            <p className="label-mono text-muted">(02) About</p>
+            <p className="label-mono text-muted">About</p>
             <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.04] tracking-[0.01em]">
               <MaskedText text={about.headline.lead} onReveal />{" "}
               <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">

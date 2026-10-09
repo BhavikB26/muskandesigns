@@ -60,7 +60,7 @@ export function Work({ projects }: { projects: Project[] }) {
     <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 px-page pt-24 md:pt-36">
       <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-12 md:gap-16">
         <div data-reveal className="flex flex-col gap-3">
-          <p className="label-mono text-muted">(01) Work</p>
+          <p className="label-mono text-muted">Work</p>
           <h2 id="work-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
             <MaskedText text="Selected" onReveal />{" "}
             <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">
