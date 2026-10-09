@@ -99,7 +99,7 @@ export function CaseIntro({ p }: { p: Project }) {
       <div className="flex flex-col gap-4 lg:col-span-7">
         <p className="case-meta-label">{category}</p>
         <h1 className="case-title">{p.name}</h1>
-        <p className="max-w-[34ch] font-serif text-[clamp(1.35rem,1.1rem+0.9vw,1.9rem)] italic leading-[1.25] text-ink-soft">{p.tagline}</p>
+        <p className="font-serif text-[clamp(1.35rem,1.1rem+0.9vw,1.9rem)] italic leading-[1.25] text-ink-soft">{p.tagline}</p>
       </div>
       <p className="case-body max-w-[52ch] self-end lg:col-span-5">{p.intro}</p>
     </div>
@@ -194,9 +194,9 @@ export function TextBlock({ block }: { block: Extract<Block, { kind: "text" }> }
   return (
     <section data-reveal className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-x-10">
       <h2 className="case-h2 md:col-span-4">{block.heading}</h2>
-      <div className="flex max-w-[60ch] flex-col gap-4 md:col-span-8">
+      <div className="flex flex-col gap-4 md:col-span-8">
         {block.body.map((t, i) => (
-          <p key={i} className="case-body">
+          <p key={i} className={`case-body ${t.length > 150 ? "max-w-[60ch]" : ""}`}>
             {t}
           </p>
         ))}
@@ -235,7 +235,7 @@ export function Outcome({ blocks, concept }: { blocks: Extract<Block, { kind: "t
         Where it ended up
       </h2>
       {concept && (
-        <p className="case-body max-w-[60ch]">
+        <p className="case-body">
           This is a self-initiated concept, not a shipped product. The designs show how I would approach the problem.
         </p>
       )}
@@ -314,9 +314,9 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
 
 /* ---------- Case studies rebuilt from Muskan's own decks ---------- */
 
-function DeckText({ items, wide = false }: { items: DeckItem[]; wide?: boolean }) {
+function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
   return (
-    <div className={`flex flex-col gap-4 ${wide ? "w-full" : "max-w-[60ch]"}`}>
+    <div className="flex w-full flex-col gap-4">
       {items.map((it, i) => {
         if (it.kind === "h")
           return (
@@ -399,7 +399,8 @@ function DeckText({ items, wide = false }: { items: DeckItem[]; wide?: boolean }
             </ul>
           );
         return (
-          <p key={i} className={it.kind === "note" ? "case-caption" : "case-body"}>
+          // Short lines (one or two sentences) run on a single line where there is room; longer ones keep a reading measure.
+          <p key={i} className={`${it.kind === "note" ? "case-caption" : "case-body"} ${it.text.length > 150 ? "max-w-[60ch]" : ""}`}>
             {it.text}
           </p>
         );
