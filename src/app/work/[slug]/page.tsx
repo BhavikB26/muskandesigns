@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ViewTransition } from "react";
 import { TileArt } from "@/components/home/tile-art";
-import { CaseFooter, CaseHero, CaseIntro, Facts, Identity, Outcome, Panel, Quote, TextBlock, Toggles } from "@/components/case/case-parts";
+import { CaseFooter, CaseHero, CaseIntro, DeckSlideView, Facts, Identity, Outcome, Panel, Quote, TextBlock, Toggles } from "@/components/case/case-parts";
+import { decks } from "@/content/decks";
 import { brandOf } from "@/content/brand";
 import { getNextProject, getProject, projects, type Block, type Project } from "@/content/projects";
 
@@ -62,6 +63,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const next = getNextProject(slug);
   const brand = brandOf(p.slug);
   const { story, closing } = splitStory(p);
+  const deck = decks[p.slug];
 
   return (
     <div className="page-in w-full px-page">
@@ -105,12 +107,23 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
             {/* Sections D–H: the story, screens between short text, then the outcome. */}
             <div className="flex flex-col gap-16 pt-20 md:gap-28 md:pt-32">
-              {story.map((b, i) => {
-                if (b.kind === "images") return <Panel key={i} images={b.images} />;
-                if (b.kind === "quote") return <Quote key={i} block={b} />;
-                return <TextBlock key={i} block={b} />;
-              })}
-              <Outcome blocks={closing} concept={p.tag === "Concept"} />
+              {deck ? (
+                <>
+                  {deck.map((sl) => (
+                    <DeckSlideView key={sl.id} slide={sl} />
+                  ))}
+                  <Outcome blocks={[]} concept={p.tag === "Concept"} />
+                </>
+              ) : (
+                <>
+                  {story.map((b, i) => {
+                    if (b.kind === "images") return <Panel key={i} images={b.images} />;
+                    if (b.kind === "quote") return <Quote key={i} block={b} />;
+                    return <TextBlock key={i} block={b} />;
+                  })}
+                  <Outcome blocks={closing} concept={p.tag === "Concept"} />
+                </>
+              )}
             </div>
           </article>
         </main>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Block, Img, Project } from "@/content/projects";
 import type { Brand } from "@/content/brand";
+import type { DeckItem, DeckSlide } from "@/content/decks/types";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MotionToggle } from "@/components/motion";
 
@@ -306,5 +307,97 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
       </div>
       <p className="case-meta-label">© {new Date().getFullYear()} Muskan Bhatia</p>
     </footer>
+  );
+}
+
+/* ---------- Case studies rebuilt from Muskan's own decks ---------- */
+
+function DeckText({ items }: { items: DeckItem[] }) {
+  return (
+    <div className="flex max-w-[60ch] flex-col gap-4">
+      {items.map((it, i) => {
+        if (it.kind === "h")
+          return (
+            <h2 key={i} className="case-deck-h">
+              {it.text}
+            </h2>
+          );
+        if (it.kind === "list")
+          return (
+            <ul key={i} className="case-body flex list-disc flex-col gap-2 pl-5 marker:text-muted">
+              {it.items.map((x, k) => (
+                <li key={k}>{x}</li>
+              ))}
+            </ul>
+          );
+        return (
+          <p key={i} className={it.kind === "note" ? "case-caption" : "case-body"}>
+            {it.text}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
+function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
+  // Medium size: never taller than ~620px, never wider than the original crop.
+  const maxW = Math.min(img.width, Math.round((620 * img.width) / img.height));
+  const still = (
+    <Image
+      src={img.src}
+      alt={alt}
+      width={img.width}
+      height={img.height}
+      sizes={`(min-width: 768px) ${maxW}px, 92vw`}
+      className={`h-auto w-full rounded-[4px] ${img.anim ? "anim-still" : ""}`}
+      style={{ maxWidth: maxW }}
+    />
+  );
+  if (!img.anim) return still;
+  // The GIF plays; Pause motion and reduced-motion settings swap in the still frame.
+  return (
+    <div className="w-full" style={{ maxWidth: maxW }}>
+      <Image src={img.anim} alt={alt} width={img.width} height={img.height} unoptimized className="anim-play h-auto w-full rounded-[4px]" />
+      {still}
+    </div>
+  );
+}
+
+/** One slide from the original deck, keeping its text-beside-visual placement. */
+export function DeckSlideView({ slide }: { slide: DeckSlide }) {
+  const heading = slide.items.find((i) => i.kind === "h") as { text: string } | undefined;
+  const alt = heading ? `${heading.text}: visual from the case study` : "Visual from the case study";
+  const { img, items } = slide;
+  if (!img)
+    return (
+      <section data-reveal>
+        <DeckText items={items} />
+      </section>
+    );
+  if (!items.length)
+    return (
+      <figure data-reveal className="flex justify-center">
+        <DeckImage img={img} alt={alt} />
+      </figure>
+    );
+  if (slide.side === "right" || slide.side === "left")
+    return (
+      <section data-reveal className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-x-12">
+        <div className={`md:col-span-5 ${slide.side === "left" ? "md:order-2" : ""}`}>
+          <DeckText items={items} />
+        </div>
+        <div className={`flex justify-center md:col-span-7 ${slide.side === "left" ? "md:order-1" : ""}`}>
+          <DeckImage img={img} alt={alt} />
+        </div>
+      </section>
+    );
+  return (
+    <section data-reveal className="flex flex-col gap-8">
+      <DeckText items={items} />
+      <div className="flex justify-center">
+        <DeckImage img={img} alt={alt} />
+      </div>
+    </section>
   );
 }

@@ -454,3 +454,21 @@ a:focus-visible .case-arrow {
 .hero-reveal {
   animation: hero-reveal 0.9s var(--ease-out-expo) 0.1s both;
 }
+@utility case-deck-h {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.55rem, 1.2rem + 1.1vw, 2.4rem);
+  line-height: 1.12;
+  letter-spacing: 0.005em;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+
+/* Animated GIFs from the case studies: a still frame replaces them when motion is paused or reduced. */
+.anim-still { display: none; }
+html[data-motion="paused"] .anim-play { display: none; }
+html[data-motion="paused"] .anim-still { display: block; }
+@media (prefers-reduced-motion: reduce) {
+  .anim-play { display: none; }
+  .anim-still { display: block; }
+}
