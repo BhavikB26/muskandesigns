@@ -228,10 +228,10 @@ export const projects: Project[] = [
       {
         kind: "images",
         images: [
-          img(w("builder-design-system", "spacing"), "Spacing and corner-radius variables"),
-          img(w("builder-design-system", "typography"), "Typography scale and text styles"),
-          img(w("builder-design-system", "colors"), "Foundational, semantic and gradient colour tokens"),
-          img(w("builder-design-system", "icons"), "Part of the icon library"),
+          img("/work/builder-design-system/ds-type.webp", "Display type scale with weights, sizes and line heights"),
+          img("/work/builder-design-system/frame-7.webp", "Corner radius tokens from 8px to 128px"),
+          img("/work/builder-design-system/frame-11.webp", "Foundational colour tokens: brand, green, tertiary and cloud"),
+          img("/work/builder-design-system/frame-12.webp", "Semantic colour tokens: warning, danger and success"),
         ],
       },
       {
@@ -247,9 +247,9 @@ export const projects: Project[] = [
       {
         kind: "images",
         images: [
-          img(w("builder-design-system", "buttons"), "Button types and states, with the component properties panel"),
-          img(w("builder-design-system", "cards"), "The configurable base card and examples built from it"),
-          img(w("builder-design-system", "side-nav"), "Side navigation at different levels of complexity"),
+          img("/work/builder-design-system/ds-buttons.webp", "Button types across states: default, hover, pressed and disabled"),
+          img("/work/builder-design-system/ds-card-b.webp", "A card built from the configurable base card"),
+          img("/work/builder-design-system/ds-nav-b.webp", "Side navigation states: default, hover and pressed"),
         ],
       },
       {

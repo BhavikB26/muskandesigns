@@ -67,4 +67,11 @@ export const imageDims: Record<string, [number, number]> = {
   "/work/ai-mentor/exact/sol2-before-small.png": [548, 1024],
   "/work/ai-mentor/exact/sol3-quiz.png": [1024, 796],
   "/work/ai-mentor/exact/sol4-summary.png": [910, 520],
+  "/work/builder-design-system/frame-7.webp": [354, 769],
+  "/work/builder-design-system/ds-type.webp": [588, 557],
+  "/work/builder-design-system/frame-11.webp": [467, 206],
+  "/work/builder-design-system/frame-12.webp": [448, 204],
+  "/work/builder-design-system/ds-buttons.webp": [1104, 478],
+  "/work/builder-design-system/ds-card-b.webp": [380, 370],
+  "/work/builder-design-system/ds-nav-b.webp": [457, 392],
 };

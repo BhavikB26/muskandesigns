@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Block, Img, Project } from "@/content/projects";
-import { about } from "@/content/about";
 import type { Brand } from "@/content/brand";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MotionToggle } from "@/components/motion";
@@ -14,16 +13,6 @@ import { MotionToggle } from "@/components/motion";
  */
 
 export const LINKEDIN = "https://www.linkedin.com/in/thisismuskan/";
-
-/** Left rail + content column. Everything on the page aligns to these two columns. */
-export function Rail({ rail, children }: { rail?: ReactNode; children: ReactNode }) {
-  return (
-    <div className="mx-auto grid w-full max-w-[1760px] grid-cols-1 gap-x-[4vw] md:grid-cols-[minmax(170px,17%)_1fr]">
-      <div className="hidden md:block">{rail}</div>
-      <div className="min-w-0">{children}</div>
-    </div>
-  );
-}
 
 const navLinks = [
   { label: "Work", href: "/#work" },
@@ -51,28 +40,29 @@ function NavList({ className = "" }: { className?: string }) {
   );
 }
 
-/** Section A: quiet identity + navigation. Desktop: vertical list in the rail. Phone: one compact row. */
-export function CaseNav() {
+/** Section A: identity + navigation. Desktop: part of the sticky side rail. Phone: one compact row. */
+export function Identity() {
   return (
-    <header className="px-page pt-6 md:pt-10">
-      <div className="mx-auto flex w-full max-w-[1760px] items-start justify-between gap-4">
-        <div className="flex flex-col gap-4">
-          <Link href="/" className="case-link inline-flex min-h-8 items-center gap-2.5 font-display text-[17px] font-semibold tracking-[0.01em] text-ink">
-            <span aria-hidden className="flex size-7 items-center justify-center rounded-[2px] bg-ink pb-[2px] text-[16px] leading-none text-background">
-              m
-            </span>
-            Muskan Bhatia
-          </Link>
-          <nav aria-label="Main">
-            <NavList className="flex flex-wrap gap-x-5 md:flex-col md:gap-x-0" />
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
-          <MotionToggle />
-          <ThemeToggle />
-        </div>
-      </div>
-    </header>
+    <div className="flex flex-col gap-4">
+      <Link href="/" className="case-link inline-flex min-h-8 items-center gap-2.5 self-start font-display text-[17px] font-semibold tracking-[0.01em] text-ink">
+        <span aria-hidden className="flex size-7 items-center justify-center rounded-[2px] bg-ink pb-[2px] text-[16px] leading-none text-background">
+          m
+        </span>
+        Muskan Bhatia
+      </Link>
+      <nav aria-label="Main">
+        <NavList className="flex flex-wrap gap-x-5 md:flex-col md:gap-x-0" />
+      </nav>
+    </div>
+  );
+}
+
+export function Toggles() {
+  return (
+    <div className="flex items-center gap-3">
+      <MotionToggle />
+      <ThemeToggle />
+    </div>
   );
 }
 
@@ -114,34 +104,18 @@ export function CaseIntro({ p }: { p: Project }) {
 }
 
 /** Section C: a wide brand-colour hero with an oversized title and the project's cover. */
-export function CaseHero({ p, brand, children }: { p: Project; brand: Brand; children?: ReactNode }) {
+export function CaseHero({ p, brand, art }: { p: Project; brand: Brand; art: ReactNode }) {
   const light = brand.ink === "light";
-  const tall = p.cover.height / p.cover.width > 0.9;
   return (
-    <div
-      className="hero-reveal relative isolate overflow-hidden"
-      style={{ backgroundColor: brand.base }}
-    >
-      <div className="grid min-h-[min(78vh,760px)] grid-cols-1 md:grid-cols-12">
+    <div className="hero-reveal relative isolate overflow-hidden" style={{ backgroundColor: brand.base }}>
+      <div className="grid grid-cols-1 items-center gap-8 p-[6%] md:min-h-[min(72vh,700px)] md:grid-cols-12 md:gap-[4%] md:p-[5%]">
         <p
           aria-hidden
-          className={`relative z-10 self-end p-[6%] pb-0 font-display text-[clamp(3rem,1rem+7vw,9rem)] font-semibold leading-[0.9] tracking-[-0.01em] md:col-span-6 md:pb-[8%] ${light ? "text-white" : "text-[#151412]"}`}
+          className={`font-display text-[clamp(3rem,1rem+6.4vw,8.5rem)] font-semibold leading-[0.9] tracking-[-0.01em] md:col-span-7 md:self-end ${light ? "text-white" : "text-[#151412]"}`}
         >
           {p.name}
         </p>
-        <div className={`relative flex justify-center px-[6%] pt-[6%] md:col-span-6 ${tall ? "items-start md:pt-[8%]" : "items-end md:items-center md:px-[4%] md:pt-0"}`}>
-          {children ?? (
-            <Image
-              src={p.cover.src}
-              alt={p.cover.alt}
-              width={p.cover.width}
-              height={p.cover.height}
-              preload
-              sizes="(min-width: 768px) 46vw, 100vw"
-              className={`h-auto rounded-[4px] ${tall ? "-mb-[20%] w-[80%]" : "w-full md:translate-x-[6%]"}`}
-            />
-          )}
-        </div>
+        <div className="relative mx-auto aspect-square w-full max-w-[600px] md:col-span-5">{art}</div>
       </div>
     </div>
   );
@@ -159,44 +133,37 @@ function Shot({ img, sizes, className = "" }: { img: Img; sizes: string; classNa
 }
 
 /**
- * Lays out one group of screens on the page background (no colour panel) at a modest size,
- * so screenshots read as artefacts with whitespace around them. Shapes are never stretched.
+ * Lays out one group of screens on the page background at a medium size, so screenshots read as
+ * artefacts with whitespace around them. True aspect ratios; tall screens stay narrow.
  */
 function Composition({ images }: { images: Img[] }) {
-  const n = images.length;
   if (images.every(isPhone)) {
-    // Mobile screens: small, equal widths, gently staggered.
     return (
       <div className="flex flex-wrap justify-start gap-x-[4%] gap-y-8">
         {images.map((img, i) => (
-          <div key={img.src} className={`w-[42%] max-w-[210px] sm:w-[28%] md:w-[17%] ${i % 2 ? "md:mt-12" : ""}`}>
-            <Shot img={img} sizes="(min-width: 768px) 210px, 42vw" />
+          <div key={img.src} className={`w-[42%] max-w-[200px] sm:w-[28%] md:w-[17%] ${i % 2 ? "md:mt-12" : ""}`}>
+            <Shot img={img} sizes="(min-width: 768px) 200px, 42vw" />
           </div>
         ))}
       </div>
     );
   }
-  if (n === 1) {
+  if (images.length === 1) {
     const img = images[0];
     return (
-      <div className={isTall(img) ? "w-[62%] max-w-[300px] md:w-[30%]" : "w-full md:w-[68%]"}>
-        <Shot img={img} sizes="(min-width: 768px) 46vw, 92vw" />
+      <div className={isTall(img) ? "w-[62%] max-w-[300px]" : "w-full md:w-[62%]"}>
+        <Shot img={img} sizes="(min-width: 768px) 40vw, 92vw" />
       </div>
     );
   }
-  // Several screens: a loose, staggered editorial grid; tall screens stay narrow.
+  // Two columns of medium pieces; the second column sits lower for an editorial stagger.
   return (
-    <div className="grid grid-cols-2 items-start gap-x-[4%] gap-y-10 md:grid-cols-12">
-      {images.map((img, i) => {
-        const tall = isTall(img);
-        const span = tall ? "col-span-1 md:col-span-3" : "col-span-2 md:col-span-6";
-        const offset = i % 2 ? "md:mt-16" : "";
-        return (
-          <div key={img.src} className={`${span} ${offset}`}>
-            <Shot img={img} sizes={tall ? "(min-width: 768px) 22vw, 44vw" : "(min-width: 768px) 44vw, 92vw"} />
-          </div>
-        );
-      })}
+    <div className="grid grid-cols-1 items-start gap-x-[5%] gap-y-10 sm:grid-cols-2">
+      {images.map((img, i) => (
+        <div key={img.src} className={`${i % 2 ? "sm:mt-16" : ""} ${isTall(img) ? "w-[70%] max-w-[300px]" : "w-full max-w-[520px]"}`}>
+          <Shot img={img} sizes="(min-width: 640px) 34vw, 92vw" />
+        </div>
+      ))}
     </div>
   );
 }
@@ -292,27 +259,6 @@ export function Outcome({ blocks, concept }: { blocks: Extract<Block, { kind: "t
             )}
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-/** Section I: an editorial pause with a short background statement and bio. */
-export function Background() {
-  return (
-    <section aria-labelledby="background-heading" className="grid grid-cols-1 gap-8 py-10 md:grid-cols-12 md:gap-x-10 md:py-20">
-      <h2 id="background-heading" className="font-display text-[clamp(1.8rem,1.3rem+1.8vw,3rem)] font-medium leading-[1.08] tracking-[0.01em] md:col-span-6">
-        {about.headline.lead} <em className="font-serif font-normal italic text-accent">{about.headline.italic}</em>
-      </h2>
-      <div className="flex max-w-[52ch] flex-col gap-4 md:col-span-5 md:col-start-8">
-        {about.paragraphs.map((t) => (
-          <p key={t.slice(0, 20)} className="case-body">
-            {t}
-          </p>
-        ))}
-        <Link href="/#about" className="case-link inline-flex min-h-8 items-center gap-2 self-start text-[15px] font-medium text-ink">
-          More about me <span aria-hidden className="case-arrow">→</span>
-        </Link>
       </div>
     </section>
   );

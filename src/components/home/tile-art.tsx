@@ -283,8 +283,8 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
     // Slim flat laptop: thin bezel and a simple base. The page fills a 16:10 screen from the top.
     return (
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="w-[84%] drop-shadow-[0_30px_40px_rgba(0,0,0,0.35)]">
-          <div className="rounded-t-[2.4cqw] bg-[#121212] p-[1.3cqw] pb-[1.6cqw]">
+        <div className="w-[84%]">
+          <div className="rounded-t-[2.4cqw] bg-[#121212] p-[1.3cqw] pb-[1.6cqw] shadow-[0_30px_50px_-20px_rgba(0,0,0,0.45)]">
             <div className="relative aspect-[16/10] overflow-hidden rounded-[0.8cqw] bg-white">
               <Image
                 src={fr.src!}
@@ -323,7 +323,8 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
   );
 }
 
-export function TileArt({ slug, index = 0, cycle = true }: { slug: string; index?: number; cycle?: boolean }) {
+/** bare: no backdrop of its own, for placing on a coloured surface (the case study hero). */
+export function TileArt({ slug, index = 0, cycle = true, bare = false }: { slug: string; index?: number; cycle?: boolean; bare?: boolean }) {
   const frames = FRAMES[slug];
   const [n, setN] = useState(0);
   const [seen, setSeen] = useState(1); // frames mounted so far (later ones load on first use)
@@ -363,9 +364,9 @@ export function TileArt({ slug, index = 0, cycle = true }: { slug: string; index
       role="img"
       aria-label={frames[shown].alt}
       className="tile-art absolute inset-0 overflow-hidden"
-      style={{ backgroundImage: `radial-gradient(70% 55% at 50% 30%, rgba(255,255,255,0.18), transparent 70%), linear-gradient(180deg, ${g0}, ${g1})` }}
+      style={bare ? undefined : { backgroundImage: `radial-gradient(70% 55% at 50% 30%, rgba(255,255,255,0.18), transparent 70%), linear-gradient(180deg, ${g0}, ${g1})` }}
     >
-      <div aria-hidden className="tile-grain absolute inset-0" />
+      {!bare && <div aria-hidden className="tile-grain absolute inset-0" />}
       {frames.slice(0, seen).map((fr, i) => (
         <div
           key={i}
