@@ -18,7 +18,8 @@ export const deck: Deck = [
     "img": {
       "src": "/work/builder-university/cs/130-13130.webp",
       "width": 821,
-      "height": 931
+      "height": 931,
+      "frame": "laptop"
     }
   },
   {

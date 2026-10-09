@@ -6,6 +6,7 @@ import type { Brand } from "@/content/brand";
 import type { DeckItem, DeckSlide } from "@/content/decks/types";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MotionToggle } from "@/components/motion";
+import { LaptopScroll } from "./laptop-scroll";
 
 /*
  * Editorial case study building blocks.
@@ -312,9 +313,9 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
 
 /* ---------- Case studies rebuilt from Muskan's own decks ---------- */
 
-function DeckText({ items }: { items: DeckItem[] }) {
+function DeckText({ items, wide = false }: { items: DeckItem[]; wide?: boolean }) {
   return (
-    <div className="flex max-w-[60ch] flex-col gap-4">
+    <div className={`flex flex-col gap-4 ${wide ? "w-full" : "max-w-[60ch]"}`}>
       {items.map((it, i) => {
         if (it.kind === "h")
           return (
@@ -322,11 +323,48 @@ function DeckText({ items }: { items: DeckItem[] }) {
               {it.text}
             </h2>
           );
+        if (it.kind === "sub")
+          return (
+            <h3 key={i} className="case-deck-sub mt-2">
+              {it.text}
+            </h3>
+          );
         if (it.kind === "list")
           return (
             <ul key={i} className="case-body flex list-disc flex-col gap-2 pl-5 marker:text-muted">
               {it.items.map((x, k) => (
                 <li key={k}>{x}</li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "pill")
+          return (
+            <p key={i} className="deck-pill my-2 self-start">
+              {it.text}
+              {it.sub && <span className="mt-1 block text-right text-[0.7em] font-normal">{it.sub}</span>}
+            </p>
+          );
+        if (it.kind === "stickies")
+          return (
+            <ul key={i} className={`my-2 grid gap-4 ${it.notes.length === 1 ? "max-w-[60ch]" : "grid-cols-[repeat(auto-fit,minmax(min(100%,max(200px,calc((100%_-_2rem)/3))),1fr))]"}`}>
+              {it.notes.map((n, k) => (
+                <li key={k} className="deck-sticky">
+                  {n.title && <strong className="mb-1 block font-semibold">{n.title}</strong>}
+                  {n.text}
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "rows")
+          return (
+            <ul key={i} className="my-2 flex flex-col gap-2.5">
+              {it.items.map((x, k) => (
+                <li key={k} className="deck-row">
+                  <span aria-hidden className="shrink-0">
+                    {it.marker}
+                  </span>
+                  <span>{x}</span>
+                </li>
               ))}
             </ul>
           );
@@ -340,9 +378,16 @@ function DeckText({ items }: { items: DeckItem[] }) {
   );
 }
 
+/** Sticky notes and rows need the full column; plain text keeps a reading measure. */
+const isWide = (items: DeckItem[]) => items.some((i) => i.kind === "stickies" || i.kind === "rows");
+
 function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
+  if (img.frame === "laptop") return <LaptopScroll src={img.src} width={img.width} height={img.height} alt={alt} />;
   // Medium size: never taller than ~620px, never wider than the original crop.
-  const maxW = Math.min(img.width, Math.round((620 * img.width) / img.height));
+  // Wide web pages and boards read at a fixed reading width; phone screens and tall crops cap at ~620px tall.
+  // Single phone screens stay small (about 480px tall).
+  const capH = img.width / img.height < 0.6 ? 480 : 620;
+  const maxW = img.width >= 900 ? Math.min(img.width, 860) : Math.min(img.width, Math.round((capH * img.width) / img.height));
   const still = (
     <Image
       src={img.src}
@@ -367,37 +412,43 @@ function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: stri
 /** One slide from the original deck, keeping its text-beside-visual placement. */
 export function DeckSlideView({ slide }: { slide: DeckSlide }) {
   const heading = slide.items.find((i) => i.kind === "h") as { text: string } | undefined;
-  const alt = heading ? `${heading.text}: visual from the case study` : "Visual from the case study";
-  const { img, items } = slide;
+  const { img, items, after } = slide;
+  const alt = img?.alt ?? (heading ? `${heading.text}: visual from the case study` : "Visual from the case study");
+  const below = after?.length ? <DeckText items={after} wide={isWide(after)} /> : null;
   if (!img)
     return (
       <section data-reveal>
-        <DeckText items={items} />
+        <DeckText items={items} wide={isWide(items)} />
       </section>
     );
   if (!items.length)
     return (
-      <figure data-reveal className="flex justify-center">
+      <figure data-reveal className="flex flex-col items-center gap-8">
         <DeckImage img={img} alt={alt} />
+        {below && <div className="w-full">{below}</div>}
       </figure>
     );
   if (slide.side === "right" || slide.side === "left")
     return (
-      <section data-reveal className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-x-12">
-        <div className={`md:col-span-5 ${slide.side === "left" ? "md:order-2" : ""}`}>
-          <DeckText items={items} />
+      <section data-reveal className="flex flex-col gap-8">
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-x-12">
+          <div className={`md:col-span-5 ${slide.side === "left" ? "md:order-2" : ""}`}>
+            <DeckText items={items} />
+          </div>
+          <div className={`flex justify-center md:col-span-7 ${slide.side === "left" ? "md:order-1" : ""}`}>
+            <DeckImage img={img} alt={alt} />
+          </div>
         </div>
-        <div className={`flex justify-center md:col-span-7 ${slide.side === "left" ? "md:order-1" : ""}`}>
-          <DeckImage img={img} alt={alt} />
-        </div>
+        {below}
       </section>
     );
   return (
     <section data-reveal className="flex flex-col gap-8">
-      <DeckText items={items} />
+      <DeckText items={items} wide={isWide(items)} />
       <div className="flex justify-center">
         <DeckImage img={img} alt={alt} />
       </div>
+      {below}
     </section>
   );
 }
