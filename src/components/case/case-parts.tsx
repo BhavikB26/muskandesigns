@@ -154,68 +154,59 @@ const isTall = (i: Img) => i.height / i.width > 1.15;
 
 function Shot({ img, sizes, className = "" }: { img: Img; sizes: string; className?: string }) {
   return (
-    <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className={`h-auto w-full rounded-[4px] ${className}`} />
+    <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className={`h-auto w-full rounded-[4px] ring-1 ring-line ${className}`} />
   );
 }
 
-/** Lays out one group of screens: sizes and offsets vary with how many there are and their shapes. */
+/**
+ * Lays out one group of screens on the page background (no colour panel) at a modest size,
+ * so screenshots read as artefacts with whitespace around them. Shapes are never stretched.
+ */
 function Composition({ images }: { images: Img[] }) {
   const n = images.length;
-  if (n === 1) {
-    const img = images[0];
-    return (
-      <div className={`mx-auto ${isTall(img) ? "w-[min(100%,460px)] md:w-[46%]" : "w-full md:w-[88%]"}`}>
-        <Shot img={img} sizes="(min-width: 768px) 60vw, 92vw" />
-      </div>
-    );
-  }
   if (images.every(isPhone)) {
-    // A sequence of mobile screens: equal widths, gently staggered.
+    // Mobile screens: small, equal widths, gently staggered.
     return (
-      <div className="grid grid-cols-2 gap-[3%] sm:grid-cols-3 lg:flex lg:justify-center lg:gap-[2.5%]">
+      <div className="flex flex-wrap justify-start gap-x-[4%] gap-y-8">
         {images.map((img, i) => (
-          <div key={img.src} className={`lg:w-[18%] ${i % 2 ? "lg:mt-[6%]" : ""}`}>
-            <Shot img={img} sizes="(min-width: 1024px) 14vw, 40vw" />
+          <div key={img.src} className={`w-[42%] max-w-[210px] sm:w-[28%] md:w-[17%] ${i % 2 ? "md:mt-12" : ""}`}>
+            <Shot img={img} sizes="(min-width: 768px) 210px, 42vw" />
           </div>
         ))}
       </div>
     );
   }
-  if (n === 2) {
-    const [a, b] = images;
-    const aWide = !isTall(a);
+  if (n === 1) {
+    const img = images[0];
     return (
-      <div className="grid grid-cols-1 items-start gap-[4%] md:grid-cols-12">
-        <div className={aWide ? "md:col-span-7" : "md:col-span-5"}>
-          <Shot img={a} sizes="(min-width: 768px) 46vw, 92vw" />
-        </div>
-        <div className={`${aWide ? "md:col-span-5" : "md:col-span-7"} md:mt-[14%]`}>
-          <Shot img={b} sizes="(min-width: 768px) 40vw, 92vw" />
-        </div>
+      <div className={isTall(img) ? "w-[62%] max-w-[300px] md:w-[30%]" : "w-full md:w-[68%]"}>
+        <Shot img={img} sizes="(min-width: 768px) 46vw, 92vw" />
       </div>
     );
   }
-  // Three or more: a staggered editorial grid alternating wide and narrow columns.
-  const spans = ["md:col-span-7", "md:col-span-5 md:mt-[10%]", "md:col-span-5", "md:col-span-7 md:-mt-[4%]"];
+  // Several screens: a loose, staggered editorial grid; tall screens stay narrow.
   return (
-    <div className="grid grid-cols-1 items-start gap-[3.5%] gap-y-8 md:grid-cols-12 md:gap-y-[3.5%]">
-      {images.map((img, i) => (
-        <div key={img.src} className={spans[i % 4]}>
-          <Shot img={img} sizes="(min-width: 768px) 44vw, 92vw" />
-        </div>
-      ))}
+    <div className="grid grid-cols-2 items-start gap-x-[4%] gap-y-10 md:grid-cols-12">
+      {images.map((img, i) => {
+        const tall = isTall(img);
+        const span = tall ? "col-span-1 md:col-span-3" : "col-span-2 md:col-span-6";
+        const offset = i % 2 ? "md:mt-16" : "";
+        return (
+          <div key={img.src} className={`${span} ${offset}`}>
+            <Shot img={img} sizes={tall ? "(min-width: 768px) 22vw, 44vw" : "(min-width: 768px) 44vw, 92vw"} />
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-/** One colour panel = one idea. Captions sit under the panel, left-aligned. */
-export function Panel({ images, color }: { images: Img[]; color: string }) {
+/** One idea per group: screens on the page background with captions underneath. */
+export function Panel({ images }: { images: Img[] }) {
   const captions = images.filter((i) => i.caption);
   return (
-    <figure data-reveal className="flex flex-col gap-4">
-      <div className="reveal-media overflow-hidden px-[5%] py-[7%] md:py-[6%]" style={{ backgroundColor: color }}>
-        <Composition images={images} />
-      </div>
+    <figure data-reveal className="flex flex-col gap-5">
+      <Composition images={images} />
       {captions.length > 0 && (
         <figcaption className="case-caption flex max-w-[60ch] flex-col gap-1">
           {captions.map((c) => (

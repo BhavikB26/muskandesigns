@@ -62,9 +62,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const next = getNextProject(slug);
   const brand = brandOf(p.slug);
   const { story, closing } = splitStory(p);
-  // Panels cycle through the project's own colours so each idea reads as its own block.
-  const panelColors = [brand.soft, brand.base, brand.deep];
-  let panel = 0;
 
   return (
     <>
@@ -105,7 +102,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <Rail>
               <div className="flex flex-col gap-16 md:gap-28">
                 {story.map((b, i) => {
-                  if (b.kind === "images") return <Panel key={i} images={b.images} color={panelColors[panel++ % panelColors.length]} />;
+                  if (b.kind === "images") return <Panel key={i} images={b.images} />;
                   if (b.kind === "quote") return <Quote key={i} block={b} />;
                   return <TextBlock key={i} block={b} />;
                 })}
