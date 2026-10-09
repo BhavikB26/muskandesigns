@@ -4,6 +4,8 @@ import { deck as builderDesignSystem } from "./builder-design-system";
 import { deck as builderUniversity } from "./builder-university";
 import { deck as basecamp } from "./basecamp";
 import { deck as internshala } from "./internshala";
+import { deck as swipingLoop } from "./swiping-loop";
+import { deck as studioStore } from "./studio-store";
 
 /** Case studies rebuilt from Muskan's own Figma decks (text and order kept as she wrote them). */
 export const decks: Record<string, Deck> = {
@@ -12,4 +14,6 @@ export const decks: Record<string, Deck> = {
   "builder-university": builderUniversity,
   basecamp,
   internshala,
+  "swiping-loop": swipingLoop,
+  "studio-store": studioStore,
 };

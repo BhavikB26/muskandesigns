@@ -5,7 +5,13 @@ export type DeckItem =
   /** A sticker-style callout from the deck (white pill). */
   | { kind: "pill"; text: string; sub?: string }
   /** Yellow sticky notes, laid out in a grid. */
-  | { kind: "stickies"; notes: { title?: string; text: string }[] }
+  | { kind: "stickies"; notes: { title?: string; text: string }[]; tone?: "outline" }
+  /** Big figures with a label and the source she cited. */
+  | { kind: "stats"; stats: { value: string; label: string; source?: string }[] }
+  /** A participant quote. */
+  | { kind: "quote"; text: string; cite?: string }
+  /** Small labelled tags; "on" marks the highlighted one. */
+  | { kind: "chips"; items: string[]; on?: number }
   /** Full-width rows with a leading marker (📍, ✅). */
   | { kind: "rows"; marker: string; items: string[] };
 export type DeckSlide = {
@@ -17,6 +23,8 @@ export type DeckSlide = {
   after?: DeckItem[];
   /** anim: the original animated GIF (as animated WebP); src is a still used when motion is paused. */
   /** frame "laptop": a long web page shown scrolling inside a laptop screen. */
+  /** A click-through prototype: one laptop screen per step, with that step's text. */
+  flow?: { label: string; items: DeckItem[]; img: { src: string; width: number; height: number; alt: string } }[];
   img?: { src: string; width: number; height: number; anim?: string; alt?: string; frame?: "laptop" };
 };
 export type Deck = DeckSlide[];

@@ -555,3 +555,55 @@ html[data-motion="paused"] .anim-still { display: block; }
   background: #86878c;
   border-radius: 0 0 8px 8px;
 }
+.deck-box {
+  padding: 1rem 1.1rem;
+  background: var(--color-card);
+  color: var(--color-ink);
+  font-size: 15px;
+  line-height: 1.5;
+  border: 1.5px solid #3fb8c4;
+  border-radius: 6px;
+}
+.deck-stat {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem);
+  line-height: 1;
+  color: var(--color-ink);
+}
+.deck-quote {
+  padding-left: 1rem;
+  border-left: 2px solid var(--color-line-strong);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+.deck-chip {
+  padding: 0.45rem 0.95rem;
+  border: 1.5px solid #3fb8c4;
+  border-radius: 6px;
+  font-size: 14.5px;
+  color: var(--color-ink);
+  background: var(--color-card);
+}
+.deck-chip-on { background: #7fe0a8; border-color: #3cb874; color: #10291b; }
+/* LaptopFlow: screens cross-fade inside the laptop; step buttons below the text. */
+.laptop-screen-flow { position: relative; overflow: hidden; }
+.laptop-flow-shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transition: opacity 0.6s ease; }
+.laptop-flow-shot[data-on] { opacity: 1; }
+.laptop-flow-panel:not([hidden]) { animation: flow-in 0.5s ease both; }
+@keyframes flow-in { from { opacity: 0; translate: 0 8px; } }
+.laptop-flow-dot, .laptop-flow-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 2.25rem; height: 2.25rem; padding: 0 0.5rem;
+  border: 1px solid var(--color-line-strong); border-radius: 999px;
+  font-size: 13.5px; color: var(--color-ink); background: var(--color-card);
+  transition: background-color 0.25s, color 0.25s;
+}
+.laptop-flow-dot[aria-current="step"] { background: var(--color-ink); color: var(--background); border-color: var(--color-ink); }
+@media (hover: hover) { .laptop-flow-dot:hover, .laptop-flow-btn:hover { background: var(--color-ink); color: var(--background); } }
+@media (prefers-reduced-motion: reduce) {
+  .laptop-flow-shot { transition: none; }
+  .laptop-flow-panel:not([hidden]) { animation: none; }
+}

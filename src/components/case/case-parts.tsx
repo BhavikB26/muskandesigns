@@ -7,6 +7,7 @@ import type { DeckItem, DeckSlide } from "@/content/decks/types";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MotionToggle } from "@/components/motion";
 import { LaptopScroll } from "./laptop-scroll";
+import { LaptopFlow } from "./laptop-flow";
 
 /*
  * Editorial case study building blocks.
@@ -348,9 +349,38 @@ function DeckText({ items, wide = false }: { items: DeckItem[]; wide?: boolean }
           return (
             <ul key={i} className={`my-2 grid gap-4 ${it.notes.length === 1 ? "max-w-[60ch]" : "grid-cols-[repeat(auto-fit,minmax(min(100%,max(200px,calc((100%_-_2rem)/3))),1fr))]"}`}>
               {it.notes.map((n, k) => (
-                <li key={k} className="deck-sticky">
+                <li key={k} className={it.tone === "outline" ? "deck-box" : "deck-sticky"}>
                   {n.title && <strong className="mb-1 block font-semibold">{n.title}</strong>}
                   {n.text}
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "stats")
+          return (
+            <ul key={i} className="my-2 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+              {it.stats.map((st, k) => (
+                <li key={k} className="flex flex-col gap-1">
+                  <span className="deck-stat">{st.value}</span>
+                  <span className="case-body">{st.label}</span>
+                  {st.source && <span className="case-caption">{st.source}</span>}
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "quote")
+          return (
+            <figure key={i} className="deck-quote">
+              <blockquote>“{it.text}”</blockquote>
+              {it.cite && <figcaption className="case-caption mt-1">{it.cite}</figcaption>}
+            </figure>
+          );
+        if (it.kind === "chips")
+          return (
+            <ul key={i} className="my-1 flex flex-wrap gap-2.5">
+              {it.items.map((x, k) => (
+                <li key={k} className={`deck-chip ${it.on === k ? "deck-chip-on" : ""}`}>
+                  {x}
                 </li>
               ))}
             </ul>
@@ -379,7 +409,7 @@ function DeckText({ items, wide = false }: { items: DeckItem[]; wide?: boolean }
 }
 
 /** Sticky notes and rows need the full column; plain text keeps a reading measure. */
-const isWide = (items: DeckItem[]) => items.some((i) => i.kind === "stickies" || i.kind === "rows");
+const isWide = (items: DeckItem[]) => items.some((i) => i.kind === "stickies" || i.kind === "rows" || i.kind === "stats");
 
 function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
   if (img.frame === "laptop") return <LaptopScroll src={img.src} width={img.width} height={img.height} alt={alt} />;
@@ -415,6 +445,12 @@ export function DeckSlideView({ slide }: { slide: DeckSlide }) {
   const { img, items, after } = slide;
   const alt = img?.alt ?? (heading ? `${heading.text}: visual from the case study` : "Visual from the case study");
   const below = after?.length ? <DeckText items={after} wide={isWide(after)} /> : null;
+  if (slide.flow)
+    return (
+      <section data-reveal>
+        <LaptopFlow screens={slide.flow.map((f) => f.img)} panels={slide.flow.map((f, i) => <DeckText key={i} items={f.items} />)} labels={slide.flow.map((f) => f.label)} />
+      </section>
+    );
   if (!img)
     return (
       <section data-reveal>
