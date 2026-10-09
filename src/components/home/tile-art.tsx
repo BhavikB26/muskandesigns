@@ -13,7 +13,7 @@ import { useReducedMotion } from "@/components/use-reduced-motion";
  */
 
 // kind: how a screen is presented. phone = slim phone outline, panel/browser = whole screen kept intact, art = full-width illustration.
-type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string; kind?: "phone" | "panel" | "browser" | "art" };
+type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string; kind?: "phone" | "panel" | "browser" | "laptop" | "art" };
 
 const BG: Record<string, [string, string]> = {
   "ai-mentor": ["#4330b8", "#1b1252"],
@@ -199,9 +199,9 @@ const FRAMES: Record<string, Frame[]> = {
     f("ratings-reviews", 3, 370, 801, "OYO's write-a-review screen with quick suggestions", "phone"),
   ],
   "builder-design-system": [
-    f("builder-design-system", 1, 617, 903, "Spacing and corner radius tokens from the design system"),
-    f("builder-design-system", 2, 948, 795, "The design system's foundational colour palette"),
-    f("builder-design-system", 3, 667, 795, "Icon set from the design system"),
+    f("builder-design-system", 7, 354, 769, "Corner radius tokens from the design system", "panel"),
+    f("builder-design-system", 11, 467, 206, "The design system's foundational colour palette", "panel"),
+    f("builder-design-system", 12, 448, 204, "The design system's semantic colours: warning, danger and success", "panel"),
   ],
   "builder-university": [
     f("builder-university", 1, 698, 476, "Builder University's learning path with course cards", "browser"),
@@ -212,17 +212,17 @@ const FRAMES: Record<string, Frame[]> = {
     { node: <InternshalaSearch />, alt: "Redesigned Internshala search bar and filter chips" },
   ],
   "studio-store": [
-    f("studio-store", 4, 833, 546, "Studio Store's setup guide for new store owners"),
-    f("studio-store", 5, 833, 548, "Studio Store's dashboard with sales and email stats"),
-    f("studio-store", 6, 833, 504, "Studio Store's customise-your-organisation form"),
+    f("studio-store", 4, 833, 546, "Studio Store's setup guide for new store owners", "laptop"),
+    f("studio-store", 5, 833, 548, "Studio Store's dashboard with sales and email stats", "laptop"),
+    f("studio-store", 6, 833, 504, "Studio Store's customise-your-organisation form", "laptop"),
   ],
   "swiping-loop": [
     { src: "/work/swiping-loop/illustration.webp", w: 736, h: 387, kind: "art", alt: "Collage illustration of two hands holding phones, each with a pixel heart above it" },
   ],
   basecamp: [
-    f("basecamp", 1, 1096, 686, "Redesigned Basecamp landing page hero"),
-    f("basecamp", 2, 1065, 1198, "Basecamp integrations section"),
-    f("basecamp", 3, 1126, 1750, "Basecamp feature cards section"),
+    f("basecamp", 1, 1096, 686, "Redesigned Basecamp landing page hero", "laptop"),
+    f("basecamp", 2, 1065, 1198, "Basecamp integrations section", "laptop"),
+    f("basecamp", 3, 1126, 1750, "Basecamp feature cards section", "laptop"),
   ],
   gusto: [
     { node: <GustoDevices />, alt: "Gusto signup screens rebuilt in code on a tablet and a phone: the 'Learn how Gusto works' questions and the mobile home page" },
@@ -258,7 +258,7 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
     );
   }
   if (fr.kind === "panel") {
-    const w = Math.min(70, 84 / ratio);
+    const w = ratio < 1 ? 88 : Math.min(70, 84 / ratio);
     return (
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="overflow-hidden rounded-[2.4cqw] ring-1 ring-white/25 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]" style={{ width: `${w}%` }}>{img("")}</div>
@@ -275,6 +275,30 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
             ))}
           </div>
           {img("")}
+        </div>
+      </div>
+    );
+  }
+  if (fr.kind === "laptop") {
+    // Slim flat laptop: thin bezel and a simple base. The page fills a 16:10 screen from the top.
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[84%] drop-shadow-[0_30px_40px_rgba(0,0,0,0.35)]">
+          <div className="rounded-t-[2.4cqw] bg-[#121212] p-[1.3cqw] pb-[1.6cqw]">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[0.8cqw] bg-white">
+              <Image
+                src={fr.src!}
+                alt=""
+                fill
+                loading={eager ? "eager" : "lazy"}
+                sizes="(min-width: 1024px) 28vw, (min-width: 640px) 42vw, 84vw"
+                className="object-cover object-top"
+              />
+            </div>
+          </div>
+          <div className="relative -mx-[6%] h-[2.4cqw] rounded-b-[2cqw] bg-[linear-gradient(#d9dbdf,#a9acb2)]">
+            <span className="absolute left-1/2 top-0 block h-[0.9cqw] w-[16%] -translate-x-1/2 rounded-b-[1cqw] bg-[#8d9096]" />
+          </div>
         </div>
       </div>
     );

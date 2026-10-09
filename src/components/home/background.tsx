@@ -1,17 +1,6 @@
 import { MaskedText } from "@/components/masked-text";
 import Image from "next/image";
 
-type Row = { when: string; where: string; what: string };
-
-// Matches the resume (Muskan Bhatia aug '26.pdf). Newest first.
-const timeline: Row[] = [
-  { when: "Jan 2025 – Apr 2026", where: "Global social platform", what: "Product Designer (contract)" },
-  { when: "Mar – Sep 2024", where: "Builder.ai", what: "Product Designer" },
-  { when: "Oct – Dec 2023", where: "Preplaced", what: "Product Designer" },
-  { when: "Jun – Aug 2023", where: "Elda Health", what: "Product Design Intern" },
-  { when: "2018 – 2022", where: "SRM Institute of Science & Technology", what: "B.Tech, Computer Science" },
-];
-
 const chips = [
   { label: "B.Tech, Computer Science", tint: "#fbe7e5" },
   { label: "Product designer", tint: "#ebe8f8" },
@@ -69,21 +58,6 @@ export function Background() {
                 it looks. Right now I&rsquo;m focused on accessibility and inclusive design.
               </p>
             </div>
-          </div>
-
-          <div data-reveal className="flex flex-col gap-4 border-t border-line pt-6">
-            <p className="label-mono text-muted">Where I&rsquo;ve been</p>
-            <ol className="flex flex-col">
-              {timeline.map((r) => (
-                <li key={r.where} className="grid grid-cols-1 gap-1 border-b border-line py-4 text-[16px] last:border-b-0 sm:grid-cols-[170px_1fr] sm:gap-6">
-                  <span className="text-muted">{r.when}</span>
-                  <span>
-                    <span className="font-medium text-ink">{r.where}</span>
-                    <span className="text-ink-soft"> · {r.what}</span>
-                  </span>
-                </li>
-              ))}
-            </ol>
           </div>
 
           <div data-reveal className="flex flex-col gap-4 border-t border-line pt-6">
