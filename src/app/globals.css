@@ -385,3 +385,72 @@ html[data-theme="dark"] .hero-scrim {
 .tile-art-fade {
   mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
 }
+
+/* ---------- v9: editorial case study type and motion ---------- */
+@utility case-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 1.2rem + 4.6vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: 0.005em;
+  text-wrap: balance;
+}
+@utility case-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.55rem);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+}
+@utility case-body {
+  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.1rem);
+  line-height: 1.65;
+  color: var(--color-ink-soft);
+}
+@utility case-meta-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+@utility case-caption {
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+/* Links: an underline that draws in on hover and focus. */
+@utility case-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 calc(100% - 4px);
+  background-repeat: no-repeat;
+  transition: background-size 0.45s var(--ease-out-expo), color 0.3s;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+.case-arrow {
+  display: inline-block;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+a:hover .case-arrow,
+a:focus-visible .case-arrow {
+  transform: translateX(4px);
+}
+/* Hero: a quick masked reveal from the bottom edge. */
+@keyframes hero-reveal {
+  from {
+    clip-path: inset(12% 0 0 0);
+    transform: translateY(16px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+.hero-reveal {
+  animation: hero-reveal 0.9s var(--ease-out-expo) 0.1s both;
+}
