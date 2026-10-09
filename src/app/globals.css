@@ -375,3 +375,13 @@ html[data-theme="dark"] .tinted {
 html[data-theme="dark"] .hero-scrim {
   background: radial-gradient(60% 55% at 50% 50%, rgba(10, 7, 16, 0.72), rgba(10, 7, 16, 0.3) 70%, transparent 100%);
 }
+
+/* Swiping Loop tile: halftone dots that continue the illustration's own texture, and soft top/bottom edges. */
+.tile-halftone {
+  background-color: #c69d8d;
+  background-image: radial-gradient(rgba(232, 122, 78, 0.55) 30%, transparent 32%);
+  background-size: 4px 4px;
+}
+.tile-art-fade {
+  mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+}

@@ -12,7 +12,8 @@ import { useReducedMotion } from "@/components/use-reduced-motion";
  * code rebuild where the source is too small to stay sharp. Gusto is recreated wireframes only.
  */
 
-type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string };
+// kind: how a screen is presented. phone = slim phone outline, panel/browser = whole screen kept intact, art = full-width illustration.
+type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string; kind?: "phone" | "panel" | "browser" | "art" };
 
 const BG: Record<string, [string, string]> = {
   "ai-mentor": ["#4330b8", "#1b1252"],
@@ -21,12 +22,12 @@ const BG: Record<string, [string, string]> = {
   "ratings-reviews": ["#d23a42", "#6a1016"],
   "studio-store": ["#cfc4f0", "#a798d6"],
   internshala: ["#0d86d1", "#04395e"],
-  "swiping-loop": ["#b85c40", "#521f13"],
+  "swiping-loop": ["#c69d8d", "#c69d8d"],
   basecamp: ["#f3cd47", "#cf9e14"],
   gusto: ["#f3a68d", "#c7573f"],
 };
 
-const f = (slug: string, n: number, w: number, h: number, alt: string): Frame => ({ src: `/work/${slug}/frame-${n}.webp`, w, h, alt });
+const f = (slug: string, n: number, w: number, h: number, alt: string, kind?: Frame["kind"]): Frame => ({ src: `/work/${slug}/frame-${n}.webp`, w, h, alt, kind });
 
 /* ---------- faithful code rebuilds ---------- */
 
@@ -184,108 +185,18 @@ function GustoQuestionCard() {
   );
 }
 
-/* Swiping loop: illustrative dating-app elements drawn in code (a research project, so these are
-   illustrations of the experience being studied, not screens Muskan designed). */
-function Avatar({ hue }: { hue: string }) {
-  return (
-    <div className="relative h-full w-full overflow-hidden" style={{ background: `linear-gradient(160deg, ${hue}, #2a1611)` }}>
-      <span className="absolute left-1/2 top-[22%] block size-[38%] -translate-x-1/2 rounded-full bg-white/80" />
-      <span className="absolute left-1/2 top-[56%] block h-[60%] w-[78%] -translate-x-1/2 rounded-t-[50%] bg-white/80" />
-    </div>
-  );
-}
-
-function ProfileCard({ hue, className = "", style }: { hue: string; className?: string; style?: CSSProperties }) {
-  return (
-    <div className={`absolute w-[46cqw] overflow-hidden rounded-[4cqw] bg-white shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)] ${className}`} style={style}>
-      <div className="aspect-[4/5]">
-        <Avatar hue={hue} />
-      </div>
-      <div className="flex flex-col gap-[1.4cqw] p-[3cqw]">
-        <span className="block h-[2.4cqw] w-[55%] rounded-full bg-[#2b2b2b]" />
-        <span className="block h-[1.8cqw] w-[80%] rounded-full bg-[#d7d2cc]" />
-      </div>
-    </div>
-  );
-}
-
-function ActionButton({ kind }: { kind: "nope" | "like" }) {
-  return (
-    <span className={`grid size-[13cqw] place-items-center rounded-full bg-white text-[6cqw] shadow-[0_18px_30px_-14px_rgba(0,0,0,0.55)] ${kind === "like" ? "text-[#e0475a]" : "text-[#6b6b6b]"}`}>
-      {kind === "like" ? "♥" : "✕"}
-    </span>
-  );
-}
-
-function SwipeStack() {
-  return (
-    <div className="relative h-[82cqw] w-[80cqw]">
-      <ProfileCard hue="#c98b6b" className="left-[2cqw] top-[6cqw] -rotate-[9deg] opacity-90" />
-      <ProfileCard hue="#8b6bc9" className="right-[2cqw] top-[4cqw] rotate-[8deg] opacity-90" />
-      <ProfileCard hue="#e0475a" className="left-1/2 top-0 -translate-x-1/2" />
-      <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-[6cqw]">
-        <ActionButton kind="nope" />
-        <ActionButton kind="like" />
-      </div>
-    </div>
-  );
-}
-
-function SwipeLoop() {
-  return (
-    <div className="relative grid size-[80cqw] place-items-center">
-      {/* The loop: swipe, match, stall, repeat. */}
-      <svg aria-hidden viewBox="0 0 100 100" className="absolute inset-0 size-full">
-        <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.55)" strokeWidth="1.2" strokeDasharray="3 3" />
-        <path d="M86 44 l4 7 l-8 -1" fill="none" stroke="rgba(255,255,255,0.8)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-      <ProfileCard hue="#e0475a" className="left-1/2 top-1/2 w-[34cqw] -translate-x-1/2 -translate-y-1/2 rotate-[12deg]" />
-      <span className="absolute left-[6cqw] top-[10cqw] rotate-[-10deg] rounded-[1.6cqw] border-[0.6cqw] border-[#17803f] bg-white px-[2cqw] py-[0.6cqw] text-[4.4cqw] font-bold tracking-[0.06em] text-[#17803f]">LIKE</span>
-      <span className="absolute bottom-[12cqw] right-[4cqw] rotate-[8deg] rounded-[1.6cqw] border-[0.6cqw] border-[#c42d44] bg-white px-[2cqw] py-[0.6cqw] text-[4.4cqw] font-bold tracking-[0.06em] text-[#c42d44]">NOPE</span>
-      <span className="absolute right-[10cqw] top-[6cqw] grid size-[11cqw] place-items-center rounded-full bg-white text-[5.4cqw] text-[#e0475a] shadow-lg">♥</span>
-    </div>
-  );
-}
-
-function ChatBubbles() {
-  return (
-    <div className="flex w-[74cqw] flex-col gap-[3cqw]">
-      <span className="flex items-center gap-[2.4cqw] self-start rounded-full bg-white/95 py-[1.4cqw] pl-[1.4cqw] pr-[4cqw] text-[3.6cqw] font-semibold text-[#c2334a] shadow-lg">
-        <span aria-hidden className="relative flex">
-          <span className="block size-[8cqw] overflow-hidden rounded-full ring-[0.6cqw] ring-white"><Avatar hue="#c98b6b" /></span>
-          <span className="-ml-[3cqw] block size-[8cqw] overflow-hidden rounded-full ring-[0.6cqw] ring-white"><Avatar hue="#8b6bc9" /></span>
-          <span className="absolute -bottom-[1cqw] left-1/2 grid size-[4.4cqw] -translate-x-1/2 place-items-center rounded-full bg-[#e0475a] text-[2.6cqw] text-white">♥</span>
-        </span>
-        It&rsquo;s a match
-      </span>
-      <span className="max-w-[80%] self-start rounded-[4cqw] rounded-bl-[1cqw] bg-white px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
-        <span className="block h-[2cqw] w-[44cqw] rounded-full bg-[#d7d2cc]" />
-        <span className="mt-[1.6cqw] block h-[2cqw] w-[30cqw] rounded-full bg-[#d7d2cc]" />
-      </span>
-      <span className="max-w-[80%] self-end rounded-[4cqw] rounded-br-[1cqw] bg-[#e0475a] px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
-        <span className="block h-[2cqw] w-[36cqw] rounded-full bg-white/70" />
-      </span>
-      <span className="flex gap-[1.4cqw] self-start rounded-full bg-white px-[4cqw] py-[3cqw] shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]">
-        {[0, 1, 2].map((k) => (
-          <span key={k} className="block size-[2.2cqw] rounded-full bg-[#b3aca4]" />
-        ))}
-      </span>
-    </div>
-  );
-}
-
 /* ---------- frames per project ---------- */
 
 const FRAMES: Record<string, Frame[]> = {
   "ai-mentor": [
-    f("ai-mentor", 4, 425, 932, "ProPilot's AI mentor panel replying to a learner's question"),
+    f("ai-mentor", 4, 425, 932, "ProPilot's AI mentor panel replying to a learner's question", "panel"),
     { node: <LeecoTone />, alt: "ProPilot's tone picker: Friendly, Professional, Casual or Strict" },
-    f("ai-mentor", 2, 464, 1004, "ProPilot explaining a coding problem step by step"),
+    f("ai-mentor", 6, 376, 1004, "ProPilot explaining a coding problem step by step", "panel"),
   ],
   "ratings-reviews": [
-    f("ratings-reviews", 1, 370, 807, "OYO's rate-your-experience screen with star ratings"),
-    f("ratings-reviews", 2, 370, 807, "OYO's cashback reward screen after a review"),
-    f("ratings-reviews", 3, 370, 801, "OYO's write-a-review screen with quick suggestions"),
+    f("ratings-reviews", 1, 370, 807, "OYO's rate-your-experience screen with star ratings", "phone"),
+    f("ratings-reviews", 2, 370, 807, "OYO's cashback reward screen after a review", "phone"),
+    f("ratings-reviews", 3, 370, 801, "OYO's write-a-review screen with quick suggestions", "phone"),
   ],
   "builder-design-system": [
     f("builder-design-system", 1, 617, 903, "Spacing and corner radius tokens from the design system"),
@@ -293,9 +204,8 @@ const FRAMES: Record<string, Frame[]> = {
     f("builder-design-system", 3, 667, 795, "Icon set from the design system"),
   ],
   "builder-university": [
-    f("builder-university", 1, 698, 476, "Builder University's learning path with course cards"),
-    f("builder-university", 2, 699, 475, "Builder University's course catalogue"),
-    f("builder-university", 3, 740, 522, "Builder University's pilot course page"),
+    f("builder-university", 1, 698, 476, "Builder University's learning path with course cards", "browser"),
+    f("builder-university", 2, 699, 475, "Builder University's course catalogue", "browser"),
   ],
   internshala: [
     { node: <InternshalaJob />, alt: "Redesigned Internshala listing card for a product designer internship" },
@@ -307,9 +217,7 @@ const FRAMES: Record<string, Frame[]> = {
     f("studio-store", 6, 833, 504, "Studio Store's customise-your-organisation form"),
   ],
   "swiping-loop": [
-    { node: <SwipeStack />, alt: "Illustration of a stack of dating-app profile cards with like and pass buttons" },
-    { node: <SwipeLoop />, alt: "Illustration of the swiping loop: a profile card swiped round and round between like and nope" },
-    { node: <div className="translate-x-[4cqw] scale-[1.22]"><ChatBubbles /></div>, alt: "Illustration of a match followed by a stalled chat" },
+    { src: "/work/swiping-loop/illustration.webp", w: 736, h: 387, kind: "art", alt: "Collage illustration of two hands holding phones, each with a pixel heart above it" },
   ],
   basecamp: [
     f("basecamp", 1, 1096, 686, "Redesigned Basecamp landing page hero"),
@@ -327,6 +235,57 @@ const FRAMES: Record<string, Frame[]> = {
 function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
   if (fr.node) return <div className="absolute inset-0 flex items-center justify-center">{fr.node}</div>;
   const ratio = fr.h! / fr.w!;
+  const img = (cls: string) => (
+    <Image
+      src={fr.src!}
+      alt=""
+      width={fr.w}
+      height={fr.h}
+      loading={eager ? "eager" : "lazy"}
+      sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 90vw"
+      className={`block h-auto w-full ${cls}`}
+    />
+  );
+  // Whole screens, never cut: sized so the full height (tall) or width (wide) fits inside the tile.
+  if (fr.kind === "phone") {
+    const w = Math.min(64, 80 / ratio);
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="rounded-[6.5cqw] bg-[#121212] p-[1.3cqw] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]" style={{ width: `${w + 2.6}%` }}>
+          {img("rounded-[5.4cqw]")}
+        </div>
+      </div>
+    );
+  }
+  if (fr.kind === "panel") {
+    const w = Math.min(70, 84 / ratio);
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="overflow-hidden rounded-[2.4cqw] ring-1 ring-white/25 shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]" style={{ width: `${w}%` }}>{img("")}</div>
+      </div>
+    );
+  }
+  if (fr.kind === "browser") {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="w-[86%] overflow-hidden rounded-[2cqw] bg-white shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]">
+          <div aria-hidden className="flex gap-[1cqw] bg-[#ececec] px-[2.2cqw] py-[1.6cqw]">
+            {["#ff5f57", "#febc2e", "#28c840"].map((c) => (
+              <span key={c} className="block size-[1.8cqw] rounded-full" style={{ backgroundColor: c }} />
+            ))}
+          </div>
+          {img("")}
+        </div>
+      </div>
+    );
+  }
+  if (fr.kind === "art") {
+    return (
+      <div className="tile-halftone absolute inset-0 flex items-center justify-center">
+        <div className="tile-art-fade w-full">{img("")}</div>
+      </div>
+    );
+  }
   const style: CSSProperties =
     ratio > 1.3
       ? { width: "54%", left: "23%", top: "12%" } // tall: bleed bottom
@@ -335,15 +294,7 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
         : { width: "78%", left: "11%", top: "13%" }; // squarish: bleed bottom
   return (
     <div className="absolute" style={style}>
-      <Image
-        src={fr.src!}
-        alt=""
-        width={fr.w}
-        height={fr.h}
-        loading={eager ? "eager" : "lazy"}
-        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 46vw, 90vw"
-        className="block h-auto w-full rounded-[8px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]"
-      />
+      {img("rounded-[8px] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]")}
     </div>
   );
 }

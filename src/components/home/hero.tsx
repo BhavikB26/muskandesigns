@@ -46,16 +46,12 @@ export function Hero() {
           />
         </h1>
 
-        <p className="settle max-w-[46ch] text-[clamp(1.02rem,0.95rem+0.3vw,1.2rem)] leading-[1.55] text-ink-soft [animation-delay:380ms]">
-          Product designer with a computer science background, working across UX, UI and design systems.
-        </p>
-
-        <div className="settle flex flex-wrap items-center justify-center gap-3 [animation-delay:500ms]">
+        <div className="settle mt-2 flex flex-wrap items-center justify-center gap-3 [animation-delay:420ms] md:mt-4">
           <a
             href="#work"
             className="inline-flex min-h-12 items-center gap-2 rounded-full bg-ink px-6 text-[16px] font-medium text-background transition-[transform,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:bg-accent focus-visible:bg-accent"
           >
-            See my work <span aria-hidden>↓</span>
+            See my work
           </a>
           <a
             href="/resume.pdf"
@@ -63,7 +59,7 @@ export function Hero() {
             rel="noopener noreferrer"
             className="inline-flex min-h-12 items-center gap-2 rounded-full border border-line-strong bg-card/70 px-6 text-[16px] font-medium text-ink backdrop-blur transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-ink focus-visible:border-ink"
           >
-            Resume (PDF) <span aria-hidden>↗</span>
+            Resume (PDF)<span className="sr-only"> (opens in a new tab)</span>
           </a>
           <a
             href="#contact"
