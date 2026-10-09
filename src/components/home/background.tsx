@@ -1,11 +1,24 @@
 import { MaskedText } from "@/components/masked-text";
 import Image from "next/image";
+import { about } from "@/content/about";
 
-const chips = [
-  { label: "B.Tech, Computer Science", tint: "#fbe7e5" },
-  { label: "Product designer", tint: "#ebe8f8" },
-  { label: "Based in India", tint: "#e6f2ea" },
-];
+/** Simple line icons for the chips (drawn for this site). */
+function ChipIcon({ name }: { name: string }) {
+  const p = { fill: "none", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  return (
+    <svg aria-hidden viewBox="0 0 24 24" className="size-[18px] shrink-0">
+      {name === "puzzle" && <path {...p} d="M9 4h3v2a2 2 0 1 0 4 0V4h3v5h-2a2 2 0 1 0 0 4h2v7h-6v-2a2 2 0 1 0-4 0v2H4v-6h2a2 2 0 1 0 0-4H4V4z" />}
+      {name === "cancer" && (
+        <g {...p}>
+          <circle cx="7.5" cy="9" r="2.6" />
+          <circle cx="16.5" cy="15" r="2.6" />
+          <path d="M10 9c2-3.4 7-3.6 10-1.2M14 15c-2 3.4-7 3.6-10 1.2" />
+        </g>
+      )}
+      {name === "brain" && <path {...p} d="M12 5.5a3 3 0 0 0-5.6-1.3A3 3 0 0 0 4 9a3 3 0 0 0 .7 5.4A3.3 3.3 0 0 0 9 18.6a3 3 0 0 0 3 1.4M12 5.5a3 3 0 0 1 5.6-1.3A3 3 0 0 1 20 9a3 3 0 0 1-.7 5.4 3.3 3.3 0 0 1-4.3 4.2 3 3 0 0 1-3 1.4M12 5.5V20" />}
+    </svg>
+  );
+}
 
 const strengths = ["UX & product design", "UI & visual design", "Prototyping", "Design systems", "Product thinking", "Working with engineers & PMs"];
 
@@ -31,32 +44,28 @@ export function Background() {
         <div className="flex flex-col gap-12 md:col-span-7">
           <div data-reveal className="flex flex-col gap-6">
             <p className="label-mono text-muted">(02) About</p>
-            <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.02] tracking-[0.01em]">
-              <MaskedText text="A little background, if you’re" onReveal />{" "}
+            <h2 id="about-heading" className="font-display text-[clamp(2.2rem,1.4rem+2.8vw,4.25rem)] font-medium leading-[1.04] tracking-[0.01em]">
+              <MaskedText text={about.headline.lead} onReveal />{" "}
               <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">
-                <MaskedText text="still here" start={6} onReveal />
+                <MaskedText text={about.headline.italic} start={about.headline.lead.split(" ").length} onReveal />
               </em>
             </h2>
-            <ul className="flex flex-wrap gap-2">
-              {chips.map((c) => (
+            <ul className="flex flex-wrap gap-2.5">
+              {about.chips.map((c) => (
                 <li
                   key={c.label}
-                  className="tinted rounded-full px-3.5 py-1.5 text-[14px] font-medium text-ink ring-1 ring-line"
+                  className="tinted flex items-center gap-2 rounded-[8px] px-3 py-2 text-[15px] font-semibold text-ink ring-1 ring-line"
                   style={{ "--tint": c.tint } as React.CSSProperties}
                 >
+                  <ChipIcon name={c.icon} />
                   {c.label}
                 </li>
               ))}
             </ul>
             <div className="flex max-w-[60ch] flex-col gap-4 text-[clamp(1.05rem,1rem+0.25vw,1.2rem)] leading-[1.6] text-ink-soft">
-              <p>
-                I&rsquo;ve always been better at making things than explaining myself. Design was the first place that
-                made sense to me: a blank page doesn&rsquo;t need you to perform, it just needs you to be honest.
-              </p>
-              <p>
-                I came to product design from computer science, so I care about how something gets built as much as how
-                it looks. Right now I&rsquo;m focused on accessibility and inclusive design.
-              </p>
+              {about.paragraphs.map((t) => (
+                <p key={t.slice(0, 20)}>{t}</p>
+              ))}
             </div>
           </div>
 

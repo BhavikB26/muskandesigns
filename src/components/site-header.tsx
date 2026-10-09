@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { MotionToggle } from "@/components/motion";
 
 const LINKEDIN = "https://www.linkedin.com/in/thisismuskan/";
 
@@ -31,6 +32,7 @@ export function SiteHeader() {
           </span>
         </Link>
         <div className="flex items-center gap-3 sm:gap-5">
+          <MotionToggle />
           <ThemeToggle />
           <a
             href={LINKEDIN}

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ViewTransition } from "react";
-import type { Project } from "@/content/projects";
+import { WORK_ORDER, type Project } from "@/content/projects";
 import { MaskedText } from "@/components/masked-text";
 import { TileArt } from "@/components/home/tile-art";
 
@@ -70,29 +70,37 @@ export function Work({ projects }: { projects: Project[] }) {
         </div>
 
         <ul className="grid grid-cols-1 gap-x-3 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 can-hover:gap-y-3">
-          {projects.map((p, i) => (
-            <MosaicTile
-              key={p.slug}
-              slug={p.slug}
-              href={`/work/${p.slug}`}
-              title={p.name}
-              tagline={p.tagline}
-              tag={p.meta.company.split(" (")[0]}
-              label={[p.tag === "Concept" ? p.meta.type : "Case study", year(p)].filter(Boolean).join(" · ")}
-              index={i}
-              viewName={`thumb-${p.slug}`}
-            />
-          ))}
-          {/* Gusto has no case study page: Muskan offers a walkthrough instead. */}
-          <MosaicTile
-            slug="gusto"
-            href="#contact"
-            title="Growth experiments on Gusto’s signup flow"
-            tagline="Happy to walk through it in an interview."
-            tag="Gusto"
-            label="Walkthrough on request"
-            index={projects.length}
-          />
+          {WORK_ORDER.map((slug, i) => {
+            if (slug === "gusto")
+              return (
+                // Gusto has no case study page: Muskan offers a walkthrough instead.
+                <MosaicTile
+                  key="gusto"
+                  slug="gusto"
+                  href="#contact"
+                  title="Growth experiments on Gusto’s signup flow"
+                  tagline="Happy to walk through it in an interview."
+                  tag="Gusto"
+                  label="Walkthrough on request"
+                  index={i}
+                />
+              );
+            const p = projects.find((x) => x.slug === slug);
+            if (!p) return null;
+            return (
+              <MosaicTile
+                key={p.slug}
+                slug={p.slug}
+                href={`/work/${p.slug}`}
+                title={p.name}
+                tagline={p.tagline}
+                tag={p.meta.company.split(" (")[0]}
+                label={[p.tag === "Concept" ? p.meta.type : "Case study", year(p)].filter(Boolean).join(" · ")}
+                index={i}
+                viewName={`thumb-${p.slug}`}
+              />
+            );
+          })}
         </ul>
       </div>
     </section>

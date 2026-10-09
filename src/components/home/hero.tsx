@@ -2,7 +2,6 @@ import Image from "next/image";
 import { RollingHello } from "@/components/home/rolling-hello";
 import { HeroLens } from "@/components/home/hero-lens";
 import { MaskedText } from "@/components/masked-text";
-import { MotionToggle } from "@/components/motion";
 
 // Headline text stays exactly: "I like orchestrating intentional designs."
 const LEAD = "I like orchestrating";
@@ -68,8 +67,6 @@ export function Hero() {
             Get in touch
           </a>
         </div>
-
-        <MotionToggle className="absolute bottom-4 right-4" />
       </div>
     </section>
   );

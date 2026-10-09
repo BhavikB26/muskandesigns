@@ -117,6 +117,7 @@ export function useMotionPaused() {
   return useSyncExternalStore(subscribe, getPaused, () => false);
 }
 
+/** Small icon button beside the theme switch that pauses every looping animation (WCAG 2.2.2). */
 export function MotionToggle({ className = "" }: { className?: string }) {
   const paused = useMotionPaused();
   return (
@@ -124,11 +125,16 @@ export function MotionToggle({ className = "" }: { className?: string }) {
       type="button"
       onClick={() => setMotionPaused(!paused)}
       aria-pressed={paused}
-      className={`inline-flex min-h-6 items-center gap-1.5 rounded-full border border-line bg-card px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.06em] text-muted transition-colors hover:text-ink motion-reduce:hidden ${className}`}
+      aria-label={paused ? "Play motion" : "Pause motion"}
+      title={paused ? "Play motion" : "Pause motion"}
+      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-line-strong bg-card text-ink transition-colors duration-300 hover:bg-ink hover:text-background motion-reduce:hidden ${className}`}
       style={{ transitionTimingFunction: EASE }}
     >
-      <span aria-hidden>{paused ? "▶" : "❚❚"}</span>
-      {paused ? "Play motion" : "Pause motion"}
+      {paused ? (
+        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z" /></svg>
+      ) : (
+        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5" fill="currentColor"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6" /><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6" /></svg>
+      )}
     </button>
   );
 }
