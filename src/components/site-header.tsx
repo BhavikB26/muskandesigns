@@ -18,11 +18,11 @@ function LinkedInIcon() {
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 w-full px-page bg-background/80 backdrop-blur-md transition-colors duration-500 supports-[backdrop-filter]:bg-background/65">
-      <div className="mx-auto flex w-full max-w-[1760px] items-center justify-between gap-3 py-[30px] md:py-[38px]">
+      <div className="mx-auto flex h-14 w-full max-w-[1760px] items-center justify-between gap-fr-sm md:h-[72px]">
         <Link
           href="/"
           aria-label="Muskan Bhatia, home"
-          className="-my-1.5 inline-flex size-11 items-center justify-start"
+          className="inline-flex size-11 items-center justify-start"
         >
           <span
             aria-hidden
@@ -31,7 +31,7 @@ export function SiteHeader() {
             m
           </span>
         </Link>
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center gap-fr-xs">
           <MotionToggle />
           <ThemeToggle />
           <a
@@ -39,7 +39,7 @@ export function SiteHeader() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Muskan Bhatia on LinkedIn"
-            className="-my-1.5 -mr-2.5 inline-flex size-11 items-center justify-center rounded-lg text-ink transition-opacity duration-200 hover:opacity-70"
+            className="btn-icon"
           >
             <LinkedInIcon />
           </a>

@@ -129,7 +129,7 @@ export function MotionToggle({ className = "" }: { className?: string }) {
       aria-pressed={paused}
       aria-label={paused ? "Play motion" : "Pause motion"}
       title={paused ? "Play motion" : "Pause motion"}
-      className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full border border-line-strong bg-card text-ink transition-colors duration-300 hover:bg-ink hover:text-background motion-reduce:hidden ${className}`}
+      className={`btn-icon shrink-0 motion-reduce:hidden ${className}`}
       style={{ transitionTimingFunction: EASE }}
     >
       {paused ? (

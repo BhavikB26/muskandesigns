@@ -22,7 +22,7 @@ function MosaicTile({
   const LinkEl = external ? "a" : Link;
   return (
     <li data-reveal className="group relative">
-      <div className="reveal-media relative aspect-square overflow-hidden rounded-[6px] bg-[#2a2733]">
+      <div className="reveal-media relative aspect-square overflow-hidden rounded-fr-lg bg-[#2a2733]">
         {viewName ? (
           <ViewTransition name={viewName} share="morph" default="none">
             {art}
@@ -30,7 +30,7 @@ function MosaicTile({
         ) : (
           art
         )}
-        <span className="label-mono absolute right-3 top-3 z-20 rounded-full bg-black/55 px-2.5 py-1 text-[10px] text-white backdrop-blur-sm">{tag}</span>
+        <span className="label-mono absolute right-fr-sm top-fr-sm z-20 rounded-fr-sm bg-black/55 px-fr-xs py-fr-xxs text-white backdrop-blur-sm">{tag}</span>
         {/* Hover/focus veil (decorative). */}
         <span
           aria-hidden
@@ -38,16 +38,16 @@ function MosaicTile({
         />
       </div>
       <div
-        className={`relative mt-3 flex flex-col gap-1.5 can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-5 can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
+        className={`relative mt-fr-sm flex flex-col gap-fr-xs can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-fr-lg can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
       >
-        <h3 className={`font-display text-[clamp(1.1rem,1rem+0.4vw,1.35rem)] font-medium leading-[1.15] tracking-[0.01em] text-ink can-hover:text-white`}>
-          <LinkEl href={href} className="outline-none after:absolute after:inset-0 after:z-30 after:content-[''] focus-visible:after:rounded-[6px] focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]">
+        <h3 className={`t-display-md text-ink can-hover:text-white`}>
+          <LinkEl href={href} className="outline-none after:absolute after:inset-0 after:z-30 after:content-[''] focus-visible:after:rounded-fr-lg focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]">
             <span className="sr-only">{String(index + 1).padStart(2, "0")}. </span>
             {title}
           </LinkEl>
         </h3>
-        <p className={`max-w-[40ch] text-[14px] leading-[1.5] text-ink-soft can-hover:text-white/90`}>{tagline}</p>
-        <p className={`label-mono text-[11px] text-muted can-hover:text-white/80`}>
+        <p className={`t-body max-w-[40ch] text-ink can-hover:text-white`}>{tagline}</p>
+        <p className={`label-mono text-muted can-hover:text-white/85`}>
           {label} <span aria-hidden>↘</span>
         </p>
       </div>
@@ -57,19 +57,19 @@ function MosaicTile({
 
 export function Work({ projects }: { projects: Project[] }) {
   return (
-    <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 px-page pt-24 md:pt-36">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-12 md:gap-16">
-        <div data-reveal className="flex flex-col gap-3">
+    <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 px-page pt-fr-section md:pt-[144px]">
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-fr-xxl">
+        <div data-reveal className="flex flex-col gap-fr-sm">
           <p className="label-mono text-muted">Work</p>
-          <h2 id="work-heading" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
+          <h2 id="work-heading" className="t-display-xl">
             <MaskedText text="Selected" onReveal />{" "}
-            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">
+            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em] text-ink">
               <MaskedText text="work" start={1} onReveal />
             </em>
           </h2>
         </div>
 
-        <ul className="grid grid-cols-1 gap-x-3 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 can-hover:gap-y-3">
+        <ul className="grid grid-cols-1 gap-x-fr-sm gap-y-fr-xl sm:grid-cols-2 lg:grid-cols-3 can-hover:gap-y-fr-sm">
           {WORK_ORDER.map((slug, i) => {
             if (slug === "gusto")
               return (

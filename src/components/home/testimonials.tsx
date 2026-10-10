@@ -21,26 +21,26 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section aria-labelledby="kind-words" className="w-full px-page pt-28  md:pt-40">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-10">
-        <div data-reveal className="flex flex-col gap-3">
+    <section aria-labelledby="kind-words" className="w-full px-page pt-fr-section md:pt-[144px]">
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-fr-xxl">
+        <div data-reveal className="flex flex-col gap-fr-sm">
           <p className="label-mono text-muted">Kind words</p>
-          <h2 id="kind-words" className="font-display text-[clamp(2.4rem,1.4rem+3.4vw,5rem)] font-medium leading-[1] tracking-[0.01em]">
+          <h2 id="kind-words" className="t-display-xl">
             <MaskedText text="From people I’ve" onReveal />{" "}
-            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent">
+            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em] text-ink">
               <MaskedText text="worked with" start={3} onReveal />
             </em>
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-fr-sm md:grid-cols-2">
           {testimonials.map((t) => (
-            <figure key={t.name} data-reveal className="flex flex-col justify-between gap-8 rounded-[8px] bg-card p-7 ring-1 ring-line md:p-10">
-              <blockquote className="text-[clamp(1rem,0.95rem+0.25vw,1.15rem)] leading-[1.65] text-ink-soft">&ldquo;{t.quote}&rdquo;</blockquote>
-              <figcaption className="flex items-center gap-3">
+            <figure key={t.name} data-reveal className="flex flex-col justify-between gap-fr-xl rounded-fr-xl bg-surface-1 p-6 md:p-fr-xxl">
+              <blockquote className="t-body-lg text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
+              <figcaption className="flex items-center gap-fr-sm">
                 <Image src={t.avatar} alt="" width={48} height={48} className="size-12 rounded-full object-cover" />
                 <span className="flex flex-col">
-                  <span className="text-[16px] font-semibold">{t.name}</span>
-                  <span className="label-mono normal-case tracking-normal text-muted">{t.role}</span>
+                  <span className="t-body-sm text-ink">{t.name}</span>
+                  <span className="t-caption text-muted">{t.role}</span>
                 </span>
               </figcaption>
             </figure>

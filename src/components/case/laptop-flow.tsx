@@ -36,15 +36,15 @@ export function LaptopFlow({ screens, panels, labels }: { screens: Screen[]; pan
   };
 
   return (
-    <div ref={root} className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-x-12">
+    <div ref={root} className="grid grid-cols-1 items-center gap-fr-xl md:grid-cols-12 md:gap-x-fr-xxl">
       <div className="md:col-span-5">
         {panels.map((p, i) => (
           <div key={i} hidden={i !== step} className="laptop-flow-panel">
             {p}
           </div>
         ))}
-        <div className="mt-8 flex flex-wrap items-center gap-2" role="group" aria-label="Prototype steps">
-          <button type="button" onClick={() => go(step - 1)} className="laptop-flow-btn" aria-label="Previous screen">
+        <div className="mt-fr-xl flex flex-wrap items-center gap-fr-xxs" role="group" aria-label="Prototype steps">
+          <button type="button" onClick={() => go(step - 1)} className="btn-icon" aria-label="Previous screen">
             <span aria-hidden>←</span>
           </button>
           {labels.map((l, i) => (
@@ -59,7 +59,7 @@ export function LaptopFlow({ screens, panels, labels }: { screens: Screen[]; pan
               {i + 1}
             </button>
           ))}
-          <button type="button" onClick={() => go(step + 1)} className="laptop-flow-btn" aria-label="Next screen">
+          <button type="button" onClick={() => go(step + 1)} className="btn-icon" aria-label="Next screen">
             <span aria-hidden>→</span>
           </button>
         </div>

@@ -26,6 +26,9 @@
   --color-accent: #3b3bd6;
   --color-accent-soft: #e9e9fc;
   --color-live: #1f8a4c;
+  /* Surface lifts (canvas → surface-1 → surface-2), from the brand neutrals. */
+  --color-surface-1: #ffffff;
+  --color-surface-2: #ebe9e3;
   color-scheme: light;
 }
 
@@ -42,6 +45,8 @@ html[data-theme="dark"] {
   --color-accent: #a5a8ff;
   --color-accent-soft: #1d1d3d;
   --color-live: #5fd38d;
+  --color-surface-1: #181614;
+  --color-surface-2: #22201d;
   color-scheme: dark;
 }
 
@@ -70,6 +75,27 @@ body {
   --font-mono: var(--font-mono-face), ui-monospace, monospace;
   --font-accent: var(--font-display);
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Framer system (design-md/framer): spacing on a 5px rhythm, radius scale, surface lifts.
+     Colours stay Muskan's; only the scales and patterns come from the system. */
+  --spacing-fr-hair: 1px;
+  --spacing-fr-xxs: 4px;
+  --spacing-fr-xs: 8px;
+  --spacing-fr-sm: 12px;
+  --spacing-fr-md: 15px;
+  --spacing-fr-lg: 20px;
+  --spacing-fr-xl: 30px;
+  --spacing-fr-xxl: 40px;
+  --spacing-fr-section: 96px;
+  --radius-fr-xs: 4px;
+  --radius-fr-sm: 6px;
+  --radius-fr-md: 10px;
+  --radius-fr-lg: 15px;
+  --radius-fr-xl: 20px;
+  --radius-fr-xxl: 30px;
+  --radius-fr-pill: 100px;
+  --color-surface-1: var(--color-surface-1);
+  --color-surface-2: var(--color-surface-2);
 }
 
 html {
@@ -81,6 +107,11 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv01", "cv05", "cv09", "cv11", "ss03", "ss07";
+}
+/* ss07 squares off arrow glyphs; decorative arrows and icons keep the plain shapes. */
+[aria-hidden="true"] {
+  font-feature-settings: "cv01", "cv05", "cv09", "cv11", "ss03";
 }
 
 ::selection {
@@ -229,13 +260,135 @@ html.lenis body {
   font-synthesis: none;
 }
 
-/* Small uppercase mono labels (metadata, tags), in the spirit of Inkwell. */
+/* Eyebrow labels (metadata, tags): the system's caption tier. */
 @utility label-mono {
-  font-family: var(--font-mono);
-  font-size: 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Framer type scale (sizes, line heights, tracking, weights) in Muskan's fonts ----------
+   Display tracking is a fixed share of size (-5%), so it holds as sizes scale down on smaller screens. */
+@utility t-display-xxl {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 0.6rem + 8.4vw, 6.875rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
+}
+@utility t-display-xl {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 0.7rem + 6.3vw, 5.3125rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
+}
+@utility t-display-lg {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 1.1rem + 3.9vw, 3.875rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
+}
+@utility t-display-md {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.625rem, 1.45rem + 0.75vw, 2rem);
+  line-height: 1.13;
+  letter-spacing: -0.031em;
+}
+@utility t-headline {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.036em;
+}
+@utility t-subhead {
+  font-size: clamp(20px, 18px + 0.4vw, 24px);
+  font-weight: 400;
   line-height: 1.3;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+}
+@utility t-body-lg {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+@utility t-body {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+@utility t-body-sm {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+@utility t-caption {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@utility t-micro {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Framer component patterns ---------- */
+/* Every CTA is a pill: primary is solid ink, secondary sits on the next surface up (no outline). */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 15px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: transform 0.2s var(--ease-out-expo), opacity 0.3s;
+  &:active {
+    transform: scale(0.96);
+  }
+}
+@utility btn-primary {
+  background: var(--color-ink);
+  color: var(--background);
+}
+@utility btn-secondary {
+  background: var(--color-surface-1);
+  color: var(--color-ink);
+}
+@utility btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: var(--color-surface-1);
+  color: var(--color-ink);
+  transition: transform 0.2s var(--ease-out-expo);
+  &:active {
+    transform: scale(0.94);
+  }
+  @media (pointer: coarse) {
+    width: 44px;
+    height: 44px;
+  }
 }
 
 /* ---------- Bold editorial layer ---------- */
@@ -390,34 +543,37 @@ html[data-theme="dark"] .hero-scrim {
 @utility case-title {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(2.6rem, 1.2rem + 4.6vw, 6.25rem);
-  line-height: 0.98;
-  letter-spacing: 0.005em;
+  font-size: clamp(2.25rem, 0.7rem + 6.3vw, 5.3125rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
   text-wrap: balance;
 }
 @utility case-h2 {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.55rem);
-  line-height: 1.2;
-  letter-spacing: 0.01em;
+  font-size: clamp(1.625rem, 1.45rem + 0.75vw, 2rem);
+  line-height: 1.13;
+  letter-spacing: -0.031em;
 }
 @utility case-body {
-  font-size: clamp(1rem, 0.96rem + 0.18vw, 1.1rem);
-  line-height: 1.65;
-  color: var(--color-ink-soft);
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
 }
 @utility case-meta-label {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.3;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   color: var(--color-muted);
 }
 @utility case-caption {
-  font-size: 14.5px;
-  line-height: 1.55;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--color-muted);
 }
 /* Links: an underline that draws in on hover and focus. */
@@ -457,9 +613,10 @@ a:focus-visible .case-arrow {
 @utility case-deck-h {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.55rem, 1.2rem + 1.1vw, 2.4rem);
-  line-height: 1.12;
-  letter-spacing: 0.005em;
+  font-size: clamp(2rem, 1.1rem + 3.9vw, 3.875rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
   color: var(--color-ink);
   text-wrap: balance;
 }
@@ -477,8 +634,9 @@ html[data-motion="paused"] .anim-still { display: block; }
 @utility case-deck-sub {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.55rem);
-  line-height: 1.2;
+  font-size: clamp(1.625rem, 1.45rem + 0.75vw, 2rem);
+  line-height: 1.13;
+  letter-spacing: -0.031em;
   color: var(--color-ink);
 }
 .deck-pill {
@@ -511,7 +669,7 @@ html[data-motion="paused"] .anim-still { display: block; }
   background: var(--color-card);
   color: var(--color-ink);
   border: 1px solid var(--color-line);
-  border-radius: 6px;
+  border-radius: 10px;
   font-size: 15.5px;
   line-height: 1.5;
 }
@@ -562,13 +720,15 @@ html[data-motion="paused"] .anim-still { display: block; }
   font-size: 15px;
   line-height: 1.5;
   border: 1.5px solid #3fb8c4;
-  border-radius: 6px;
+  border-radius: 10px;
 }
 .deck-stat {
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: clamp(2.4rem, 1.8rem + 2vw, 3.6rem);
+  font-size: clamp(2rem, 1.1rem + 3.9vw, 3.875rem);
   line-height: 1;
+  letter-spacing: -0.05em;
+  word-spacing: 0.14em;
   color: var(--color-ink);
 }
 .deck-quote {
@@ -594,15 +754,15 @@ html[data-motion="paused"] .anim-still { display: block; }
 .laptop-flow-shot[data-on] { opacity: 1; }
 .laptop-flow-panel:not([hidden]) { animation: flow-in 0.5s ease both; }
 @keyframes flow-in { from { opacity: 0; translate: 0 8px; } }
-.laptop-flow-dot, .laptop-flow-btn {
+.laptop-flow-dot {
   display: inline-flex; align-items: center; justify-content: center;
-  min-width: 2.25rem; height: 2.25rem; padding: 0 0.5rem;
-  border: 1px solid var(--color-line-strong); border-radius: 999px;
-  font-size: 13.5px; color: var(--color-ink); background: var(--color-card);
+  min-width: 40px; height: 40px; padding: 8px 14px;
+  border-radius: 100px; font-size: 14px; font-weight: 500; line-height: 1;
+  color: var(--color-muted); background: transparent;
   transition: background-color 0.25s, color 0.25s;
 }
-.laptop-flow-dot[aria-current="step"] { background: var(--color-ink); color: var(--background); border-color: var(--color-ink); }
-@media (hover: hover) { .laptop-flow-dot:hover, .laptop-flow-btn:hover { background: var(--color-ink); color: var(--background); } }
+.laptop-flow-dot[aria-current="step"] { background: var(--color-surface-2); color: var(--color-ink); }
+@media (hover: hover) { .laptop-flow-dot:hover { color: var(--color-ink); } }
 @media (prefers-reduced-motion: reduce) {
   .laptop-flow-shot { transition: none; }
   .laptop-flow-panel:not([hidden]) { animation: none; }

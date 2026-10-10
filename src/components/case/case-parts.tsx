@@ -32,7 +32,7 @@ function NavList({ className = "" }: { className?: string }) {
           <a
             href={l.href}
             {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-            className="case-link inline-flex min-h-8 items-center text-[14px] text-ink-soft hover:text-ink"
+            className="case-link t-body-sm inline-flex min-h-8 items-center text-ink"
           >
             {l.label}
             {l.external && <span className="sr-only"> (PDF, opens in a new tab)</span>}
@@ -46,15 +46,15 @@ function NavList({ className = "" }: { className?: string }) {
 /** Section A: identity + navigation. Desktop: part of the sticky side rail. Phone: one compact row. */
 export function Identity() {
   return (
-    <div className="flex flex-col gap-4">
-      <Link href="/" className="case-link inline-flex min-h-8 items-center gap-2.5 self-start font-display text-[17px] font-semibold tracking-[0.01em] text-ink">
+    <div className="flex flex-col gap-fr-md">
+      <Link href="/" className="case-link t-body-sm inline-flex min-h-8 items-center gap-fr-xs self-start text-ink">
         <span aria-hidden className="flex size-7 items-center justify-center rounded-[2px] bg-ink pb-[2px] text-[16px] leading-none text-background">
           m
         </span>
         Muskan Bhatia
       </Link>
       <nav aria-label="Main">
-        <NavList className="flex flex-wrap gap-x-5 md:flex-col md:gap-x-0" />
+        <NavList className="flex flex-wrap gap-x-fr-lg md:flex-col md:gap-x-0" />
       </nav>
     </div>
   );
@@ -62,7 +62,7 @@ export function Identity() {
 
 export function Toggles() {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center gap-fr-xs">
       <MotionToggle />
       <ThemeToggle />
     </div>
@@ -78,13 +78,13 @@ export function Facts({ p }: { p: Project }) {
     ["Timeline", p.meta.timeline],
   ];
   return (
-    <dl className="grid grid-cols-2 gap-x-6 gap-y-5 md:grid-cols-1">
+    <dl className="grid grid-cols-2 gap-x-fr-lg gap-y-fr-lg md:grid-cols-1">
       {items
         .filter((i): i is [string, string] => Boolean(i[1]))
         .map(([k, v]) => (
-          <div key={k} className="flex flex-col gap-1">
+          <div key={k} className="flex flex-col gap-fr-xxs">
             <dt className="case-meta-label">{k}</dt>
-            <dd className="text-[14.5px] leading-[1.45] text-ink">{v}</dd>
+            <dd className="t-body-sm text-ink">{v}</dd>
           </div>
         ))}
     </dl>
@@ -95,11 +95,11 @@ export function Facts({ p }: { p: Project }) {
 export function CaseIntro({ p }: { p: Project }) {
   const category = p.tag === "Concept" ? p.meta.type : "Case study";
   return (
-    <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-x-10">
-      <div className="flex flex-col gap-4 lg:col-span-7">
+    <div className="grid grid-cols-1 gap-fr-xl lg:grid-cols-12 lg:gap-x-fr-xxl">
+      <div className="flex flex-col gap-fr-md lg:col-span-7">
         <p className="case-meta-label">{category}</p>
         <h1 className="case-title">{p.name}</h1>
-        <p className="font-serif text-[clamp(1.35rem,1.1rem+0.9vw,1.9rem)] italic leading-[1.25] text-ink-soft">{p.tagline}</p>
+        <p className="t-subhead font-serif italic text-ink">{p.tagline}</p>
       </div>
       <p className="case-body max-w-[52ch] self-end lg:col-span-5">{p.intro}</p>
     </div>
@@ -110,11 +110,11 @@ export function CaseIntro({ p }: { p: Project }) {
 export function CaseHero({ p, brand, art }: { p: Project; brand: Brand; art: ReactNode }) {
   const light = brand.ink === "light";
   return (
-    <div className="hero-reveal relative isolate overflow-hidden" style={{ backgroundColor: brand.base }}>
-      <div className="grid grid-cols-1 items-center gap-8 p-[6%] md:min-h-[min(72vh,700px)] md:grid-cols-12 md:gap-[4%] md:p-[5%]">
+    <div className="hero-reveal relative isolate overflow-hidden rounded-fr-xxl" style={{ backgroundColor: brand.base }}>
+      <div className="grid grid-cols-1 items-center gap-fr-xl p-8 md:min-h-[min(72vh,700px)] md:grid-cols-12 md:gap-x-fr-lg md:p-fr-xxl xl:gap-x-fr-xxl xl:p-fr-section">
         <p
           aria-hidden
-          className={`font-display text-[clamp(3rem,1rem+6.4vw,8.5rem)] font-semibold leading-[0.9] tracking-[-0.01em] md:col-span-7 md:self-end ${light ? "text-white" : "text-[#151412]"}`}
+          className={`t-display-xxl md:col-span-7 md:self-end ${light ? "text-white" : "text-[#151412]"}`}
         >
           {p.name}
         </p>
@@ -131,7 +131,7 @@ const isTall = (i: Img) => i.height / i.width > 1.15;
 
 function Shot({ img, sizes, className = "" }: { img: Img; sizes: string; className?: string }) {
   return (
-    <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className={`h-auto w-full rounded-[4px] ring-1 ring-line ${className}`} />
+    <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={sizes} className={`h-auto w-full rounded-fr-lg ${className}`} />
   );
 }
 
@@ -175,7 +175,7 @@ function Composition({ images }: { images: Img[] }) {
 export function Panel({ images }: { images: Img[] }) {
   const captions = images.filter((i) => i.caption);
   return (
-    <figure data-reveal className="flex flex-col gap-5">
+    <figure data-reveal className="flex flex-col gap-fr-lg">
       <Composition images={images} />
       {captions.length > 0 && (
         <figcaption className="case-caption flex max-w-[60ch] flex-col gap-1">
@@ -192,9 +192,9 @@ export function Panel({ images }: { images: Img[] }) {
 
 export function TextBlock({ block }: { block: Extract<Block, { kind: "text" }> }) {
   return (
-    <section data-reveal className="grid grid-cols-1 gap-3 md:grid-cols-12 md:gap-x-10">
+    <section data-reveal className="grid grid-cols-1 gap-fr-sm md:grid-cols-12 md:gap-x-fr-xxl">
       <h2 className="case-h2 md:col-span-4">{block.heading}</h2>
-      <div className="flex flex-col gap-4 md:col-span-8">
+      <div className="flex flex-col gap-fr-md md:col-span-8">
         {block.body.map((t, i) => (
           <p key={i} className={`case-body ${t.length > 150 ? "max-w-[60ch]" : ""}`}>
             {t}
@@ -220,7 +220,7 @@ export function TextBlock({ block }: { block: Extract<Block, { kind: "text" }> }
 export function Quote({ block }: { block: Extract<Block, { kind: "quote" }> }) {
   return (
     <figure data-reveal className="flex max-w-[46ch] flex-col gap-4 md:ml-[33.4%]">
-      <blockquote className="font-serif text-[clamp(1.5rem,1.2rem+1vw,2.2rem)] italic leading-[1.25] text-ink">&ldquo;{block.text}&rdquo;</blockquote>
+      <blockquote className="t-display-md font-serif font-normal italic text-ink">&ldquo;{block.text}&rdquo;</blockquote>
       <figcaption className="case-caption">{block.by}</figcaption>
     </figure>
   );
@@ -230,7 +230,7 @@ export function Quote({ block }: { block: Extract<Block, { kind: "quote" }> }) {
 export function Outcome({ blocks, concept }: { blocks: Extract<Block, { kind: "text" }>[]; concept: boolean }) {
   if (!blocks.length && !concept) return null;
   return (
-    <section data-reveal aria-labelledby="outcome-heading" className="flex flex-col gap-10 border-t border-line pt-10">
+    <section data-reveal aria-labelledby="outcome-heading" className="flex flex-col gap-fr-xxl border-t border-line pt-fr-xxl">
       <h2 id="outcome-heading" className="case-meta-label">
         Where it ended up
       </h2>
@@ -239,9 +239,9 @@ export function Outcome({ blocks, concept }: { blocks: Extract<Block, { kind: "t
           This is a self-initiated concept, not a shipped product. The designs show how I would approach the problem.
         </p>
       )}
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-x-16">
+      <div className="grid grid-cols-1 gap-fr-xxl md:grid-cols-2 md:gap-x-fr-section">
         {blocks.map((b) => (
-          <div key={b.heading} className="flex flex-col gap-3">
+          <div key={b.heading} className="flex flex-col gap-fr-sm">
             <h3 className="case-h2">{b.heading}</h3>
             {b.body.map((t, i) => (
               <p key={i} className="case-body">
@@ -276,29 +276,29 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
     { label: "Resume (PDF)", href: "/resume.pdf", external: true },
   ];
   return (
-    <footer id="contact" className="flex scroll-mt-10 flex-col gap-14 border-t border-line pb-10 pt-10">
-      <Link href={`/work/${next.slug}`} className="group grid grid-cols-1 items-end gap-6 sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-10">
-        <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-[4px]">{nextArt}</div>
+    <footer id="contact" className="flex scroll-mt-10 flex-col gap-fr-section border-t border-line pb-fr-xxl pt-fr-xxl">
+      <Link href={`/work/${next.slug}`} className="group grid grid-cols-1 items-end gap-fr-lg sm:grid-cols-[minmax(0,220px)_1fr] sm:gap-fr-xxl">
+        <div className="relative aspect-square w-full max-w-[220px] overflow-hidden rounded-fr-lg">{nextArt}</div>
         <div className="flex flex-col gap-2">
           <span className="case-meta-label">Next project</span>
-          <span className="font-display text-[clamp(2rem,1.3rem+3vw,4.5rem)] font-medium leading-[1] tracking-[0.01em] text-ink">
-            {next.name} <span aria-hidden className="case-arrow text-accent">→</span>
+          <span className="t-display-lg text-ink">
+            {next.name} <span aria-hidden className="case-arrow">→</span>
           </span>
           <span className="case-body text-muted">{next.tagline}</span>
         </div>
       </Link>
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-fr-lg md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-fr-xs">
           <p className="case-meta-label">Contact</p>
           <p className="case-body max-w-[46ch]">I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.</p>
         </div>
-        <ul className="flex flex-wrap gap-x-6 gap-y-1">
+        <ul className="flex flex-wrap gap-x-fr-lg gap-y-fr-xxs">
           {links.map((l) => (
             <li key={l.label}>
               <a
                 href={l.href}
                 {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="case-link inline-flex min-h-10 items-center text-[15px] font-medium text-ink"
+                className="case-link t-body-sm inline-flex min-h-10 items-center text-ink"
               >
                 {l.label}
                 {l.external && <span className="sr-only"> (opens in a new tab)</span>}
@@ -316,7 +316,7 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
 
 function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
   return (
-    <div className="flex w-full flex-col gap-4">
+    <div className="flex w-full flex-col gap-fr-md">
       {items.map((it, i) => {
         if (it.kind === "h")
           return (
@@ -347,7 +347,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
           );
         if (it.kind === "stickies")
           return (
-            <ul key={i} className={`my-2 grid gap-4 ${it.notes.length === 1 ? "max-w-[60ch]" : "grid-cols-[repeat(auto-fit,minmax(min(100%,max(200px,calc((100%_-_2rem)/3))),1fr))]"}`}>
+            <ul key={i} className={`my-fr-xs grid gap-fr-md ${it.notes.length === 1 ? "max-w-[60ch]" : "grid-cols-[repeat(auto-fit,minmax(min(100%,max(200px,calc((100%_-_2rem)/3))),1fr))]"}`}>
               {it.notes.map((n, k) => (
                 <li key={k} className={it.tone === "outline" ? "deck-box" : "deck-sticky"}>
                   {n.title && <strong className="mb-1 block font-semibold">{n.title}</strong>}
@@ -358,9 +358,9 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
           );
         if (it.kind === "stats")
           return (
-            <ul key={i} className="my-2 grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+            <ul key={i} className="my-fr-xs grid grid-cols-1 gap-x-fr-xxl gap-y-fr-lg sm:grid-cols-2 lg:grid-cols-3">
               {it.stats.map((st, k) => (
-                <li key={k} className="flex flex-col gap-1">
+                <li key={k} className="flex flex-col gap-fr-xxs">
                   <span className="deck-stat">{st.value}</span>
                   <span className="case-body">{st.label}</span>
                   {st.source && <span className="case-caption">{st.source}</span>}

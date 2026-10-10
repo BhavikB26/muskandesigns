@@ -31,12 +31,12 @@ export function ThemeToggle() {
       aria-checked={dark}
       aria-label="Dark theme"
       onClick={() => setTheme(dark ? "light" : "dark")}
-      className="group relative inline-flex h-8 w-14 shrink-0 items-center rounded-full border border-line-strong bg-card p-0.5 transition-colors duration-500"
+      className="group relative inline-flex h-10 w-[72px] shrink-0 items-center rounded-full bg-surface-1 p-1 transition-colors duration-500 pointer-coarse:h-11 pointer-coarse:w-[78px]"
     >
       <span
         aria-hidden
-        className={`flex size-6 items-center justify-center rounded-full bg-ink text-background transition-transform duration-500 ease-[var(--ease-out-expo)] ${
-          dark ? "translate-x-6" : "translate-x-0"
+        className={`flex size-8 items-center justify-center rounded-full bg-ink text-background transition-transform duration-500 ease-[var(--ease-out-expo)] pointer-coarse:size-9 ${
+          dark ? "translate-x-8" : "translate-x-0"
         }`}
       >
         {dark ? (

@@ -10,11 +10,11 @@ const EMPHASIS = "intentional designs.";
 export function Hero() {
   return (
     <section aria-label="Introduction" className="w-full px-page pt-2">
-      <div className="sky relative isolate mx-auto flex w-full max-w-[1760px] flex-col items-center gap-8 overflow-hidden rounded-[8px] px-5 py-14 text-center ring-1 ring-line sm:px-10 md:gap-10 md:py-24">
+      <div className="sky relative isolate mx-auto flex w-full max-w-[1760px] flex-col items-center gap-fr-xl overflow-hidden rounded-fr-xxl px-fr-lg py-16 text-center sm:px-8 md:gap-fr-xxl md:py-fr-section">
         <HeroLens />
         {/* Soft scrim so the text stays readable over the moving field. */}
         <div aria-hidden className="hero-scrim pointer-events-none absolute inset-0 -z-[5]" />
-        <div className="relative flex items-center gap-4 md:gap-6">
+        <div className="relative flex items-center gap-fr-md md:gap-fr-lg">
           <div className="pop-in shrink-0 [perspective:700px]">
             <div className="portrait-swivel h-[87px] w-[66px] -rotate-[5deg] overflow-hidden rounded-[6px] ring-4 ring-white/80 md:h-[118px] md:w-[90px]">
               <Image
@@ -28,27 +28,27 @@ export function Hero() {
               />
             </div>
           </div>
-          <p className="settle text-left font-display text-[clamp(1.4rem,1.1rem+1.1vw,2rem)] font-medium leading-[1.1] tracking-[0.01em] text-ink [animation-delay:120ms]">
+          <p className="settle t-display-md text-left text-ink [animation-delay:120ms]">
             <RollingHello />
             <br />
             I&rsquo;m Muskan Bhatia
           </p>
         </div>
 
-        <h1 className="max-w-[14ch] text-[clamp(2.6rem,1.1rem+5.2vw,6.25rem)] leading-[1] text-ink">
-          <MaskedText text={LEAD} delay={220} className="font-display font-medium tracking-[0.01em]" />{" "}
+        <h1 className="t-display-xxl max-w-[14ch] text-ink">
+          <MaskedText text={LEAD} delay={220} className="" />{" "}
           <MaskedText
             text={EMPHASIS}
             delay={220}
             start={3}
-            className="font-serif text-[1.06em] font-normal italic tracking-[-0.01em] text-accent"
+            className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em]"
           />
         </h1>
 
-        <div className="settle mt-2 flex flex-wrap items-center justify-center gap-3 [animation-delay:420ms] md:mt-4">
+        <div className="settle mt-fr-xxs flex flex-wrap items-center justify-center gap-fr-xs [animation-delay:420ms] md:mt-fr-xs">
           <a
             href="#work"
-            className="inline-flex min-h-12 items-center gap-2 rounded-full bg-ink px-6 text-[16px] font-medium text-background transition-[transform,background-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:bg-accent focus-visible:bg-accent"
+            className="btn btn-primary"
           >
             See my work
           </a>
@@ -56,13 +56,13 @@ export function Hero() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex min-h-12 items-center gap-2 rounded-full border border-line-strong bg-card/70 px-6 text-[16px] font-medium text-ink backdrop-blur transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-ink focus-visible:border-ink"
+            className="btn btn-secondary"
           >
             Resume (PDF)<span className="sr-only"> (opens in a new tab)</span>
           </a>
           <a
             href="#contact"
-            className="inline-flex min-h-12 items-center rounded-full border border-line-strong bg-card/70 px-6 text-[16px] font-medium text-ink backdrop-blur transition-[transform,border-color] duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-ink focus-visible:border-ink"
+            className="btn btn-secondary"
           >
             Get in touch
           </a>

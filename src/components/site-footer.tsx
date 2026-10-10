@@ -8,29 +8,29 @@ const links = [
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="w-full scroll-mt-20 px-page pb-8 pt-28 md:pt-40">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-6">
-        <div data-reveal className="flex flex-col gap-10 rounded-[8px] bg-card p-7 ring-1 ring-line sm:p-10 md:gap-14 md:p-16">
-          <div className="flex flex-col gap-4">
+    <footer id="contact" className="w-full scroll-mt-20 px-page pb-fr-xl pt-fr-section md:pt-[144px]">
+      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-fr-lg">
+        <div data-reveal className="flex flex-col gap-fr-xxl rounded-fr-xl bg-surface-1 p-6 sm:p-fr-xxl md:p-16">
+          <div className="flex flex-col gap-fr-md">
             <p className="label-mono text-muted">Contact</p>
-            <h2 className="font-display text-[clamp(3rem,1.6rem+5vw,7rem)] font-medium leading-[0.95] tracking-[0.01em]">
+            <h2 className="t-display-xxl">
               <MaskedText text="Let’s" onReveal />{" "}
-              <em className="font-serif font-normal italic tracking-[-0.01em] text-accent">
+              <em className="font-serif font-normal italic tracking-[-0.03em] text-ink">
                 <MaskedText text="talk." start={1} onReveal />
               </em>
             </h2>
-            <p className="max-w-[460px] text-[17px] leading-[1.55] text-ink-soft">
+            <p className="t-body-lg max-w-[460px] text-ink">
               I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.
             </p>
           </div>
-          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-fr-sm sm:grid-cols-3">
             {links.map((c) => (
               <li key={c.label}>
                 <a
                   href={c.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="tinted group flex min-h-16 items-center justify-between rounded-[8px] px-6 py-5 text-[17px] font-medium text-ink ring-1 ring-line transition-transform duration-500 ease-[var(--ease-out-expo)] hover:-translate-y-0.5 focus-visible:-translate-y-0.5"
+                  className="tinted t-body-lg group flex min-h-16 items-center justify-between rounded-fr-lg px-fr-lg py-fr-lg font-medium text-ink transition-transform duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]"
                   style={{ "--tint": c.tint } as React.CSSProperties}
                 >
                   {c.label}
@@ -42,7 +42,7 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
-        <p className="label-mono px-2 text-muted">© {new Date().getFullYear()} Muskan Bhatia</p>
+        <p className="t-caption px-fr-xs text-muted">© {new Date().getFullYear()} Muskan Bhatia</p>
       </div>
     </footer>
   );

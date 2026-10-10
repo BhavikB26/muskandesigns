@@ -46,7 +46,7 @@ function Links({ p }: { p: Project }) {
     <ul className="flex flex-col gap-1">
       {p.links.map((l) => (
         <li key={l.href}>
-          <a href={l.href} target="_blank" rel="noopener noreferrer" className="case-link inline-flex min-h-8 items-center gap-1.5 text-[14.5px] font-medium text-ink">
+          <a href={l.href} target="_blank" rel="noopener noreferrer" className="case-link t-body-sm inline-flex min-h-8 items-center gap-fr-xxs text-ink">
             {l.label} <span aria-hidden>↗</span>
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
