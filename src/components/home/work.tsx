@@ -21,7 +21,9 @@ function MosaicTile({
   const external = href.startsWith("#");
   const LinkEl = external ? "a" : Link;
   return (
-    <li data-reveal className="group relative">
+    <li data-reveal className="group relative rounded-fr-lg has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-[var(--color-accent)]">
+      {/* The whole card is clickable; the real link (for keyboard and screen readers) is the title. */}
+      <LinkEl href={href} aria-hidden tabIndex={-1} className="absolute inset-0 z-30 rounded-fr-lg" />
       <div className="reveal-media relative aspect-square overflow-hidden rounded-fr-lg bg-[#2a2733]">
         {viewName ? (
           <ViewTransition name={viewName} share="morph" default="none">
@@ -52,7 +54,7 @@ function MosaicTile({
         className={`relative mt-fr-sm flex flex-col gap-fr-xs can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-fr-lg can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
       >
         <h3 className={`t-display-md text-ink can-hover:text-white`}>
-          <LinkEl href={href} className="outline-none after:absolute after:inset-0 after:z-30 after:content-[''] focus-visible:after:rounded-fr-lg focus-visible:after:outline focus-visible:after:outline-2 focus-visible:after:outline-offset-4 focus-visible:after:outline-[var(--color-accent)]">
+          <LinkEl href={href} className="outline-none">
             <span className="sr-only">{String(index + 1).padStart(2, "0")}. </span>
             {title}
           </LinkEl>
