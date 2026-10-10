@@ -34,10 +34,10 @@ function MosaicTile({
         {/* Hover/focus veil (decorative). Locked work (shown in interviews only) stays blurred behind a lock. */}
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-0 z-10 bg-[rgba(14,12,24,0.55)] backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] ${locked ? "block opacity-100" : "hidden opacity-0 group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block"}`}
+          className={`pointer-events-none absolute inset-0 z-10 bg-[rgba(14,12,24,0.55)] backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] hidden opacity-0 group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block`}
         />
         {locked && (
-          <span aria-hidden className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center transition-transform duration-500 ease-[var(--ease-out-expo)] can-hover:group-hover:-translate-y-6">
+          <span aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden items-center justify-center opacity-0 transition-[opacity,transform] duration-500 ease-[var(--ease-out-expo)] can-hover:flex can-hover:group-hover:-translate-y-6 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:-translate-y-6 can-hover:group-has-[a:focus-visible]:opacity-100">
             <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md">
               <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" />

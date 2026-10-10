@@ -762,7 +762,7 @@ export function getProject(slug: string) {
 }
 
 /** Muskan's chosen order for the work grid ("gusto" is a walkthrough card with no page). */
-export const WORK_ORDER = ["gusto", "builder-design-system", "ai-mentor", "ratings-reviews", "basecamp", "builder-university", "internshala", "swiping-loop", "studio-store"];
+export const WORK_ORDER = ["builder-design-system", "ratings-reviews", "gusto", "ai-mentor", "basecamp", "internshala", "builder-university", "swiping-loop", "studio-store"];
 
 export function getNextProject(slug: string) {
   const order = WORK_ORDER.filter((s) => s !== "gusto");
