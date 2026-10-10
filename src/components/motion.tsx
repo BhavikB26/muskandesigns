@@ -68,6 +68,8 @@ export function Motion() {
 
   // Scroll reveals (re-run on every route change)
   useEffect(() => {
+    // Tells the inline head script that scripts loaded; if they never do, it un-hides the content.
+    (window as unknown as { __motion?: boolean }).__motion = true;
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]:not([data-revealed])"));
     if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
       els.forEach((el) => el.setAttribute("data-revealed", ""));
