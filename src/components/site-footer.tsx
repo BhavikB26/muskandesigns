@@ -1,10 +1,5 @@
 import { MaskedText } from "@/components/masked-text";
-const links = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/thisismuskan/", tint: "#fbe7e5" },
-  { label: "Resume (PDF)", href: "/resume.pdf", tint: "#ebe8f8" },
-  { label: "Instagram", href: "https://www.instagram.com/_muskanb07_/", tint: "#e6f2ea" },
-  // TODO(embee): add an email address once you confirm you want it on the site.
-];
+import { SocialLinks } from "@/components/social-links";
 
 export function SiteFooter() {
   return (
@@ -23,24 +18,7 @@ export function SiteFooter() {
               I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.
             </p>
           </div>
-          <ul className="grid grid-cols-1 gap-fr-sm sm:grid-cols-3">
-            {links.map((c) => (
-              <li key={c.label}>
-                <a
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="tinted t-body-lg group flex min-h-16 items-center justify-between rounded-fr-lg px-fr-lg py-fr-lg font-medium text-ink transition-transform duration-200 ease-[var(--ease-out-expo)] active:scale-[0.98]"
-                  style={{ "--tint": c.tint } as React.CSSProperties}
-                >
-                  {c.label}
-                  <span aria-hidden className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
-                    ↗
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
+          <SocialLinks onCard />
         </div>
         <p className="t-caption px-fr-xs text-muted">© {new Date().getFullYear()} Muskan Bhatia</p>
       </div>

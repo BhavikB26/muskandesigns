@@ -2,6 +2,16 @@
 export type DeckItem =
   | { kind: "h" | "sub" | "p" | "note"; text: string }
   | { kind: "list"; items: string[] }
+  /** Small label above a section heading ("Solution (1/3)"). */
+  | { kind: "eyebrow"; text: string }
+  /** Store reviews she quoted (name, stars out of 5, date, text). */
+  | { kind: "reviews"; reviews: { name: string; rating: number; date: string; text: string }[] }
+  /** Status tags shown as coloured pills. */
+  | { kind: "tags"; tags: { label: string; tone: "blue" | "green" | "amber" | "indigo" | "peach" | "red" }[] }
+  /** A row of separate logos or app icons. */
+  | { kind: "logos"; logos: { src: string; alt: string; width: number; height: number }[] }
+  /** Label / value pairs (status, tools, timeline). */
+  | { kind: "facts"; facts: { label: string; value: string }[] }
   /** A sticker-style callout from the deck (white pill). */
   | { kind: "pill"; text: string; sub?: string }
   /** Yellow sticky notes, laid out in a grid. */
@@ -25,6 +35,15 @@ export type DeckSlide = {
   /** frame "laptop": a long web page shown scrolling inside a laptop screen. */
   /** A click-through prototype: one laptop screen per step, with that step's text. */
   flow?: { label: string; items: DeckItem[]; img: { src: string; width: number; height: number; alt: string } }[];
-  img?: { src: string; width: number; height: number; anim?: string; alt?: string; frame?: "laptop" };
+  /** frame "phone": a long phone screen scrolling between its fixed top and bottom bars (parts). */
+  img?: {
+    src: string;
+    width: number;
+    height: number;
+    anim?: string;
+    alt?: string;
+    frame?: "laptop" | "phone";
+    parts?: { top?: { src: string; width: number; height: number }; bottom?: { src: string; width: number; height: number } };
+  };
 };
 export type Deck = DeckSlide[];

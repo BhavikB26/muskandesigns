@@ -3,17 +3,6 @@ import type { Deck } from "./types";
 
 export const deck: Deck = [
   {
-    "id": "ss-cover",
-    "side": "visual",
-    "items": [],
-    "img": {
-      "src": "/work/studio-store/cs/ss-cover.webp",
-      "width": 1920,
-      "height": 1080,
-      "alt": "Studio Store cover: the dashboard's income, revenue and tasks cards beside photos of small business owners at work"
-    }
-  },
-  {
     "id": "ss-intro",
     "side": "text",
     "items": [

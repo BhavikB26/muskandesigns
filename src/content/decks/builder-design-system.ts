@@ -3,33 +3,6 @@ import type { Deck } from "./types";
 
 export const deck: Deck = [
   {
-    "id": "130:777",
-    "side": "right",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Design System"
-      },
-      {
-        "kind": "p",
-        "text": "Version 4.0"
-      },
-      {
-        "kind": "h",
-        "text": "Building and scaling a"
-      },
-      {
-        "kind": "h",
-        "text": "Design System"
-      }
-    ],
-    "img": {
-      "src": "/work/builder-design-system/cs/130-777.webp",
-      "width": 1015,
-      "height": 1080
-    }
-  },
-  {
     "id": "130:1102",
     "side": "text",
     "items": [
@@ -38,44 +11,29 @@ export const deck: Deck = [
         "text": "Quick ✏️ Overview"
       },
       {
-        "kind": "h",
-        "text": "Builder Design System"
-      },
-      {
         "kind": "p",
         "text": "A new cohesive design system for all Builder products experience."
       },
       {
-        "kind": "p",
-        "text": "Status"
-      },
-      {
-        "kind": "p",
-        "text": "In progress"
-      },
-      {
-        "kind": "p",
-        "text": "Tools"
-      },
-      {
-        "kind": "p",
-        "text": "Figma"
-      },
-      {
-        "kind": "p",
-        "text": "Deliverables"
-      },
-      {
-        "kind": "p",
-        "text": "Component Library"
-      },
-      {
-        "kind": "p",
-        "text": "Timeline"
-      },
-      {
-        "kind": "p",
-        "text": "05 May 2024 - Present"
+        "kind": "facts",
+        "facts": [
+          {
+            "label": "Status",
+            "value": "In progress"
+          },
+          {
+            "label": "Tools",
+            "value": "Figma"
+          },
+          {
+            "label": "Deliverables",
+            "value": "Component Library"
+          },
+          {
+            "label": "Timeline",
+            "value": "05 May 2024 - Present"
+          }
+        ]
       }
     ]
   },
@@ -88,24 +46,24 @@ export const deck: Deck = [
         "text": "Meet the team"
       },
       {
-        "kind": "p",
-        "text": "My role"
+        "kind": "facts",
+        "facts": [
+          {
+            "label": "My role",
+            "value": "Senior Product designer"
+          }
+        ]
       },
       {
-        "kind": "p",
+        "kind": "sub",
         "text": "What I did"
       },
       {
-        "kind": "p",
-        "text": "Senior Product designer"
-      },
-      {
-        "kind": "p",
-        "text": "Helped the design team with Head of design to build the design system"
-      },
-      {
-        "kind": "p",
-        "text": "Created complex components like Cards, AI experience, Navigation etc."
+        "kind": "list",
+        "items": [
+          "Helped the design team with Head of design to build the design system",
+          "Created complex components like Cards, AI experience, Navigation etc."
+        ]
       }
     ],
     "img": {
@@ -115,22 +73,12 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:1165",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "The Problem?"
-      }
-    ]
-  },
-  {
     "id": "130:1173",
     "side": "text",
     "items": [
       {
         "kind": "h",
-        "text": "Problem"
+        "text": "The Problem?"
       },
       {
         "kind": "p",
@@ -147,21 +95,15 @@ export const deck: Deck = [
     ]
   },
   {
-    "id": "130:1193",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Foundations"
-      }
-    ]
-  },
-  {
     "id": "130:1201",
     "side": "right",
     "items": [
       {
         "kind": "h",
+        "text": "Foundations"
+      },
+      {
+        "kind": "sub",
         "text": "Spacing"
       },
       {
@@ -171,7 +113,7 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/builder-design-system/cs/130-1201.webp",
-      "width": 1125,
+      "width": 1056,
       "height": 904
     }
   },
@@ -180,7 +122,7 @@ export const deck: Deck = [
     "side": "right",
     "items": [
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Typography"
       },
       {
@@ -190,7 +132,7 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/builder-design-system/cs/130-1295.webp",
-      "width": 1140,
+      "width": 1100,
       "height": 967
     }
   },
@@ -199,7 +141,7 @@ export const deck: Deck = [
     "side": "right",
     "items": [
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Iconography"
       },
       {
@@ -209,8 +151,8 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/builder-design-system/cs/130-1525.webp",
-      "width": 1099,
-      "height": 857
+      "width": 1066,
+      "height": 794
     }
   },
   {
@@ -218,7 +160,7 @@ export const deck: Deck = [
     "side": "right",
     "items": [
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Colors"
       },
       {
@@ -233,21 +175,15 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:3277",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Components"
-      }
-    ]
-  },
-  {
     "id": "130:3285",
     "side": "stack",
     "items": [
       {
         "kind": "h",
+        "text": "Components"
+      },
+      {
+        "kind": "sub",
         "text": "Buttons"
       },
       {
@@ -258,7 +194,7 @@ export const deck: Deck = [
     "img": {
       "src": "/work/builder-design-system/cs/130-3285.webp",
       "width": 1880,
-      "height": 629
+      "height": 534
     }
   },
   {
@@ -266,7 +202,7 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Cards"
       },
       {
@@ -277,7 +213,7 @@ export const deck: Deck = [
     "img": {
       "src": "/work/builder-design-system/cs/130-4723.webp",
       "width": 1766,
-      "height": 676
+      "height": 618
     }
   },
   {
@@ -285,7 +221,7 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Side Nav"
       },
       {
@@ -301,7 +237,7 @@ export const deck: Deck = [
   },
   {
     "id": "130:4756",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -310,12 +246,33 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "Design Systems are like a living organism in the complex and ever evolving. What I showed here is just few section of what goes into a complete system. A complete system contains the following:"
+      },
+      {
+        "kind": "stickies",
+        "tone": "outline",
+        "notes": [
+          {
+            "title": "Documentation:",
+            "text": "A shared space where you say when and how to use the design system."
+          },
+          {
+            "title": "Visual Language:",
+            "text": "Guide to what the brand feels like."
+          },
+          {
+            "title": "Pattern Library:",
+            "text": "Also called \"component library\" includes what you see in slides."
+          },
+          {
+            "title": "Brand Guidelines:",
+            "text": "Includes principles, tone and voice, writing style, and more."
+          },
+          {
+            "title": "Evolving Design",
+            "text": "Block DS 4.0 is a work in progress but that's how it's supposed to be."
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/builder-design-system/cs/130-4756.webp",
-      "width": 1418,
-      "height": 429
-    }
+    ]
   }
 ];

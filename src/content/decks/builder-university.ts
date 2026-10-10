@@ -3,26 +3,6 @@ import type { Deck } from "./types";
 
 export const deck: Deck = [
   {
-    "id": "130:13130",
-    "side": "right",
-    "items": [
-      {
-        "kind": "h",
-        "text": "🎓 Builder.ai - University"
-      },
-      {
-        "kind": "h",
-        "text": "Product to streamline ♻️ onboarding new hires and third parties & more"
-      }
-    ],
-    "img": {
-      "src": "/work/builder-university/cs/130-13130.webp",
-      "width": 821,
-      "height": 931,
-      "frame": "laptop"
-    }
-  },
-  {
     "id": "130:13419",
     "side": "text",
     "items": [
@@ -31,28 +11,29 @@ export const deck: Deck = [
         "text": "Quick ✏️ Overview"
       },
       {
-        "kind": "h",
-        "text": "Builder University"
-      },
-      {
         "kind": "p",
         "text": "A internal learning platform for Builder employees and the third party partners we work with for our projects."
       },
       {
-        "kind": "p",
-        "text": "Status In BETA"
-      },
-      {
-        "kind": "p",
-        "text": "Industry Education & Upskilling"
-      },
-      {
-        "kind": "p",
-        "text": "Goal Increase engagement"
-      },
-      {
-        "kind": "p",
-        "text": "Project Building product from 0 to 1"
+        "kind": "facts",
+        "facts": [
+          {
+            "label": "Status",
+            "value": "In BETA"
+          },
+          {
+            "label": "Industry",
+            "value": "Education & Upskilling"
+          },
+          {
+            "label": "Goal",
+            "value": "Increase engagement"
+          },
+          {
+            "label": "Project",
+            "value": "Building product from 0 to 1"
+          }
+        ]
       }
     ]
   },
@@ -65,99 +46,15 @@ export const deck: Deck = [
         "text": "Meet the team"
       },
       {
-        "kind": "h",
-        "text": "Muskan Bhatia"
-      },
-      {
-        "kind": "p",
-        "text": "Product designer"
-      },
-      {
-        "kind": "h",
-        "text": "Aakash Kumar"
-      },
-      {
-        "kind": "p",
-        "text": "Product manager"
-      },
-      {
-        "kind": "h",
-        "text": "Priyanka"
-      },
-      {
-        "kind": "p",
-        "text": "Head of product"
-      },
-      {
-        "kind": "h",
-        "text": "15+ Engineers"
-      },
-      {
-        "kind": "p",
-        "text": "Engineering team"
-      },
-      {
         "kind": "p",
         "text": "My role Taking on my first project to create a product from scratch was pretty scarry at first. But with the whole team coming together in, it turned out great in the end!"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-13444.webp",
-      "width": 1354,
-      "height": 380
+      "width": 1384,
+      "height": 428
     }
-  },
-  {
-    "id": "130:13483",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Table of contents"
-      },
-      {
-        "kind": "h",
-        "text": "Overview"
-      },
-      {
-        "kind": "h",
-        "text": "Challenges & Pain points"
-      },
-      {
-        "kind": "h",
-        "text": "Research & pilot"
-      },
-      {
-        "kind": "h",
-        "text": "Learning plans - Solution"
-      },
-      {
-        "kind": "h",
-        "text": "Gamification - Solution"
-      },
-      {
-        "kind": "h",
-        "text": "Learning hub - Solution"
-      },
-      {
-        "kind": "h",
-        "text": "Impact and findings"
-      },
-      {
-        "kind": "h",
-        "text": "Challenges and learning"
-      }
-    ]
-  },
-  {
-    "id": "130:13525",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Overview"
-      }
-    ]
   },
   {
     "id": "130:13533",
@@ -165,11 +62,11 @@ export const deck: Deck = [
     "items": [
       {
         "kind": "h",
-        "text": "Builder.ai ✏️"
+        "text": "Overview"
       },
       {
-        "kind": "h",
-        "text": "An App building platform."
+        "kind": "sub",
+        "text": "Builder.ai ✏️ An App building platform."
       },
       {
         "kind": "p",
@@ -203,42 +100,20 @@ export const deck: Deck = [
         "text": "These projects have such a high turnaround time! in-between these the onboarding 3rd party teams and making them up to date of Builder & it’s processes takes time & costs money"
       },
       {
-        "kind": "h",
-        "text": "🤕"
-      },
-      {
-        "kind": "h",
-        "text": "Onboarding for new"
-      },
-      {
-        "kind": "h",
-        "text": "experts and learning takes time"
+        "kind": "sub",
+        "text": "🤕 Onboarding for new experts and learning takes time"
       },
       {
         "kind": "p",
         "text": "newly onboarded experts have to understand certain processes to function well but learning this takes time & someone to teach as well"
       },
       {
-        "kind": "h",
-        "text": "😣"
-      },
-      {
-        "kind": "h",
-        "text": "Lack of time to invest on onboarding"
+        "kind": "sub",
+        "text": "😣 Lack of time to invest on onboarding"
       },
       {
         "kind": "p",
         "text": "There is a crucial need to someone to teach the basics but this is hard to scale up when 100s of experts are joining by the day"
-      }
-    ]
-  },
-  {
-    "id": "130:13711",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Challenges & Pain points"
       }
     ]
   },
@@ -248,15 +123,11 @@ export const deck: Deck = [
     "items": [
       {
         "kind": "h",
-        "text": "Builder University ♻️"
+        "text": "Challenges & Pain points"
       },
       {
         "kind": "p",
         "text": "A platform called Builder University that can onboard users into our platform and bring them up to speed automated & in a engaging way was the way to move forward."
-      },
-      {
-        "kind": "h",
-        "text": "Challenge"
       },
       {
         "kind": "p",
@@ -318,25 +189,15 @@ export const deck: Deck = [
     ]
   },
   {
-    "id": "130:14028",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Quick pilot &"
-      },
-      {
-        "kind": "h",
-        "text": "Testing"
-      }
-    ]
-  },
-  {
     "id": "130:14036",
     "side": "left",
     "items": [
       {
         "kind": "h",
+        "text": "Quick pilot & Testing"
+      },
+      {
+        "kind": "p",
         "text": "Quick pilot: Before building a product there needed to be something to get started"
       },
       {
@@ -346,8 +207,9 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/builder-university/cs/130-14036.webp",
-      "width": 1053,
-      "height": 546
+      "width": 1587,
+      "height": 497,
+      "alt": "Builder 360 for Delivery course page. We started off by building a initial MVP of sorts on wordpress for the launch"
     }
   },
   {
@@ -365,20 +227,13 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "So there wasn't a need to reinvent the wheel here so for the initial launch it was a template of a e learning platform that we launched with to have something for a start as well as a place to build on top of"
-      },
-      {
-        "kind": "note",
-        "text": "Preview page - designed for the final product"
-      },
-      {
-        "kind": "note",
-        "text": "Learning pages"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-14175.webp",
       "width": 1316,
-      "height": 516
+      "height": 516,
+      "alt": "Preview page designed for the final product, and the learning pages"
     }
   },
   {
@@ -406,16 +261,13 @@ export const deck: Deck = [
         "items": [
           "Quick solution: We had a solution to tackle and urgent need which means it when from 0 where there was nothing to 1 where there was something now it was time to build on top of that"
         ]
-      },
-      {
-        "kind": "note",
-        "text": "Wordpress MVP platform"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-14400.webp",
       "width": 1034,
-      "height": 319
+      "height": 319,
+      "alt": "Wordpress MVP platform"
     }
   },
   {
@@ -442,25 +294,19 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:14801",
-    "side": "text",
+    "id": "130:14809",
+    "side": "right",
     "items": [
+      {
+        "kind": "eyebrow",
+        "text": "Solution (1/3)"
+      },
       {
         "kind": "h",
         "text": "Learning plans"
       },
       {
-        "kind": "h",
-        "text": "Solution (1/3)"
-      }
-    ]
-  },
-  {
-    "id": "130:14809",
-    "side": "right",
-    "items": [
-      {
-        "kind": "h",
+        "kind": "sub",
         "text": "Problem"
       },
       {
@@ -472,12 +318,8 @@ export const deck: Deck = [
         "text": "# Insight Learners need a clear direction on what to learn"
       },
       {
-        "kind": "p",
+        "kind": "sub",
         "text": "Solution"
-      },
-      {
-        "kind": "h",
-        "text": "Learning plans"
       },
       {
         "kind": "p",
@@ -501,10 +343,6 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "These learning plans are ordered with numbers, one has to complete the needed courses to unlock the next and the next one and continue further"
-      },
-      {
-        "kind": "h",
-        "text": "Learning plan"
       }
     ],
     "img": {
@@ -514,25 +352,19 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:15198",
-    "side": "text",
+    "id": "130:15206",
+    "side": "right",
     "items": [
+      {
+        "kind": "eyebrow",
+        "text": "Solution (2/3)"
+      },
       {
         "kind": "h",
         "text": "Gamification"
       },
       {
-        "kind": "h",
-        "text": "Solution (2/3)"
-      }
-    ]
-  },
-  {
-    "id": "130:15206",
-    "side": "right",
-    "items": [
-      {
-        "kind": "h",
+        "kind": "sub",
         "text": "Problem"
       },
       {
@@ -540,11 +372,11 @@ export const deck: Deck = [
         "text": "We need to understand how to keep learners engaged with the platform to make sure they learn what they are requested to without skipping or abandoning the platform"
       },
       {
-        "kind": "p",
+        "kind": "sub",
         "text": "Solution"
       },
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Awards & badges"
       },
       {
@@ -563,30 +395,19 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "p",
-        "text": "At different points users will be given badges for completion"
-      },
-      {
-        "kind": "h",
+        "kind": "sub",
         "text": "Badges"
       },
       {
-        "kind": "note",
-        "text": "Bronze badge"
-      },
-      {
         "kind": "p",
-        "text": "With instructions on how to get to the next level written down"
-      },
-      {
-        "kind": "p",
-        "text": "Like a system in a video game everytime someone completes a course the progress will be shown"
+        "text": "At different points users will be given badges for completion"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-15324.webp",
       "width": 1492,
-      "height": 512
+      "height": 512,
+      "alt": "1. Users start from bronze, with instructions on how to get to the next level written down. 2. Course completion will show progress: like a system in a video game everytime someone completes a course the progress will be shown"
     }
   },
   {
@@ -595,25 +416,14 @@ export const deck: Deck = [
     "items": [
       {
         "kind": "p",
-        "text": "This would be the main dashboard up front"
-      },
-      {
-        "kind": "p",
         "text": "They have an extended tier system and more"
-      },
-      {
-        "kind": "h",
-        "text": "Badges"
-      },
-      {
-        "kind": "p",
-        "text": "Few markers to encourage them further like time spent learning as well as the marks scored is added upfront a progress tracker to visually show how much more is left to go in order to complete"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-15564.webp",
-      "width": 1542,
-      "height": 630
+      "width": 1570,
+      "height": 769,
+      "alt": "3. Learning time & average score: few markers to encourage them further like time spent learning as well as the marks scored is added upfront. 4. Learning plan tracker. This would be the main dashboard up front"
     }
   },
   {
@@ -621,64 +431,47 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "p",
-        "text": "Along with badges for completion of learning plan as well as particular courses"
-      },
-      {
-        "kind": "h",
+        "kind": "sub",
         "text": "Awards"
       },
       {
         "kind": "p",
-        "text": "Luna Bhatia’s Achievements"
-      },
-      {
-        "kind": "p",
-        "text": "To top it all off, the badges and the progress from all the courses. along with the certificates earned will be showcased here they can be shared too!"
-      },
-      {
-        "kind": "p",
-        "text": "All to making learning online less boring"
+        "text": "Along with badges for completion of learning plan as well as particular courses"
       }
     ],
     "img": {
       "src": "/work/builder-university/cs/130-15808.webp",
-      "width": 1391,
-      "height": 634
+      "width": 1457,
+      "height": 770,
+      "alt": "5. Achievements: to top it all off, the badges and the progress from all the courses, along with the certificates earned, will be showcased here and they can be shared too. All to making learning online less boring"
     }
-  },
-  {
-    "id": "130:16067",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Learning hub"
-      },
-      {
-        "kind": "h",
-        "text": "Solution (3/3)"
-      }
-    ]
   },
   {
     "id": "130:16075",
     "side": "right",
     "items": [
       {
-        "kind": "p",
+        "kind": "eyebrow",
+        "text": "Solution (3/3)"
+      },
+      {
+        "kind": "h",
+        "text": "Learning hub"
+      },
+      {
+        "kind": "sub",
         "text": "Solution"
       },
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Learning hub & all course access"
       },
       {
-        "kind": "h",
+        "kind": "p",
         "text": "Even though this was a planform that was used to onboard users."
       },
       {
-        "kind": "h",
+        "kind": "p",
         "text": "There was a secondary use case to make the operations inside the companies smooth by making employees inside the company use BU as a way to learn more about the product and make it fast as well"
       }
     ],
@@ -695,10 +488,6 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "Every user of BU can learn any course they want even the ones out of their learning plan by browsing and enrolling directly"
-      },
-      {
-        "kind": "h",
-        "text": "All access to learners"
       }
     ],
     "img": {
@@ -708,54 +497,37 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:16374",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Impact &"
-      },
-      {
-        "kind": "h",
-        "text": "Outcome"
-      }
-    ]
-  },
-  {
     "id": "130:16382",
     "side": "text",
     "items": [
       {
         "kind": "h",
-        "text": "100%"
+        "text": "Impact & Outcome"
       },
       {
-        "kind": "h",
-        "text": "Impact & outcome 🚀"
-      },
-      {
-        "kind": "h",
+        "kind": "p",
         "text": "This was a platform that was crucial to the company and its goals."
       },
       {
-        "kind": "h",
+        "kind": "p",
         "text": "Post implementation it was streamlined with Builder Hive a platform where experts gather for easy access and quicker onboarding."
       },
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "Impact in numbers"
       },
       {
-        "kind": "p",
+        "kind": "stats",
+        "stats": [
+          {
+            "value": "+ 100%",
+            "label": "Automated upskilling experts"
+          }
+        ]
+      },
+      {
+        "kind": "note",
         "text": "Currently am on the look out to get the data of the difference it made between the old and new Builder university from intial pilot to now"
-      },
-      {
-        "kind": "h",
-        "text": "+ 100%"
-      },
-      {
-        "kind": "p",
-        "text": "Automated upskilling experts"
       }
     ]
   },
@@ -768,7 +540,7 @@ export const deck: Deck = [
         "text": "Future scope"
       },
       {
-        "kind": "h",
+        "kind": "p",
         "text": "Currently the platform is still in BETA we are working on new features and updates are still being worked on"
       }
     ],
@@ -779,26 +551,12 @@ export const deck: Deck = [
     }
   },
   {
-    "id": "130:16588",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Challenges &"
-      },
-      {
-        "kind": "h",
-        "text": "Learnings"
-      }
-    ]
-  },
-  {
     "id": "130:16596",
     "side": "text",
     "items": [
       {
         "kind": "h",
-        "text": "Challenges and learnings"
+        "text": "Challenges & Learnings"
       },
       {
         "kind": "list",

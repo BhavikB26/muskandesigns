@@ -4,29 +4,13 @@ import type { Deck } from "./types";
 export const deck: Deck = [
   {
     "id": "in-hero",
-    "side": "stack",
+    "side": "text",
     "items": [
-      {
-        "kind": "h",
-        "text": "A Case Study on revamping the Internshala App"
-      },
-      {
-        "kind": "p",
-        "text": "Bringing more clarity to the internship search, application and tracking experience along with a UI refresh"
-      }
-    ],
-    "after": [
       {
         "kind": "note",
         "text": "Disclaimer: This work presented in this cases study was not in collaboration with Internshala. This is solely a personal project"
       }
-    ],
-    "img": {
-      "src": "/work/internshala/cs/in-hero.webp",
-      "width": 1070,
-      "height": 375,
-      "alt": "Three phone screens from the redesigned Internshala app: home, a job posting and applications"
-    }
+    ]
   },
   {
     "id": "in-adventure",
@@ -121,7 +105,7 @@ export const deck: Deck = [
   },
   {
     "id": "in-context",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -130,20 +114,53 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "Freshers and college students lack a comprehensive understanding of the job application and tracking process. The current app presents challenges for them in finding suitable jobs, navigating cumbersome filters, and maintaining clarity on their application status and progression. The overall lack of transparency adds to the complexity of the user experience causing drop-off and churn."
-      }
-    ],
-    "after": [
+      },
+      {
+        "kind": "reviews",
+        "reviews": [
+          {
+            "name": "Arunika",
+            "rating": 3,
+            "date": "10/02/22",
+            "text": "The app is good.. Here you can find many opportunities waiting for you, but the thing which is quite frustrating is that they don't give the results like they say. Even if the application date expires and we get assignment samples, 10-20days get passed but they don't let us know whether we are selected or not, even if I want to fill other applications I can't because they always show in-touch but till when? It would be great if they email-us that we are not selected."
+          },
+          {
+            "name": "Kay Reet",
+            "rating": 3,
+            "date": "22/11/23",
+            "text": "No doubt here all types job, but I faced issue from last month... Job seekers invite me and ask for assignment but when I send any response then message not delivered, as a result job seekers sent same message again and again. And I replied all time but definitely they can't receive my message and as a result here my impression rating go down possibly because when anyone ask some question and somebody response them but they not got response then naturally anyone think he/she not responsible."
+          },
+          {
+            "name": "Vedant Vyas",
+            "rating": 2,
+            "date": "13/06/20",
+            "text": "The apply filters option is messed up. I am trying to appy category filters but it just doesn't take that input. Even with duration filters I have to apply twice or thrice to get those filters applied. Also it's too difficult to scroll through your application answers. It moves so fast that most of the time you are adjusting the cursor to find the part you wanna check or edit."
+          },
+          {
+            "name": "Prashant N",
+            "rating": 1,
+            "date": "05/11/23",
+            "text": "I'd like to suggest adding a filter option to distinguish between unpaid and paid opportunities in the app. My inbox is filled with unpaid invites, which can be overwhelming and disappointing. I believe this feature would greatly improve the app's usability. Thanks for considering this enhancement."
+          },
+          {
+            "name": "Aanya Jakhodia",
+            "rating": 3,
+            "date": "20/04/23",
+            "text": "It is a good app but my problem is that internshala should apply stricter policies. Not anyone should be allowed to post internships or jobs since it puts the applicant at risk of facing fraud. Stricten your policies and DO not allow anyone to just post an internship. And when i back after viewing details of an internship, it takes me back to the top. Like how many times do I have to scroll and scroll. Please fix this, it brings the bar down for your app."
+          },
+          {
+            "name": "Aritra Sen",
+            "rating": 3,
+            "date": "13/03/23",
+            "text": "Earlier it used to be quite a good platform for getting Internships and working with some genuinely good companies. Recently, they have downgraded the UI like hell, most importantly none of the recruiters are responding to submitted emails. Please fix this."
+          }
+        ]
+      },
       {
         "kind": "pill",
         "text": "👆🏻Reviews from the Play Store"
       }
-    ],
-    "img": {
-      "src": "/work/internshala/cs/in-context.webp",
-      "width": 834,
-      "height": 414,
-      "alt": "Collage of Internshala reviews from the Play Store"
-    }
+    ]
   },
   {
     "id": "in-statement",
@@ -293,7 +310,7 @@ export const deck: Deck = [
   },
   {
     "id": "in-interviews",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "sub",
@@ -302,9 +319,7 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "I also decided to speak to some of my friends who have also been active users of Internshala as well as other internship application platforms to get more qualitative feedback about their experiences."
-      }
-    ],
-    "after": [
+      },
       {
         "kind": "stickies",
         "notes": [
@@ -316,13 +331,7 @@ export const deck: Deck = [
           }
         ]
       }
-    ],
-    "img": {
-      "src": "/work/internshala/cs/in-interviews.webp",
-      "width": 907,
-      "height": 204,
-      "alt": "Screenshots from video-call interviews"
-    }
+    ]
   },
   {
     "id": "in-ui",
@@ -656,10 +665,23 @@ export const deck: Deck = [
       }
     ],
     "img": {
-      "src": "/work/internshala/cs/in-apply.webp",
-      "width": 266,
-      "height": 1044,
-      "alt": "Job posting screen"
+      "src": "/work/internshala/cs/in-posting-body.webp",
+      "width": 389,
+      "height": 1384,
+      "alt": "Job posting screen: role details, about us, what we do, your role, skills, and the hiring team to connect with",
+      "frame": "phone",
+      "parts": {
+        "top": {
+          "src": "/work/internshala/cs/in-posting-top.webp",
+          "width": 389,
+          "height": 62
+        },
+        "bottom": {
+          "src": "/work/internshala/cs/in-posting-bottom.webp",
+          "width": 389,
+          "height": 99
+        }
+      }
     }
   },
   {
@@ -781,19 +803,42 @@ export const deck: Deck = [
   },
   {
     "id": "in-tags",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "note",
         "text": "Tags that keep you updated always"
+      },
+      {
+        "kind": "tags",
+        "tags": [
+          {
+            "label": "Pending review",
+            "tone": "blue"
+          },
+          {
+            "label": "Application viewed",
+            "tone": "green"
+          },
+          {
+            "label": "Shortlisted",
+            "tone": "amber"
+          },
+          {
+            "label": "Assignment",
+            "tone": "indigo"
+          },
+          {
+            "label": "Interviewing",
+            "tone": "peach"
+          },
+          {
+            "label": "Application rejected",
+            "tone": "red"
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/internshala/cs/in-tags.webp",
-      "width": 457,
-      "height": 147,
-      "alt": "Status tags: Pending review, Application viewed, Shortlisted, Assignment, Interviewing, Application rejected"
-    }
+    ]
   },
   {
     "id": "in-chats",

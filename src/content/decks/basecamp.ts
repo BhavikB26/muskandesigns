@@ -3,33 +3,6 @@ import type { Deck } from "./types";
 
 export const deck: Deck = [
   {
-    "id": "bc-hero",
-    "side": "right",
-    "items": [
-      {
-        "kind": "p",
-        "text": "Re-designing Basecamp’s Landing Page"
-      },
-      {
-        "kind": "p",
-        "text": "B2B SaaS"
-      },
-      {
-        "kind": "note",
-        "text": "UI UX Case Study [Sep‘24 - Oct’24]"
-      },
-      {
-        "kind": "note",
-        "text": "PERSONAL PROJECT"
-      }
-    ],
-    "img": {
-      "src": "/work/basecamp/cs/bc-hero.webp",
-      "width": 1100,
-      "height": 941
-    }
-  },
-  {
     "id": "bc-about",
     "side": "text",
     "items": [
@@ -45,22 +18,39 @@ export const deck: Deck = [
   },
   {
     "id": "bc-why",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
         "text": "Redesign Process"
       },
       {
-        "kind": "h",
+        "kind": "sub",
         "text": "WHY"
+      },
+      {
+        "kind": "stickies",
+        "tone": "outline",
+        "notes": [
+          {
+            "title": "Overwhelming amount of information.",
+            "text": "Users face information overload in the hero section to grasp the service. This leads to a decision fatigue and poor user engagement."
+          },
+          {
+            "title": "Poor Navigation",
+            "text": "Important features or benefits were buried too deep, requiring excessive scrolling or clicks. Access to valuable content is difficult."
+          },
+          {
+            "title": "Lack of Hierarchy",
+            "text": "Lack of prioritization of most important information to the least is missing. The key features of of Basecamp is difficult to be captured."
+          },
+          {
+            "title": "Confusing Visual Layout",
+            "text": "Layout lacks a natural flow, making the user journey disjointed. Users might miss critical CTAs. Some interactive elements didn’t stand out clearly"
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/basecamp/cs/bc-why.webp",
-      "width": 1140,
-      "height": 740
-    }
+    ]
   },
   {
     "id": "bc-palette",
@@ -108,19 +98,5 @@ export const deck: Deck = [
       "alt": "The redesigned Basecamp landing page, top to bottom",
       "frame": "laptop"
     }
-  },
-  {
-    "id": "bc-end",
-    "side": "text",
-    "items": [
-      {
-        "kind": "h",
-        "text": "THE END"
-      },
-      {
-        "kind": "p",
-        "text": "Thank you for sticking through! :)"
-      }
-    ]
   }
 ];

@@ -15,8 +15,8 @@ function year(p: Project) {
  * fade in over a softened overlay (also on keyboard focus); on touch screens they sit below the tile.
  */
 function MosaicTile({
-  slug, href, title, tagline, tag, label, index, viewName,
-}: { slug: string; href: string; title: string; tagline: string; tag: string; label: string; index: number; viewName?: string }) {
+  slug, href, title, tagline, tag, label, index, viewName, locked = false,
+}: { slug: string; href: string; title: string; tagline: string; tag: string; label: string; index: number; viewName?: string; locked?: boolean }) {
   const art = <TileArt slug={slug} index={index} />;
   const external = href.startsWith("#");
   const LinkEl = external ? "a" : Link;
@@ -31,11 +31,22 @@ function MosaicTile({
           art
         )}
         <span className="label-mono absolute right-fr-sm top-fr-sm z-20 rounded-fr-sm bg-black/55 px-fr-xs py-fr-xxs text-white backdrop-blur-sm">{tag}</span>
-        {/* Hover/focus veil (decorative). */}
+        {/* Hover/focus veil (decorative). Locked work (shown in interviews only) stays blurred behind a lock. */}
         <span
           aria-hidden
-          className={`pointer-events-none absolute inset-0 z-10 hidden bg-[rgba(14,12,24,0.55)] opacity-0 backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block`}
+          className={`pointer-events-none absolute inset-0 z-10 bg-[rgba(14,12,24,0.55)] backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] ${locked ? "block opacity-100" : "hidden opacity-0 group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block"}`}
         />
+        {locked && (
+          <span aria-hidden className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center transition-transform duration-500 ease-[var(--ease-out-expo)] can-hover:group-hover:-translate-y-6">
+            <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md">
+              <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" />
+                <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
+                <circle cx="12" cy="15.6" r="1.3" fill="currentColor" stroke="none" />
+              </svg>
+            </span>
+          </span>
+        )}
       </div>
       <div
         className={`relative mt-fr-sm flex flex-col gap-fr-xs can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-fr-lg can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
@@ -83,6 +94,7 @@ export function Work({ projects }: { projects: Project[] }) {
                   tag="Gusto"
                   label="Walkthrough on request"
                   index={i}
+                  locked
                 />
               );
             const p = projects.find((x) => x.slug === slug);

@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Block, Img, Project } from "@/content/projects";
-import type { Brand } from "@/content/brand";
 import type { DeckItem, DeckSlide } from "@/content/decks/types";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { MotionToggle } from "@/components/motion";
-import { LaptopScroll } from "./laptop-scroll";
+import { LaptopScroll, PhoneScroll } from "./laptop-scroll";
 import { LaptopFlow } from "./laptop-flow";
+import { SocialLinks } from "@/components/social-links";
 
 /*
  * Editorial case study building blocks.
@@ -106,23 +106,6 @@ export function CaseIntro({ p }: { p: Project }) {
   );
 }
 
-/** Section C: a wide brand-colour hero with an oversized title and the project's cover. */
-export function CaseHero({ p, brand, art }: { p: Project; brand: Brand; art: ReactNode }) {
-  const light = brand.ink === "light";
-  return (
-    <div className="hero-reveal relative isolate overflow-hidden rounded-fr-xxl" style={{ backgroundColor: brand.base }}>
-      <div className="grid grid-cols-1 items-center gap-fr-xl p-8 md:min-h-[min(72vh,700px)] md:grid-cols-12 md:gap-x-fr-lg md:p-fr-xxl xl:gap-x-fr-xxl xl:p-fr-section">
-        <p
-          aria-hidden
-          className={`t-display-xxl md:col-span-7 md:self-end ${light ? "text-white" : "text-[#151412]"}`}
-        >
-          {p.name}
-        </p>
-        <div className="relative mx-auto aspect-square w-full max-w-[600px] md:col-span-5">{art}</div>
-      </div>
-    </div>
-  );
-}
 
 /* ---------- Section D: colour panels with art-directed compositions ---------- */
 
@@ -178,7 +161,7 @@ export function Panel({ images }: { images: Img[] }) {
     <figure data-reveal className="flex flex-col gap-fr-lg">
       <Composition images={images} />
       {captions.length > 0 && (
-        <figcaption className="case-caption flex max-w-[60ch] flex-col gap-1">
+        <figcaption className="case-caption flex flex-col gap-1">
           {captions.map((c) => (
             <span key={c.src}>{c.caption}</span>
           ))}
@@ -192,11 +175,11 @@ export function Panel({ images }: { images: Img[] }) {
 
 export function TextBlock({ block }: { block: Extract<Block, { kind: "text" }> }) {
   return (
-    <section data-reveal className="grid grid-cols-1 gap-fr-sm md:grid-cols-12 md:gap-x-fr-xxl">
+    <section data-reveal data-section="" className="grid grid-cols-1 gap-fr-sm md:grid-cols-12 md:gap-x-fr-xxl">
       <h2 className="case-h2 md:col-span-4">{block.heading}</h2>
       <div className="flex flex-col gap-fr-md md:col-span-8">
         {block.body.map((t, i) => (
-          <p key={i} className={`case-body ${t.length > 150 ? "max-w-[60ch]" : ""}`}>
+          <p key={i} className={`case-body `}>
             {t}
           </p>
         ))}
@@ -272,8 +255,6 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
   const links = [
     { label: "All work", href: "/#work" },
     { label: "About", href: "/#about" },
-    { label: "LinkedIn", href: LINKEDIN, external: true },
-    { label: "Resume (PDF)", href: "/resume.pdf", external: true },
   ];
   return (
     <footer id="contact" className="flex scroll-mt-10 flex-col gap-fr-section border-t border-line pb-fr-xxl pt-fr-xxl">
@@ -290,22 +271,20 @@ export function CaseFooter({ next, nextArt }: { next: Project; nextArt: ReactNod
       <div className="flex flex-col gap-fr-lg md:flex-row md:items-end md:justify-between">
         <div className="flex flex-col gap-fr-xs">
           <p className="case-meta-label">Contact</p>
-          <p className="case-body max-w-[46ch]">I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.</p>
+          <p className="case-body">I&rsquo;m looking for Product Designer and UX Designer roles. The fastest way to reach me is LinkedIn.</p>
         </div>
-        <ul className="flex flex-wrap gap-x-fr-lg gap-y-fr-xxs">
-          {links.map((l) => (
-            <li key={l.label}>
-              <a
-                href={l.href}
-                {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                className="case-link t-body-sm inline-flex min-h-10 items-center text-ink"
-              >
-                {l.label}
-                {l.external && <span className="sr-only"> (opens in a new tab)</span>}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex flex-wrap items-center gap-fr-lg">
+          <ul className="flex flex-wrap gap-x-fr-lg gap-y-fr-xxs">
+            {links.map((l) => (
+              <li key={l.label}>
+                <Link href={l.href} className="case-link t-body-sm inline-flex min-h-10 items-center text-ink">
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <SocialLinks />
+        </div>
       </div>
       <p className="case-meta-label">© {new Date().getFullYear()} Muskan Bhatia</p>
     </footer>
@@ -324,9 +303,70 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
               {it.text}
             </h2>
           );
+        if (it.kind === "reviews")
+          return (
+            <ul key={i} className="my-fr-xs columns-1 gap-fr-md sm:columns-2 lg:columns-3">
+              {it.reviews.map((r) => (
+                <li key={r.name} className="deck-review mb-fr-md break-inside-avoid">
+                  <div className="flex items-center gap-fr-sm">
+                    <span aria-hidden className="flex size-9 shrink-0 items-center justify-center rounded-full bg-surface-2 t-body-sm text-ink">
+                      {r.name[0]}
+                    </span>
+                    <span className="t-body-sm text-ink">{r.name}</span>
+                  </div>
+                  <p className="mt-fr-sm flex items-center gap-fr-xs t-caption text-muted">
+                    <span aria-hidden className="tracking-[0.12em] text-[#e2a400]">
+                      {"★".repeat(r.rating)}
+                      <span className="text-line-strong">{"★".repeat(5 - r.rating)}</span>
+                    </span>
+                    <span className="sr-only">{r.rating} out of 5 stars,</span>
+                    {r.date}
+                  </p>
+                  <p className="mt-fr-xs t-body text-ink">{r.text}</p>
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "tags")
+          return (
+            <ul key={i} className="my-fr-xs flex flex-wrap gap-fr-xs">
+              {it.tags.map((g) => (
+                <li key={g.label} className={`deck-tag deck-tag-${g.tone}`}>
+                  {g.label}
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "logos")
+          return (
+            <ul key={i} className="my-fr-xs flex flex-wrap items-center justify-center gap-fr-xl">
+              {it.logos.map((l) => (
+                <li key={l.src}>
+                  <Image src={l.src} alt={l.alt} width={l.width} height={l.height} sizes="120px" className="size-[clamp(72px,14vw,120px)] rounded-[22%] object-cover" />
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "eyebrow")
+          return (
+            <p key={i} className="label-mono -mb-fr-xs text-muted">
+              {it.text}
+            </p>
+          );
+        if (it.kind === "facts")
+          return (
+            <dl key={i} className="grid grid-cols-2 gap-x-fr-xl gap-y-fr-lg border-y border-line py-fr-lg sm:grid-cols-4">
+              {it.facts.map((f) => (
+                <div key={f.label} className="flex flex-col gap-fr-xxs">
+                  <dt className="case-meta-label">{f.label}</dt>
+                  <dd className="t-body-sm text-ink">{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          );
         if (it.kind === "sub")
           return (
-            <h3 key={i} className="case-deck-sub mt-2">
+            <h3 key={i} className="case-deck-sub mt-fr-lg">
               {it.text}
             </h3>
           );
@@ -400,7 +440,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
           );
         return (
           // Short lines (one or two sentences) run on a single line where there is room; longer ones keep a reading measure.
-          <p key={i} className={`${it.kind === "note" ? "case-caption" : "case-body"} ${it.text.length > 150 ? "max-w-[60ch]" : ""}`}>
+          <p key={i} className={`${it.kind === "note" ? "case-caption" : "case-body"} `}>
             {it.text}
           </p>
         );
@@ -410,10 +450,11 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
 }
 
 /** Sticky notes and rows need the full column; plain text keeps a reading measure. */
-const isWide = (items: DeckItem[]) => items.some((i) => i.kind === "stickies" || i.kind === "rows" || i.kind === "stats");
+const isWide = (items: DeckItem[]) => items.some((i) => ["stickies", "rows", "stats", "reviews", "tags", "logos", "facts"].includes(i.kind));
 
 function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
   if (img.frame === "laptop") return <LaptopScroll src={img.src} width={img.width} height={img.height} alt={alt} />;
+  if (img.frame === "phone") return <PhoneScroll body={img} top={img.parts?.top} bottom={img.parts?.bottom} alt={alt} />;
   // Medium size: never taller than ~620px, never wider than the original crop.
   // Wide web pages and boards read at a fixed reading width; phone screens and tall crops cap at ~620px tall.
   // Single phone screens stay small (about 480px tall).
@@ -442,32 +483,35 @@ function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: stri
 
 /** One slide from the original deck, keeping its text-beside-visual placement. */
 export function DeckSlideView({ slide }: { slide: DeckSlide }) {
+  // A slide that opens with a section heading starts a new section (more space and a hairline above).
+  const opens = slide.items.find((i) => i.kind !== "eyebrow")?.kind === "h";
+  const sec = opens ? { "data-section": "" } : {};
   const heading = slide.items.find((i) => i.kind === "h") as { text: string } | undefined;
   const { img, items, after } = slide;
   const alt = img?.alt ?? (heading ? `${heading.text}: visual from the case study` : "Visual from the case study");
   const below = after?.length ? <DeckText items={after} wide={isWide(after)} /> : null;
   if (slide.flow)
     return (
-      <section data-reveal>
+      <section data-reveal {...sec}>
         <LaptopFlow screens={slide.flow.map((f) => f.img)} panels={slide.flow.map((f, i) => <DeckText key={i} items={f.items} />)} labels={slide.flow.map((f) => f.label)} />
       </section>
     );
   if (!img)
     return (
-      <section data-reveal>
+      <section data-reveal {...sec}>
         <DeckText items={items} wide={isWide(items)} />
       </section>
     );
   if (!items.length)
     return (
-      <figure data-reveal className="flex flex-col items-center gap-8">
+      <figure data-reveal {...sec} className="flex flex-col items-center gap-8">
         <DeckImage img={img} alt={alt} />
         {below && <div className="w-full">{below}</div>}
       </figure>
     );
   if (slide.side === "right" || slide.side === "left")
     return (
-      <section data-reveal className="flex flex-col gap-8">
+      <section data-reveal {...sec} className="flex flex-col gap-8">
         <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12 md:gap-x-12">
           <div className={`md:col-span-5 ${slide.side === "left" ? "md:order-2" : ""}`}>
             <DeckText items={items} />
@@ -480,7 +524,7 @@ export function DeckSlideView({ slide }: { slide: DeckSlide }) {
       </section>
     );
   return (
-    <section data-reveal className="flex flex-col gap-8">
+    <section data-reveal {...sec} className="flex flex-col gap-8">
       <DeckText items={items} wide={isWide(items)} />
       <div className="flex justify-center">
         <DeckImage img={img} alt={alt} />

@@ -3,25 +3,6 @@ import type { Deck } from "./types";
 
 export const deck: Deck = [
   {
-    "id": "12:28",
-    "side": "right",
-    "items": [
-      {
-        "kind": "h",
-        "text": "Rating and review system aka REVIEW SAAS"
-      },
-      {
-        "kind": "p",
-        "text": "Reward program to collect guest’s quality review post checkout"
-      }
-    ],
-    "img": {
-      "src": "/work/ratings-reviews/cs/12-28.webp",
-      "width": 948,
-      "height": 1080
-    }
-  },
-  {
     "id": "12:238",
     "side": "right",
     "items": [
@@ -50,7 +31,7 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "h",
+        "kind": "p",
         "text": "Before starting case study, I have a"
       },
       {
@@ -70,7 +51,7 @@ export const deck: Deck = [
     "side": "stack",
     "items": [
       {
-        "kind": "h",
+        "kind": "p",
         "text": "Maybe they are"
       }
     ],
@@ -85,12 +66,13 @@ export const deck: Deck = [
     "side": "text",
     "items": [
       {
-        "kind": "h",
-        "text": "83%"
-      },
-      {
-        "kind": "p",
-        "text": "Ratings and review hold the weightage of 65% while making any decision either while buying a product, choosing a place for vacay etc."
+        "kind": "stats",
+        "stats": [
+          {
+            "value": "83%",
+            "label": "Ratings and review hold the weightage of 65% while making any decision either while buying a product, choosing a place for vacay etc."
+          }
+        ]
       }
     ]
   },
@@ -260,10 +242,6 @@ export const deck: Deck = [
         "text": "Current scenario in OYO app"
       },
       {
-        "kind": "note",
-        "text": "This is the only section to give ratings (Current sol.)"
-      },
-      {
         "kind": "p",
         "text": "To understand the problem and before designing solution for collecting ratings and review we tried to found, why problem existed in first place, there were multiple reason:"
       },
@@ -278,22 +256,14 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/ratings-reviews/cs/12-347.webp",
-      "width": 394,
-      "height": 686
+      "width": 685,
+      "height": 808
     }
   },
   {
     "id": "12:380",
     "side": "right",
     "items": [
-      {
-        "kind": "p",
-        "text": "What is this 793 stands for?"
-      },
-      {
-        "kind": "p",
-        "text": "What user will understand from this star?"
-      },
       {
         "kind": "h",
         "text": "Pain-points"
@@ -313,8 +283,8 @@ export const deck: Deck = [
     ],
     "img": {
       "src": "/work/ratings-reviews/cs/12-380.webp",
-      "width": 368,
-      "height": 847
+      "width": 788,
+      "height": 911
     }
   },
   {
@@ -423,10 +393,6 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "It’s the time to show final design and explain each decision while finalising the design, we’ll deep dive into each screen step by step."
-      },
-      {
-        "kind": "p",
-        "text": "Prototype link Click here to interact with prototype"
       }
     ],
     "img": {
@@ -605,16 +571,8 @@ export const deck: Deck = [
   },
   {
     "id": "12:1185",
-    "side": "stack",
+    "side": "text",
     "items": [
-      {
-        "kind": "p",
-        "text": "Oyo generated revenue of $424000 from review SAAS"
-      },
-      {
-        "kind": "p",
-        "text": "18% of properties have opted in for Review Saas program"
-      },
       {
         "kind": "h",
         "text": "Outcomes"
@@ -624,19 +582,27 @@ export const deck: Deck = [
         "text": "After this phase went live we had closely monitor the success of this project and few of the outcomes were."
       },
       {
-        "kind": "p",
-        "text": "77% of properties crossed the minimum threshold of 20 reviews"
-      },
-      {
-        "kind": "p",
-        "text": "Relative lift of 76% in review coverage in the new flow vs old flow"
+        "kind": "stats",
+        "stats": [
+          {
+            "value": "$424000",
+            "label": "Oyo generated revenue of $424000 from review SAAS"
+          },
+          {
+            "value": "18%",
+            "label": "18% of properties have opted in for Review Saas program"
+          },
+          {
+            "value": "77%",
+            "label": "77% of properties crossed the minimum threshold of 20 reviews"
+          },
+          {
+            "value": "76%",
+            "label": "Relative lift of 76% in review coverage in the new flow vs old flow"
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/ratings-reviews/cs/12-1185.webp",
-      "width": 1479,
-      "height": 839
-    }
+    ]
   },
   {
     "id": "12:1217",

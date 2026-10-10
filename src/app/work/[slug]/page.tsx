@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ViewTransition } from "react";
 import { TileArt } from "@/components/home/tile-art";
-import { CaseFooter, CaseHero, CaseIntro, DeckSlideView, Facts, Identity, Outcome, Panel, Quote, TextBlock, Toggles } from "@/components/case/case-parts";
+import { CaseFooter, CaseIntro, DeckSlideView, Facts, Identity, Outcome, Panel, Quote, TextBlock, Toggles } from "@/components/case/case-parts";
 import { decks } from "@/content/decks";
-import { brandOf } from "@/content/brand";
 import { getNextProject, getProject, projects, type Block, type Project } from "@/content/projects";
 
 export const dynamicParams = false;
@@ -61,7 +59,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const p = getProject(slug);
   if (!p) notFound();
   const next = getNextProject(slug);
-  const brand = brandOf(p.slug);
   const { story, closing } = splitStory(p);
   const deck = decks[p.slug];
 
@@ -96,17 +93,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
               </div>
             </div>
 
-            {/* Section C: hero (the home tile morphs into it). */}
-            <div className="pt-14 md:pt-20">
-              <ViewTransition name={`thumb-${p.slug}`} share="morph" default="none">
-                <div>
-                  <CaseHero p={p} brand={brand} art={<TileArt slug={p.slug} bare />} />
-                </div>
-              </ViewTransition>
-            </div>
 
             {/* Sections D–H: the story, screens between short text, then the outcome. */}
-            <div className="flex flex-col gap-16 pt-20 md:gap-28 md:pt-32">
+            <div className="deck-flow flex flex-col pt-fr-section">
               {deck ? (
                 <>
                   {deck.map((sl) => (

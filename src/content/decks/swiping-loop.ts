@@ -4,7 +4,7 @@ import type { Deck } from "./types";
 export const deck: Deck = [
   {
     "id": "sw-hero",
-    "side": "left",
+    "side": "text",
     "items": [
       {
         "kind": "p",
@@ -14,13 +14,7 @@ export const deck: Deck = [
         "kind": "note",
         "text": "project : self-initiated my role : solo ux researcher duration : 4 weeks"
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-hero.webp",
-      "width": 550,
-      "height": 460,
-      "alt": "The swiping loop"
-    }
+    ]
   },
   {
     "id": "sw-intro",
@@ -243,7 +237,7 @@ export const deck: Deck = [
   },
   {
     "id": "sw-apps",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "stickies",
@@ -256,20 +250,35 @@ export const deck: Deck = [
             "text": "Out of 32 participants, 28 people haven’t found their partner through these apps, although they have managed to get dates. 4 people found their partner through dating apps."
           }
         ]
-      }
-    ],
-    "after": [
+      },
+      {
+        "kind": "logos",
+        "logos": [
+          {
+            "src": "/work/swiping-loop/cs/sw-logo-tinder.webp",
+            "alt": "Tinder",
+            "width": 186,
+            "height": 186
+          },
+          {
+            "src": "/work/swiping-loop/cs/sw-logo-bumble.webp",
+            "alt": "Bumble",
+            "width": 186,
+            "height": 186
+          },
+          {
+            "src": "/work/swiping-loop/cs/sw-logo-hinge.webp",
+            "alt": "Hinge",
+            "width": 186,
+            "height": 186
+          }
+        ]
+      },
       {
         "kind": "p",
         "text": "Tinder, Bumble and Hinge are the top players in Dating apps scene."
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-apps.webp",
-      "width": 658,
-      "height": 186,
-      "alt": "Tinder, Bumble and Hinge logos"
-    }
+    ]
   },
   {
     "id": "sw-instagram",
@@ -615,7 +624,7 @@ export const deck: Deck = [
   },
   {
     "id": "sw-fix",
-    "side": "right",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -637,13 +646,7 @@ export const deck: Deck = [
         "kind": "p",
         "text": "But as my research progresses, I want to make sure I am not only diagnosing a problem, but also offering designers tangible recommendations to get better idea of design solutions from researcher’s perspective."
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-fix.webp",
-      "width": 320,
-      "height": 361,
-      "alt": "Light bulb"
-    }
+    ]
   },
   {
     "id": "sw-real",
