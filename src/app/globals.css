@@ -394,10 +394,11 @@ html.lenis body {
 /* ---------- Bold editorial layer ---------- */
 
 /* Masked word reveal: each word slides up from behind its own mask. */
+/* Clip (not overflow) so the word keeps its real text baseline: mixed fonts in one headline line up. */
 .mask-word {
   display: inline-block;
-  overflow: hidden;
-  vertical-align: top;
+  clip-path: inset(-0.1em -0.1em 0 -0.1em);
+  vertical-align: baseline;
   padding: 0 0.08em 0.14em;
   margin: 0 -0.08em -0.14em;
 }

@@ -35,7 +35,7 @@ export function Testimonials() {
           <p className="label-mono text-muted">Kind words</p>
           <h2 id="kind-words" className="t-display-xl">
             <MaskedText text="From people I’ve" onReveal />{" "}
-            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em] text-ink">
+            <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
               <MaskedText text="worked with" start={3} onReveal />
             </em>
           </h2>

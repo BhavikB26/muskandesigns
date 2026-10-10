@@ -10,7 +10,7 @@ export function SiteFooter() {
             <p className="label-mono text-muted">Contact</p>
             <h2 className="t-display-xxl">
               <MaskedText text="Let’s" onReveal />{" "}
-              <em className="font-serif font-normal italic tracking-[-0.03em] text-ink">
+              <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
                 <MaskedText text="talk." start={1} onReveal />
               </em>
             </h2>

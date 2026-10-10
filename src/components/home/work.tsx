@@ -74,7 +74,7 @@ export function Work({ projects }: { projects: Project[] }) {
           <p className="label-mono text-muted">Work</p>
           <h2 id="work-heading" className="t-display-xl">
             <MaskedText text="Selected" onReveal />{" "}
-            <em className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em] text-ink">
+            <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
               <MaskedText text="work" start={1} onReveal />
             </em>
           </h2>

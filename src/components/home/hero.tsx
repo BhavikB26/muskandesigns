@@ -41,7 +41,7 @@ export function Hero() {
             text={EMPHASIS}
             delay={220}
             start={3}
-            className="font-serif text-[1.06em] font-normal italic tracking-[-0.03em]"
+            className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em]"
           />
         </h1>
 
