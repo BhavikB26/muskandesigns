@@ -21,6 +21,7 @@ const testimonials = [
   {
     quote:
       "I met Muskan at the gym and have been seeking her Design help ever since! She’s helped me with my website, products, carousels, and so much more. What really stands out is her attention to detail and her never-failing energy for building distinct, functional AND beautiful products. If you’re looking for a curious mind with a lot of knowledge, someone who’s open to learning, experimenting, and constantly improving, Muskan is the one. I absolutely love how open she is to feedback and new ideas, and how much thought she puts into everything she creates.",
+    avatar: "/home/ishika.jpg",
     name: "Ishika Jain",
     role: "Client",
   },
