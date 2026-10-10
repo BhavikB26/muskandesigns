@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="164" height="904" viewBox="0 0 164 904">
+<rect width="164" height="904" rx="8" fill="#fff"/>
+<text x="16.7" y="26.4" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="6.27" font-weight="600" letter-spacing="0.26" fill="#666">SPACING</text>
+<text x="108.7" y="26.4" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="6.27" font-weight="600" letter-spacing="0.26" fill="#666">SIZE IN PX</text>
+<line x1="0" y1="39" x2="164" y2="39" stroke="#ddd" stroke-width="1"/>
+<rect x="16.7" y="55.39" width="1.04" height="1.04" fill="#bf96f6"/>
+<text x="108.7" y="59.739999999999995" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">2px</text>
+<rect x="16.7" y="84.66" width="2.09" height="2.09" fill="#bf96f6"/>
+<text x="108.7" y="89" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">4px</text>
+<rect x="16.7" y="113.92" width="3.14" height="3.14" fill="#bf96f6"/>
+<text x="108.7" y="118.27" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">6px</text>
+<rect x="16.7" y="143.19" width="4.18" height="4.18" fill="#bf96f6"/>
+<text x="108.7" y="147.53" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">8px</text>
+<rect x="16.7" y="171.41" width="6.27" height="6.27" fill="#bf96f6"/>
+<text x="108.7" y="176.8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">12px</text>
+<rect x="16.7" y="200.67" width="7.32" height="7.32" fill="#bf96f6"/>
+<text x="108.7" y="206.06" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">14px</text>
+<rect x="16.7" y="228.89" width="8.36" height="8.36" fill="#bf96f6"/>
+<text x="108.7" y="235.33" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">16px</text>
+<rect x="16.7" y="256.07" width="10.45" height="10.45" fill="#bf96f6"/>
+<text x="108.7" y="264.59000000000003" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">20px</text>
+<rect x="16.7" y="285.33" width="12.54" height="12.54" fill="#bf96f6"/>
+<text x="108.7" y="293.86" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">24px</text>
+<rect x="16.7" y="314.6" width="16.72" height="16.72" fill="#bf96f6"/>
+<text x="108.7" y="325.21000000000004" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">32px</text>
+<rect x="16.7" y="343.86" width="20.9" height="20.9" fill="#bf96f6"/>
+<text x="108.7" y="354.48" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">40px</text>
+<rect x="16.7" y="377.31" width="22.99" height="22.99" fill="#bf96f6"/>
+<text x="108.7" y="392.1" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">44px</text>
+<rect x="16.7" y="412.84" width="25.08" height="25.08" fill="#bf96f6"/>
+<text x="108.7" y="427.64" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">48px</text>
+<rect x="16.7" y="454.65" width="29.26" height="29.26" fill="#bf96f6"/>
+<text x="108.7" y="472.58" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">56px</text>
+<rect x="16.7" y="500.63" width="33.45" height="33.45" fill="#bf96f6"/>
+<text x="108.7" y="519.6099999999999" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">64px</text>
+<rect x="16.7" y="550.8" width="37.63" height="37.63" fill="#bf96f6"/>
+<text x="108.7" y="572.92" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">72px</text>
+<rect x="16.7" y="605.15" width="41.81" height="41.81" fill="#bf96f6"/>
+<text x="108.7" y="629.3499999999999" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">80px</text>
+<rect x="16.7" y="663.68" width="45.99" height="45.99" fill="#bf96f6"/>
+<text x="108.7" y="689.9699999999999" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">88px</text>
+<rect x="16.7" y="726.39" width="54.35" height="54.35" fill="#bf96f6"/>
+<text x="108.7" y="756.87" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">104px</text>
+<rect x="16.7" y="797.46" width="66.89" height="66.89" fill="#bf96f6"/>
+<text x="108.7" y="834.2099999999999" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="9.4" font-weight="600" fill="#333">128px</text>
+</svg>

@@ -303,6 +303,93 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
               {it.text}
             </h2>
           );
+        if (it.kind === "pieces")
+          return (
+            <div key={i} className="deck-pieces my-fr-xs" style={{ "--ar": `${it.w} / ${it.h}` } as React.CSSProperties}>
+              {it.pieces.map((pc) => (
+                <div
+                  key={pc.src}
+                  className={`deck-piece ${pc.shadow ? "deck-piece-shadow" : ""}`}
+                  style={
+                    {
+                      "--l": `${(pc.x / it.w) * 100}%`,
+                      "--t": `${(pc.y / it.h) * 100}%`,
+                      "--pw": `${(pc.w / it.w) * 100}%`,
+                      "--mw": `${Math.min(pc.w, 560)}px`,
+                      "--r": `${pc.radius ?? 0}px`,
+                    } as React.CSSProperties
+                  }
+                >
+                  <Image src={pc.src} alt={pc.alt} width={Math.round(pc.w)} height={Math.round(pc.h)} unoptimized={pc.src.endsWith(".svg")} sizes={`(min-width: 768px) ${Math.round((pc.w / it.w) * 1000)}px, 90vw`} className="block h-auto w-full" />
+                </div>
+              ))}
+            </div>
+          );
+        if (it.kind === "personas")
+          return (
+            <ul key={i} className="my-fr-xs grid grid-cols-1 gap-fr-md md:grid-cols-2">
+              {it.personas.map((p) => (
+                <li key={p.name} className="deck-review flex flex-col gap-fr-lg sm:flex-row">
+                  <div className="flex shrink-0 items-center gap-fr-sm sm:w-[34%] sm:flex-col sm:items-start">
+                    <span aria-hidden className="flex size-16 items-center justify-center rounded-full bg-surface-2 t-display-md text-ink">
+                      {p.name[0]}
+                    </span>
+                    <div>
+                      <p className="t-headline text-ink">{p.name}</p>
+                      <p className="t-caption text-muted">{p.meta}</p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-fr-md">
+                    <div>
+                      <p className="label-mono text-muted">Goals</p>
+                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink marker:text-muted">
+                        {p.goals.map((g) => (
+                          <li key={g}>{g}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="label-mono text-muted">Challenges</p>
+                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink marker:text-muted">
+                        {p.challenges.map((g) => (
+                          <li key={g}>{g}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "team")
+          return (
+            <ul key={i} className="my-fr-xs grid grid-cols-2 gap-fr-md sm:grid-cols-3 lg:grid-cols-4">
+              {it.members.map((m) => (
+                <li key={m.name} className="deck-member">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-fr-lg bg-surface-2">
+                    {m.photo ? (
+                      <Image src={m.photo} alt={m.name} fill sizes="(min-width: 1024px) 220px, 45vw" className="object-cover object-top" />
+                    ) : (
+                      <span aria-hidden className="absolute inset-0 flex items-center justify-center text-muted">
+                        <svg viewBox="0 0 24 24" className="size-12" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="9" cy="8" r="3.5" />
+                          <path d="M2.5 20v-1.5A4.5 4.5 0 0 1 7 14h4a4.5 4.5 0 0 1 4.5 4.5V20M16 4.6a3.5 3.5 0 0 1 0 6.8M21.5 20v-1.5a4.5 4.5 0 0 0-3.3-4.3" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
+                  <p className="mt-fr-sm t-body-sm text-ink">{m.name}</p>
+                  <p className="t-caption text-muted">{m.role}</p>
+                </li>
+              ))}
+            </ul>
+          );
+        if (it.kind === "highlight")
+          return (
+            <p key={i} className="deck-highlight my-fr-xs">
+              {it.text}
+            </p>
+          );
         if (it.kind === "reviews")
           return (
             <ul key={i} className="my-fr-xs columns-1 gap-fr-md sm:columns-2 lg:columns-3">
@@ -450,7 +537,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
 }
 
 /** Sticky notes and rows need the full column; plain text keeps a reading measure. */
-const isWide = (items: DeckItem[]) => items.some((i) => ["stickies", "rows", "stats", "reviews", "tags", "logos", "facts"].includes(i.kind));
+const isWide = (items: DeckItem[]) => items.some((i) => ["stickies", "rows", "stats", "reviews", "tags", "logos", "facts", "pieces", "team", "highlight", "personas"].includes(i.kind));
 
 function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
   if (img.frame === "laptop") return <LaptopScroll src={img.src} width={img.width} height={img.height} alt={alt} />;

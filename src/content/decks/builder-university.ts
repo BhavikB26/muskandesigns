@@ -8,7 +8,7 @@ export const deck: Deck = [
     "items": [
       {
         "kind": "h",
-        "text": "Quick ✏️ Overview"
+        "text": "Quick Overview ✏️"
       },
       {
         "kind": "p",
@@ -39,22 +39,45 @@ export const deck: Deck = [
   },
   {
     "id": "130:13444",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
         "text": "Meet the team"
       },
       {
+        "kind": "team",
+        "members": [
+          {
+            "name": "Muskan Bhatia",
+            "role": "Product designer",
+            "photo": "/work/team/muskan-bu.webp"
+          },
+          {
+            "name": "Aakash Kumar",
+            "role": "Product manager",
+            "photo": "/work/team/aakash.webp"
+          },
+          {
+            "name": "Priyanka",
+            "role": "Head of product",
+            "photo": "/work/team/priyanka.webp"
+          },
+          {
+            "name": "15+ Engineers",
+            "role": "Engineering team"
+          }
+        ]
+      },
+      {
+        "kind": "sub",
+        "text": "My role"
+      },
+      {
         "kind": "p",
-        "text": "My role Taking on my first project to create a product from scratch was pretty scarry at first. But with the whole team coming together in, it turned out great in the end!"
+        "text": "Taking on my first project to create a product from scratch was pretty scarry at first. But with the whole team coming together in, it turned out great in the end!"
       }
-    ],
-    "img": {
-      "src": "/work/builder-university/cs/130-13444.webp",
-      "width": 1384,
-      "height": 428
-    }
+    ]
   },
   {
     "id": "130:13533",
@@ -66,7 +89,11 @@ export const deck: Deck = [
       },
       {
         "kind": "sub",
-        "text": "Builder.ai ✏️ An App building platform."
+        "text": "Builder.ai ✏️"
+      },
+      {
+        "kind": "p",
+        "text": "An App building platform."
       },
       {
         "kind": "p",
@@ -101,7 +128,7 @@ export const deck: Deck = [
       },
       {
         "kind": "sub",
-        "text": "🤕 Onboarding for new experts and learning takes time"
+        "text": "Onboarding for new experts and learning takes time 🤕"
       },
       {
         "kind": "p",
@@ -109,7 +136,7 @@ export const deck: Deck = [
       },
       {
         "kind": "sub",
-        "text": "😣 Lack of time to invest on onboarding"
+        "text": "Lack of time to invest on onboarding 😣"
       },
       {
         "kind": "p",
@@ -130,7 +157,7 @@ export const deck: Deck = [
         "text": "A platform called Builder University that can onboard users into our platform and bring them up to speed automated & in a engaging way was the way to move forward."
       },
       {
-        "kind": "p",
+        "kind": "highlight",
         "text": "How cater to different experts from various fields, across the world up to speed with the systems of builder as quickly as we can. With the numerous products within it that they need to understand."
       },
       {
@@ -159,28 +186,16 @@ export const deck: Deck = [
         ]
       },
       {
-        "kind": "p",
-        "text": "​"
-      },
-      {
         "kind": "list",
         "items": [
           "New hires needs proper onboarding: A new hire to the company expects to be onboarded & given all the needed information to excel at their role"
         ]
       },
       {
-        "kind": "p",
-        "text": "​"
-      },
-      {
         "kind": "list",
         "items": [
           "A place to know about processes: When someone experienced within Builder would like to know more about the processes that are in place so far there isn’t anywhere they could go to learn about."
         ]
-      },
-      {
-        "kind": "p",
-        "text": "​"
       },
       {
         "kind": "p",
@@ -314,8 +329,8 @@ export const deck: Deck = [
         "text": "Our users were new both to Builder.ai as well as university and these were the type of learners who dont know what they are here to learn but we know what will be needed to be thought to them"
       },
       {
-        "kind": "p",
-        "text": "# Insight Learners need a clear direction on what to learn"
+        "kind": "highlight",
+        "text": "Insight: Learners need a clear direction on what to learn"
       },
       {
         "kind": "sub",
@@ -327,7 +342,7 @@ export const deck: Deck = [
       },
       {
         "kind": "p",
-        "text": "​ Giving them a clear direction on what to learn"
+        "text": "Giving them a clear direction on what to learn"
       }
     ],
     "img": {

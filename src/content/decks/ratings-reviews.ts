@@ -11,7 +11,7 @@ export const deck: Deck = [
         "text": "Problem statement"
       },
       {
-        "kind": "p",
+        "kind": "highlight",
         "text": "Create an enhanced user experience to encourage and incentivise guests to submit comprehensive reviews, including L1 and L2 ratings, along with accompanying images."
       },
       {

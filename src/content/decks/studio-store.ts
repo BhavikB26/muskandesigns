@@ -89,7 +89,7 @@ export const deck: Deck = [
         "text": "Design Hypothesis"
       },
       {
-        "kind": "p",
+        "kind": "highlight",
         "text": "Problem: Entry-level small business owners face challenges in efficiently managing their business operations. They find it challenging to keep track of inventory, monitor stock levels, and anticipate when supplies are running low or expiring. Additionally, they struggle to identify a streamlined approach to manage their overall operations effectively."
       },
       {

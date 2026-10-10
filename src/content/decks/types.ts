@@ -10,6 +10,14 @@ export type DeckItem =
   | { kind: "tags"; tags: { label: string; tone: "blue" | "green" | "amber" | "indigo" | "peach" | "red" }[] }
   /** A row of separate logos or app icons. */
   | { kind: "logos"; logos: { src: string; alt: string; width: number; height: number }[] }
+  /** Separate elements laid out the way she placed them (positions in her slide's px; w/h = their bounding box). */
+  | { kind: "pieces"; w: number; h: number; pieces: { src: string; x: number; y: number; w: number; h: number; alt: string; radius?: number; shadow?: boolean }[] }
+  /** Research personas as cards. */
+  | { kind: "personas"; personas: { name: string; meta: string; goals: string[]; challenges: string[] }[] }
+  /** Team members as cards. */
+  | { kind: "team"; members: { name: string; role: string; photo?: string }[] }
+  /** A key statement (problem, How Might We) set apart from the body text. */
+  | { kind: "highlight"; text: string }
   /** Label / value pairs (status, tools, timeline). */
   | { kind: "facts"; facts: { label: string; value: string }[] }
   /** A sticker-style callout from the deck (white pill). */

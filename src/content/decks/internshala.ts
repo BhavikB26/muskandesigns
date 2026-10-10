@@ -171,12 +171,8 @@ export const deck: Deck = [
         "text": "The Problem Statement"
       },
       {
-        "kind": "stickies",
-        "notes": [
-          {
-            "text": "Due to a hassle-ridden internship search, application and tracking experience, many students think the opportunities are not legitimate, some assume they are rejected because they are not good enough to be selected due to lack of communication which is not the case always, or drop off the platform entirely."
-          }
-        ]
+        "kind": "highlight",
+        "text": "Due to a hassle-ridden internship search, application and tracking experience, many students think the opportunities are not legitimate, some assume they are rejected because they are not good enough to be selected due to lack of communication which is not the case always, or drop off the platform entirely."
       }
     ]
   },

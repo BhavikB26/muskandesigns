@@ -7,7 +7,7 @@ export const deck: Deck = [
     "side": "text",
     "items": [
       {
-        "kind": "p",
+        "kind": "highlight",
         "text": "How the traditional swiping system in dating apps is making it increasingly challenging for users to explore potential partners & meaningful interactions and how might we prioritize direct communication between users."
       },
       {
@@ -559,19 +559,43 @@ export const deck: Deck = [
   },
   {
     "id": "sw-personas",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "sub",
         "text": "PERSONAS"
+      },
+      {
+        "kind": "personas",
+        "personas": [
+          {
+            "name": "Akshath",
+            "meta": "21, student, male",
+            "goals": [
+              "To find a meaningful romantic relationship",
+              "Discover potential partners online",
+              "Open communication"
+            ],
+            "challenges": [
+              "Hates making quick decisions about dating",
+              "Have hard time believing on accuracy of computer algorithms"
+            ]
+          },
+          {
+            "name": "Vanshika",
+            "meta": "23, Intern, female",
+            "goals": [
+              "To find a romantic partner of her type",
+              "Talk to potential partners"
+            ],
+            "challenges": [
+              "Feeling addicted to current dating apps",
+              "Cannot control her dating approach more personally"
+            ]
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-personas.webp",
-      "width": 1298,
-      "height": 383,
-      "alt": "Personas: Akshath, 21, student, male, and Vanshika, 23, intern, female, with their goals and challenges"
-    }
+    ]
   },
   {
     "id": "sw-loop",
