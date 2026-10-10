@@ -8,6 +8,7 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import { Motion } from "@/components/motion";
+import { BackToTop } from "@/components/back-to-top";
 
 // Headings: a tight, highly legible grotesk (the pattern most inspiration sites share).
 const interTight = Inter_Tight({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
@@ -78,6 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           }}
         />
         <Motion />
+        <BackToTop />
         <a
           href="#main"
           className="sr-only z-50 rounded-full bg-ink px-4 py-2 text-background focus:not-sr-only focus:fixed focus:left-4 focus:top-4"

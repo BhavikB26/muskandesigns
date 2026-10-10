@@ -26,6 +26,8 @@ export function Motion() {
   useEffect(() => {
     if (prefersReducedMotion()) return;
     const lenis = new Lenis({ duration: 1.1, easing: (t) => 1 - Math.pow(1 - t, 4), anchors: true });
+    // Shared so the back-to-top button scrolls with the same easing.
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
     let raf = 0;
     const loop = (time: number) => {
       lenis.raf(time);
@@ -35,6 +37,7 @@ export function Motion() {
     return () => {
       cancelAnimationFrame(raf);
       lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
     };
   }, []);
 

@@ -867,3 +867,21 @@ html[data-motion="paused"] .anim-still { display: block; }
 .quote-clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; line-clamp: 7; overflow: hidden; }
 .quote-dialog { margin: auto; width: min(640px, calc(100vw - 32px)); padding: 32px; border: 0; border-radius: 20px; background: var(--color-surface-1); color: var(--color-ink); }
 .quote-dialog::backdrop { background: rgb(0 0 0 / 0.45); backdrop-filter: blur(4px); }
+
+/* Back to top: small circular button, bottom right, fades in after the first screen. */
+.back-to-top {
+  position: fixed;
+  right: max(16px, 2vw);
+  bottom: max(16px, 2vw);
+  z-index: 50;
+  background: var(--color-ink);
+  color: var(--background);
+  box-shadow: 0 6px 18px -8px rgb(0 0 0 / 0.35);
+  opacity: 0;
+  translate: 0 12px;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out-expo), translate 0.4s var(--ease-out-expo), transform 0.2s var(--ease-out-expo);
+}
+.back-to-top.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
+#main:focus { outline: none; }
+@media (prefers-reduced-motion: reduce) { .back-to-top { transition: opacity 0.2s; translate: none; } }

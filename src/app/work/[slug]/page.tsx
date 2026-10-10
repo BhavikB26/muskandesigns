@@ -79,7 +79,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </div>
         </aside>
 
-        <main id="main" className="min-w-0 pb-6">
+        <main id="main" tabIndex={-1} className="min-w-0 pb-6">
           <div className="hidden justify-end pt-10 md:flex">
             <Toggles />
           </div>
