@@ -1,0 +1,10 @@
+# Degular Display is a commercial font with a desktop licence only: never upload it.
+public/fonts/Degular*
+# Local tooling and working files
+node_modules
+.next
+.env*
+.claude
+.agents
+skills-lock.json
+docs
