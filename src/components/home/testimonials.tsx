@@ -1,5 +1,6 @@
 import { MaskedText } from "@/components/masked-text";
 import Image from "next/image";
+import { QuoteText } from "@/components/home/quote-text";
 
 const testimonials = [
   {
@@ -17,7 +18,13 @@ const testimonials = [
     name: "Prachi Rathore",
     role: "Product Designer, Navi",
   },
-];
+  {
+    quote:
+      "I met Muskan at the gym and have been seeking her Design help ever since! She’s helped me with my website, products, carousels, and so much more. What really stands out is her attention to detail and her never-failing energy for building distinct, functional AND beautiful products. If you’re looking for a curious mind with a lot of knowledge, someone who’s open to learning, experimenting, and constantly improving, Muskan is the one. I absolutely love how open she is to feedback and new ideas, and how much thought she puts into everything she creates.",
+    name: "Ishika Jain",
+    role: "Client",
+  },
+] as { quote: string; name: string; role: string; avatar?: string }[];
 
 export function Testimonials() {
   return (
@@ -32,12 +39,18 @@ export function Testimonials() {
             </em>
           </h2>
         </div>
-        <div className="grid grid-cols-1 gap-fr-sm md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-fr-sm md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((t) => (
             <figure key={t.name} data-reveal className="flex flex-col justify-between gap-fr-xl rounded-fr-xl bg-surface-1 p-6 md:p-fr-xxl">
-              <blockquote className="t-body-lg text-ink">&ldquo;{t.quote}&rdquo;</blockquote>
+              <QuoteText quote={t.quote} name={t.name} />
               <figcaption className="flex items-center gap-fr-sm">
-                <Image src={t.avatar} alt="" width={48} height={48} className="size-12 rounded-full object-cover" />
+                {t.avatar ? (
+                  <Image src={t.avatar} alt="" width={48} height={48} className="size-12 rounded-full object-cover" />
+                ) : (
+                  <span aria-hidden className="flex size-12 items-center justify-center rounded-full bg-surface-2 t-body-sm text-ink">
+                    {t.name.split(" ").map((w) => w[0]).join("")}
+                  </span>
+                )}
                 <span className="flex flex-col">
                   <span className="t-body-sm text-ink">{t.name}</span>
                   <span className="t-caption text-muted">{t.role}</span>

@@ -862,3 +862,8 @@ html[data-motion="paused"] .anim-still { display: block; }
 .deck-note-green { background: #c9f0d6; }
 .deck-note-coral { background: #ffd7cf; }
 .deck-note-yellow { background: #feeaa8; }
+
+/* Testimonials: same height cards; long quotes clamp and open in a dialog. */
+.quote-clamp { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 7; line-clamp: 7; overflow: hidden; }
+.quote-dialog { margin: auto; width: min(640px, calc(100vw - 32px)); padding: 32px; border: 0; border-radius: 20px; background: var(--color-surface-1); color: var(--color-ink); }
+.quote-dialog::backdrop { background: rgb(0 0 0 / 0.45); backdrop-filter: blur(4px); }
