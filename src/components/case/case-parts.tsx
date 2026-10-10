@@ -325,6 +325,132 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
               ))}
             </div>
           );
+        if (it.kind === "flow")
+          return (
+            <ol key={i} className="deck-flow-steps my-fr-xs">
+              {it.steps.map((s) => (
+                <li key={s} className="deck-flow-step">
+                  <span className="t-body-sm text-ink">{s}</span>
+                </li>
+              ))}
+            </ol>
+          );
+        if (it.kind === "cycle") {
+          const n = it.stages.length;
+          return (
+            <div key={i} className="deck-cycle my-fr-xs">
+              <svg aria-hidden viewBox="0 0 400 400" className="absolute inset-0 size-full text-line-strong">
+                <defs>
+                  <marker id="cyc-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0L10 5L0 10z" fill="currentColor" />
+                  </marker>
+                </defs>
+                {it.stages.map((_, k) => {
+                  const a0 = ((k / n) * 360 - 90 + 14) * (Math.PI / 180), a1 = (((k + 1) / n) * 360 - 90 - 14) * (Math.PI / 180);
+                  const r = 100, cx = 200, cy = 200;
+                  return <path key={k} d={`M${cx + r * Math.cos(a0)} ${cy + r * Math.sin(a0)} A${r} ${r} 0 0 1 ${cx + r * Math.cos(a1)} ${cy + r * Math.sin(a1)}`} fill="none" stroke="currentColor" strokeWidth="2" markerEnd="url(#cyc-arrow)" />;
+                })}
+              </svg>
+              <ol>
+                {it.stages.map((s, k) => {
+                  const a = ((k / n) * 360 - 90) * (Math.PI / 180);
+                  return (
+                    <li key={s.label} className="deck-cycle-stage" style={{ left: `${50 + 39 * Math.cos(a)}%`, top: `${50 + 39 * Math.sin(a)}%` }}>
+                      <span aria-hidden className="text-[28px] leading-none">{s.mood}</span>
+                      <span className="t-body-sm text-ink">{s.label}</span>
+                    </li>
+                  );
+                })}
+              </ol>
+            </div>
+          );
+        }
+        if (it.kind === "stages")
+          return (
+            <ol key={i} className="my-fr-xs grid grid-cols-1 gap-fr-sm sm:grid-cols-2 lg:grid-cols-5">
+              {it.stages.map((s) => (
+                <li key={s.title} className={`deck-stage ${s.focus ? "deck-stage-focus" : ""}`}>
+                  <span className="t-body-sm text-ink">{s.title}</span>
+                  <span className="t-body text-ink">{s.text}</span>
+                  {s.focus && it.focusLabel && <span className="deck-stage-tag">{it.focusLabel}</span>}
+                </li>
+              ))}
+            </ol>
+          );
+        if (it.kind === "affinity")
+          return (
+            <ol key={i} className="my-fr-xs grid grid-cols-1 gap-fr-xl md:grid-cols-2">
+              {it.themes.map((th, k) => (
+                <li key={th.title} className="flex flex-col gap-fr-md">
+                  <p className="flex items-start gap-fr-sm">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink t-body-sm text-ink">{k + 1}</span>
+                    <span className="t-headline font-serif font-normal italic text-ink">{th.title}</span>
+                  </p>
+                  <ul className="grid grid-cols-2 gap-fr-sm">
+                    {th.notes.map((n) => (
+                      <li key={n} className={`deck-note deck-note-${th.tone}`}>
+                        {n}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ol>
+          );
+        if (it.kind === "styleguide")
+          return (
+            <div key={i} className="my-fr-xs grid grid-cols-1 gap-fr-md lg:grid-cols-[1.15fr_1fr]">
+              <section aria-label="Typography" className="deck-review" style={{ fontFamily: "var(--font-instrument-sans), sans-serif" }}>
+                <p className="label-mono text-muted" style={{ fontFamily: "var(--font-body)" }}>
+                  Typography · {it.font}
+                </p>
+                <div className="mt-fr-lg grid grid-cols-3 gap-x-fr-lg gap-y-fr-sm text-ink">
+                  {it.titles.map((t) =>
+                    [400, 500, 600].map((w) => (
+                      <span key={t.label + w} style={{ fontSize: `${Math.round(t.size * 0.62)}px`, fontWeight: w, lineHeight: 1.15 }}>
+                        {t.label}
+                      </span>
+                    )),
+                  )}
+                  {it.bodies.map((t) =>
+                    [400, 500, 600].map((w) => (
+                      <span key={t.label + w} className="mt-fr-xxs" style={{ fontSize: `${t.size}px`, fontWeight: w, lineHeight: 1.3 }}>
+                        {t.label}
+                      </span>
+                    )),
+                  )}
+                </div>
+                <div className="mt-fr-xl flex flex-col gap-fr-md border-t border-line pt-fr-lg text-ink">
+                  {it.paragraphs.map((p) => (
+                    <p key={p.size} style={{ fontSize: `${Math.max(12, Math.round(p.size * 0.8))}px`, lineHeight: 1.5 }}>
+                      {p.text}
+                    </p>
+                  ))}
+                </div>
+              </section>
+              <section aria-label="Color palette" className="deck-review">
+                <p className="label-mono text-muted">Color palette</p>
+                <div className="mt-fr-lg flex flex-col gap-fr-lg">
+                  {it.palette.map((g) => (
+                    <div key={g.name}>
+                      <p className="t-body-sm text-ink">{g.name}</p>
+                      <div className="mt-fr-xs flex flex-col gap-[6px]">
+                        {g.rows.map((r, k) => (
+                          <ul key={k} className="flex flex-wrap gap-[6px]">
+                            {r.map((hex) => (
+                              <li key={hex} title={hex} className="size-[clamp(22px,3.2vw,34px)] rounded-[6px] ring-1 ring-black/5" style={{ background: hex }}>
+                                <span className="sr-only">{hex}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </div>
+          );
         if (it.kind === "personas")
           return (
             <ul key={i} className="my-fr-xs grid grid-cols-1 gap-fr-md md:grid-cols-2">
@@ -363,7 +489,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
           );
         if (it.kind === "team")
           return (
-            <ul key={i} className="my-fr-xs grid grid-cols-2 gap-fr-md sm:grid-cols-3 lg:grid-cols-4">
+            <ul key={i} className="my-fr-xs grid max-w-[820px] grid-cols-2 gap-fr-md sm:grid-cols-3 lg:grid-cols-4">
               {it.members.map((m) => (
                 <li key={m.name} className="deck-member">
                   <div className="relative aspect-[4/5] overflow-hidden rounded-fr-lg bg-surface-2">
@@ -537,7 +663,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
 }
 
 /** Sticky notes and rows need the full column; plain text keeps a reading measure. */
-const isWide = (items: DeckItem[]) => items.some((i) => ["stickies", "rows", "stats", "reviews", "tags", "logos", "facts", "pieces", "team", "highlight", "personas"].includes(i.kind));
+const isWide = (items: DeckItem[]) => items.some((i) => ["stickies", "rows", "stats", "reviews", "tags", "logos", "facts", "pieces", "team", "highlight", "personas", "styleguide", "flow", "cycle", "stages", "affinity"].includes(i.kind));
 
 function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: string }) {
   if (img.frame === "laptop") return <LaptopScroll src={img.src} width={img.width} height={img.height} alt={alt} />;
@@ -554,7 +680,7 @@ function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: stri
       width={img.width}
       height={img.height}
       sizes={`(min-width: 768px) ${maxW}px, 92vw`}
-      className={`h-auto w-full rounded-[4px] ${img.anim ? "anim-still" : ""}`}
+      className={`h-auto w-full rounded-fr-lg ${img.anim ? "anim-still" : ""}`}
       style={{ maxWidth: maxW }}
     />
   );
@@ -562,7 +688,7 @@ function DeckImage({ img, alt }: { img: NonNullable<DeckSlide["img"]>; alt: stri
   // The GIF plays; Pause motion and reduced-motion settings swap in the still frame.
   return (
     <div className="w-full" style={{ maxWidth: maxW }}>
-      <Image src={img.anim} alt={alt} width={img.width} height={img.height} unoptimized className="anim-play h-auto w-full rounded-[4px]" />
+      <Image src={img.anim} alt={alt} width={img.width} height={img.height} unoptimized className="anim-play h-auto w-full rounded-fr-lg" />
       {still}
     </div>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   Geist_Mono,
+  Instrument_Sans,
   Instrument_Serif,
   Inter,
   Inter_Tight,
@@ -21,6 +22,9 @@ const editorial = Instrument_Serif({
   subsets: ["latin"],
   display: "swap",
 });
+
+// Internshala's type specimen is set in the typeface she chose for it (loaded only when used).
+const instrumentSans = Instrument_Sans({ variable: "--font-instrument-sans", subsets: ["latin"], display: "swap", preload: false });
 
 // Body text
 const bodyFont = Inter({ variable: "--font-body", subsets: ["latin"], display: "swap" });
@@ -64,7 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${interTight.variable} ${geistMono.variable} ${editorial.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${interTight.variable} ${geistMono.variable} ${editorial.variable} ${instrumentSans.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <script

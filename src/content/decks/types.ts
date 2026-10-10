@@ -12,6 +12,16 @@ export type DeckItem =
   | { kind: "logos"; logos: { src: string; alt: string; width: number; height: number }[] }
   /** Separate elements laid out the way she placed them (positions in her slide's px; w/h = their bounding box). */
   | { kind: "pieces"; w: number; h: number; pieces: { src: string; x: number; y: number; w: number; h: number; alt: string; radius?: number; shadow?: boolean }[] }
+  /** A design-system style guide rebuilt as cards: type ramp in her typeface, and colour swatches. */
+  | { kind: "styleguide"; font: string; titles: { label: string; size: number }[]; bodies: { label: string; size: number }[]; paragraphs: { size: number; text: string }[]; palette: { name: string; rows: string[][] }[] }
+  /** A step-by-step journey (boxes joined by arrows). */
+  | { kind: "flow"; steps: string[] }
+  /** A repeating cycle drawn as a loop; stages run clockwise from the top. */
+  | { kind: "cycle"; stages: { label: string; mood: string }[] }
+  /** Stages in order with a description each; "focus" marks the ones flagged as areas to improve. */
+  | { kind: "stages"; stages: { title: string; text: string; focus?: boolean }[]; focusLabel?: string }
+  /** Affinity map: numbered themes with their sticky notes. */
+  | { kind: "affinity"; themes: { title: string; tone: "blue" | "green" | "coral" | "yellow"; notes: string[] }[] }
   /** Research personas as cards. */
   | { kind: "personas"; personas: { name: string; meta: string; goals: string[]; challenges: string[] }[] }
   /** Team members as cards. */

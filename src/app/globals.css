@@ -834,3 +834,29 @@ html[data-motion="paused"] .anim-still { display: block; }
   color: var(--color-ink);
   text-wrap: balance;
 }
+
+/* Rebuilt Swiping Loop diagrams. */
+.deck-flow-steps { display: grid; grid-template-columns: 1fr; gap: 28px; counter-reset: step; }
+@media (min-width: 640px) { .deck-flow-steps { grid-template-columns: repeat(3, 1fr); } }
+.deck-flow-step { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 20px; border-radius: 15px; background: #dbe4ff; }
+.deck-flow-step .text-ink, .deck-flow-step .text-muted { color: #1c2240; }
+.deck-flow-step:not(:last-child)::after { content: "→"; position: absolute; right: -22px; top: 50%; translate: 0 -50%; color: var(--color-muted); font-size: 18px; }
+@media (max-width: 639px) { .deck-flow-step:not(:last-child)::after { content: "↓"; right: auto; left: 24px; top: auto; bottom: -26px; translate: none; } }
+/* Desktop: a snake like her flow — row one left to right, down, row two right to left. */
+@media (min-width: 640px) {
+  .deck-flow-step:nth-child(4) { grid-row: 2; grid-column: 3; }
+  .deck-flow-step:nth-child(5) { grid-row: 2; grid-column: 2; }
+  .deck-flow-step:nth-child(6) { grid-row: 2; grid-column: 1; }
+  .deck-flow-step:nth-child(3)::after { content: "↓"; right: 50%; top: auto; bottom: -26px; translate: 50% 0; }
+  .deck-flow-step:nth-child(4)::after, .deck-flow-step:nth-child(5)::after { content: "←"; right: auto; left: -22px; }
+}
+.deck-cycle { position: relative; width: min(100%, 520px); aspect-ratio: 1; margin-inline: auto; }
+.deck-cycle-stage { position: absolute; translate: -50% -50%; width: 9.5rem; display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.deck-stage { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 20px; border-radius: 15px; background: var(--color-surface-1); border: 1.5px solid transparent; }
+.deck-stage-focus { border-color: #d6453d; }
+.deck-stage-tag { align-self: flex-start; margin-top: 4px; padding: 6px 10px; border-radius: 100px; font-size: 12px; font-weight: 500; line-height: 1; background: #fbe1df; color: #8b1c17; }
+.deck-note { padding: 15px; border-radius: 10px; font-size: 14.5px; line-height: 1.45; color: #1d2228; }
+.deck-note-blue { background: #c6e5ff; }
+.deck-note-green { background: #c9f0d6; }
+.deck-note-coral { background: #ffd7cf; }
+.deck-note-yellow { background: #feeaa8; }

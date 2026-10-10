@@ -282,40 +282,43 @@ export const deck: Deck = [
   },
   {
     "id": "sw-instagram",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "p",
         "text": "And surprisingly this guy here too....."
-      }
-    ],
-    "after": [
+      },
+      {
+        "kind": "logos",
+        "logos": [
+          {
+            "src": "/work/swiping-loop/cs/sw-instagram.webp",
+            "alt": "Instagram",
+            "width": 186,
+            "height": 186
+          }
+        ]
+      },
       {
         "kind": "p",
         "text": "32 out 32 participants in survey said they use Instagram to find partners."
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-instagram.webp",
-      "width": 186,
-      "height": 186,
-      "alt": "Instagram logo"
-    }
+    ]
   },
   {
     "id": "sw-quote",
     "side": "text",
     "items": [
       {
-        "kind": "pill",
-        "text": "“communication is the key in any relationship...”",
-        "sub": "- a participant in survey, 23"
+        "kind": "quote",
+        "text": "communication is the key in any relationship...",
+        "cite": "a participant in survey, 23"
       }
     ]
   },
   {
     "id": "sw-journey",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -328,9 +331,18 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "After exploring Tinder, Bumble, and Hinge, here's general flow of how users usually supposed to engage with dating apps."
-      }
-    ],
-    "after": [
+      },
+      {
+        "kind": "flow",
+        "steps": [
+          "Sign Up/Profile Creation",
+          "Browsing profiles while swiping",
+          "Matching",
+          "Texting",
+          "Getting to Know Each Other",
+          "Meeting In Person/Going on date"
+        ]
+      },
       {
         "kind": "p",
         "text": "(Depending on how the date goes, users might decide to continue using the app to find more matches or take a break from dating altogether)"
@@ -339,13 +351,7 @@ export const deck: Deck = [
         "kind": "p",
         "text": "The swipe feature in current dating apps is central mechanism."
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-journey.webp",
-      "width": 1136,
-      "height": 341,
-      "alt": "Typical journey: Sign up/profile creation, browsing profiles while swiping, matching, texting, getting to know each other, meeting in person/going on date"
-    }
+    ]
   },
   {
     "id": "sw-swipe",
@@ -449,7 +455,7 @@ export const deck: Deck = [
   },
   {
     "id": "sw-ig",
-    "side": "right",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -462,14 +468,19 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "I dug deeper during the interviews by asking participants to elaborate on their experiences using Instagram for dating."
+      },
+      {
+        "kind": "logos",
+        "logos": [
+          {
+            "src": "/work/swiping-loop/cs/sw-ig.webp",
+            "alt": "Instagram",
+            "width": 220,
+            "height": 249
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-ig.webp",
-      "width": 220,
-      "height": 249,
-      "alt": "Instagram logo"
-    }
+    ]
   },
   {
     "id": "sw-ig-2",
@@ -548,14 +559,49 @@ export const deck: Deck = [
   },
   {
     "id": "sw-affinity",
-    "side": "visual",
-    "items": [],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-affinity.webp",
-      "width": 1293,
-      "height": 1137,
-      "alt": "Affinity map with four themes: 1. People often prefer direct communication and more control when using dating apps. 2. Many users of current dating apps express dissatisfaction with the swiping algorithm system. 3. Searching for partner is overall lengthy process. 4. Current dating apps have been linked to negative psychological effects."
-    }
+    "side": "text",
+    "items": [
+      {
+        "kind": "affinity",
+        "themes": [
+          {
+            "title": "People often prefer direct communication and more control when using dating apps.",
+            "tone": "blue",
+            "notes": [
+              "Familiarity and Comfort with Instagram due to direct message system",
+              "Desire to have more filtering options and non-swiping layout to save time and more personalization, more control over his/her dating approach",
+              "Preference for Hinge due to ability to communicate with people on apps."
+            ]
+          },
+          {
+            "title": "Many users of current dating apps express dissatisfaction with the swiping algorithm system.",
+            "tone": "green",
+            "notes": [
+              "Superficial Engagement: Despite many likes and matches, lack of meaningful conversation makes connections feel pointless",
+              "Pressure to make quick judgments based on limited information",
+              "Skepticism towards algorithm-based matchmaking in dating",
+              "Profile Overlooked: Despite effort, feeling unnoticed due to lack of attention from potential matches on dating apps"
+            ]
+          },
+          {
+            "title": "Searching for partner is overall lengthy process.",
+            "tone": "coral",
+            "notes": [
+              "Current process of searching partner on dating apps is long and can be tiring",
+              "Good people are out there on dating apps, but finding them takes lot of effort with endless swiping time."
+            ]
+          },
+          {
+            "title": "Current dating apps have been linked to negative psychological effects.",
+            "tone": "yellow",
+            "notes": [
+              "Feeling frustrated because of virtual invisibility with desire of direct interaction on dating apps.",
+              "Comparison to tiktok’s addictive swiping feature, feeling trapped in cycle of endless swiping resulting in loneliness and frustration."
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "sw-personas",
@@ -599,7 +645,7 @@ export const deck: Deck = [
   },
   {
     "id": "sw-loop",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -620,31 +666,71 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "The Swiping Loop is a cyclical pattern characterized by the following key stages :"
+      },
+      {
+        "kind": "cycle",
+        "stages": [
+          {
+            "label": "Entry into the Loop",
+            "mood": "😃"
+          },
+          {
+            "label": "The swiping commences",
+            "mood": "🙂"
+          },
+          {
+            "label": "Fatigue Sets In",
+            "mood": "😟"
+          },
+          {
+            "label": "The Glimpse of Potential",
+            "mood": "😄"
+          },
+          {
+            "label": "Inability to initiate communication",
+            "mood": "😥"
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-loop.webp",
-      "width": 825,
-      "height": 616,
-      "alt": "The swiping loop: entry into the loop, the swiping commences, fatigue sets in, the glimpse of potential, inability to initiate communication, and back again"
-    }
+    ]
   },
   {
     "id": "sw-stages",
-    "side": "visual",
-    "items": [],
-    "after": [
+    "side": "text",
+    "items": [
+      {
+        "kind": "stages",
+        "focusLabel": "Areas to improve",
+        "stages": [
+          {
+            "title": "Entry into the Loop",
+            "text": "Users begins on their dating app journey by signing up and crafting their profile within the platform."
+          },
+          {
+            "title": "The swiping commences",
+            "text": "To browse profiles, users start to swipe left (not interested) and swipe right (interested)"
+          },
+          {
+            "title": "Fatigue Sets In",
+            "text": "Repetitive action of swiping become monotonous & overwhelming leading to frustration and disengagement.",
+            "focus": true
+          },
+          {
+            "title": "The Glimpse of Potential",
+            "text": "Despite the fatigue, users generally find potential future partner on the app, hope restores."
+          },
+          {
+            "title": "Inability to initiate communication",
+            "text": "Excitement fades away, as user realize you cannot initiate the conversation with person you like due to lack of mutual match.",
+            "focus": true
+          }
+        ]
+      },
       {
         "kind": "p",
         "text": "These stages are where users experience the most frustration and disengagement."
       }
-    ],
-    "img": {
-      "src": "/work/swiping-loop/cs/sw-stages.webp",
-      "width": 1276,
-      "height": 650,
-      "alt": "The five stages of the loop, with fatigue sets in and inability to initiate communication marked as areas to improve"
-    }
+    ]
   },
   {
     "id": "sw-fix",

@@ -25,10 +25,6 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "To hunt down a good UX Design internship. On this journey, I heard a lot of talk around town about Internshala. I distinctly remember the hectic days applying and submitting design assignments. And there I was, leaving my sessions fatigued and drained by my bumpy experience on the App. I noticed the rough edges and I thought..."
-      },
-      {
-        "kind": "pill",
-        "text": "It shouldn’t feel this way! 😐"
       }
     ],
     "img": {
@@ -52,10 +48,6 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "Few weeks ago, I decided to be the savior of the freshers who will come here after me. I knew what I had to do..."
-      },
-      {
-        "kind": "pill",
-        "text": "make internship hunts seamless."
       }
     ],
     "img": {
@@ -155,10 +147,6 @@ export const deck: Deck = [
             "text": "Earlier it used to be quite a good platform for getting Internships and working with some genuinely good companies. Recently, they have downgraded the UI like hell, most importantly none of the recruiters are responding to submitted emails. Please fix this."
           }
         ]
-      },
-      {
-        "kind": "pill",
-        "text": "👆🏻Reviews from the Play Store"
       }
     ]
   },
@@ -208,15 +196,6 @@ export const deck: Deck = [
             "text": "a platform that keeps track of your applications for you and keeps you posted will be perceived as much more reliable"
           }
         ]
-      },
-      {
-        "kind": "pill",
-        "text": "That’s it! I know WHAT I have to do."
-      },
-      {
-        "kind": "pill",
-        "text": "“A problem well stated is half solved”",
-        "sub": "-Me (actually Charles Kettering)"
       }
     ]
   },
@@ -445,10 +424,6 @@ export const deck: Deck = [
             "text": "HMW improve the clarity for applicants regarding their application status"
           }
         ]
-      },
-      {
-        "kind": "pill",
-        "text": "Problems ❌ Opportunities ✅"
       }
     ]
   },
@@ -874,7 +849,7 @@ export const deck: Deck = [
   },
   {
     "id": "in-ds",
-    "side": "stack",
+    "side": "text",
     "items": [
       {
         "kind": "h",
@@ -883,14 +858,139 @@ export const deck: Deck = [
       {
         "kind": "p",
         "text": "This Design system was created from scratch keeping in mind the revamped UI and visual design of the App. Internshala’s own color palette was used but the typeface was changed to Instrument Sans for better legibility and scalability as well as match with the clean style of the UI."
+      },
+      {
+        "kind": "styleguide",
+        "font": "Instrument Sans",
+        "titles": [
+          {
+            "label": "UI Title 1",
+            "size": 40
+          },
+          {
+            "label": "UI Title 2",
+            "size": 32
+          },
+          {
+            "label": "UI Title 3",
+            "size": 24
+          },
+          {
+            "label": "UI Title 4",
+            "size": 18
+          }
+        ],
+        "bodies": [
+          {
+            "label": "UI Body 1",
+            "size": 14
+          },
+          {
+            "label": "UI Body 2",
+            "size": 12
+          },
+          {
+            "label": "UI Body 3",
+            "size": 11
+          }
+        ],
+        "paragraphs": [
+          {
+            "size": 20,
+            "text": "Paragraph 20px - Repudiandae facere quia vel non dolor commodi earum unde. Vel nam aut sed molestiae aliquam unde ipsum incidunt cum. Aspernatur occaecati ea dolor molestiae dignissimos harum esse nobis. Iusto magni velit ad architecto. Provident suscipit eos non. Eos tempore explicabo eum iste quo."
+          },
+          {
+            "size": 18,
+            "text": "Paragraph 18px Rem vero placeat iure. Id quia reiciendis dolor esse nam. Dicta quae quia hic est. Nemo rerum in soluta. Quos labore dolorum corrupti a et."
+          },
+          {
+            "size": 16,
+            "text": "Paragraph 16px - Veritatis numquam mollitia hic rerum enim recusandae. Quas laudantium minus non dolores est et corrupti. Quia doloribus voluptatem atque et cupiditate enim deserunt est dolorem. Voluptas porro aut et dolor. Debitis sapiente saepe rerum quo totam."
+          },
+          {
+            "size": 14,
+            "text": "Paragraph 14px - Veritatis numquam mollitia hic rerum enim recusandae. Quas laudantium minus non dolores est et corrupti. Quia doloribus voluptatem atque et cupiditate enim deserunt est dolorem. Voluptas porro aut et dolor. Debitis sapiente saepe rerum quo totam."
+          }
+        ],
+        "palette": [
+          {
+            "name": "Brand",
+            "rows": [
+              [
+                "#041e28",
+                "#073c50",
+                "#0b5979",
+                "#0e77a1",
+                "#1295c9",
+                "#45a9d1",
+                "#73bedc",
+                "#a0d5e9",
+                "#d0eaf4"
+              ]
+            ]
+          },
+          {
+            "name": "Neutral",
+            "rows": [
+              [
+                "#0d0d0d",
+                "#191919",
+                "#333333",
+                "#4c4c4c",
+                "#666666",
+                "#7f7f7f",
+                "#999999",
+                "#b3b3b3",
+                "#cccccc",
+                "#e6e6e6",
+                "#f7f7f7"
+              ]
+            ]
+          },
+          {
+            "name": "Semantic",
+            "rows": [
+              [
+                "#290b0a",
+                "#7b221e",
+                "#cc3931",
+                "#e18884",
+                "#f5d7d6"
+              ],
+              [
+                "#332200",
+                "#996700",
+                "#ffab00",
+                "#ffcd66",
+                "#ffeecc"
+              ],
+              [
+                "#18270c",
+                "#487623",
+                "#6db336",
+                "#aedc89",
+                "#e4f3d8"
+              ],
+              [
+                "#001b33",
+                "#005099",
+                "#0072da",
+                "#66b6ff",
+                "#cce7ff"
+              ]
+            ]
+          },
+          {
+            "name": "Surface",
+            "rows": [
+              [
+                "#e6ecee"
+              ]
+            ]
+          }
+        ]
       }
-    ],
-    "img": {
-      "src": "/work/internshala/cs/in-ds.webp",
-      "width": 795,
-      "height": 536,
-      "alt": "Design system: typography and colour palette"
-    }
+    ]
   },
   {
     "id": "in-learn",
