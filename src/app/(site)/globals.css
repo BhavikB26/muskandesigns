@@ -23,8 +23,15 @@
   --color-line: #e3e0d9;
   --color-line-strong: #8f8a82;
   --color-card: #ffffff;
-  --color-accent: #3b3bd6;
-  --color-accent-soft: #e9e9fc;
+  /* Gems: the jewel tones from the case study tiles. Accent = amethyst (8:1 on the canvas). */
+  --gem-amethyst: #5a46d6;
+  --gem-sapphire: #0d6fb8;
+  --gem-emerald: #17706a;
+  --gem-ruby: #c3313b;
+  --gem-topaz: #e3a51a;
+  --gem-rose: #e98f86;
+  --color-accent: #4a37c9;
+  --color-accent-soft: #ece9fd;
   --color-live: #1f8a4c;
   /* Surface lifts (canvas → surface-1 → surface-2), from the brand neutrals. */
   --color-surface-1: #ffffff;
@@ -42,8 +49,8 @@ html[data-theme="dark"] {
   --color-line: #2b2825;
   --color-line-strong: #6f685e;
   --color-card: #181614;
-  --color-accent: #a5a8ff;
-  --color-accent-soft: #1d1d3d;
+  --color-accent: #b4a8ff;
+  --color-accent-soft: #1e1a3d;
   --color-live: #5fd38d;
   --color-surface-1: #181614;
   --color-surface-2: #22201d;
@@ -475,13 +482,17 @@ html[data-motion="paused"] .marquee-track {
     radial-gradient(60% 50% at 18% 22%, rgba(255, 255, 255, 0.9), transparent 70%),
     radial-gradient(45% 40% at 82% 70%, rgba(255, 255, 255, 0.75), transparent 70%),
     radial-gradient(35% 30% at 60% 12%, rgba(255, 255, 255, 0.6), transparent 70%),
-    linear-gradient(180deg, #cfe8fa 0%, #e4f2fc 55%, #f3f8fc 100%);
+    radial-gradient(55% 60% at 8% 100%, rgba(23, 112, 106, 0.22), transparent 70%),
+    radial-gradient(50% 55% at 100% 0%, rgba(195, 49, 59, 0.16), transparent 70%),
+    radial-gradient(45% 50% at 90% 95%, rgba(227, 165, 26, 0.2), transparent 70%),
+    linear-gradient(160deg, #e4defc 0%, #ece8fb 45%, #f1eef9 100%);
 }
 html[data-theme="dark"] .sky {
   background:
-    radial-gradient(55% 45% at 20% 20%, rgba(120, 150, 210, 0.22), transparent 70%),
-    radial-gradient(45% 40% at 80% 75%, rgba(255, 122, 61, 0.1), transparent 70%),
-    linear-gradient(180deg, #121b2c 0%, #151a24 60%, #161513 100%);
+    radial-gradient(55% 50% at 15% 20%, rgba(90, 70, 214, 0.35), transparent 70%),
+    radial-gradient(45% 45% at 85% 80%, rgba(23, 112, 106, 0.3), transparent 70%),
+    radial-gradient(40% 40% at 90% 10%, rgba(195, 49, 59, 0.22), transparent 70%),
+    linear-gradient(180deg, #120e22 0%, #110d1c 60%, #0e0d0c 100%);
 }
 
 /* Pastel cards in light; plain cards in dark so contrast stays even. */
@@ -886,3 +897,45 @@ html[data-motion="paused"] .anim-still { display: block; }
 .back-to-top.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
 #main:focus { outline: none; }
 @media (prefers-reduced-motion: reduce) { .back-to-top { transition: opacity 0.2s; translate: none; } }
+
+/* "Hi" bubble beside the About photo: the word and a waving hand take turns. */
+.wave-bubble .wave-hand {
+  opacity: 0;
+  transform-origin: 70% 80%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html:not([data-motion="paused"]) .wave-bubble .wave-hi {
+    animation: wave-hi 4s var(--ease-out-expo) infinite;
+  }
+  html:not([data-motion="paused"]) .wave-bubble .wave-hand {
+    animation: wave-hand 4s ease-in-out infinite;
+  }
+}
+@keyframes wave-hi {
+  0%, 40% { opacity: 1; transform: scale(1); }
+  48%, 92% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes wave-hand {
+  0%, 44% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(14deg); }
+  58% { transform: rotate(-8deg); }
+  66% { transform: rotate(14deg); }
+  74% { transform: rotate(-4deg); }
+  82% { opacity: 1; transform: rotate(10deg); }
+  90%, 100% { opacity: 0; transform: scale(0.6) rotate(0deg); }
+}
+
+/* Case study panels: tinted with the project's gem colour (set as --gem on the page). */
+.gem-panel {
+  background: color-mix(in oklab, var(--gem, #5a46d6) 16%, #ffffff);
+}
+.gem-disc {
+  background: color-mix(in oklab, var(--gem, #5a46d6) 22%, #ffffff);
+}
+html[data-theme="dark"] .gem-panel {
+  background: color-mix(in oklab, var(--gem, #5a46d6) 30%, #121110);
+}
+html[data-theme="dark"] .gem-disc {
+  background: color-mix(in oklab, var(--gem, #5a46d6) 45%, #f3efe7);
+}

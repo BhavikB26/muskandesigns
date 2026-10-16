@@ -1,121 +1,77 @@
 import Link from "next/link";
-import { ViewTransition } from "react";
-import { WORK_ORDER, type Project } from "@/content/projects";
+import { WORK_TILES, type WorkTile } from "@/content/work";
 import { MaskedText } from "@/components/masked-text";
-import { TileArt } from "@/components/home/tile-art";
-
-function year(p: Project) {
-  const m = p.meta.timeline?.match(/(20\d\d)(?!.*20\d\d)/);
-  return m ? m[1] : undefined;
-}
-
+import { FeatureArt } from "@/components/home/feature-art";
 
 /**
- * A mosaic tile: full-bleed project art with a tiny tag. On hover-capable screens the title and tagline
- * fade in over a softened overlay (also on keyboard focus); on touch screens they sit below the tile.
+ * A case study card (after idoshitty.art): a gem-tone thumbnail with real screens, then a small label,
+ * a one-line outcome headline and one supporting line. The whole card is the link.
  */
-function MosaicTile({
-  slug, href, title, tagline, tag, label, index, viewName, locked = false,
-}: { slug: string; href: string; title: string; tagline: string; tag: string; label: string; index: number; viewName?: string; locked?: boolean }) {
-  const art = <TileArt slug={slug} index={index} />;
-  const external = href.startsWith("#");
-  const LinkEl = external ? "a" : Link;
+function CaseCard({ tile, index }: { tile: WorkTile; index: number }) {
   return (
-    <li data-reveal className="group relative rounded-fr-lg has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-[var(--color-accent)]">
-      {/* The whole card is clickable; the real link (for keyboard and screen readers) is the title. */}
-      <LinkEl href={href} aria-hidden tabIndex={-1} className="absolute inset-0 z-30 rounded-fr-lg" />
-      <div className="reveal-media relative aspect-square overflow-hidden rounded-fr-lg bg-[#2a2733]">
-        {viewName ? (
-          <ViewTransition name={viewName} share="morph" default="none">
-            {art}
-          </ViewTransition>
-        ) : (
-          art
-        )}
-        <span className="label-mono absolute right-fr-sm top-fr-sm z-20 rounded-fr-sm bg-black/55 px-fr-xs py-fr-xxs text-white backdrop-blur-sm">{tag}</span>
-        {/* Hover/focus veil (decorative). Locked work (shown in interviews only) stays blurred behind a lock. */}
-        <span
-          aria-hidden
-          className={`pointer-events-none absolute inset-0 z-10 bg-[rgba(14,12,24,0.55)] backdrop-blur-[6px] transition-opacity duration-500 ease-[var(--ease-out-expo)] hidden opacity-0 group-hover:opacity-100 group-has-[a:focus-visible]:opacity-100 can-hover:block`}
-        />
-        {locked && (
-          <span aria-hidden className="pointer-events-none absolute inset-0 z-10 hidden items-center justify-center opacity-0 transition-[opacity,transform] duration-500 ease-[var(--ease-out-expo)] can-hover:flex can-hover:group-hover:-translate-y-6 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:-translate-y-6 can-hover:group-has-[a:focus-visible]:opacity-100">
-            <span className="flex size-16 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/30 backdrop-blur-md">
-              <svg viewBox="0 0 24 24" className="size-7" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5" />
-                <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" />
-                <circle cx="12" cy="15.6" r="1.3" fill="currentColor" stroke="none" />
-              </svg>
-            </span>
-          </span>
-        )}
+    <li data-reveal className="group relative flex flex-col gap-fr-md rounded-fr-xl bg-surface-1 p-fr-sm ring-1 ring-line transition-[transform,box-shadow] duration-500 ease-[var(--ease-out-expo)] has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-[var(--color-accent)] can-hover:hover:-translate-y-1 can-hover:hover:shadow-[0_24px_48px_-28px_rgba(20,16,40,0.35)]">
+      <div className="reveal-media relative aspect-[4/3] overflow-hidden rounded-fr-lg">
+        <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-out-expo)] can-hover:group-hover:scale-[1.03]">
+          <FeatureArt slug={tile.slug} />
+        </div>
       </div>
-      <div
-        className={`relative mt-fr-sm flex flex-col gap-fr-xs can-hover:absolute can-hover:inset-x-0 can-hover:bottom-0 can-hover:z-20 can-hover:mt-0 can-hover:translate-y-2 can-hover:p-fr-lg can-hover:opacity-0 can-hover:transition-[opacity,transform] can-hover:duration-500 can-hover:group-hover:translate-y-0 can-hover:group-hover:opacity-100 can-hover:group-has-[a:focus-visible]:translate-y-0 can-hover:group-has-[a:focus-visible]:opacity-100`}
-      >
-        <h3 className={`t-display-md text-ink can-hover:text-white`}>
-          <LinkEl href={href} className="outline-none">
+      <div className="flex flex-col gap-fr-xs px-fr-xs pb-fr-sm">
+        <p className="label-mono text-muted">{tile.label}</p>
+        <h3 className="text-[clamp(1.15rem,1rem+0.5vw,1.45rem)] font-medium leading-[1.25] tracking-[-0.01em] text-ink">
+          <Link href={tile.href} className="outline-none after:absolute after:inset-0 after:rounded-fr-xl">
             <span className="sr-only">{String(index + 1).padStart(2, "0")}. </span>
-            {title}
-          </LinkEl>
+            {tile.headline}
+          </Link>
         </h3>
-        <p className={`t-body max-w-[40ch] text-ink can-hover:text-white`}>{tagline}</p>
-        <p className={`label-mono text-muted can-hover:text-white/85`}>
-          {label} <span aria-hidden>↘</span>
-        </p>
+        <p className="t-body line-clamp-1 text-muted">{tile.blurb}</p>
       </div>
     </li>
   );
 }
 
-export function Work({ projects }: { projects: Project[] }) {
+export function Work({
+  tiles,
+  heading = "Case",
+  emphasis = "studies",
+  sub = "Short reads: the problem, the tradeoffs, and what changed.",
+  viewAll = false,
+  headingLevel = "h2",
+}: {
+  tiles: WorkTile[];
+  heading?: string;
+  emphasis?: string;
+  sub?: string;
+  /** Show a "View all case studies" button under the grid. */
+  viewAll?: boolean;
+  headingLevel?: "h1" | "h2";
+}) {
+  const Heading = headingLevel;
   return (
     <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 px-page pt-fr-section md:pt-[144px]">
-      <div className="mx-auto flex w-full max-w-[1760px] flex-col gap-fr-xxl">
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-fr-xxl">
         <div data-reveal className="flex flex-col gap-fr-sm">
-          <p className="label-mono text-muted">Work</p>
-          <h2 id="work-heading" className="t-display-xl">
-            <MaskedText text="Selected" onReveal />{" "}
+          <Heading id="work-heading" className="t-display-xl">
+            <MaskedText text={heading} onReveal />{" "}
             <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
-              <MaskedText text="work" start={1} onReveal />
+              <MaskedText text={emphasis} start={heading.split(" ").length} onReveal />
             </em>
-          </h2>
+          </Heading>
+          <p className="t-body-lg text-muted">{sub}</p>
         </div>
 
-        <ul className="grid grid-cols-1 gap-x-fr-sm gap-y-fr-xl sm:grid-cols-2 lg:grid-cols-3 can-hover:gap-y-fr-sm">
-          {WORK_ORDER.map((slug, i) => {
-            if (slug === "gusto")
-              return (
-                // Gusto has no case study page: Muskan offers a walkthrough instead.
-                <MosaicTile
-                  key="gusto"
-                  slug="gusto"
-                  href="#contact"
-                  title="Growth experiments on Gusto’s signup flow"
-                  tagline="Happy to walk through it in an interview."
-                  tag="Gusto"
-                  label="Walkthrough on request"
-                  index={i}
-                  locked
-                />
-              );
-            const p = projects.find((x) => x.slug === slug);
-            if (!p) return null;
-            return (
-              <MosaicTile
-                key={p.slug}
-                slug={p.slug}
-                href={`/work/${p.slug}`}
-                title={p.name}
-                tagline={p.tagline}
-                tag={p.meta.company.split(" (")[0]}
-                label={[p.tag === "Concept" ? p.meta.type : "Case study", year(p)].filter(Boolean).join(" · ")}
-                index={i}
-                viewName={`thumb-${p.slug}`}
-              />
-            );
-          })}
+        <ul className="grid grid-cols-1 gap-fr-lg md:grid-cols-2">
+          {tiles.map((t, i) => (
+            <CaseCard key={t.slug} tile={t} index={i} />
+          ))}
         </ul>
+
+        {viewAll && (
+          <div data-reveal className="flex justify-center">
+            <Link href="/work" className="btn btn-primary">
+              View all case studies<span className="sr-only"> ({WORK_TILES.length})</span>
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

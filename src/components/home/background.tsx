@@ -20,15 +20,14 @@ function ChipIcon({ name }: { name: string }) {
   );
 }
 
-const strengths = ["UX & product design", "UI & visual design", "Prototyping", "Design systems", "Product thinking", "Working with engineers & PMs"];
 
 export function Background() {
   return (
     <section id="about" aria-labelledby="about-heading" className="w-full scroll-mt-20 px-page pt-fr-section md:pt-[144px]">
-      <div className="mx-auto grid w-full max-w-[1760px] grid-cols-1 gap-fr-xxl md:grid-cols-12 md:gap-x-fr-xxl lg:gap-x-[72px]">
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-fr-xxl md:grid-cols-12 md:gap-x-fr-xxl lg:gap-x-[72px]">
         <div data-reveal className="md:col-span-5">
           {/* Polaroid-style portrait, as on the live site. */}
-          <figure className="mx-auto w-[min(78vw,400px)] -rotate-2 rounded-fr-sm bg-white p-fr-sm pb-14 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)] ring-1 ring-black/5 md:sticky md:top-28 md:w-full md:max-w-[440px]">
+          <figure className="relative mx-auto w-[min(78vw,400px)] -rotate-2 rounded-fr-sm bg-white p-fr-sm pb-14 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.35)] ring-1 ring-black/5 md:sticky md:top-28 md:w-full md:max-w-[440px]">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2px]">
               <Image
                 src="/home/muskan-portrait-full.webp"
@@ -38,13 +37,17 @@ export function Background() {
                 className="object-cover object-[50%_20%]"
               />
             </div>
+            {/* The "Hi" bubble that waves (after mishikasbubble.framer.website). */}
+            <span aria-hidden className="wave-bubble absolute -bottom-8 -left-8 flex size-24 rotate-2 items-center justify-center rounded-full bg-[var(--gem-amethyst)] text-white shadow-[0_18px_40px_-16px_rgba(58,40,170,0.7)] md:size-28">
+              <span className="wave-hi font-display text-[32px] font-semibold md:text-[38px]">Hi</span>
+              <span className="wave-hand absolute text-[38px] md:text-[44px]">👋</span>
+            </span>
           </figure>
         </div>
 
         <div className="flex flex-col gap-fr-xxl md:col-span-7">
           <div data-reveal className="flex flex-col gap-fr-lg">
-            <p className="label-mono text-muted">About</p>
-            <h2 id="about-heading" className="t-display-xl">
+                        <h2 id="about-heading" className="t-display-xl">
               <MaskedText text={about.headline.lead} onReveal />{" "}
               <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
                 <MaskedText text={about.headline.italic} start={about.headline.lead.split(" ").length} onReveal />
@@ -69,15 +72,19 @@ export function Background() {
             </div>
           </div>
 
-          <div data-reveal className="flex flex-col gap-fr-md border-t border-line pt-fr-lg">
-            <p className="label-mono text-muted">Things I lean on</p>
-            <ul className="t-body grid grid-cols-1 gap-x-fr-lg gap-y-fr-sm sm:grid-cols-2">
-              {strengths.map((s) => (
-                <li key={s}>
-                  {s}
-                </li>
-              ))}
-            </ul>
+          <dl data-reveal className="grid grid-cols-3 gap-fr-lg border-t border-line pt-fr-lg">
+            {about.stats.map((s) => (
+              <div key={s.label} className="flex flex-col-reverse gap-fr-xxs">
+                <dt className="t-body-sm text-muted">{s.label}</dt>
+                <dd className="font-display text-[clamp(2.2rem,1.6rem+2vw,3.4rem)] font-semibold leading-none tracking-[-0.03em] text-accent">{s.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div data-reveal className="flex flex-wrap gap-fr-xs">
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-secondary">
+              Resume (PDF)<span className="sr-only"> (opens in a new tab)</span>
+            </a>
+            <a href="#journey" className="btn btn-secondary">My journey</a>
           </div>
         </div>
       </div>

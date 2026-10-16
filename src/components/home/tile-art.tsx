@@ -12,8 +12,9 @@ import { useReducedMotion } from "@/components/use-reduced-motion";
  * code rebuild where the source is too small to stay sharp. Gusto is recreated wireframes only.
  */
 
-// kind: how a screen is presented. phone = slim phone outline, panel/browser = whole screen kept intact, art = full-width illustration.
-type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string; kind?: "phone" | "panel" | "browser" | "laptop" | "art" };
+// kind: how a screen is presented. phone = slim phone outline, panel/browser = whole screen kept intact, art = full-width illustration,
+// device = a mockup that already includes its own device frame (shown whole, no extra outline).
+type Frame = { src?: string; w?: number; h?: number; node?: ReactNode; alt: string; kind?: "phone" | "panel" | "browser" | "laptop" | "art" | "device" };
 
 const BG: Record<string, [string, string]> = {
   "ai-mentor": ["#4330b8", "#1b1252"],
@@ -25,13 +26,15 @@ const BG: Record<string, [string, string]> = {
   "swiping-loop": ["#c69d8d", "#c69d8d"],
   basecamp: ["#f3cd47", "#cf9e14"],
   gusto: ["#f3a68d", "#c7573f"],
+  wildflower: ["#eba59b", "#b5574e"],
+  therabody: ["#3d6ad6", "#142a66"],
 };
 
 const f = (slug: string, n: number, w: number, h: number, alt: string, kind?: Frame["kind"]): Frame => ({ src: `/work/${slug}/frame-${n}.webp`, w, h, alt, kind });
 
 /* ---------- faithful code rebuilds ---------- */
 
-function InternshalaJob() {
+export function InternshalaJob() {
   return (
     <div className="w-[78cqw] rounded-[10px] bg-white p-[5cqw] text-[3.2cqw] leading-[1.45] text-[#333] shadow-[0_30px_60px_-25px_rgba(0,0,0,0.6)]">
       <p className="text-[4.4cqw] font-medium text-[#222]">Product Designer Intern</p>
@@ -56,7 +59,7 @@ function InternshalaJob() {
   );
 }
 
-function InternshalaSearch() {
+export function InternshalaSearch() {
   return (
     <div className="flex w-[84cqw] flex-col gap-[3cqw]">
       <div className="flex items-center gap-[2cqw] rounded-[10px] bg-white px-[4cqw] py-[3cqw] text-[3.6cqw] text-[#454952] shadow-[0_24px_50px_-25px_rgba(0,0,0,0.6)]">
@@ -73,7 +76,7 @@ function InternshalaSearch() {
   );
 }
 
-function LeecoTone() {
+export function LeecoTone() {
   return (
     <div className="w-[48cqw] rounded-[10px] bg-[#22232a] p-[5cqw] text-white shadow-[0_30px_60px_-25px_rgba(0,0,0,0.7)]">
       <p className="text-[4.6cqw] font-semibold">Leeco&rsquo;s Tone</p>
@@ -120,7 +123,7 @@ function GustoQuestion({ big }: { big?: boolean }) {
   );
 }
 
-function GustoTablet() {
+export function GustoTablet() {
   return (
     <div className="w-[70cqw] rounded-[3cqw] bg-[#1d1d1f] p-[1.4cqw] shadow-[0_34px_60px_-24px_rgba(0,0,0,0.55)]">
       <div className="overflow-hidden rounded-[1.6cqw] bg-white">
@@ -148,7 +151,7 @@ function GustoTablet() {
   );
 }
 
-function GustoPhone() {
+export function GustoPhone() {
   return (
     <div className="w-[34cqw] rounded-[5cqw] bg-[#1d1d1f] p-[1.2cqw] shadow-[0_34px_60px_-22px_rgba(0,0,0,0.6)]">
       <div className="flex aspect-[9/19] flex-col gap-[1.8cqw] overflow-hidden rounded-[4cqw] bg-white px-[2.6cqw] pb-[2.6cqw] pt-[4.6cqw] text-[1.9cqw]">
@@ -223,6 +226,16 @@ const FRAMES: Record<string, Frame[]> = {
     f("basecamp", 1, 1096, 686, "Redesigned Basecamp landing page hero", "laptop"),
     f("basecamp", 2, 1065, 1198, "Basecamp integrations section", "laptop"),
     f("basecamp", 3, 1126, 1750, "Basecamp feature cards section", "laptop"),
+  ],
+  wildflower: [
+    f("wildflower", 1, 437, 900, "Wildflower home screen: a week-22 milestone card and this week’s to-dos", "device"),
+    f("wildflower", 2, 436, 900, "Wildflower tasks screen filtered by care plan: pregnancy, nutrition and mental health", "device"),
+    f("wildflower", 3, 436, 898, "Wildflower track screen with meal, mood, blood pressure and other trackers", "device"),
+  ],
+  therabody: [
+    f("therabody", 1, 1394, 1129, "Therabody product pages on a laptop and a phone", "device"),
+    f("therabody", 3, 737, 626, "Therabody’s Theragun PRO vs Elite comparison modal", "panel"),
+    f("therabody", 2, 438, 885, "Therabody’s mobile product page for Theragun Prime", "device"),
   ],
   gusto: [
     { node: <GustoDevices />, alt: "Gusto signup screens rebuilt in code on a tablet and a phone: the 'Learn how Gusto works' questions and the mobile home page" },
@@ -300,6 +313,15 @@ function FrameView({ fr, eager }: { fr: Frame; eager: boolean }) {
             <span className="absolute left-1/2 top-0 block h-[0.9cqw] w-[16%] -translate-x-1/2 rounded-b-[1cqw] bg-[#8d9096]" />
           </div>
         </div>
+      </div>
+    );
+  }
+  if (fr.kind === "device") {
+    // Tall phones fit the height; wide device clusters fit the width.
+    const w = ratio > 1 ? 82 / ratio : 90;
+    return (
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="drop-shadow-[0_30px_40px_rgba(0,0,0,0.35)]" style={{ width: `${w}%` }}>{img("")}</div>
       </div>
     );
   }

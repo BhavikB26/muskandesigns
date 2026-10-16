@@ -167,10 +167,10 @@ function subscribeTheme(cb: () => void) {
 }
 const isDark = () => document.documentElement.dataset.theme === "dark";
 
-// Light theme uses the shader's "paper" mode on the sky tint; dark theme uses the original night palette.
+// Gems palette: amethyst and emerald over a soft lilac paper (light) or deep amethyst night (dark).
 const PALETTE = {
-  light: { background: "#e6eefb", color1: "#3DBEFF", color2: "#3B3BD6" },
-  dark: { background: "#0A0710", color1: "#3DBEFF", color2: "#2422F2" },
+  light: { background: "#ebe6fc", color1: "#17a398", color2: "#5a46d6" },
+  dark: { background: "#0b0814", color1: "#1fa597", color2: "#6a52ff" },
 };
 
 export function MosaicLens({

@@ -746,3 +746,15 @@ export function DeckSlideView({ slide }: { slide: DeckSlide }) {
     </section>
   );
 }
+
+/** Text kinds that a rewritten section replaces; everything else (screens, boards, reviews, flows) is kept. */
+const TEXT_KINDS = new Set(["h", "sub", "p", "note", "eyebrow", "list", "highlight", "quote"]);
+
+/** Just the visual part of a deck slide, for case studies whose text has been rewritten. */
+export function DeckVisual({ slide }: { slide: DeckSlide }) {
+  const keep = (items?: DeckItem[]) => (items ?? []).filter((i) => !TEXT_KINDS.has(i.kind));
+  const items = keep(slide.items);
+  const after = keep(slide.after);
+  if (!slide.img && !slide.flow && !items.length && !after.length) return null;
+  return <DeckSlideView slide={{ ...slide, items, after, side: slide.img && !items.length ? "visual" : slide.side }} />;
+}

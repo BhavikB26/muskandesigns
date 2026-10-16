@@ -43,7 +43,7 @@ export type Project = {
   blocks: Block[];
 };
 
-function img(src: string, alt: string, caption?: string): Img {
+export function img(src: string, alt: string, caption?: string): Img {
   const dims = imageDims[src];
   if (!dims) throw new Error(`Missing image dimensions for ${src}`);
   return { src, width: dims[0], height: dims[1], alt, caption };
@@ -765,7 +765,8 @@ export function getProject(slug: string) {
 export const WORK_ORDER = ["builder-design-system", "ratings-reviews", "gusto", "ai-mentor", "basecamp", "internshala", "builder-university", "swiping-loop", "studio-store"];
 
 export function getNextProject(slug: string) {
-  const order = WORK_ORDER.filter((s) => s !== "gusto");
+  // Gusto and ProPilot open the live-site case studies, which have their own prev/next links.
+  const order = WORK_ORDER.filter((s) => s !== "gusto" && s !== "ai-mentor");
   const next = order[(order.indexOf(slug) + 1) % order.length];
   return projects.find((p) => p.slug === next) ?? projects[0];
 }
