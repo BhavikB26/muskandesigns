@@ -1628,10 +1628,11 @@ html[data-theme="dark"] .liquid-cta__drop {
 }
 /* A cover's laptop page that scrolls itself: holds on the hero, glides to the end, holds, glides back. */
 .cv-scroll { container-type: size; }
-.cv-scroll__page { animation: cv-scroll 26s cubic-bezier(0.65, 0, 0.35, 1) infinite both; will-change: transform; }
+/* 33s loop: rests 10s on the hero, 13s down, 2.6s at the end, 7.4s back up (then the hero rest again). */
+.cv-scroll__page { animation: cv-scroll 33s cubic-bezier(0.65, 0, 0.35, 1) infinite both; will-change: transform; }
 @keyframes cv-scroll {
-  0%, 12% { transform: translateY(0); }
-  62%, 72% { transform: translateY(calc(100cqh - var(--r) * 100cqw)); }
+  0%, 30.3% { transform: translateY(0); }
+  69.7%, 77.6% { transform: translateY(calc(100cqh - var(--r) * 100cqw)); }
   100% { transform: translateY(0); }
 }
 html[data-motion="paused"] .cv-scroll__page { animation: none; }
