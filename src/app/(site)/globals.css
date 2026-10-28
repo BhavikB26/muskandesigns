@@ -1644,3 +1644,80 @@ html[data-motion="paused"] .cv-scroll__page { animation: none; }
 .cv--phones.cv--clear .cv-wall__tile { border-radius: 0; }
 /* OYO: the framed phone sits higher. */
 .cv-framed { margin-top: 0; transform: translateY(-3cqw); }
+
+/* Animated bento covers (bento-cover.tsx): sized in cqw of the square cover. */
+.bn {
+  position: absolute; inset: 0; display: grid; gap: 2.4cqw; padding: 4.5cqw;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: 44% 1fr;
+  background: radial-gradient(90% 70% at 50% 30%, color-mix(in oklab, var(--bn-accent) 16%, #fff), color-mix(in oklab, var(--bn-accent) 30%, #f1eefb));
+  font-family: var(--font-body), system-ui, sans-serif; color: #17142a;
+}
+.bn-card {
+  position: relative; overflow: hidden; border-radius: 3cqw; padding: 2.6cqw;
+  background: #fff; box-shadow: 0 0.4cqw 1.6cqw -0.6cqw rgba(30, 20, 70, 0.25), inset 0 0 0 0.15cqw rgba(30, 20, 70, 0.05);
+}
+.bn-card--wide { grid-column: 1 / -1; }
+.bn-card--accent { background: var(--bn-accent); color: #fff; }
+.bn-head { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 0.9cqw; font-size: 2.3cqw; font-weight: 600; letter-spacing: -0.01em; line-height: 1.1; }
+.bn-head__icon { display: grid; place-items: center; width: 3.6cqw; height: 3.6cqw; border-radius: 1cqw; color: var(--bn-accent); background: color-mix(in oklab, var(--bn-accent) 12%, #fff); }
+.bn-head__icon svg { width: 2.3cqw; height: 2.3cqw; }
+.bn-card--accent .bn-head__icon { color: #fff; background: rgba(255, 255, 255, 0.18); }
+.bn-dot { display: grid; place-items: center; width: 6cqw; height: 6cqw; border-radius: 50%; color: #fff; background: var(--bn-accent);
+  box-shadow: 0 0.6cqw 1.6cqw -0.4cqw color-mix(in oklab, var(--bn-accent) 70%, transparent); }
+.bn-dot svg { width: 2.8cqw; height: 2.8cqw; }
+
+/* the arc: a ring of tools rotating behind the card's lower edge */
+.bn-arc { position: absolute; inset: 0; }
+.bn-arc__glow { position: absolute; left: 50%; top: 22cqw; width: 104cqw; height: 104cqw; margin-left: -52cqw; border-radius: 50%;
+  background: radial-gradient(closest-side, transparent 78%, color-mix(in oklab, var(--bn-accent) 20%, transparent) 90%, transparent 100%); }
+.bn-arc__ring { position: absolute; left: 50%; top: 22cqw; width: 0; height: 0; margin-top: 52cqw; animation: bn-spin 36s linear infinite; }
+.bn-arc__spoke { position: absolute; left: 0; top: 0; transform: rotate(var(--a)) translateY(-46cqw); }
+.bn-arc__item { transform: translate(-50%, -50%) rotate(calc(-1 * var(--a))); }
+/* label and dot turn back together, so the label stays upright above its dot */
+.bn-arc__spin { display: flex; flex-direction: column; align-items: center; gap: 0.8cqw; animation: bn-spin 36s linear infinite reverse; }
+.bn-arc__label { font-size: 2.2cqw; font-weight: 600; white-space: nowrap; }
+@keyframes bn-spin { to { transform: rotate(360deg); } }
+
+/* chips lighting up in turn, alternating sides of a line */
+.bn-chips { position: absolute; inset: 11cqw 2.6cqw 2cqw; display: flex; flex-direction: column; justify-content: space-between; }
+.bn-chips__line { position: absolute; left: 50%; top: 0; bottom: 0; width: 0.2cqw; background: rgba(255, 255, 255, 0.35); }
+.bn-chip { position: relative; align-self: flex-start; max-width: 48%; padding: 0.6cqw 1.2cqw; border-radius: 1cqw; font-size: 1.8cqw; font-weight: 500; white-space: nowrap;
+  color: #fff; background: rgba(255, 255, 255, 0.14); animation: bn-chip calc(var(--n) * 0.9s) ease-in-out infinite; animation-delay: calc(var(--k) * 0.9s); }
+.bn-chip--r { align-self: flex-end; }
+@keyframes bn-chip { 0%, 100% { background: rgba(255, 255, 255, 0.14); color: #fff; } 8%, 34% { background: #fff; color: var(--bn-accent); } 50% { background: rgba(255, 255, 255, 0.14); color: #fff; } }
+
+/* carousel: icons slide through three slots; the centre one is large, its name above */
+.bn-car { position: absolute; inset: 9cqw 0 0; }
+.bn-car__labels { position: absolute; left: 50%; top: 2.4cqw; transform: translateX(-50%); }
+.bn-car__label { position: absolute; left: 0; top: 0; transform: translateX(-50%); padding: 0.5cqw 1.2cqw; border-radius: 0.8cqw; font-size: 1.7cqw; font-weight: 500; white-space: nowrap;
+  background: color-mix(in oklab, var(--bn-accent) 10%, #fff); color: #3b3555; opacity: 0;
+  animation: bn-label calc(var(--n) * 1.6s) ease-in-out infinite; animation-delay: calc(var(--k) * -1.6s); }
+.bn-car__stem { position: absolute; left: 50%; top: 7cqw; bottom: 0; width: 0.2cqw; background: color-mix(in oklab, var(--bn-accent) 20%, transparent); }
+.bn-car__item { position: absolute; left: 50%; top: 13cqw; opacity: 0; animation: bn-car calc(var(--n) * 1.6s) cubic-bezier(0.65, 0, 0.35, 1) infinite; animation-delay: calc(var(--k) * -1.6s); }
+.bn-car__item .bn-dot { width: 5cqw; height: 5cqw; }
+@keyframes bn-car {
+  0% { transform: translate(-50%, 0) translateX(16cqw) scale(0.6); opacity: 0; }
+  14%, 22% { transform: translate(-50%, 0) translateX(9cqw) scale(0.82); opacity: 1; }
+  34%, 42% { transform: translate(-50%, 0) translateX(0) scale(1.5); opacity: 1; }
+  54%, 62% { transform: translate(-50%, 0) translateX(-9cqw) scale(0.82); opacity: 1; }
+  76%, 100% { transform: translate(-50%, 0) translateX(-16cqw) scale(0.6); opacity: 0; }
+}
+@keyframes bn-label { 0%, 30% { opacity: 0; } 35%, 44% { opacity: 1; } 49%, 100% { opacity: 0; } }
+
+/* progress: the bar fills while the list appears */
+.bn-prog { position: absolute; inset: 11cqw 2.6cqw 2cqw; display: flex; flex-direction: column; gap: 1.6cqw; }
+.bn-prog__bar { position: relative; height: 1cqw; border-radius: 1cqw; background: color-mix(in oklab, var(--bn-accent) 12%, #fff); overflow: hidden; }
+.bn-prog__fill { position: absolute; inset: 0 auto 0 0; width: 0; border-radius: inherit; background: var(--bn-accent); animation: bn-fill 6s ease-in-out infinite; }
+.bn-prog__row { display: flex; align-items: center; gap: 1cqw; font-size: 1.7cqw; font-weight: 500; color: #3b3555; opacity: 0;
+  animation: bn-row 6s ease-out infinite; animation-delay: calc(var(--k) * 0.6s); }
+.bn-prog__icon { display: grid; place-items: center; width: 3.6cqw; height: 3.6cqw; flex: none; border-radius: 0.9cqw; color: #fff; background: var(--bn-accent); }
+.bn-prog__icon svg { width: 2cqw; height: 2cqw; }
+@keyframes bn-fill { 0%, 6% { width: 0; } 70%, 88% { width: 100%; } 100% { width: 0; } }
+@keyframes bn-row { 0%, 12% { opacity: 0; transform: translateY(1cqw); } 22%, 80% { opacity: 1; transform: none; } 92%, 100% { opacity: 0; transform: none; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .bn *, .bn *::before { animation: none !important; }
+  .bn-car__item:nth-child(3), .bn-car__label:first-child, .bn-prog__row { opacity: 1; }
+  .bn-prog__fill { width: 70%; }
+}
+html[data-motion="paused"] .bn * { animation-play-state: paused !important; }

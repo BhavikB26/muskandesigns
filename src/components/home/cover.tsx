@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { BENTOS, BentoCover } from "@/components/home/bento-cover";
 
 /*
  * Case study covers (after ashpreetsingh.com/projects): one device front and centre, showing the real product
@@ -145,6 +146,8 @@ function Laptop({ s, scroll }: { s: Screen; scroll?: boolean }) {
 
 /** The cover art for a case study; fills its (square, container-sized) parent. */
 export function Cover({ slug }: { slug: string }) {
+  // BLOCK and Builder University: an animated bento of their domain (bento-cover.tsx).
+  if (BENTOS[slug]) return <BentoCover slug={slug} />;
   const c = COVERS[slug];
   if (!c) return null;
   // An even grid: 15 phone screens (5 × 3) in turn, or 6 landscape tiles.
