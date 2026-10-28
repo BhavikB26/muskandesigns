@@ -41,6 +41,8 @@ export interface ElsewhereHeroProps {
   secondaryCta?: HeroLink & { external?: boolean };
   listenLabel?: string;
   listenOffLabel?: string;
+  /** Show the Listen button (the ambient sound stays off without it). */
+  sound?: boolean;
   /** Small hint next to the sound button; "" hides it. */
   soundHint?: string;
   objectPosition?: string;
@@ -270,6 +272,7 @@ export default function ElsewhereHero({
   subline,
   primaryCta,
   secondaryCta,
+  sound = true,
   listenLabel = "Listen",
   listenOffLabel = "Pause sound",
   soundHint = "Turn on the sound",
@@ -435,24 +438,26 @@ export default function ElsewhereHero({
       </motion.div>
 
       {/* Sound */}
-      <div className="absolute bottom-[clamp(16px,3vh,28px)] left-0 right-0 z-[2] px-page">
-        <div className="mx-auto flex max-w-[1280px] items-center gap-3">
-          <button
-            type="button"
-            onClick={toggleSound}
-            aria-pressed={!muted}
-            className="eh-pill eh-glass eh-small"
-          >
-            <SoundIcon muted={muted} />
-            {muted ? listenLabel : listenOffLabel}
-          </button>
-          {soundHint && muted && (
-            <span aria-hidden className="eh-hint">
-              ← {soundHint}
-            </span>
-          )}
+      {sound && (
+        <div className="absolute bottom-[clamp(16px,3vh,28px)] left-0 right-0 z-[2] px-page">
+          <div className="mx-auto flex max-w-[1280px] items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleSound}
+              aria-pressed={!muted}
+              className="eh-pill eh-glass eh-small"
+            >
+              <SoundIcon muted={muted} />
+              {muted ? listenLabel : listenOffLabel}
+            </button>
+            {soundHint && muted && (
+              <span aria-hidden className="eh-hint">
+                ← {soundHint}
+              </span>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </section>
   );
 }

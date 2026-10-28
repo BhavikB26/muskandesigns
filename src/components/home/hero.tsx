@@ -220,6 +220,7 @@ export function HomeIntro({ next }: { next: ReactNode }) {
 
   const hero = (
     <ElsewhereHero
+      sound={false}
       daySrc={DAY}
       nightSrc={NIGHT}
       headerOffset={HEADER}
