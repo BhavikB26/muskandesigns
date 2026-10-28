@@ -1668,9 +1668,9 @@ html[data-motion="paused"] .cv-scroll__page { animation: none; }
 
 /* the arc: a ring of tools rotating behind the card's lower edge */
 .bn-arc { position: absolute; inset: 0; }
-.bn-arc__glow { position: absolute; left: 50%; top: 22cqw; width: 104cqw; height: 104cqw; margin-left: -52cqw; border-radius: 50%;
+.bn-arc__glow { position: absolute; left: 50%; top: 15cqw; width: 104cqw; height: 104cqw; margin-left: -52cqw; border-radius: 50%;
   background: radial-gradient(closest-side, transparent 78%, color-mix(in oklab, var(--bn-accent) 20%, transparent) 90%, transparent 100%); }
-.bn-arc__ring { position: absolute; left: 50%; top: 22cqw; width: 0; height: 0; margin-top: 52cqw; animation: bn-spin 36s linear infinite; }
+.bn-arc__ring { position: absolute; left: 50%; top: 15cqw; width: 0; height: 0; margin-top: 52cqw; animation: bn-spin 36s linear infinite; }
 .bn-arc__spoke { position: absolute; left: 0; top: 0; transform: rotate(var(--a)) translateY(-46cqw); }
 .bn-arc__item { transform: translate(-50%, -50%) rotate(calc(-1 * var(--a))); }
 /* label and dot turn back together, so the label stays upright above its dot */

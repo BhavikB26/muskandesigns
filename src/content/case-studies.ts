@@ -719,99 +719,7 @@ export const caseStudies: CaseStudy[] = [
     ],
   },
 
-  // ─────────────────────────────── 05. Natasha ───────────────────────────────
-  {
-    slug: "natasha",
-    name: "Natasha",
-    title: "Designing Builder.ai’s AI Product Manager across chat, voice, and the workspace",
-    meta: ["Product Designer", "Builder.ai", "Conversational interface design", "Part of the BLOCK redesign"],
-    intro:
-      "Natasha was being introduced as Builder.ai’s AI Product Manager: a conversational way to help people begin building an app or explore an idea. I worked on the interface and reusable patterns for that experience as part of the wider design-system redesign supporting its launch. The design spans a compact side panel, an immersive conversation view, and an in-page voice bar. The challenge was to make each mode understandable while preserving a recognisable interaction language.",
-    summary: {
-      heading: "What the design covered",
-      items: [
-        "Welcome states and starting prompts that make the assistant’s purpose concrete.",
-        "Text input, voice entry, and transcribed user-message patterns.",
-        "Structured responses with follow-up actions and response-level controls.",
-        "Listening, thinking, speaking, pause, loading, and interruption states.",
-      ],
-    },
-    label: "Builder.ai · AI product",
-    deliverables: ["Conversation UI", "Voice states", "Components", "Interaction design"],
-    concept: false,
-    sections: [
-      {
-        title: "Make the first conversation easier to begin",
-        body: [
-          "The opening experience introduces Natasha and asks what the person would like to build. Suggested starting points such as “Build app”, “Create store”, and “Prototype” connect the assistant to recognisable goals.",
-          "This gives someone a starting point even if they have not worked out how to phrase their request. The message field remains available for people ready to describe their own idea.",
-          "The design intention was to communicate both purpose and possibility: what Natasha can help with, and how to start.",
-        ],
-        visuals: [
-          {
-            kind: "browser",
-            shots: [shot("/work/natasha/immersive-welcome.webp", "Immersive welcome: the opening question, message field, Talk control, and goal-based prompts")],
-            caption: "The opening question, message field, Talk control, and goal-based prompts introduce the experience",
-          },
-        ],
-      },
-      {
-        title: "Give conversation the space it needs",
-        body: [
-          "The side panel keeps Natasha close to the surrounding product. Its header includes controls to expand or close the experience, while the composer remains at the bottom of the conversation.",
-          "The immersive view gives the same conversation patterns a wider canvas. Shared response and input components adapt to that space, keeping the interaction recognisable across both formats.",
-          "The trade-off is focus against context. A compact panel leaves more of the existing workspace available; the immersive format gives the conversation more room. The design provides both layouts without assuming one will suit every moment.",
-        ],
-        visuals: [
-          {
-            kind: "devices",
-            shots: [shot("/work/natasha/panel-welcome.webp", "The compact side panel: Natasha’s welcome and starting prompts"), shot("/work/natasha/panel-conversation.webp", "The compact side panel: a response with controls and follow-ups")],
-            caption: "Compact welcome and conversation examples from the final component family. Example response text is illustrative.",
-          },
-        ],
-      },
-      {
-        title: "Make text and voice visible choices",
-        body: [
-          "“Talk” is presented beside the message composer as an explicit entry into the voice experience. The component model also accounts for transcribed user messages, with distinct formats for spoken and typed input.",
-          "An in-page voice bar provides another way to keep the interaction available alongside page content. Its controls expose the current state and ways to pause, close, or interrupt the exchange.",
-        ],
-      },
-      {
-        title: "Show what Natasha is doing",
-        body: [
-          "A voice interface needs to distinguish listening from processing and speaking. The design includes explicit “Listening” and “Thinking” states, along with a “Click to interrupt” state during output.",
-          "The file also defines idle, loading, pause, and transitions between the main voice states. That state coverage makes the moments between responses part of the experience specification.",
-          "Interruption is particularly important: people need an understandable way to take their turn again. A changing visual treatment is supported by a clear action label.",
-        ],
-        visuals: [{ kind: "board", shot: shot("/work/natasha/voice-states.webp", "Voice controls: Start speaking, Listening, Thinking, and Click to interrupt"), caption: "Voice controls: Start speaking, Listening, Thinking, and Click to interrupt" }],
-      },
-      {
-        title: "Give responses structure and a next step",
-        body: [
-          "Natasha’s responses are built from body text, headings, subheadings, bullets, and numbered lists, with corresponding compact and immersive variants.",
-          "Response-level controls provide playback, copying, and feedback affordances. Suggested follow-ups let people indicate whether a response works for them and continue the exchange.",
-          "This makes the response an interaction point. The user can read it, respond to it, and decide how to proceed.",
-        ],
-      },
-      {
-        title: "Set expectations within the experience",
-        body: [
-          "The compact interface includes a reminder that Natasha can make mistakes and that responses should be checked. Combined with feedback and interruption controls, this makes room for the user to question or redirect the assistant.",
-        ],
-      },
-      {
-        title: "Outcome and reflection",
-        body: [
-          "The delivered design work defined the main conversation surfaces, reusable response patterns, and the state model around text and voice as part of the launch-focused redesign.",
-          "I would validate how easily people start a useful conversation, understand the current voice state, interrupt a response, and interpret the next available action.",
-          "The project reinforced how much of a conversational experience happens around the answer. Starting, waiting, switching modes, and taking control again all need the same level of design attention as the response itself.",
-        ],
-      },
-    ],
-  },
-
-  // ─────────────────────────────── 06. Internshala ───────────────────────────────
+  // ─────────────────────────────── 05. Internshala ───────────────────────────────
   {
     slug: "internshala",
     name: "Internshala",
@@ -982,6 +890,98 @@ export const caseStudies: CaseStudy[] = [
           "I began this project thinking the most frustrating part of internship hunting was filling forms. Research changed that. The deeper problem was uncertainty.",
           "Candidates don’t only need a faster way to apply. They need the product to help them understand what fits them, what remains to be done, and what happened after they took the risk of applying.",
           "Good hiring UX cannot guarantee the outcome. It can make the journey feel substantially less like a black hole.",
+        ],
+      },
+    ],
+  },
+
+  // ─────────────────────────────── 06. Natasha ───────────────────────────────
+  {
+    slug: "natasha",
+    name: "Natasha",
+    title: "Designing Builder.ai’s AI Product Manager across chat, voice, and the workspace",
+    meta: ["Product Designer", "Builder.ai", "Conversational interface design", "Part of the BLOCK redesign"],
+    intro:
+      "Natasha was being introduced as Builder.ai’s AI Product Manager: a conversational way to help people begin building an app or explore an idea. I worked on the interface and reusable patterns for that experience as part of the wider design-system redesign supporting its launch. The design spans a compact side panel, an immersive conversation view, and an in-page voice bar. The challenge was to make each mode understandable while preserving a recognisable interaction language.",
+    summary: {
+      heading: "What the design covered",
+      items: [
+        "Welcome states and starting prompts that make the assistant’s purpose concrete.",
+        "Text input, voice entry, and transcribed user-message patterns.",
+        "Structured responses with follow-up actions and response-level controls.",
+        "Listening, thinking, speaking, pause, loading, and interruption states.",
+      ],
+    },
+    label: "Builder.ai · AI product",
+    deliverables: ["Conversation UI", "Voice states", "Components", "Interaction design"],
+    concept: false,
+    sections: [
+      {
+        title: "Make the first conversation easier to begin",
+        body: [
+          "The opening experience introduces Natasha and asks what the person would like to build. Suggested starting points such as “Build app”, “Create store”, and “Prototype” connect the assistant to recognisable goals.",
+          "This gives someone a starting point even if they have not worked out how to phrase their request. The message field remains available for people ready to describe their own idea.",
+          "The design intention was to communicate both purpose and possibility: what Natasha can help with, and how to start.",
+        ],
+        visuals: [
+          {
+            kind: "browser",
+            shots: [shot("/work/natasha/immersive-welcome.webp", "Immersive welcome: the opening question, message field, Talk control, and goal-based prompts")],
+            caption: "The opening question, message field, Talk control, and goal-based prompts introduce the experience",
+          },
+        ],
+      },
+      {
+        title: "Give conversation the space it needs",
+        body: [
+          "The side panel keeps Natasha close to the surrounding product. Its header includes controls to expand or close the experience, while the composer remains at the bottom of the conversation.",
+          "The immersive view gives the same conversation patterns a wider canvas. Shared response and input components adapt to that space, keeping the interaction recognisable across both formats.",
+          "The trade-off is focus against context. A compact panel leaves more of the existing workspace available; the immersive format gives the conversation more room. The design provides both layouts without assuming one will suit every moment.",
+        ],
+        visuals: [
+          {
+            kind: "devices",
+            shots: [shot("/work/natasha/panel-welcome.webp", "The compact side panel: Natasha’s welcome and starting prompts"), shot("/work/natasha/panel-conversation.webp", "The compact side panel: a response with controls and follow-ups")],
+            caption: "Compact welcome and conversation examples from the final component family. Example response text is illustrative.",
+          },
+        ],
+      },
+      {
+        title: "Make text and voice visible choices",
+        body: [
+          "“Talk” is presented beside the message composer as an explicit entry into the voice experience. The component model also accounts for transcribed user messages, with distinct formats for spoken and typed input.",
+          "An in-page voice bar provides another way to keep the interaction available alongside page content. Its controls expose the current state and ways to pause, close, or interrupt the exchange.",
+        ],
+      },
+      {
+        title: "Show what Natasha is doing",
+        body: [
+          "A voice interface needs to distinguish listening from processing and speaking. The design includes explicit “Listening” and “Thinking” states, along with a “Click to interrupt” state during output.",
+          "The file also defines idle, loading, pause, and transitions between the main voice states. That state coverage makes the moments between responses part of the experience specification.",
+          "Interruption is particularly important: people need an understandable way to take their turn again. A changing visual treatment is supported by a clear action label.",
+        ],
+        visuals: [{ kind: "board", shot: shot("/work/natasha/voice-states.webp", "Voice controls: Start speaking, Listening, Thinking, and Click to interrupt"), caption: "Voice controls: Start speaking, Listening, Thinking, and Click to interrupt" }],
+      },
+      {
+        title: "Give responses structure and a next step",
+        body: [
+          "Natasha’s responses are built from body text, headings, subheadings, bullets, and numbered lists, with corresponding compact and immersive variants.",
+          "Response-level controls provide playback, copying, and feedback affordances. Suggested follow-ups let people indicate whether a response works for them and continue the exchange.",
+          "This makes the response an interaction point. The user can read it, respond to it, and decide how to proceed.",
+        ],
+      },
+      {
+        title: "Set expectations within the experience",
+        body: [
+          "The compact interface includes a reminder that Natasha can make mistakes and that responses should be checked. Combined with feedback and interruption controls, this makes room for the user to question or redirect the assistant.",
+        ],
+      },
+      {
+        title: "Outcome and reflection",
+        body: [
+          "The delivered design work defined the main conversation surfaces, reusable response patterns, and the state model around text and voice as part of the launch-focused redesign.",
+          "I would validate how easily people start a useful conversation, understand the current voice state, interrupt a response, and interpret the next available action.",
+          "The project reinforced how much of a conversational experience happens around the answer. Starting, waiting, switching modes, and taking control again all need the same level of design attention as the response itself.",
         ],
       },
     ],
