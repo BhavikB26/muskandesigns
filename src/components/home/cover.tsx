@@ -78,7 +78,7 @@ export const COVERS: Record<string, CoverSpec> = {
     device: "phone",
     status: true,
     // the screen cut out of its baked frame, so it sits in the same phone as the other covers
-    screen: { src: "/work/covers/oyo-screen-fit.webp", w: 1300, h: 2510 },
+    screen: { src: "/work/covers/oyo-screen-exact.webp", w: 1300, h: 2629 },
     wallClear: true,
     phoneWall: true,
     wall: ["/work/ratings-reviews/img-rate-clear.webp", "/work/ratings-reviews/img-write-clear.webp", "/work/ratings-reviews/img-photos-clear.webp", "/work/ratings-reviews/img-reward-clear.webp"],
