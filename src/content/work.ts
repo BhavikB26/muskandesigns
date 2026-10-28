@@ -4,30 +4,24 @@ import { caseStudies } from "./case-studies";
 export type WorkTile = {
   slug: string;
   href: string;
+  /** Short project name, for the caption pill on the thumbnail. */
+  name: string;
   label: string;
   headline: string;
   blurb: string;
 };
 
-/** How many cards the home page shows before "View all case studies". */
-export const HOME_TILE_COUNT = 4;
+/** The four case studies on the home page, in order (Muskan's pick). */
+export const HOME_SLUGS = ["gusto", "ai-mentor", "zero-noise", "builder-design-system"];
 
-/* Order of the grid; the first HOME_TILE_COUNT appear on the home page. */
-const ORDER = [
-  "gusto",
-  "ai-mentor",
-  "builder-design-system",
-  "wildflower",
-  "ratings-reviews",
-  "therabody",
-  "builder-university",
-  "basecamp",
-  "internshala",
-  "swiping-loop",
-  "studio-store",
-];
+/** /work follows the order of caseStudies (Muskan's order: 01 Gusto … 08 Basecamp). */
+export const WORK_TILES: WorkTile[] = caseStudies.map((c) => ({
+  slug: c.slug,
+  href: `/work/${c.slug}`,
+  name: c.name,
+  label: c.label,
+  headline: c.title,
+  blurb: c.intro,
+}));
 
-export const WORK_TILES: WorkTile[] = ORDER.flatMap((slug) => {
-  const c = caseStudies.find((x) => x.slug === slug);
-  return c ? [{ slug, href: `/work/${slug}`, ...c.card }] : [];
-});
+export const HOME_TILES: WorkTile[] = HOME_SLUGS.flatMap((s) => WORK_TILES.filter((t) => t.slug === s));

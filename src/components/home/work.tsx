@@ -1,32 +1,52 @@
 import Link from "next/link";
+import { ArrowRight, LayoutGrid } from "lucide-react";
 import { WORK_TILES, type WorkTile } from "@/content/work";
 import { MaskedText } from "@/components/masked-text";
-import { FeatureArt } from "@/components/home/feature-art";
+import type { CSSProperties } from "react";
+import { Cover } from "@/components/home/cover";
 
-/**
- * A case study card (after idoshitty.art): a gem-tone thumbnail with real screens, then a small label,
- * a one-line outcome headline and one supporting line. The whole card is the link.
+/*
+ * Thumbnails after ramp.design: a tile with a 40px superellipse corner and a hairline edge on the case study's
+ * gem gradient, its 3D scene centred with space around it, and only a small frosted pill (dot + name) in the corner.
+ * An even grid: every tile the same size, three to a row (two on the home page, which shows four).
  */
-function CaseCard({ tile, index }: { tile: WorkTile; index: number }) {
+
+type Row = number[];
+/** Column ratios per row; one number = a full-width row. Repeats if there are more tiles. */
+const WORK_ROWS: Row[] = [[1, 1, 1]];
+/** The four on the home page: two rows of two equal tiles. */
+export const HOME_ROWS: Row[] = [[1, 1]];
+
+function CaseCell({ tile, index }: { tile: WorkTile; index: number }) {
   return (
-    <li data-reveal className="group relative flex flex-col gap-fr-md rounded-fr-xl bg-surface-1 p-fr-sm ring-1 ring-line transition-[transform,box-shadow] duration-500 ease-[var(--ease-out-expo)] has-[a:focus-visible]:outline has-[a:focus-visible]:outline-2 has-[a:focus-visible]:outline-offset-4 has-[a:focus-visible]:outline-[var(--color-accent)] can-hover:hover:-translate-y-1 can-hover:hover:shadow-[0_24px_48px_-28px_rgba(20,16,40,0.35)]">
-      <div className="reveal-media relative aspect-[4/3] overflow-hidden rounded-fr-lg">
-        <div className="absolute inset-0 transition-transform duration-700 ease-[var(--ease-out-expo)] can-hover:group-hover:scale-[1.03]">
-          <FeatureArt slug={tile.slug} />
+    <li className="min-w-0">
+      <Link
+        href={tile.href}
+        className="cv-card group block rounded-[28px] outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]"
+        aria-label={`${String(index + 1).padStart(2, "0")}. ${tile.name}: ${tile.headline}`}
+      >
+        <div className="work-cell relative aspect-square overflow-clip [container-type:size]">
+          <Cover slug={tile.slug} />
         </div>
-      </div>
-      <div className="flex flex-col gap-fr-xs px-fr-xs pb-fr-sm">
-        <p className="label-mono text-muted">{tile.label}</p>
-        <h3 className="text-[clamp(1.15rem,1rem+0.5vw,1.45rem)] font-medium leading-[1.25] tracking-[-0.01em] text-ink">
-          <Link href={tile.href} className="outline-none after:absolute after:inset-0 after:rounded-fr-xl">
-            <span className="sr-only">{String(index + 1).padStart(2, "0")}. </span>
-            {tile.headline}
-          </Link>
-        </h3>
-        <p className="t-body line-clamp-1 text-muted">{tile.blurb}</p>
-      </div>
+        <div className="cv-caption">
+          <span className="t-caption text-muted">{tile.label}</span>
+          <span className="text-[length:var(--fs-h4)] font-medium leading-snug tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">{tile.name}</span>
+          <span className="cv-caption__desc t-body-sm text-ink-soft">{tile.headline}</span>
+        </div>
+      </Link>
     </li>
   );
+}
+
+function rowsFor(tiles: WorkTile[], pattern: Row[]) {
+  const rows: { cols: Row; tiles: WorkTile[] }[] = [];
+  let i = 0;
+  for (let r = 0; i < tiles.length; r++) {
+    const cols = pattern[r % pattern.length].slice(0, tiles.length - i);
+    rows.push({ cols, tiles: tiles.slice(i, i + cols.length) });
+    i += cols.length;
+  }
+  return rows;
 }
 
 export function Work({
@@ -36,6 +56,7 @@ export function Work({
   sub = "Short reads: the problem, the tradeoffs, and what changed.",
   viewAll = false,
   headingLevel = "h2",
+  rows = WORK_ROWS,
 }: {
   tiles: WorkTile[];
   heading?: string;
@@ -44,6 +65,7 @@ export function Work({
   /** Show a "View all case studies" button under the grid. */
   viewAll?: boolean;
   headingLevel?: "h1" | "h2";
+  rows?: Row[];
 }) {
   const Heading = headingLevel;
   return (
@@ -56,19 +78,30 @@ export function Work({
               <MaskedText text={emphasis} start={heading.split(" ").length} onReveal />
             </em>
           </Heading>
-          <p className="t-body-lg text-muted">{sub}</p>
+          <p className="t-body-lg text-ink-soft">{sub}</p>
         </div>
 
-        <ul className="grid grid-cols-1 gap-fr-lg md:grid-cols-2">
-          {tiles.map((t, i) => (
-            <CaseCard key={t.slug} tile={t} index={i} />
+        <ul className="flex flex-col gap-6">
+          {rowsFor(tiles, rows).map(({ cols, tiles: rowTiles }, r) => (
+            <li key={r} className={`work-row work-row--cards ${cols.length === 1 ? "work-row--solo" : cols.length === 3 ? "work-row--three" : ""}`} style={{ "--cols": cols.map((c) => `${c}fr`).join(" ") } as CSSProperties}>
+              <ul className="contents">
+                {rowTiles.map((t) => (
+                  <CaseCell key={t.slug} tile={t} index={tiles.indexOf(t)} />
+                ))}
+              </ul>
+            </li>
           ))}
         </ul>
 
         {viewAll && (
           <div data-reveal className="flex justify-center">
-            <Link href="/work" className="btn btn-primary">
-              View all case studies<span className="sr-only"> ({WORK_TILES.length})</span>
+            {/* In the liquid nav's material: a glass pill holding a drop of water (static, CSS only). */}
+            <Link href="/work" className="liquid-cta">
+              <span aria-hidden className="liquid-cta__drop" />
+              <LayoutGrid aria-hidden className="relative size-[18px]" strokeWidth={1.8} />
+              <span className="relative">View all case studies</span>
+              <ArrowRight aria-hidden className="liquid-cta__arrow relative size-4" strokeWidth={2} />
+              <span className="sr-only"> ({WORK_TILES.length})</span>
             </Link>
           </div>
         )}
@@ -76,3 +109,4 @@ export function Work({
     </section>
   );
 }
+

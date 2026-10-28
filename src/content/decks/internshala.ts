@@ -861,6 +861,32 @@ export const deck: Deck = [
       },
       {
         "kind": "styleguide",
+        "tags": [
+          {
+            "label": "Pending review",
+            "tone": "blue"
+          },
+          {
+            "label": "Application viewed",
+            "tone": "green"
+          },
+          {
+            "label": "Shortlisted",
+            "tone": "amber"
+          },
+          {
+            "label": "Assignment",
+            "tone": "indigo"
+          },
+          {
+            "label": "Interviewing",
+            "tone": "peach"
+          },
+          {
+            "label": "Application rejected",
+            "tone": "red"
+          }
+        ],
         "font": "Instrument Sans",
         "titles": [
           {

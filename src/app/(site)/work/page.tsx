@@ -12,8 +12,7 @@ export const metadata: Metadata = {
 
 export default function WorkIndex() {
   return (
-    <WithFooter>
-      <SiteHeader />
+    <WithFooter header={<SiteHeader current="Case studies" />}>
       <main id="main" tabIndex={-1} className="page-in flex w-full flex-col">
         <Work tiles={WORK_TILES} heading="All case" emphasis="studies" sub={`${WORK_TILES.length} projects: shipped work, a design system, research and a few concepts.`} headingLevel="h1" />
       </main>

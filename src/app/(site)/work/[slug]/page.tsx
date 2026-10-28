@@ -6,6 +6,9 @@ import { Toggles } from "@/components/case/case-parts";
 import { Showcase, StickerArt } from "@/components/case/showcase";
 import { FeatureArt, GEM } from "@/components/home/feature-art";
 import { WithFooter } from "@/components/site-footer";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ContainerScroll } from "@/components/ui/container-scroll";
+import { TracingBeam } from "@/components/ui/tracing-beam";
 import { caseStudies, getCaseStudy, type CaseStudy, type Section } from "@/content/case-studies";
 import { WORK_TILES } from "@/content/work";
 
@@ -19,37 +22,34 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const c = getCaseStudy(slug);
   if (!c) return {};
-  return { title: `${c.name}: ${c.facts.type}`, description: c.card.headline, openGraph: { title: c.name, description: c.card.headline } };
+  return { title: c.name, description: c.title, openGraph: { title: `${c.name}: ${c.title}`, description: c.intro } };
 }
 
 /* ---------- Side rail (after ngan-nguyen.com): stays still while the story scrolls ---------- */
 
 function Rail({ c }: { c: CaseStudy }) {
-  const facts: [string, string | undefined][] = [
-    ["Industry", c.facts.industry],
-    ["Company", c.facts.company],
-    ["My role", c.facts.role],
-    ["Timeline", c.facts.timeline],
-  ];
+  const [role, ...details] = c.meta;
   return (
-    <aside className="md:sticky md:top-0 md:h-svh">
-      <div className="flex h-full flex-col justify-between gap-fr-xxl pb-fr-xl pt-fr-xl md:pt-10">
+    <aside className="self-start md:sticky md:top-0">
+      <div className="flex flex-col gap-fr-xxl pb-fr-xl pt-6">
         <div className="flex flex-col gap-fr-xxl">
-          <Link href="/" aria-label="Muskan Bhatia, home" className="inline-flex size-11 items-center">
-            <span aria-hidden className="flex size-8 items-center justify-center rounded-[2px] bg-ink pb-[2px] font-display text-[19px] font-semibold leading-none text-background">
-              m
-            </span>
+          <Link href="/" className="w-fit whitespace-nowrap font-serif text-[26px] leading-[1.6] tracking-tight text-ink sm:text-3xl">
+            Muskan Bhatia
           </Link>
-          <p className="font-display text-[clamp(2rem,1.4rem+1.6vw,3rem)] font-medium leading-[1] tracking-[-0.03em] text-ink">{c.name}</p>
+          <p className="font-display text-[clamp(1.9rem,1.3rem+1.5vw,2.8rem)] font-medium leading-[1.02] tracking-[-0.03em] text-ink">{c.name}</p>
           <dl className="grid grid-cols-2 gap-x-fr-lg gap-y-fr-lg md:grid-cols-1">
-            {facts
-              .filter((f): f is [string, string] => Boolean(f[1]))
-              .map(([k, v]) => (
-                <div key={k} className="flex flex-col gap-fr-xxs">
-                  <dt className="t-body text-ink">{k}</dt>
-                  <dd className="t-body-sm text-muted">{v}</dd>
-                </div>
+            <div className="flex flex-col gap-fr-xxs">
+              <dt className="t-body text-ink">My role</dt>
+              <dd className="t-body-sm text-muted">{role}</dd>
+            </div>
+            <div className="flex flex-col gap-fr-xxs">
+              <dt className="t-body text-ink">Project</dt>
+              {details.map((d) => (
+                <dd key={d} className="t-body-sm text-muted">
+                  {d}
+                </dd>
               ))}
+            </div>
             <div className="col-span-2 flex flex-col gap-fr-xs md:col-span-1">
               <dt className="t-body text-ink">Deliverables</dt>
               <dd>
@@ -70,7 +70,7 @@ function Rail({ c }: { c: CaseStudy }) {
             </a>
           ))}
         </div>
-        <div className="flex items-center justify-between gap-fr-sm">
+        <div className="flex items-center justify-between gap-fr-sm border-t border-line pt-fr-md">
           <Link href="/work" className="t-body inline-flex min-h-11 items-center gap-fr-xs text-ink hover:text-accent">
             Close <span aria-hidden>✕</span>
             <span className="sr-only"> case study, back to all case studies</span>
@@ -84,14 +84,14 @@ function Rail({ c }: { c: CaseStudy }) {
 
 /* ---------- Story sections (after manojdesigner.framer.website) ---------- */
 
+const bullet =
+  "relative pl-fr-lg before:absolute before:left-0 before:top-[0.62em] before:size-2 before:rounded-full before:bg-accent";
+
 function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
   return (
-    <section id={s.label.toLowerCase().replace(/\s+/g, "-")} aria-labelledby={`s-${n}`} data-reveal className="flex scroll-mt-10 flex-col gap-fr-xxl border-t border-line pt-fr-xl">
+    <section id={`section-${n}`} aria-labelledby={`s-${n}`} data-reveal className="flex scroll-mt-10 flex-col gap-fr-xxl border-t border-line pt-fr-xl">
       <div className="grid grid-cols-1 gap-fr-lg lg:grid-cols-12 lg:gap-x-fr-xxl">
         <div className="flex flex-col gap-fr-xs lg:col-span-4">
-          <p className="label-mono text-muted">
-            {String(n).padStart(2, "0")} · {s.label}
-          </p>
           <h2 id={`s-${n}`} className="t-display-md text-ink">
             {s.title}
           </h2>
@@ -102,37 +102,25 @@ function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
           )}
         </div>
         <div className="flex flex-col gap-fr-lg lg:col-span-8">
-          {s.highlight && <p className="font-serif text-[clamp(1.5rem,1.2rem+1vw,2.1rem)] italic leading-[1.25] text-accent">{s.highlight}</p>}
           {s.body?.map((p) => (
-            <p key={p.slice(0, 24)} className="t-body-lg max-w-[62ch] text-ink-soft">
+            <p key={p.slice(0, 32)} className="t-body-lg max-w-[62ch] text-ink-soft">
               {p}
             </p>
           ))}
           {s.list && (
             <ul className="flex max-w-[62ch] flex-col gap-fr-sm">
               {s.list.map((li) => (
-                <li key={li.slice(0, 24)} className="t-body-lg relative pl-fr-lg text-ink-soft before:absolute before:left-0 before:top-[0.62em] before:size-2 before:rounded-full before:bg-accent">
+                <li key={li.slice(0, 32)} className={`t-body-lg text-ink-soft ${bullet}`}>
                   {li}
                 </li>
               ))}
             </ul>
           )}
-          {s.stats && (
-            <dl className="grid grid-cols-1 gap-fr-lg sm:grid-cols-2">
-              {s.stats.map((st) => (
-                <div key={st.label} className="flex flex-col-reverse gap-fr-xs rounded-fr-lg bg-surface-1 p-fr-lg ring-1 ring-line">
-                  <dt className="t-body text-muted">{st.label}</dt>
-                  <dd className="font-display text-[clamp(2.4rem,1.8rem+2vw,3.6rem)] font-semibold leading-none tracking-[-0.03em] text-accent">{st.value}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
-          {s.quote && (
-            <figure className="flex flex-col gap-fr-sm border-l-2 border-accent pl-fr-lg">
-              <blockquote className="font-serif text-[clamp(1.3rem,1.1rem+0.6vw,1.7rem)] italic leading-[1.35] text-ink">&ldquo;{s.quote.text}&rdquo;</blockquote>
-              <figcaption className="t-body-sm text-muted">{s.quote.by}</figcaption>
-            </figure>
-          )}
+          {s.after?.map((p) => (
+            <p key={p.slice(0, 32)} className="t-body-lg max-w-[62ch] text-ink-soft">
+              {p}
+            </p>
+          ))}
         </div>
       </div>
       {s.visuals?.map((v, i) => (
@@ -151,40 +139,52 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
   return (
     <WithFooter>
+      <ScrollProgress color={GEM[c.slug][1]} />
       <div className="page-in w-full px-page" style={{ "--gem": GEM[c.slug][0] } as CSSProperties}>
-        <div className="mx-auto grid w-full max-w-[1760px] grid-cols-1 gap-x-[4vw] md:grid-cols-[minmax(200px,17%)_1fr]">
+        <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-x-fr-section md:grid-cols-[200px_1fr] lg:grid-cols-[220px_1fr]">
           <Rail c={c} />
 
-          <main id="main" tabIndex={-1} className="flex min-w-0 flex-col gap-fr-section pt-fr-xl md:pt-10">
+          <main id="main" tabIndex={-1} className="flex min-w-0 flex-col gap-fr-section pt-fr-xl md:pt-[88px]">
             <header className="grid grid-cols-1 gap-fr-xl lg:grid-cols-12 lg:gap-x-fr-xxl">
               <h1 className="t-display-lg text-ink lg:col-span-6">
                 <span className="sr-only">{c.name}: </span>
-                {c.tagline}
+                {c.title}
               </h1>
-              <div className="flex flex-col gap-fr-md lg:col-span-6">
-                {c.intro.map((p) => (
-                  <p key={p.slice(0, 24)} className="t-body-lg text-ink-soft">
-                    {p}
-                  </p>
-                ))}
-                {c.concept && <p className="t-body-sm w-fit rounded-full bg-accent-soft px-fr-sm py-fr-xxs text-ink">Concept: not a shipped product</p>}
+              <div className="flex flex-col gap-fr-lg lg:col-span-6">
+                <p className="t-body-lg text-ink-soft">{c.intro}</p>
+                <div className="rounded-fr-lg bg-surface-1 p-fr-lg ring-1 ring-line">
+                  <h2 className="label-mono mb-fr-sm text-muted">{c.summary.heading}</h2>
+                  <ul className="flex flex-col gap-fr-xs">
+                    {c.summary.items.map((it) => (
+                      <li key={it} className={`t-body text-ink ${bullet}`}>
+                        {it}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </header>
 
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-fr-xl">
-              <FeatureArt slug={c.slug} />
-            </div>
+            <ContainerScroll>
+              <div className="gem-tile relative aspect-[4/3] w-full overflow-hidden">
+                <FeatureArt slug={c.slug} />
+              </div>
+            </ContainerScroll>
 
-            {c.sections.map((s, n) => (
-              <StorySection key={s.label} s={s} n={n + 1} slug={c.slug} />
-            ))}
+            <TracingBeam color={GEM[c.slug][1]}>
+              <div className="flex flex-col gap-fr-section">
+                {c.sections.map((s, n) => (
+                  <StorySection key={s.title} s={s} n={n + 1} slug={c.slug} />
+                ))}
+              </div>
+            </TracingBeam>
 
             <Link href={next.href} className="group flex flex-col gap-fr-sm border-t border-line pt-fr-xl">
-              <span className="label-mono text-muted">Next case study</span>
-              <span className="t-display-lg text-ink transition-colors group-hover:text-accent">
-                {next.headline} <span aria-hidden>→</span>
+              <span className="t-display-lg text-ink">
+                <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-muted">Next:</em>{" "}
+                <span className="transition-colors group-hover:text-accent">{next.headline}</span> <span aria-hidden>→</span>
               </span>
-              <span className="label-mono text-muted">{next.label}</span>
+              <span className="t-body-sm text-muted">{next.label}</span>
             </Link>
           </main>
         </div>

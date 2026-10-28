@@ -4,10 +4,10 @@ import type { ReactNode } from "react";
 import type { Block, Img, Project } from "@/content/projects";
 import type { DeckItem, DeckSlide } from "@/content/decks/types";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { MotionToggle } from "@/components/motion";
 import { LaptopScroll, PhoneScroll } from "./laptop-scroll";
 import { LaptopFlow } from "./laptop-flow";
 import { SocialLinks } from "@/components/social-links";
+import TestimonialsMarquee from "@/components/ui/testimonials-with-marquee";
 
 /*
  * Editorial case study building blocks.
@@ -63,7 +63,6 @@ export function Identity() {
 export function Toggles() {
   return (
     <div className="flex items-center gap-fr-xs">
-      <MotionToggle />
       <ThemeToggle />
     </div>
   );
@@ -371,7 +370,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
               {it.stages.map((s) => (
                 <li key={s.title} className={`deck-stage ${s.focus ? "deck-stage-focus" : ""}`}>
                   <span className="t-body-sm text-ink">{s.title}</span>
-                  <span className="t-body text-ink">{s.text}</span>
+                  <span className="t-body text-ink-soft">{s.text}</span>
                   {s.focus && it.focusLabel && <span className="deck-stage-tag">{it.focusLabel}</span>}
                 </li>
               ))}
@@ -449,6 +448,18 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
                   ))}
                 </div>
               </section>
+              {it.tags?.length ? (
+                <section aria-label="Status tags" className="deck-review lg:col-span-2">
+                  <p className="label-mono text-muted">Status tags</p>
+                  <ul className="mt-fr-lg flex flex-wrap gap-fr-xs">
+                    {it.tags.map((g) => (
+                      <li key={g.label} className={`deck-tag deck-tag-${g.tone}`}>
+                        {g.label}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
             </div>
           );
         if (it.kind === "personas")
@@ -468,7 +479,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
                   <div className="flex flex-col gap-fr-md">
                     <div>
                       <p className="label-mono text-muted">Goals</p>
-                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink marker:text-muted">
+                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink-soft marker:text-muted">
                         {p.goals.map((g) => (
                           <li key={g}>{g}</li>
                         ))}
@@ -476,7 +487,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
                     </div>
                     <div>
                       <p className="label-mono text-muted">Challenges</p>
-                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink marker:text-muted">
+                      <ul className="mt-fr-xs flex list-disc flex-col gap-fr-xxs pl-5 t-body text-ink-soft marker:text-muted">
                         {p.challenges.map((g) => (
                           <li key={g}>{g}</li>
                         ))}
@@ -518,27 +529,10 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
           );
         if (it.kind === "reviews")
           return (
-            <ul key={i} className="my-fr-xs columns-1 gap-fr-md sm:columns-2 lg:columns-3">
-              {it.reviews.map((r) => (
-                <li key={r.name} className="deck-review mb-fr-md break-inside-avoid">
-                  <div className="flex items-center gap-fr-sm">
-                    <span aria-hidden className="flex size-9 shrink-0 items-center justify-center rounded-full bg-surface-2 t-body-sm text-ink">
-                      {r.name[0]}
-                    </span>
-                    <span className="t-body-sm text-ink">{r.name}</span>
-                  </div>
-                  <p className="mt-fr-sm flex items-center gap-fr-xs t-caption text-muted">
-                    <span aria-hidden className="tracking-[0.12em] text-[#e2a400]">
-                      {"★".repeat(r.rating)}
-                      <span className="text-line-strong">{"★".repeat(5 - r.rating)}</span>
-                    </span>
-                    <span className="sr-only">{r.rating} out of 5 stars,</span>
-                    {r.date}
-                  </p>
-                  <p className="mt-fr-xs t-body text-ink">{r.text}</p>
-                </li>
-              ))}
-            </ul>
+            // Play Store reviews as a moving wall (21st.dev Testimonials with Marquee).
+            <div key={i} className="my-fr-xs">
+              <TestimonialsMarquee data={it.reviews.map((r) => ({ name: r.name, handle: r.date, rating: r.rating, description: r.text }))} />
+            </div>
           );
         if (it.kind === "tags")
           return (

@@ -1,6 +1,17 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useRef, useSyncExternalStore } from "react";
+import { flushSync } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Moon, Sun } from "lucide-react";
+import { SETTLE } from "@/components/ui/springs";
+
+/*
+ * Light / dark switch (after Magic UI's Animated Theme Toggler on 21st.dev): a round glass button whose
+ * sun and moon swap on a spring, and the new theme spreads across the page as a circle opening from the
+ * button (View Transitions). Falls back to an instant swap without View Transitions or with reduced motion.
+ * Light is the default; the choice is remembered.
+ */
 
 type Theme = "light" | "dark";
 
@@ -20,36 +31,64 @@ function setTheme(t: Theme) {
   listeners.forEach((l) => l());
 }
 
-/** Light / dark switch. Light is the default; the choice is remembered. */
-export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribe, getTheme, () => "light" as Theme);
+/** The current site theme, kept in sync with the toggle (the hero uses it to show day or night). */
+export function useTheme(): Theme {
+  return useSyncExternalStore(subscribe, getTheme, () => "light" as Theme);
+}
+
+export function ThemeToggle({ className = "" }: { className?: string }) {
+  const theme = useTheme();
   const dark = theme === "dark";
+  const ref = useRef<HTMLButtonElement>(null);
+
+  const toggle = () => {
+    const next: Theme = dark ? "light" : "dark";
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || typeof document.startViewTransition !== "function" || !ref.current) {
+      setTheme(next);
+      return;
+    }
+    const { left, top, width, height } = ref.current.getBoundingClientRect();
+    const x = left + width / 2;
+    const y = top + height / 2;
+    const r = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const root = document.documentElement;
+    root.dataset.themeVt = "";
+    const t = document.startViewTransition(() => flushSync(() => setTheme(next)));
+    t.ready
+      .then(() =>
+        root.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+          { duration: 520, easing: "cubic-bezier(0.22, 1, 0.36, 1)", pseudoElement: "::view-transition-new(root)" },
+        ),
+      )
+      .catch(() => {});
+    t.finished.finally(() => delete root.dataset.themeVt).catch(() => {});
+  };
+
   return (
     <button
+      ref={ref}
       type="button"
       role="switch"
       aria-checked={dark}
       aria-label="Dark theme"
-      onClick={() => setTheme(dark ? "light" : "dark")}
-      className="group relative inline-flex h-10 w-[72px] shrink-0 items-center rounded-full bg-surface-1 p-1 transition-colors duration-500 pointer-coarse:h-11 pointer-coarse:w-[78px]"
+      onClick={toggle}
+      className={`glass-btn relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full text-ink transition-transform duration-150 active:scale-[0.94] pointer-coarse:size-11 ${className}`}
     >
-      <span
-        aria-hidden
-        className={`flex size-8 items-center justify-center rounded-full bg-ink text-background transition-transform duration-500 ease-[var(--ease-out-expo)] pointer-coarse:size-9 ${
-          dark ? "translate-x-8" : "translate-x-0"
-        }`}
-      >
-        {dark ? (
-          <svg viewBox="0 0 24 24" className="size-3.5" fill="currentColor">
-            <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z" />
-          </svg>
-        ) : (
-          <svg viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-            <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none" />
-            <path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" />
-          </svg>
-        )}
-      </span>
+      <AnimatePresence initial={false} mode="popLayout">
+        <motion.span
+          key={theme}
+          aria-hidden
+          initial={{ y: dark ? 18 : -18, rotate: dark ? -40 : 40, opacity: 0 }}
+          animate={{ y: 0, rotate: 0, opacity: 1 }}
+          exit={{ y: dark ? -18 : 18, rotate: dark ? 40 : -40, opacity: 0 }}
+          transition={SETTLE}
+          className="flex"
+        >
+          {dark ? <Moon className="size-[17px]" strokeWidth={2} /> : <Sun className="size-[18px]" strokeWidth={2} />}
+        </motion.span>
+      </AnimatePresence>
     </button>
   );
 }

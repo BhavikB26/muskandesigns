@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Mockup studio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" />
+    <style>
+      html, body { margin: 0; background: transparent; }
+      canvas { display: block; }
+    </style>
+    <script type="importmap">
+      { "imports": { "three": "/node_modules/three/build/three.module.js", "three/addons/": "/node_modules/three/examples/jsm/" } }
+    </script>
+  </head>
+  <body>
+    <script type="module">
+      import * as THREE from "three";
+      import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
+      import { HorizontalBlurShader } from "three/addons/shaders/HorizontalBlurShader.js";
+      import { VerticalBlurShader } from "three/addons/shaders/VerticalBlurShader.js";
+      import { createLaptop, createPhone, createTablet, setAnisotropy } from "./devices.js";
+      import { chatScreen, preload, swipeScreen } from "./props.js";
+      import { SCENES } from "./scenes.js";
+
+      // One product shot per case study on a transparent background (the site's gem tile shows through).
+      // Lighting: a studio environment for reflections, a soft key light, and blurred contact shadows.
+      const params = new URLSearchParams(location.search);
+      const spec = SCENES[params.get("slug")];
+      const W = Number(params.get("w") ?? 1600);
+      const H = Math.round((W * 3) / 4);
+
+      await document.fonts.load("600 40px Inter");
+      await document.fonts.load("700 40px Inter");
+      await document.fonts.load("500 40px Inter");
+      if (spec.preload) await preload(spec.preload);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
+      renderer.setPixelRatio(1);
+      renderer.setSize(W, H);
+      renderer.setClearColor(0x000000, 0);
+      renderer.toneMapping = THREE.NeutralToneMapping;
+      renderer.toneMappingExposure = spec.exposure ?? 1;
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      setAnisotropy(renderer.capabilities.getMaxAnisotropy());
+      document.body.appendChild(renderer.domElement);
+
+      const scene = new THREE.Scene();
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.035).texture;
+      scene.environmentIntensity = spec.env ?? 1;
+      scene.environmentRotation = new THREE.Euler(0, THREE.MathUtils.degToRad(spec.envRotate ?? 30), 0);
+
+      const key = new THREE.DirectionalLight(0xffffff, 1.1);
+      key.position.set(-3, 8, 5);
+      scene.add(key);
+      const rim = new THREE.DirectionalLight(0xffffff, 0.5);
+      rim.position.set(4, 3, -5);
+      scene.add(rim);
+
+      const screens = { swipe: swipeScreen, chat: chatScreen };
+      const MAKERS = { laptop: createLaptop, phone: createPhone, tablet: createTablet };
+      const deg = THREE.MathUtils.degToRad;
+      const items = new THREE.Group();
+      scene.add(items);
+      for (const o of spec.objects) {
+        const opts = { ...o };
+        if (o.screen) opts.draw = screens[o.screen.kind](o.screen);
+        const obj = MAKERS[o.type](opts);
+        obj.position.set(...(o.pos ?? [0, 0, 0]));
+        // rot = [turn, tilt, roll] in degrees, applied turn first.
+        const [ry, rx, rz] = (o.rot ?? [0, 0, 0]).map(deg);
+        obj.rotation.set(rx, ry, rz, "YXZ");
+        obj.scale.setScalar(o.scale ?? 1);
+        items.add(obj);
+      }
+
+      /* Contact shadows (after three.js webgl_shadow_contact): render depth from below, blur twice, lay it on the ground. */
+      const SIZE = 16;
+      const DEPTH = spec.shadowDepth ?? 1.6;
+      const rt = new THREE.WebGLRenderTarget(2048, 2048);
+      const rtBlur = new THREE.WebGLRenderTarget(2048, 2048);
+      rt.texture.generateMipmaps = rtBlur.texture.generateMipmaps = false;
+      const shadowGroup = new THREE.Group();
+      scene.add(shadowGroup);
+      const planeGeo = new THREE.PlaneGeometry(SIZE, SIZE).rotateX(Math.PI / 2);
+      const plane = new THREE.Mesh(planeGeo, new THREE.MeshBasicMaterial({ map: rt.texture, opacity: spec.shadow ?? 0.75, transparent: true, depthWrite: false }));
+      plane.renderOrder = 1;
+      plane.scale.y = -1;
+      shadowGroup.add(plane);
+      const blurPlane = new THREE.Mesh(planeGeo);
+      blurPlane.visible = false;
+      shadowGroup.add(blurPlane);
+      const shadowCam = new THREE.OrthographicCamera(-SIZE / 2, SIZE / 2, SIZE / 2, -SIZE / 2, 0, DEPTH);
+      shadowCam.rotation.x = Math.PI / 2;
+      shadowGroup.add(shadowCam);
+      const depthMat = new THREE.MeshDepthMaterial();
+      depthMat.onBeforeCompile = (shader) => {
+        shader.uniforms.darkness = { value: spec.darkness ?? 1.6 };
+        shader.fragmentShader = `uniform float darkness;\n${shader.fragmentShader.replace(
+          "gl_FragColor = vec4( vec3( 1.0 - fragCoordZ ), opacity );",
+          "gl_FragColor = vec4( vec3( 0.0 ), ( 1.0 - fragCoordZ ) * darkness );",
+        )}`;
+      };
+      depthMat.depthTest = depthMat.depthWrite = false;
+      const hBlur = new THREE.ShaderMaterial(HorizontalBlurShader);
+      const vBlur = new THREE.ShaderMaterial(VerticalBlurShader);
+      hBlur.depthTest = vBlur.depthTest = false;
+      const blur = (amount) => {
+        blurPlane.visible = true;
+        blurPlane.material = hBlur;
+        hBlur.uniforms.tDiffuse.value = rt.texture;
+        hBlur.uniforms.h.value = amount / 256;
+        renderer.setRenderTarget(rtBlur);
+        renderer.render(blurPlane, shadowCam);
+        blurPlane.material = vBlur;
+        vBlur.uniforms.tDiffuse.value = rtBlur.texture;
+        vBlur.uniforms.v.value = amount / 256;
+        renderer.setRenderTarget(rt);
+        renderer.render(blurPlane, shadowCam);
+        blurPlane.visible = false;
+      };
+      const renderShadow = () => {
+        plane.visible = false;
+        scene.overrideMaterial = depthMat;
+        renderer.setRenderTarget(rt);
+        renderer.clear();
+        renderer.render(scene, shadowCam);
+        scene.overrideMaterial = null;
+        const b = spec.blur ?? 2.2;
+        blur(b);
+        blur(b * 0.4);
+        renderer.setRenderTarget(null);
+        plane.visible = true;
+      };
+
+      const cam = new THREE.PerspectiveCamera(spec.camera.fov ?? 20, 4 / 3, 0.1, 200);
+      cam.position.set(...spec.camera.pos);
+      cam.lookAt(...spec.camera.target);
+
+      const finish = () => {
+        renderShadow();
+        renderer.render(scene, cam);
+        window.__done = true;
+      };
+      THREE.DefaultLoadingManager.onLoad = finish;
+      setTimeout(() => {
+        if (!window.__done && !THREE.DefaultLoadingManager.isLoading) finish();
+      }, 1200);
+    </script>
+  </body>
+</html>

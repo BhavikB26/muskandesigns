@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useMotionPaused } from "@/components/motion";
 
-// All in Latin script so every greeting shares one font (Degular Display).
+// All in Latin script so every greeting shares one font (Circular Std).
 const GREETINGS = [
   { text: "Hello", lang: "en" },
   { text: "Hola", lang: "es" },

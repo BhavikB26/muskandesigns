@@ -6,10 +6,9 @@ export const BRAND: Record<string, Brand> = {
   "builder-design-system": { base: "#2b2440", deep: "#0d0b16", soft: "#eeecf4", ink: "light" },
   "builder-university": { base: "#17706a", deep: "#073330", soft: "#e4f1ef", ink: "light" },
   "ratings-reviews": { base: "#d23a42", deep: "#6a1016", soft: "#fbe9e8", ink: "light" },
-  "studio-store": { base: "#cfc4f0", deep: "#5a47a8", soft: "#f2effb", ink: "dark" },
   internshala: { base: "#0d86d1", deep: "#04395e", soft: "#e3f2fb", ink: "light" },
-  "swiping-loop": { base: "#c69d8d", deep: "#5e2f22", soft: "#f6ece8", ink: "dark" },
   basecamp: { base: "#f3cd47", deep: "#1d1b16", soft: "#fbf4dc", ink: "dark" },
+  natasha: { base: "#7c4dff", deep: "#2a0f6e", soft: "#f1ebff", ink: "light" },
   gusto: { base: "#f3a68d", deep: "#c7573f", soft: "#fcefe9", ink: "dark" },
 };
 

@@ -7,7 +7,12 @@ export function BackToTop() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.9);
+    // Hide again once the footer is showing (it has its own "go again from the top").
+    const onScroll = () => {
+      const footer = document.getElementById("contact")?.offsetHeight ?? 0;
+      const end = document.documentElement.scrollHeight - window.innerHeight - footer;
+      setShow(window.scrollY > window.innerHeight * 0.9 && window.scrollY < end);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

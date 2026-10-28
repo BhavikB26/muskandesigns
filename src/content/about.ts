@@ -1,4 +1,4 @@
-/* About section copy: Muskan's own words, from her live site. Skills and journey come from her resume. */
+/* About section copy: Muskan's own words, from her live site. Skills come from her resume. */
 export const about = {
   headline: { lead: "I design like I have something to prove.", italic: "I do." },
   paragraphs: [
@@ -10,11 +10,6 @@ export const about = {
     { label: "ENFP-T", icon: "puzzle", tint: "#f8c9c6" },
     { label: "Cancer", icon: "cancer", tint: "#d9cff2" },
     { label: "Enneagram 5", icon: "brain", tint: "#c6e7d2" },
-  ],
-  stats: [
-    { value: "3+", label: "years designing products" },
-    { value: "50K", label: "learners on a product I designed" },
-    { value: "11", label: "case studies" },
   ],
 } as const;
 
@@ -42,11 +37,3 @@ export const skills = [
   },
 ] as const;
 
-/** Journey (after ngan-nguyen.com and idoshitty.art), from her resume. */
-export const journey = [
-  { years: "Jan 2025 – Apr 2026", place: "Global social platform", role: "Contractual Product Designer" },
-  { years: "Mar – Sep 2024", place: "Builder.ai", role: "Contractual Product Designer" },
-  { years: "Oct – Dec 2023", place: "Preplaced", role: "Product Designer" },
-  { years: "Jun – Aug 2023", place: "Women’s healthcare platform", role: "Product Design Intern" },
-  { years: "2018 – 2022", place: "SRM Institute of Science & Technology", role: "B.Tech, Computer Science" },
-] as const;

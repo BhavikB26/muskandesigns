@@ -9,11 +9,9 @@ import { useEffect, useSyncExternalStore } from "react";
  * - Lenis smooth scrolling (skipped entirely under prefers-reduced-motion).
  * - Scroll reveals: any element with [data-reveal] fades and rises into view once.
  *   Children inside a [data-reveal-group] stagger by their index.
- * - A shared "paused" flag (html[data-motion="paused"]) that stops all looping motion,
- *   toggled by <MotionToggle /> to meet WCAG 2.2.2 (Pause, Stop, Hide).
+ * - A shared "paused" flag (html[data-motion="paused"]) that stops all looping motion. The on-screen pause
+ *   button was removed at Muskan's request; looping motion still stops for prefers-reduced-motion.
  */
-
-const EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -120,26 +118,4 @@ export function setMotionPaused(paused: boolean) {
 }
 export function useMotionPaused() {
   return useSyncExternalStore(subscribe, getPaused, () => false);
-}
-
-/** Small icon button beside the theme switch that pauses every looping animation (WCAG 2.2.2). */
-export function MotionToggle({ className = "" }: { className?: string }) {
-  const paused = useMotionPaused();
-  return (
-    <button
-      type="button"
-      onClick={() => setMotionPaused(!paused)}
-      aria-pressed={paused}
-      aria-label={paused ? "Play motion" : "Pause motion"}
-      title={paused ? "Play motion" : "Pause motion"}
-      className={`btn-icon shrink-0 motion-reduce:hidden ${className}`}
-      style={{ transitionTimingFunction: EASE }}
-    >
-      {paused ? (
-        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5" fill="currentColor"><path d="M5 3.2v9.6L12.6 8z" /></svg>
-      ) : (
-        <svg aria-hidden viewBox="0 0 16 16" className="size-3.5" fill="currentColor"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6" /><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6" /></svg>
-      )}
-    </button>
-  );
 }

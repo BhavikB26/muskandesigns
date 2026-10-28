@@ -13,7 +13,7 @@ export type DeckItem =
   /** Separate elements laid out the way she placed them (positions in her slide's px; w/h = their bounding box). */
   | { kind: "pieces"; w: number; h: number; pieces: { src: string; x: number; y: number; w: number; h: number; alt: string; radius?: number; shadow?: boolean }[] }
   /** A design-system style guide rebuilt as cards: type ramp in her typeface, and colour swatches. */
-  | { kind: "styleguide"; font: string; titles: { label: string; size: number }[]; bodies: { label: string; size: number }[]; paragraphs: { size: number; text: string }[]; palette: { name: string; rows: string[][] }[] }
+  | { kind: "styleguide"; font: string; titles: { label: string; size: number }[]; bodies: { label: string; size: number }[]; paragraphs: { size: number; text: string }[]; palette: { name: string; rows: string[][] }[]; tags?: { label: string; tone: string }[] }
   /** A step-by-step journey (boxes joined by arrows). */
   | { kind: "flow"; steps: string[] }
   /** A repeating cycle drawn as a loop; stages run clockwise from the top. */
