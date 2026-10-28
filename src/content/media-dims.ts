@@ -152,6 +152,7 @@ export const mediaDims: Record<string, [number, number, number]> = {
   "/work/builder-university/img-learning-plan.webp": [720, 535, 0],
   "/work/builder-university/img-pilot-clean.webp": [740, 536, 0],
   "/work/builder-university/img-pilot-page.webp": [583, 475, 0],
+  "/work/builder-university/img-pilot-screen.webp": [1400, 831, 0],
   "/work/builder-university/img-pilot.webp": [740, 580, 0],
   "/work/builder-university/thumb.webp": [1600, 1200, 0],
   "/work/covers/basecamp-hd.webp": [1300, 786, 0],
