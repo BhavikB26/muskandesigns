@@ -1217,7 +1217,7 @@ export const caseStudies: CaseStudy[] = [
           "The company got something useful quickly. We moved from no central learning experience to a functional starting point while the more robust system was being designed.",
         ],
         after: ["That made the pilot a research tool as much as a delivery shortcut."],
-        visuals: [{ kind: "browser", shots: [shot("/work/builder-university/img-pilot-clean.webp", "The WordPress pilot")] }],
+        visuals: [{ kind: "browser", shots: [shot("/work/builder-university/img-pilot-page.webp", "The WordPress pilot")] }],
       },
       {
         title: "What the pilot clarified",
