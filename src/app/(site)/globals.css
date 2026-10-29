@@ -75,11 +75,11 @@ body {
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
   --font-editorial: var(--font-editorial-face), Georgia, serif;
-  --font-display: "Circular Std", var(--font-heading-face), Arial, sans-serif;
+  --font-display: var(--font-editorial-face), Georgia, serif;
   --font-serif: var(--font-editorial-face), Georgia, serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
-  --font-mono: var(--font-mono-face), ui-monospace, monospace;
+  --font-mono: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-accent: var(--font-display);
   --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -1721,3 +1721,16 @@ html[data-motion="paused"] .cv-scroll__page { animation: none; }
   .bn-prog__fill { width: 70%; }
 }
 html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
+
+/* Type: Instrument Serif for every heading, made bolder (it ships in one weight, so a hairline outline in
+   the text's own colour thickens it), and Google Sans for everything else, labels included. */
+:root { --font-mono-face: var(--font-body); }
+:where(h1, h2, h3, h4):not(.font-mono),
+[class*="t-display"],
+.case-title, .case-h2, .case-deck-h {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-synthesis: none;
+  -webkit-text-stroke: 0.02em currentColor;
+  letter-spacing: 0.005em;
+}

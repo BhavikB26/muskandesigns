@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-import {
-  Gaegu,
-  Geist_Mono,
-  Instrument_Sans,
-  Instrument_Serif,
-  Inter,
-  Inter_Tight,
-} from "next/font/google";
+import { Gaegu, Google_Sans, Instrument_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Motion } from "@/components/motion";
 import { BackToTop } from "@/components/back-to-top";
 
-// Headings: a tight, highly legible grotesk (the pattern most inspiration sites share).
-const interTight = Inter_Tight({ variable: "--font-heading-face", subsets: ["latin"], display: "swap" });
-// Labels and metadata
-const geistMono = Geist_Mono({ variable: "--font-mono-face", subsets: ["latin"], display: "swap", preload: false });
-
-// Italic accents (headline, section highlights, quotes): Instrument Serif.
+// Headings and italic accents: Instrument Serif (licensed). It has one weight; headings are thickened in
+// globals.css (a hairline outline in the text colour) for the bolder look.
 const editorial = Instrument_Serif({
   variable: "--font-editorial-face",
   weight: "400",
@@ -32,8 +21,8 @@ const instrumentSans = Instrument_Sans({ variable: "--font-instrument-sans", sub
 // 300/400/700; 700 is its semibold-ish weight. Loaded only when used.
 const hand = Gaegu({ variable: "--font-hand", weight: ["400", "700"], subsets: ["latin"], display: "swap", preload: false });
 
-// Body text
-const bodyFont = Inter({ variable: "--font-body", subsets: ["latin"], display: "swap" });
+// Everything else (body, labels, UI): Google Sans (licensed), variable 400–700.
+const bodyFont = Google_Sans({ variable: "--font-body", subsets: ["latin"], display: "swap" });
 
 const title = "Muskan Bhatia — Product Designer";
 const description =
@@ -74,7 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${interTight.variable} ${geistMono.variable} ${editorial.variable} ${instrumentSans.variable} ${hand.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${editorial.variable} ${instrumentSans.variable} ${hand.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <script
