@@ -168,7 +168,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   Summary
                 </h2>
                 <p className={body}>{c.intro}</p>
-                <h3 className="pt-1 text-[16px] font-medium text-ink">{c.summary.heading}</h3>
+                <h3 className={`${eyebrow} pt-2`}>{c.summary.heading}</h3>
                 <ul className="flex flex-col gap-2">
                   {c.summary.items.map((it) => (
                     <li key={it} className={`text-[16px] leading-[1.6] text-ink ${bullet}`}>
