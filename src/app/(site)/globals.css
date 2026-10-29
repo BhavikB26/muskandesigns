@@ -1734,3 +1734,8 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
   -webkit-text-stroke: 0.02em currentColor;
   letter-spacing: 0.005em;
 }
+
+/* Status bar icons: one SVG (ios-status-icons.tsx) matching the Internshala screens' real iOS bar. */
+.th-iphone__icons { height: 3.3cqw; width: auto; }
+.dv-phone__icons { height: 3.1cqw; width: auto; }
+.th-iphone__status, .dv-phone__status { font-weight: 600; letter-spacing: -0.01em; }

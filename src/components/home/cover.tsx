@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { IosStatusIcons } from "@/components/ui/ios-status-icons";
 import { BENTOS, BentoCover } from "@/components/home/bento-cover";
 
 /*
@@ -105,12 +106,7 @@ function Phone({ s, status }: { s: Screen; status?: boolean }) {
         {status && (
           <div aria-hidden className="th-iphone__status">
             <span>9:41</span>
-            <span className="th-iphone__icons">
-              <i />
-              <i />
-              <i />
-              <b />
-            </span>
+            <IosStatusIcons className="th-iphone__icons" />
           </div>
         )}
         <div className="th-iphone__page">

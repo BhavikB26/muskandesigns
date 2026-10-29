@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Annotated, Shot, Sticker, Visual } from "@/content/case-studies";
 import { decks } from "@/content/decks";
 import { DeckVisual } from "@/components/case/case-parts";
+import { IosStatusIcons } from "@/components/ui/ios-status-icons";
 import { BlockBento } from "@/components/case/block-bento";
 
 /*
@@ -42,12 +43,7 @@ function Phone({ s, sizes, status = false }: { s: Shot; sizes: string; status?: 
           <>
             <div aria-hidden className="dv-phone__status">
               <span>9:41</span>
-              <span className="dv-phone__icons">
-                <i />
-                <i />
-                <i />
-                <b />
-              </span>
+              <IosStatusIcons className="dv-phone__icons" />
             </div>
             <div className="dv-phone__page">
               <ScreenImg s={s} sizes={sizes} />

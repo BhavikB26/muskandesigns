@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CSSProperties, ReactNode } from "react";
+import { IosStatusIcons } from "@/components/ui/ios-status-icons";
 import { BadgeCheck, Bell, Compass, Eye, Home, MessageCircle, Sparkles, Star, UserPlus } from "lucide-react";
 
 /*
@@ -61,12 +62,7 @@ function IPhone({ src, w, h, width, className = "", style }: { src: string; w: n
         {/* A status bar for the Dynamic Island to sit in, so it never covers the page's own header. */}
         <div aria-hidden className="th-iphone__status">
           <span>9:41</span>
-          <span className="th-iphone__icons">
-            <i />
-            <i />
-            <i />
-            <b />
-          </span>
+          <IosStatusIcons className="th-iphone__icons" />
         </div>
         <div className="th-iphone__page">
           <Image src={src} alt="" width={w} height={h} sizes="16vw" className="block h-full w-full object-cover object-top" />
