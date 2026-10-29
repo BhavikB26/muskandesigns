@@ -61,29 +61,6 @@ function Rail({ c }: { c: CaseStudy }) {
   );
 }
 
-function Facts({ c }: { c: CaseStudy }) {
-  const [role, ...details] = c.meta;
-  const cols: [string, string[]][] = [
-    ["Role", [role]],
-    ["Project", details],
-    ["Deliverables", c.deliverables],
-  ];
-  return (
-    <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-      {cols.map(([k, v]) => (
-        <div key={k} className="flex flex-col gap-2">
-          <dt className={eyebrow}>{k}</dt>
-          {v.map((d) => (
-            <dd key={d} className="text-[15px] leading-6 text-ink-soft">
-              {d}
-            </dd>
-          ))}
-        </div>
-      ))}
-    </dl>
-  );
-}
-
 function Paragraphs({ items }: { items?: string[] }) {
   return items?.map((p) => (
     <p key={p.slice(0, 32)} className={body}>
@@ -176,7 +153,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   <Cover slug={c.slug} />
                 </div>
               </div>
-              <Facts c={c} />
               {c.links?.length ? (
                 <div className="flex flex-wrap gap-4">
                   {c.links.map((l) => (
