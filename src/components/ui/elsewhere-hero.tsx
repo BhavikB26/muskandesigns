@@ -283,8 +283,9 @@ export default function ElsewhereHero({
 }: ElsewhereHeroProps) {
   const zero = useMotionValue(0);
   const p = progress ?? zero;
-  const copyOpacity = useTransform(p, [0, 0.22], [1, 0]);
-  const copyY = useTransform(p, [0, 0.22], [0, -28]);
+  // the headline holds at full strength for the first part of the scroll, then fades
+  const copyOpacity = useTransform(p, [0.1, 0.3], [1, 0]);
+  const copyY = useTransform(p, [0.1, 0.3], [0, -28]);
   const zoom = useTransform(p, [0, 1], [1, 1.85]);
   const dim = useTransform(p, [0.1, 1], [0, 0.55]);
   const night = useTheme() === "dark";

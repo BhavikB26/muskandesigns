@@ -291,7 +291,7 @@ html.lenis body {
 }
 /* H1: page titles (the hero, a case study's name). */
 @utility t-display-lg {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h1);
   line-height: 1.1;
@@ -300,21 +300,21 @@ html.lenis body {
 /* H2: section headings. -xxl and -xl are kept as names (the footer and the home sections use them) and
    now sit at H2 like every other section heading. */
 @utility t-display-xxl {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h2);
   line-height: 1.15;
   letter-spacing: -0.018em;
 }
 @utility t-display-xl {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h2);
   line-height: 1.15;
   letter-spacing: -0.018em;
 }
 @utility t-display-md {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h2);
   line-height: 1.15;
@@ -570,7 +570,7 @@ html[data-theme="dark"] .hero-scrim {
 
 /* ---------- v9: editorial case study type and motion ---------- */
 @utility case-title {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h1);
   line-height: 1.1;
@@ -578,7 +578,7 @@ html[data-theme="dark"] .hero-scrim {
   text-wrap: balance;
 }
 @utility case-h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h2);
   line-height: 1.15;
@@ -639,7 +639,7 @@ a:focus-visible .case-arrow {
   animation: hero-reveal 0.9s var(--ease-out-expo) 0.1s both;
 }
 @utility case-deck-h {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h2);
   line-height: 1.15;
@@ -659,7 +659,7 @@ html[data-motion="paused"] .anim-still { display: block; }
 
 /* Deck pieces from Muskan's Internshala-style boards: subheads, sticker pills, sticky notes and pinned rows. */
 @utility case-deck-sub {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h3);
   line-height: 1.25;
@@ -672,7 +672,7 @@ html[data-motion="paused"] .anim-still { display: block; }
   border-radius: 10px;
   background: #fff;
   color: #1c1b19;
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h4);
   line-height: 1.25;
@@ -752,7 +752,7 @@ html[data-motion="paused"] .anim-still { display: block; }
   letter-spacing: -0.01em;
 }
 .deck-stat {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h1);
   line-height: 1.1;
@@ -853,7 +853,7 @@ html[data-motion="paused"] .anim-still { display: block; }
   background: var(--color-surface-1);
   box-shadow: inset 0 0 0 1px var(--color-line);
   /* Highlighted statements read as a quote: Instrument Serif italic. */
-  font-family: var(--font-serif);
+  font-family: var(--font-serif); font-style: italic;
   font-style: italic;
   font-weight: 400;
   font-size: var(--fs-h3);
@@ -1216,7 +1216,7 @@ html[data-theme="dark"] .bd-stroke, .th-surface--dark .bd-stroke { opacity: 0.28
 .th-toast__check svg { width: 1.7cqw; height: 1.7cqw; }
 
 /* BLOCK grid of primitives */
-.th-ds-title { font-family: var(--font-display); font-size: 4.4cqw; font-weight: 600; letter-spacing: -0.03em; color: var(--th-ink); }
+.th-ds-title { font-family: var(--font-display); font-style: italic; font-size: 4.4cqw; font-weight: 600; letter-spacing: -0.03em; color: var(--th-ink); }
 .th-ds-title span { font-family: var(--font-body); font-size: 2cqw; font-weight: 400; letter-spacing: 0; color: var(--th-muted); margin-left: 0.6cqw; }
 .th-ds-grid { --accent: #8f7dff; display: grid; grid-template-columns: repeat(3, 21cqw); gap: 1.4cqw; zoom: 1.15; }
 .th-ds-cell { display: grid; place-items: center; height: 11cqw; border-radius: 1.8cqw; border: 1px solid var(--th-line); background: rgba(255, 255, 255, 0.025); }
@@ -1492,13 +1492,14 @@ html[data-motion="paused"] [class*="canopy-x"] { animation-play-state: paused !i
 .eh-title {
   margin: 0;
   max-width: 15ch;
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 500;
   font-size: var(--fs-h1);
   line-height: 1.1;
   letter-spacing: -0.022em;
-  color: #f5f3ec;
-  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  /* a tight shadow for edge contrast and a soft one for lift, so it reads crisp on the bright sky */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28), 0 2px 24px rgba(0, 0, 0, 0.32);
   text-wrap: balance;
 }
 .eh-sub {
@@ -1728,7 +1729,7 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 :where(h1, h2, h3, h4):not(.font-mono),
 [class*="t-display"],
 .case-title, .case-h2, .case-deck-h {
-  font-family: var(--font-display);
+  font-family: var(--font-display); font-style: italic;
   font-weight: 400;
   font-synthesis: none;
   -webkit-text-stroke: 0.02em currentColor;
@@ -1739,3 +1740,9 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 .th-iphone__icons { height: 3.3cqw; width: auto; }
 .dv-phone__icons { height: 3.1cqw; width: auto; }
 .th-iphone__status, .dv-phone__status { font-weight: 600; letter-spacing: -0.01em; }
+
+/* Every Instrument Serif word is set in its italic. */
+:where(h1, h2, h3, h4):not(.font-mono),
+[class*="t-display"],
+.case-title, .case-h2, .case-deck-h,
+.font-serif, .font-editorial, .font-display { font-style: italic; }
