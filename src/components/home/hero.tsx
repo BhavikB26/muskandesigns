@@ -5,6 +5,7 @@ import { motion, useMotionValue, useMotionValueEvent, useScroll } from "framer-m
 import ElsewhereHero from "@/components/ui/elsewhere-hero";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useTheme } from "@/components/theme-toggle";
+import { scrollToWork } from "@/components/home/scroll-to-work";
 import { useReducedMotion } from "@/components/use-reduced-motion";
 
 /*
@@ -216,6 +217,17 @@ export function HomeIntro({ next }: { next: ReactNode }) {
     stillOpacity.set(f >= 1 ? 0 : 1);
   };
   useMotionValueEvent(scrollY, "change", update);
+  // Arriving at /#work from another page: the browser's anchor jump lands mid-transition, so finish it.
+  useEffect(() => {
+    if (window.location.hash !== "#work") return;
+    // twice: once early, and again after the browser's and Lenis's own anchor handling have run
+    const t1 = setTimeout(() => scrollToWork(reduced, true), 120);
+    const t2 = setTimeout(() => scrollToWork(reduced, true), 700);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [reduced]);
   useEffect(() => update(window.scrollY)); // keep in step after measuring
 
   const hero = (

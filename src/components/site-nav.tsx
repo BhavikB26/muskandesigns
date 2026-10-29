@@ -6,6 +6,7 @@ import { LayoutGrid, Send, UserRound } from "lucide-react";
 import { LiquidNavbar, NimbusIcons, type LiquidNavItem } from "@/components/ui/liquid-glass-navbar";
 import { useTheme } from "@/components/theme-toggle";
 import { useReducedMotion } from "@/components/use-reduced-motion";
+import { scrollToWork } from "@/components/home/scroll-to-work";
 
 /*
  * The header's links on the Liquid Navbar (Nimbus UI "Waterline", 21st.dev): a pill of violet water whose
@@ -82,6 +83,12 @@ export function SiteNav({ links, current }: { links: NavLink[]; current: string 
           setActive(links[i].label);
           toBottom(reduced);
           return;
+        }
+        if (href === "/#work" && pathname === "/") {
+          // Case studies: scroll to where the section has fully opened out of the monitor (scroll-to-work.ts).
+          e.stopPropagation();
+          setActive(links[i].label);
+          if (scrollToWork(reduced)) return;
         }
         if (href === "/" && pathname === "/") {
           // Already home: back to the top (a push to the same URL would do nothing).
