@@ -48,7 +48,7 @@ export const COVERS: Record<string, CoverSpec> = {
   "zero-noise": {
     device: "phone",
     status: true,
-    screen: { src: "/work/covers/zero-noise-hd.webp", w: 1300, h: 2817 },
+    screen: { src: "/work/covers/zero-noise-fit.webp", w: 1300, h: 2629 },
     phoneWall: true,
     wall: ["/work/zero-noise/m-hero-clean.webp", "/work/zero-noise/m-estimate-clean.webp", "/work/zero-noise/clip-mobile-still.webp"],
     wash: ["#ffa3c0", "#b3264f"],
