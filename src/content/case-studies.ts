@@ -621,7 +621,7 @@ export const caseStudies: CaseStudy[] = [
   // ─────────────────────────────── 04. Builder Design System — BLOCK ───────────────────────────────
   {
     slug: "builder-design-system",
-    name: "Builder Design System — BLOCK",
+    name: "BLOCK Design System",
     title: "Rebuilding Builder.ai’s design system for Natasha’s launch",
     meta: ["Product Designer", "Builder.ai", "BLOCK 4.0", "Shared design-system redesign"],
     intro:
