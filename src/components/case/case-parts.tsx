@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import type { Block, Img, Project } from "@/content/projects";
 import type { DeckItem, DeckSlide } from "@/content/decks/types";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { LightPullThemeSwitcher } from "@/components/ui/light-pull-theme-switcher";
 import { LaptopScroll, PhoneScroll } from "./laptop-scroll";
 import { LaptopFlow } from "./laptop-flow";
 import { SocialLinks } from "@/components/social-links";
@@ -60,10 +60,11 @@ export function Identity() {
   );
 }
 
+/** The theme cord on case study pages: fixed at the window's top right, as they have no header. */
 export function Toggles() {
   return (
-    <div className="flex items-center gap-fr-xs">
-      <ThemeToggle />
+    <div className="fixed right-1 top-0 z-40 h-[68px] md:right-[max(24px,4vw)]">
+      <LightPullThemeSwitcher />
     </div>
   );
 }

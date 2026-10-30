@@ -55,7 +55,6 @@ function Rail({ c }: { c: CaseStudy }) {
           <span aria-hidden>‹</span> Back<span className="sr-only"> to all case studies</span>
         </Link>
         <RailIndex items={[{ id: "summary", label: "Summary" }, ...index]} />
-        <Toggles />
       </div>
     </aside>
   );
@@ -127,6 +126,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   return (
     <WithFooter>
       <ScrollProgress color={GEM[c.slug][1]} />
+      <Toggles />
       <div className="page-in w-full px-page" style={{ "--gem": GEM[c.slug][0] } as CSSProperties}>
         <div className="mx-auto grid w-full max-w-[1120px] grid-cols-1 gap-x-[clamp(48px,7vw,112px)] md:grid-cols-[180px_minmax(0,1fr)]">
           <Rail c={c} />
@@ -135,11 +135,10 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             {/* Opening: meta line, title, cover, facts, summary */}
             <header className="flex flex-col gap-10">
               {/* phones: the rail is hidden, so its name and Back sit above the title */}
-              <div className="flex items-center justify-between md:hidden">
+              <div className="flex items-center md:hidden">
                 <Link href="/work" className="inline-flex min-h-11 items-center gap-1.5 text-[15px] font-medium text-ink">
                   <span aria-hidden>‹</span> Back<span className="sr-only"> to all case studies</span>
                 </Link>
-                <Toggles />
               </div>
               <div className="flex flex-col gap-3">
                 <h1 className="text-[clamp(26px,2.3vw,32px)] font-semibold leading-[1.3] tracking-[-0.015em] text-ink">

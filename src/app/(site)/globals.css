@@ -1746,3 +1746,18 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 [class*="t-display"],
 .case-title, .case-h2, .case-deck-h,
 .font-serif, .font-editorial, .font-display { font-style: italic; }
+
+/* The bubble beside the résumé icon, inside the header bar. */
+.resume-bubble {
+  position: absolute; top: 50%; right: calc(100% + 10px); z-index: 50; padding: 7px 12px; border-radius: 10px;
+  background: #151412; color: #f6f5f2; font-size: 13px; font-weight: 500; line-height: 1; white-space: nowrap;
+  box-shadow: 0 8px 20px -8px rgba(15, 10, 35, 0.45); pointer-events: none;
+  opacity: 0; transform: translate(4px, -50%); transition: opacity 0.18s ease, transform 0.25s var(--ease-out-expo);
+}
+.resume-bubble::before {
+  content: ""; position: absolute; top: 50%; right: -4px; width: 9px; height: 9px; border-radius: 2px;
+  background: inherit; transform: translateY(-50%) rotate(45deg);
+}
+.group:hover > .resume-bubble, .group:focus-within > .resume-bubble { opacity: 1; transform: translate(0, -50%); }
+html[data-theme="dark"] .resume-bubble { background: #f3efe7; color: #151412; }
+@media (prefers-reduced-motion: reduce) { .resume-bubble { transition: opacity 0.18s ease; transform: translate(0, -50%); } }
