@@ -29,7 +29,6 @@ function CaseCell({ tile, index }: { tile: WorkTile; index: number }) {
           <Cover slug={tile.slug} />
         </div>
         <div className="cv-caption">
-          <span className="t-caption text-muted">{tile.label}</span>
           <span className="text-[length:var(--fs-h4)] font-medium leading-snug tracking-[-0.01em] text-ink transition-colors group-hover:text-accent">{tile.name}</span>
           <span className="cv-caption__desc t-body-sm text-ink-soft">{tile.headline}</span>
         </div>

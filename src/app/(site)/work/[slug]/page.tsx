@@ -142,7 +142,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 <Toggles />
               </div>
               <div className="flex flex-col gap-3">
-                <p className={eyebrow}>{c.label.replaceAll(" · ", " • ")}</p>
                 <h1 className="text-[clamp(26px,2.3vw,32px)] font-semibold leading-[1.3] tracking-[-0.015em] text-ink">
                   <span className="sr-only">{c.name}: </span>
                   {c.title}
@@ -195,7 +194,6 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                       <div className="work-cell relative aspect-square overflow-clip [container-type:size]">
                         <Cover slug={t.slug} />
                       </div>
-                      <span className={eyebrow}>{t.label.replaceAll(" · ", " • ")}</span>
                       <span className="text-[15px] font-medium leading-snug text-ink transition-colors group-hover:text-accent">{t.headline}</span>
                     </Link>
                   </li>
