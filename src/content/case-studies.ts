@@ -926,7 +926,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [
           {
             kind: "browser",
-            shots: [shot("/work/natasha/immersive-welcome.webp", "Immersive welcome: the opening question, message field, Talk control, and goal-based prompts")],
+            shots: [shot("/work/natasha/immersive-welcome-screen.webp", "Immersive welcome: the opening question, message field, Talk control, and goal-based prompts")],
             caption: "The opening question, message field, Talk control, and goal-based prompts introduce the experience",
           },
         ],
