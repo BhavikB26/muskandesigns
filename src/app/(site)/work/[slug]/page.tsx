@@ -44,7 +44,7 @@ const POINT = /^([^.:]{2,64}?)[.:]\s+(.+)$/;
 const asPoints = (list: string[]) => (list.length >= 2 && list.every((li) => POINT.test(li)) ? list.map((li) => li.match(POINT)!.slice(1, 3) as [string, string]) : null);
 
 function Rail({ c }: { c: CaseStudy }) {
-  const index = c.sections.map((s, n) => ({ id: `section-${n + 1}`, label: shortLabel(s.title) }));
+  const index = c.sections.map((s, n) => ({ id: `section-${n + 1}`, label: s.short ?? shortLabel(s.title) }));
   return (
     <aside className="hidden self-start md:sticky md:top-0 md:block">
       <div className="flex max-h-dvh flex-col gap-10 overflow-y-auto pb-8 pt-8 [scrollbar-width:none]">

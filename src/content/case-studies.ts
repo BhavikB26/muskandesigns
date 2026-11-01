@@ -67,6 +67,8 @@ export type Sticker = { src: string; w: number; h: number; alt: string; anim?: s
 
 export type Section = {
   title: string;
+  /** A brief name for the side rail, when the title is too long or too generic there. */
+  short?: string;
   body?: string[];
   list?: string[];
   /** Paragraphs after the list. */
@@ -777,6 +779,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 01: show value before asking for a detailed profile",
+        short: "Value before profile",
         body: [
           "Some users want to browse opportunities before investing time completing a full profile. The redesign therefore begins with lightweight preference capture rather than immediately requiring detailed setup.",
           "A new user can tell the product things such as role, location, work type, skills, industry, stipend expectations and other relevant preferences. Those inputs immediately improve recommendations.",
@@ -788,6 +791,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 02: make searching feel like refinement",
+        short: "Smarter search",
         body: [
           "The original search experience could require too much configuration. I simplified the search hierarchy and reframed filters around the user’s preferences. Common dimensions remain easy to reach. Past searches can stay accessible. Recommended opportunities become more prominent.",
           "The goal wasn’t to maximise the number of filters. It was to help someone move from “There are hundreds of internships” to “These are the few worth opening.”",
@@ -796,6 +800,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 03: make the profile reusable but the application personal",
+        short: "Reusable profile",
         body: [
           "A candidate shouldn’t have to rebuild their professional information for every application. But forcing every company to receive exactly the same application also isn’t ideal.",
           "The redesign separates those concerns. The central profile and resume become reusable foundations. During a specific application, users can make relevant edits without unintentionally changing everything in the profile. Document parsing can reduce manual profile creation further.",
@@ -804,6 +809,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 04: break applications into smaller steps",
+        short: "Step-by-step applying",
         body: [
           "Long forms feel longer when the user has no idea how much remains. I replaced the wall-of-form pattern with progressive steps and visible progress. Each stage asks for a manageable amount of information.",
           "The applicant can understand where they are, what is left, and whether they have enough time to finish. This reduces cognitive load without pretending the employer doesn’t need information.",
@@ -811,6 +817,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 05: stop making people rewrite the same answer",
+        short: "Saved responses",
         body: ["Internship applications often ask variations of the same questions:"],
         list: ["Why are you interested?", "Tell us about a relevant project.", "Why are you a good fit?"],
         after: [
@@ -822,6 +829,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 06: drafts should behave like drafts",
+        short: "Auto-saved drafts",
         body: [
           "Applicants frequently need information they don’t have immediately. Maybe they want to check a portfolio link. Rewrite an answer. Come back after class. Or finish from another device.",
           "Leaving shouldn’t mean losing the application. Incomplete applications are therefore automatically preserved and surfaced inside a dedicated Drafts area.",
@@ -831,6 +839,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 07: make post-application status visible",
+        short: "Application status",
         body: ["This became one of the most important changes. Applications can move through states such as:"],
         list: ["Submitted", "Viewed", "Shortlisted", "Interviewing", "Rejected, or another next step"],
         after: [
@@ -840,6 +849,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Opportunity 08: create a path to human contact",
+        short: "Recruiter contact",
         body: [
           "Research also suggested that candidates value contact with real people inside the organisations they are applying to. The redesign explores two ways of bringing the employer closer.",
           "Relevant company contacts can be surfaced when appropriate. And recruiter messages can live directly inside the application experience.",
