@@ -325,7 +325,7 @@ export const caseStudies: CaseStudy[] = [
           "So the project became a larger question: what would an AI product look like if it behaved more like a mentor and less like an empty text box?",
         ],
         sticker: { src: pp("problem3-char.png"), w: 512, h: 512, alt: "A worried developer, stuck on a problem" },
-        visuals: [{ kind: "browser", shots: [shot(pp("mvp-screenshot.png"), "The MVP’s floating chat over a LeetCode problem")] }],
+        visuals: [{ kind: "browser", shots: [shot(pp("mvp-screen.webp"), "The MVP’s floating chat over a LeetCode problem")] }],
       },
       {
         title: "Researching mentorship before designing AI",
@@ -449,7 +449,7 @@ export const caseStudies: CaseStudy[] = [
         ],
         list: ["17% → 84% message initiation", "2 → 20 messages per user", "10% → 50% week-one retention", "3% → 38% week-four retention"],
         after: ["The biggest improvement wasn’t a better chat response. It was reducing the effort required to start the conversation."],
-        visuals: [{ kind: "browser", shots: [shot(pp("sol1.png"), "Easy Actions next to the code editor on LeetCode")] }],
+        visuals: [{ kind: "browser", shots: [shot(pp("sol1-screen.webp"), "Easy Actions next to the code editor on LeetCode")] }],
       },
       {
         title: "Solution 02: turning a technical constraint into a better product",
@@ -468,7 +468,7 @@ export const caseStudies: CaseStudy[] = [
           "Impact: the product reached an NPS of 60. In interviews, 92% of users highlighted the mentor knowing what page they were on as a meaningful part of the experience.",
           "The lesson was useful: sometimes engineering doesn’t hand design a limitation. It hands design the beginning of a better interaction model.",
         ],
-        visuals: [{ kind: "browser", shots: [shot(pp("sol2-after.png"), "The split side tab next to an article the learner is reading")] }],
+        visuals: [{ kind: "browser", shots: [shot(pp("sol2-after-screen.webp"), "The split side tab next to an article the learner is reading")] }],
       },
       {
         title: "Solution 03: quizzes and dynamic follow-ups on YouTube",
@@ -487,7 +487,7 @@ export const caseStudies: CaseStudy[] = [
           "Quizzes appeared at deliberate intervals. Their frequency was refined through experimentation so they could restore attention without becoming another interruption. I also deliberately used lower-content areas around the player, based on observations of where learners focused during sessions.",
           "Impact: 51K quizzes taken, 10.5K dynamic follow-ups clicked and +23% interactions. Users frequently described the interactivity as the reason ProPilot felt different from simply opening another AI tab.",
         ],
-        visuals: [{ kind: "browser", shots: [shot(pp("sol3-quiz.png"), "A quiz on top of a YouTube lecture")] }],
+        visuals: [{ kind: "browser", shots: [shot(pp("sol3-quiz-screen.webp"), "A quiz on top of a YouTube lecture")] }],
       },
       {
         title: "Solution 04: make long-form learning retrievable",
@@ -497,7 +497,7 @@ export const caseStudies: CaseStudy[] = [
           "I designed on-demand, timestamped summaries and Key Terms. Instead of replacing the source content, these features act as an index back into it. Follow-up questions inside the summaries keep the mentorship layer available even during revision.",
           "Impact: 15.5K summaries and Key-Term sets generated, with a 25% download rate. Users also described using summaries to filter long videos and revise before important events.",
         ],
-        visuals: [{ kind: "browser", shots: [shot(pp("sol4-summary.png"), "A time-stamped summary with key terms")] }],
+        visuals: [{ kind: "browser", shots: [shot(pp("sol4-summary-screen.webp"), "A time-stamped summary with key terms")] }],
       },
       {
         title: "Three production iterations",
