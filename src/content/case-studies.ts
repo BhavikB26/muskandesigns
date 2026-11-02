@@ -65,12 +65,17 @@ export type Annotated = {
 /** A small playful element next to a section title; transparent PNG/SVG, or a framed GIF. */
 export type Sticker = { src: string; w: number; h: number; alt: string; anim?: string; framed?: boolean };
 
+/** A numbered card: a title, a line, then groups of short tags (an optional label above each group). */
+export type SectionCard = { title: string; body: string; tags: { label?: string; items: string[] }[] };
+
 export type Section = {
   title: string;
   /** A brief name for the side rail, when the title is too long or too generic there. */
   short?: string;
   body?: string[];
   list?: string[];
+  /** Numbered cards, after the list. */
+  cards?: SectionCard[];
   /** Paragraphs after the list. */
   after?: string[];
   sticker?: Sticker;
@@ -501,14 +506,31 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Three production iterations",
-        body: [
-          "The product itself evolved alongside the feature set.",
-          "Version 01: prove the mentor concept. The first MVP was deliberately lightweight. It could be handed to engineering quickly and tested with roughly 100 users. What worked: the mentor felt persistently available, and the simple build let us test behaviour quickly. What didn’t: it covered active content, mentor and learner messages lacked enough distinction, minimise/maximise behaviour was confusing, even the collapsed state occupied too much space, and the visual system wasn’t mature enough to support a larger product.",
-          "Version 02: fix context and usability. The split-tab version solved the biggest problems. The interface stopped covering the user’s work. Mentor and learner messages were clearer. Controls were simplified. The experience felt substantially more mature.",
-          "But success created another issue. We began adding capabilities beyond chat. The architecture had nowhere for them to go. The input area started accumulating actions and the product risked becoming another crowded AI sidebar.",
-          "Version 03: design for the product ProPilot was becoming. The third production iteration introduced dedicated navigation and clearer hierarchy. Primary features could now own their own spaces. Secondary actions moved away from the input field. New capabilities, such as learning Paths, could grow without turning the chat composer into the product’s entire IA.",
-          "This was the point where the extension stopped feeling like “a chat tool on top of another website” and started feeling like “an extensible learning product.”",
+        body: ["The product itself evolved alongside the feature set."],
+        cards: [
+          {
+            title: "Prove the mentor concept",
+            body: "The first MVP was deliberately lightweight. It could be handed to engineering quickly and tested with roughly 100 users.",
+            tags: [
+              { label: "What worked", items: ["Persistently available", "Quick to test"] },
+              { label: "What didn’t", items: ["Covered active content", "Messages lacked distinction", "Confusing minimise/maximise", "Collapsed state too large", "Immature visual system"] },
+            ],
+          },
+          {
+            title: "Fix context and usability",
+            body: "The split-tab version solved the biggest problems, and the experience felt substantially more mature.",
+            tags: [
+              { label: "What improved", items: ["Stopped covering work", "Clearer messages", "Simpler controls"] },
+              { label: "What it exposed", items: ["No home for new capabilities", "Crowded input area"] },
+            ],
+          },
+          {
+            title: "Design for the product ProPilot was becoming",
+            body: "The third production iteration introduced dedicated navigation and clearer hierarchy, so new capabilities could grow without turning the chat composer into the product’s entire IA.",
+            tags: [{ items: ["Dedicated navigation", "Features own their spaces", "Secondary actions moved", "Learning Paths"] }],
+          },
         ],
+        after: ["This was the point where the extension stopped feeling like “a chat tool on top of another website” and started feeling like “an extensible learning product.”"],
         visuals: [
           {
             kind: "devices",

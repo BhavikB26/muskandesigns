@@ -107,6 +107,33 @@ function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
             </ul>
           )
         )}
+        {s.cards && (
+          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {s.cards.map((card, i) => (
+              <li key={card.title} className="flex flex-col gap-3 rounded-[20px] bg-surface-1 p-6 ring-1 ring-line">
+                <h3 className="flex items-baseline gap-2.5 text-[20px] leading-[1.3] text-ink">
+                  <span className={`${eyebrow} shrink-0`} style={{ fontStyle: "normal", WebkitTextStroke: 0 }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  {card.title}
+                </h3>
+                <p className={body}>{card.body}</p>
+                {card.tags.map((group, g) => (
+                  <div key={group.label ?? g} className="flex flex-col gap-2">
+                    {group.label && <span className={eyebrow}>{group.label}</span>}
+                    <ul className="flex flex-wrap gap-1.5">
+                      {group.items.map((t) => (
+                        <li key={t} className="rounded-md bg-background px-2 py-1 text-[13px] leading-[1.3] text-ink-soft ring-1 ring-line">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </li>
+            ))}
+          </ol>
+        )}
         <Paragraphs items={s.after} />
       </div>
       {s.visuals?.map((v, i) => (
