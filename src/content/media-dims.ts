@@ -50,7 +50,7 @@ export const mediaDims: Record<string, [number, number, number]> = {
   "/work/ai-mentor/exact/sol3-video.png": [566, 404, 0],
   "/work/ai-mentor/exact/sol4-detail1.png": [512, 682, 0],
   "/work/ai-mentor/exact/sol4-detail2.png": [646, 946, 0],
-  "/work/ai-mentor/exact/sol4-summary-screen.webp": [1800, 1068, 0],
+  "/work/ai-mentor/exact/sol4-summary-screen.webp": [2880, 1708, 0],
   "/work/ai-mentor/exact/sol4-summary.png": [910, 520, 0],
   "/work/ai-mentor/exact/testi-avatar1.png": [176, 176, 1],
   "/work/ai-mentor/exact/testi-avatar2.png": [100, 100, 0],

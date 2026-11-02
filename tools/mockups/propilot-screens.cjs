@@ -3,6 +3,8 @@
  * whole. Too-tall screenshots keep the top of the page, like a browser window; too-wide ones get extra
  * background above or below, so their sides are not trimmed. Enlarged with a light sharpen.
  *
+ * sol4-summary-screen.webp is not made here: it is a browser window rebuilt around a 1080p frame of the video.
+ *
  * Usage: node tools/mockups/propilot-screens.cjs → public/work/ai-mentor/exact/*-screen.webp
  */
 const path = require("path");
@@ -19,13 +21,6 @@ const save = (buf, name) =>
     .webp({ quality: 93 })
     .toFile(path.join(DIR, `${name}-screen.webp`));
 
-/** Rows of near-white at the very top (a stray strip above the browser's own bar). */
-async function whiteTop(file) {
-  const { data, info } = await sharp(file).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  for (let y = 0; y < 60; y++) if (data[(y * info.width + 8) * 3] < 200) return y;
-  return 0;
-}
-
 (async () => {
   for (const name of ["sol1", "sol2-after", "sol3-quiz"]) {
     const file = path.join(DIR, `${name}.png`);
@@ -38,11 +33,5 @@ async function whiteTop(file) {
   const extra = Math.round(m.width * RATIO) - m.height;
   await save(await sharp(mvp).extend({ top: Math.floor(extra / 2), bottom: Math.ceil(extra / 2), extendWith: "copy" }).png().toBuffer(), "mvp");
 
-  const sum = path.join(DIR, "sol4-summary.png");
-  const s = await sharp(sum).metadata();
-  const top = await whiteTop(sum);
-  const trimmed = await sharp(sum).extract({ left: 0, top, width: s.width, height: s.height - top }).png().toBuffer();
-  const bottom = Math.round(s.width * RATIO) - (s.height - top);
-  await save(await sharp(trimmed).extend({ bottom, background: { r: 16, g: 16, b: 16 } }).png().toBuffer(), "sol4-summary");
-  console.log("ok", { top, bottom });
+  console.log("ok");
 })();
