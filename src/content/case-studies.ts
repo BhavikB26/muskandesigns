@@ -193,6 +193,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Experiment 01: separate “I’m ready” from “show me more”",
+        short: "Two paths in",
         body: ["The original experience gave visitors one dominant next step: create an account. I introduced a parallel path:"],
         list: ["Create Account for high-intent visitors.", "How Gusto Works for visitors who needed context."],
         after: [
@@ -209,6 +210,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Experiment 02: capture interest without demanding a password",
+        short: "Password-free leads",
         body: [
           "The next question was what should happen after someone chose “How Gusto Works.” Instead of immediately turning that interaction back into account creation, I designed a lightweight lead journey. Visitors could:",
         ],
@@ -246,6 +248,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Experiment 03: personalise the education layer",
+        short: "Tailored content",
         body: [
           "Once someone tells us what they care about, showing them generic product content wastes that signal. The journey therefore adapted based on the features or needs the visitor selected.",
           "A business interested in payroll and benefits didn’t need the same story as one evaluating integrations or trying to understand compliance. The personalised path had two jobs:",
@@ -1097,6 +1100,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 01: start with one tiny commitment",
+        short: "One-tap rating",
         body: [
           "Immediately after checkout, the app asks for a simple star rating in a bottom sheet. That first interaction intentionally doesn’t expose the entire review form. A user can respond with very little effort.",
           "This works as an anchor for the rest of the journey: I’ve already started reviewing my stay. Once the intent is established, the product can invite more detailed feedback.",
@@ -1105,6 +1109,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 02: explain the reward before asking for more work",
+        short: "Reward up front",
         body: ["The experience clearly communicates that a high-quality review can earn a reward. Progress indicators show:"],
         list: ["where the guest is in the journey", "how much remains", "when the reward will be received"],
         after: [
@@ -1114,6 +1119,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 03: turn one giant review into smaller judgments",
+        short: "Category ratings",
         body: [
           "Instead of asking “Tell us about your stay,” the experience breaks the review into categories such as Room, Cleanliness and Location. Each category receives its own rating.",
           "This gives OYO more structured information while reducing the amount the guest has to formulate from scratch.",
@@ -1123,6 +1129,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 04: let the interface respond to the rating",
+        short: "Adaptive follow-ups",
         body: [
           "A five-star room and a two-star room shouldn’t produce exactly the same follow-up questions. After a rating, the interface surfaces contextual options that help the guest describe what worked or what didn’t.",
           "Instead of forcing someone to construct a paragraph, they can first select relevant themes. This has two benefits: it reduces cognitive effort for the reviewer, and it turns unstructured sentiment into information the business can actually analyse.",
@@ -1130,6 +1137,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 05: help users through the blank-page problem",
+        short: "Writing prompts",
         body: [
           "Writing is a much bigger commitment than tapping a rating. To reduce that barrier, the writing step includes contextual prompts and quick suggestions.",
           "These aren’t meant to write the review for the guest. They answer the much smaller question: “What could I talk about?” That gives people a starting point while keeping the content genuinely theirs.",
@@ -1139,6 +1147,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Step 06 and 07: photos and traveller context",
+        short: "Photos and trip type",
         body: [
           "Text tells someone what a guest thought. Photos can show what they actually experienced. The flow therefore asks users to upload property images and recognises that contribution within the reward experience. This makes the review more useful to the next person evaluating the hotel.",
           "The same property can be evaluated differently by a business traveller, a couple, a family, a student group, or a solo traveller. So the review also captures trip type.",
@@ -1240,6 +1249,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 01: Learning Plans answer “what should I do next?”",
+        short: "Learning Plans",
         body: [
           "A traditional course catalogue gives learners choice. Choice isn’t automatically helpful when someone has no idea what they need.",
           "Learning Plans assign a structured curriculum based on role or department. Instead of entering Builder University and deciding among dozens of courses, a new expert receives a path designed for what they need to function effectively.",
@@ -1261,6 +1271,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 02: gamification without making work feel childish",
+        short: "Light gamification",
         body: [
           "We wanted assigned learning to feel motivating. We didn’t want the product to become an elaborate points economy that required significant engineering and distracted from the actual learning.",
           "I studied how products such as LinkedIn Learning and Duolingo use progress and reward systems, then reduced those ideas to something appropriate for Builder.",
@@ -1280,6 +1291,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 03: don’t let the product become useless after onboarding",
+        short: "Learning Hub",
         body: [
           "The original business problem was onboarding. But interviews and product discussions revealed a second use case. Existing employees sometimes needed to understand another Builder product or internal process. There was no single place to do that.",
           "So Builder University evolved beyond assigned curricula. Every learner can browse the wider course catalogue and independently enrol in material outside their Learning Plan.",
