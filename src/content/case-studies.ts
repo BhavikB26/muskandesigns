@@ -366,6 +366,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Finding 01: technical questions were less random than they looked",
+        short: "Predictable questions",
         body: [
           "At first, the questions people asked mentors seemed highly specific. Once I started grouping them, patterns appeared. Learners repeatedly needed help with things like:",
         ],
@@ -386,6 +387,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Finding 02: learners didn’t need AI to make them more dependent on AI",
+        short: "Independence over speed",
         body: [
           "A recurring fear around tools such as ChatGPT was that receiving the complete answer felt efficient in the moment but damaged the learning experience. Users wanted help without losing the act of thinking.",
           "Human mentors often do this naturally. They ask another question. They point to the part of the code worth inspecting. They give a nudge. They allow the learner to reach the answer themselves.",
@@ -394,6 +396,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Finding 03: context was the product",
+        short: "Context builds trust",
         body: [
           "The MVP followed learners across websites through a floating chat. But users switched browser tabs constantly. When the learner moved to another problem or resource, they naturally expected the mentor to understand that new context. It didn’t always do so reliably.",
           "In interviews, this became one of the strongest sources of disappointment. A generic AI response inside the right-looking panel still felt wrong if it didn’t understand the page the learner was looking at.",
@@ -402,6 +405,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Finding 04: YouTube created a different mentorship problem",
+        short: "YouTube’s different need",
         body: ["Coding platforms are often about being blocked. YouTube is often about something subtler:"],
         list: [
           "losing focus",
@@ -437,6 +441,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 01: Easy Actions, let the product speak first",
+        short: "Easy Actions",
         body: ["The MVP required the learner to realise they needed help, move to the extension, formulate a question, type it and hope the mentor understood. That’s a lot of effort at the exact moment someone is already stuck.",
           "I designed contextual Easy Actions directly beside the problem-solving environment. Actions such as asking for a hint or explanation give the learner an obvious starting point while preserving the ability to continue with open-ended conversation.",
           "Placement mattered as much as wording. Because the actions appeared next to the learner’s code, problem and errors, the assistance felt tied to their work rather than a generic AI assistant sitting elsewhere.",
@@ -448,6 +453,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 02: turning a technical constraint into a better product",
+        short: "Side-tab layout",
         body: [
           "The floating MVP sat on top of the active webpage. It created two problems. It consumed working space. And reliable context switching between tabs was technically difficult.",
           "Engineering proposed moving the experience into a second split browser tab. Initially, this looked like a constraint I would have to design around. It became an improvement. The new side-tab architecture:",
@@ -466,6 +472,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 03: quizzes and dynamic follow-ups on YouTube",
+        short: "Quizzes and follow-ups",
         body: [
           "YouTube learners weren’t always blocked enough to open chat. Often they simply became passive. So waiting for an explicit question reproduced the same problem we saw in the original chat MVP.",
           "We introduced dynamic follow-up prompts directly around the video experience. The questions could:",
@@ -484,6 +491,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Solution 04: make long-form learning retrievable",
+        short: "Timestamped summaries",
         body: [
           "A two-hour video may be useful the first time and terrible as a revision interface. Interviews repeatedly surfaced the same behaviour: people saved videos, made notes, then struggled to find the exact idea again before an exam or interview.",
           "I designed on-demand, timestamped summaries and Key Terms. Instead of replacing the source content, these features act as an index back into it. Follow-up questions inside the summaries keep the mentorship layer available even during revision.",
