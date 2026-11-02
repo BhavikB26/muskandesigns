@@ -48,6 +48,7 @@ export const mediaDims: Record<string, [number, number, number]> = {
   "/work/ai-mentor/exact/sol3-quiz-screen.webp": [1800, 1067, 0],
   "/work/ai-mentor/exact/sol3-quiz.png": [1024, 796, 0],
   "/work/ai-mentor/exact/sol3-video.png": [566, 404, 0],
+  "/work/ai-mentor/exact/sol4-clip.webp": [1280, 759, 0],
   "/work/ai-mentor/exact/sol4-detail1.png": [512, 682, 0],
   "/work/ai-mentor/exact/sol4-detail2.png": [646, 946, 0],
   "/work/ai-mentor/exact/sol4-summary-screen.webp": [2880, 1708, 0],

@@ -1316,7 +1316,9 @@ html[data-theme="dark"] .bd-stroke, .th-surface--dark .bd-stroke { opacity: 0.28
   100% { transform: translateY(0); }
 }
 .dv-laptop__screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 6px; background: #111113; container-type: inline-size; }
-.dv-laptop__page { position: absolute; inset: 3.2cqw 0 0; overflow: hidden; background: #fff; }
+/* transparent, so no white shows at the rounded corners of dark screens; letterboxed pages get white behind */
+.dv-laptop__page { position: absolute; inset: 3.2cqw 0 0; overflow: hidden; }
+.dv-laptop__page:has(> img.object-contain) { background: #fff; }
 html[data-motion="paused"] .dv-scroll__page { animation: none; }
 @media (prefers-reduced-motion: reduce) { .dv-scroll__page { animation: none; } }
 .dv-browser__url { position: absolute; left: 50%; width: 34%; height: 46%; border-radius: 6px; background: #e9e7e3; transform: translateX(-50%); }

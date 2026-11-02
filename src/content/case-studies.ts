@@ -497,7 +497,7 @@ export const caseStudies: CaseStudy[] = [
           "I designed on-demand, timestamped summaries and Key Terms. Instead of replacing the source content, these features act as an index back into it. Follow-up questions inside the summaries keep the mentorship layer available even during revision.",
           "Impact: 15.5K summaries and Key-Term sets generated, with a 25% download rate. Users also described using summaries to filter long videos and revise before important events.",
         ],
-        visuals: [{ kind: "browser", shots: [shot(pp("sol4-summary-screen.webp"), "A time-stamped summary with key terms")] }],
+        visuals: [{ kind: "browser", shots: [clip(pp("sol4-summary-screen.webp"), pp("sol4-clip.webp"), "A long-form lecture playing on YouTube: Saptarshi Prakash introduces 12 key UX laws and principles")], caption: "Video: 12 UI/UX Laws You MUST KNOW, by Saptarshi Prakash" }],
       },
       {
         title: "Three production iterations",
