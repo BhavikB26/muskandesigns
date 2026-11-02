@@ -141,6 +141,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "The funnel assumed everyone was ready",
+        short: "One-size-fits-all funnel",
         body: [
           "The primary funnel assumed that visiting the site meant someone was ready to create an account almost immediately: Homepage → survey → account creation → email verification.",
           "But payroll is a high-consideration decision for a small business.",
@@ -182,6 +183,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "The constraint: no giant rebuild",
+        short: "No giant rebuild",
         body: [
           "This was a revenue-critical surface. Engineering capacity was limited.",
           "A large redesign would have taken longer to build, created more implementation risk and made it harder to learn which change actually affected conversion. I proposed a phased approach instead.",
@@ -241,6 +243,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Making the eventual signup easier, not harder",
+        short: "Easier eventual signup",
         body: [
           "The lower-commitment path wasn’t a dead end. If someone reached the end of the journey and decided Gusto was right for them, the information they had already provided carried forward.",
           "At that point, most of the account information was already complete. They primarily needed to create a password.",
@@ -271,6 +274,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Taking the winning behaviour into global navigation",
+        short: "Into global navigation",
         body: [
           "Once the lower-pressure path showed promise, we expanded How Gusto Works beyond the original entry point. It became part of the global navigation.",
           "Traffic into the journey increased by approximately 80%, giving more users access to the exploratory path and creating a larger pool of qualified leads.",
@@ -319,6 +323,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "The help existed. It wasn’t contextual.",
+        short: "Help without context",
         body: [
           "YouTube tutorials. LeetCode solutions. GeeksForGeeks. Reddit. ChatGPT.",
           "A developer could spend twenty minutes on a LeetCode problem, hit a conceptual block, open YouTube, search for a relevant video, discover that the instructor couldn’t see their code, return to the problem, then eventually paste everything into an LLM that might simply reveal the answer.",
@@ -334,6 +339,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Researching mentorship before designing AI",
+        short: "Mentorship research",
         body: [
           "Before deciding what the AI should do, I studied what good human mentors already did. The research ran intensively for roughly two weeks and continued through later interviews and product iterations.",
           "30+ hours of mentorship sessions. Preplaced had a large archive of one-to-one mentorship sessions. With mentor consent, I analysed more than 30 hours of sessions to understand:",
@@ -358,6 +364,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Study groups and existing communities",
+        short: "Study groups",
         body: [
           "We also observed WhatsApp study-group discussions to understand the emotional side of learning alone. Questions that looked technical on the surface often contained something else underneath:",
         ],
@@ -425,6 +432,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Prioritising what was actually feasible",
+        short: "Feasible priorities",
         body: [
           "The research produced more opportunities than the team could build. For example, a deeply personalised video roadmap could potentially reduce the overwhelming amount of content learners face. But it required significantly more product and engineering effort.",
           "Other opportunities had a better impact-to-effort ratio:",
@@ -438,6 +446,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Build a destination or augment the existing workflow?",
+        short: "Platform vs extension",
         body: [
           "A standalone AI learning platform would have given us complete control over the interface. It would also have asked developers to abandon the tools, content, saved progress and habits they already had.",
           "The alternative was technically messier: bring ProPilot into LeetCode, GeeksForGeeks and YouTube.",
@@ -588,6 +597,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "Connect the service to the visitor’s situation",
+        short: "Visitor-first journey",
         body: [
           "The brief combined a revenue calculator, client results, service packages, and call booking. I brought those elements into a journey that starts with the visitor’s own business and leads into the support available.",
           "A visitor could read about email marketing services, while the calculator gave them a way to explore the opportunity using their own numbers. The design challenge was connecting that first interaction with the rest of the page.",
@@ -597,6 +607,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Three questions, one starting point",
+        short: "Three questions",
         body: [
           "The calculator asks what visitors sell, how many subscribers they have, and what their main offer costs.",
           "Business types appear as selectable chips. List size and offer price combine sliders with editable values, allowing people to enter a specific number or explore different scenarios.",
@@ -606,6 +617,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Let the first result come before the form",
+        short: "Result before form",
         body: [
           "The contact form appears after the initial estimate, alongside an invitation to explore the list’s full potential.",
           "That ordering gives visitors a useful starting point before asking them to share their details. It also creates a specific reason to continue: understanding the wider range of outcomes.",
@@ -623,6 +635,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Compare services through the visitor’s involvement",
+        short: "Comparing services",
         body: [
           "Email Growth Blueprint provides strategy the visitor implements. Email Growth Intensive offers collaborative support. Done For You provides managed delivery.",
           "This gives visitors a concrete way to distinguish the offers alongside their features.",
@@ -635,6 +648,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Build and review in Claude Code",
+        short: "Built in Claude Code",
         body: [
           "I used Claude Code from the first implementation through final refinements, directing the page structure, interactions, and visual presentation.",
           "Reviewing the working page surfaced details that needed correction. The intended heading font, for example, was loading while heading styles still referenced the previous typeface.",
@@ -676,6 +690,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "The launch changed what the system needed to support",
+        short: "Natasha’s launch needs",
         body: [
           "Builder.ai’s products had developed their own interface patterns. Natasha needed to sit within that wider environment while also supporting a dedicated conversation experience.",
           "That made the surrounding product structure a priority. The system had to account for the relationship between navigation, content, contextual panels, and the assistant. A consistent visual language needed equally consistent behaviour.",
@@ -691,6 +706,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Give the workspace a stable structure",
+        short: "Workspace structure",
         body: [
           "The shared layout brings together a header, sidebar, secondary page controls, and a flexible content area. The file documents how those regions resize and how cards wrap within the available space.",
           "The sidebar includes an “Ask Natasha” entry in both expanded and collapsed forms. This establishes a recognisable place to reach the assistant while accommodating different navigation densities.",
@@ -706,6 +722,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Build cards from a shared anatomy",
+        short: "Shared card anatomy",
         body: [
           "Cards were one of the most complex parts of my contribution because different products needed different combinations of information and actions.",
           "I worked with the teams to identify that shared anatomy. The resulting base card supports configurable content regions, visuals, and a bottom action area, with horizontal and vertical arrangements and defined interaction states.",
@@ -716,6 +733,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Carry consistency into complex product patterns",
+        short: "Complex patterns",
         body: [
           "The wider redesign also covers tables, summary tables, and side panels. These are substantial parts of the working interface: they organise dense information, reveal detail, and support actions in context.",
           "Table patterns are assembled from shared cells, rows, and headers. Side panels define common header, content, and footer regions across several widths. These patterns give the products surrounding Natasha a common structural vocabulary.",
@@ -724,6 +742,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Treat conversation states as part of the system",
+        short: "Conversation states",
         body: [
           "Natasha required reusable headers, prompts, composers, user messages, responses, and voice controls. Those patterns needed to work across a side panel and an immersive view.",
           "The system defines response hierarchy and interaction states alongside the main screens. Loading, listening, thinking, speaking, and interruption all need a clear representation because they change what the user can do next.",
@@ -733,6 +752,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Support the larger patterns with shared foundations",
+        short: "Shared foundations",
         body: [
           "Colour variables include Light, Dark, and Error checker modes. The file also contains shared typography, spacing, and responsiveness values, including desktop, tablet, and mobile modes.",
           "These foundations provide common references for the larger patterns. The documented layout rules make the intended relationships between fixed, flexible, and wrapping regions explicit.",
@@ -772,6 +792,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "After pressing Submit, silence",
+        short: "Silence after Submit",
         body: [
           "Searching could feel repetitive. Filtering required effort. Applications became tiring when similar questions appeared again and again. And after pressing Submit, the experience often transformed into silence.",
           "For someone already navigating the uncertainty of an early-career job search, the product was adding another layer of uncertainty instead of reducing it.",
@@ -781,6 +802,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Why this matters more for early-career candidates",
+        short: "Early-career stakes",
         body: [
           "Students and fresh graduates are doing two difficult things simultaneously. They’re trying to get hired. And they’re often learning how hiring works for the first time.",
           "That makes ambiguity especially costly. An experienced applicant may know that a week of silence means very little. A student may interpret the exact same silence as:",
@@ -799,6 +821,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Mapping the experience into three problem areas",
+        short: "Three problem areas",
         body: ["The research became much clearer once I separated it by stage."],
         list: [
           "Finding: users needed more useful recommendations and easier refinement of search results.",
@@ -961,6 +984,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "Make the first conversation easier to begin",
+        short: "Easier first message",
         body: [
           "The opening experience introduces Natasha and asks what the person would like to build. Suggested starting points such as “Build app”, “Create store”, and “Prototype” connect the assistant to recognisable goals.",
           "This gives someone a starting point even if they have not worked out how to phrase their request. The message field remains available for people ready to describe their own idea.",
@@ -976,6 +1000,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Give conversation the space it needs",
+        short: "Panel vs immersive",
         body: [
           "The side panel keeps Natasha close to the surrounding product. Its header includes controls to expand or close the experience, while the composer remains at the bottom of the conversation.",
           "The immersive view gives the same conversation patterns a wider canvas. Shared response and input components adapt to that space, keeping the interaction recognisable across both formats.",
@@ -991,6 +1016,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Make text and voice visible choices",
+        short: "Text and voice",
         body: [
           "“Talk” is presented beside the message composer as an explicit entry into the voice experience. The component model also accounts for transcribed user messages, with distinct formats for spoken and typed input.",
           "An in-page voice bar provides another way to keep the interaction available alongside page content. Its controls expose the current state and ways to pause, close, or interrupt the exchange.",
@@ -1007,6 +1033,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Give responses structure and a next step",
+        short: "Structured responses",
         body: [
           "Natasha’s responses are built from body text, headings, subheadings, bullets, and numbered lists, with corresponding compact and immersive variants.",
           "Response-level controls provide playback, copying, and feedback affordances. Suggested follow-ups let people indicate whether a response works for them and continue the exchange.",
@@ -1015,6 +1042,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Set expectations within the experience",
+        short: "Setting expectations",
         body: [
           "The compact interface includes a reminder that Natasha can make mistakes and that responses should be checked. Combined with feedback and interruption controls, this makes room for the user to question or redirect the assistant.",
         ],
@@ -1059,6 +1087,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "A star rating in the wrong place",
+        short: "Misplaced star rating",
         body: [
           "The existing experience allowed little more than a star rating. It lived inside a part of the app users primarily visited for invoices or repeat bookings.",
           "There was no meaningful review-writing flow, very little context around what the rating represented, and no strong reason for someone to return after checkout just to provide feedback.",
@@ -1089,6 +1118,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Why timing mattered as much as interface design",
+        short: "Why timing mattered",
         body: [
           "One of the most useful behavioural ideas in the project was the peak-end rule. People tend to remember experiences disproportionately through emotionally significant moments and how the experience ended.",
           "That was relevant because reviews are rarely neutral acts. Someone who had an excellent stay may want to celebrate it. Someone who had a poor stay may strongly want to explain what went wrong. An average experience creates much less motivation.",
@@ -1098,6 +1128,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Understanding why the existing flow wasn’t converting",
+        short: "Why it didn’t convert",
         body: [
           "I combined several inputs.",
           "User conversations. We spoke with users to understand what they thought the existing rating represented and why they weren’t completing it. A recurring issue was ambiguity. A star score could mean different things to different people, and users couldn’t always tell what a number on a listing actually represented.",
@@ -1109,6 +1140,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "The existing experience had three structural problems",
+        short: "Three core problems",
         list: [
           "01, wrong moment. Users weren’t naturally returning to My Bookings to leave detailed feedback.",
           "02, too little expression. A star rating couldn’t explain why a stay was good or bad.",
@@ -1118,6 +1150,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Designing the review journey with the PM",
+        short: "Mapping the journey",
         body: [
           "During conceptualisation, I worked closely with the product manager to map how review collection could happen after checkout. We validated the proposed journey with other stakeholders before going deeper into UI.",
           "I then used rapid ideation exercises, including Crazy 8s, to explore ways of breaking a potentially long review into a sequence of smaller interactions.",
@@ -1239,6 +1272,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "People repeatedly teaching people",
+        short: "Repeated teaching",
         body: [
           "New experts could be joining while projects were already moving. The people most qualified to teach them were also busy doing their own work.",
           "Some hires needed product knowledge. Others needed role-specific processes. Experienced employees sometimes needed a place to learn about a part of Builder they hadn’t worked with before.",
@@ -1247,6 +1281,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "The challenge wasn’t simply “build an LMS”",
+        short: "More than an LMS",
         body: [
           "E-learning is a mature category. Video lessons, quizzes, course pages and certificates are not novel interface problems. Our specific problem was organisational.",
           "A new person could arrive and see an enormous amount of Builder knowledge without knowing:",
@@ -1256,6 +1291,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "The first product decision: don’t wait for the product",
+        short: "WordPress pilot first",
         body: [
           "The company needed a solution immediately. Building a fully custom learning platform first would have delayed the operational benefit and forced us to make product decisions without observing how people actually learned the material.",
           "So we launched an initial pilot using WordPress. This wasn’t a compromised final solution. It was an intentional temporary one.",
@@ -1290,6 +1326,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Designing progress into the dashboard",
+        short: "Progress dashboard",
         body: [
           "A long learning plan feels less intimidating when progress is visible. The dashboard therefore makes completion concrete through information such as:",
         ],
@@ -1332,6 +1369,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Designing the complete product from scratch",
+        short: "The complete product",
         body: ["The final system had to connect several layers."],
         list: [
           "Dashboard: what am I supposed to learn now?",
@@ -1348,6 +1386,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Working closely with QA and engineering",
+        short: "QA and engineering",
         body: [
           "Designing the interface was only one part of shipping the product. One of the biggest implementation challenges was keeping the final build close to the intended experience.",
           "I worked through multiple rounds of QA myself and shared knowledge transfers directly with developers to reduce information getting lost between design and implementation.",
@@ -1403,6 +1442,7 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         title: "Breadth is a strength, and a communication problem",
+        short: "Breadth as a problem",
         body: [
           "Its product includes to-dos, chat, message boards, files, schedules, reporting, check-ins, project history, integrations and more.",
           "That breadth is a product strength. On a landing page, it can also become a communication problem.",
@@ -1410,6 +1450,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Auditing the existing experience",
+        short: "Page audit",
         body: [
           "I reviewed the original page through several lenses: hierarchy, navigation, content sequence, CTA prominence, feature communication, and the relationship between marketing copy and actual product UI. Four issues appeared repeatedly.",
         ],
@@ -1479,6 +1520,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Restructuring the information architecture",
+        short: "New page structure",
         body: ["The final page follows a clearer sequence:"],
         list: [
           "01, core product promise: what does Basecamp help teams accomplish?",
