@@ -1141,10 +1141,22 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "The existing experience had three structural problems",
         short: "Three core problems",
-        list: [
-          "01, wrong moment. Users weren’t naturally returning to My Bookings to leave detailed feedback.",
-          "02, too little expression. A star rating couldn’t explain why a stay was good or bad.",
-          "03, the value exchange was invisible. A thoughtful review benefits future travellers, the property and the platform. The user was doing real work, but the product didn’t meaningfully recognise that contribution.",
+        cards: [
+          {
+            title: "Wrong moment",
+            body: "Users weren’t naturally returning to My Bookings to leave detailed feedback.",
+            tags: [{ items: ["My Bookings", "Long after checkout"] }],
+          },
+          {
+            title: "Too little expression",
+            body: "A star rating couldn’t explain why a stay was good or bad.",
+            tags: [{ items: ["Stars only", "No written detail"] }],
+          },
+          {
+            title: "The value exchange was invisible",
+            body: "A thoughtful review benefits future travellers, the property and the platform. The user was doing real work, but the product didn’t meaningfully recognise that contribution.",
+            tags: [{ label: "Who benefits", items: ["Future travellers", "The property", "The platform"] }],
+          },
         ],
         after: ["That led us to explore an incentive-led Review SaaS flow."],
       },
