@@ -1388,6 +1388,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Principle 01: lead with the job, not the inventory",
+        short: "Job before features",
         body: [
           "Instead of opening with a large amount of product detail, the redesigned hero focuses on the larger outcome: centralise work, collaborate clearly and keep projects moving.",
           "Features can then prove the promise. This creates a better information order: Why should I care? then How does it work? then What exactly do I get?",
@@ -1396,6 +1397,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Principle 02: let the interface explain the relationship between features",
+        short: "Features in context",
         body: [
           "A to-do list isn’t an interesting differentiator by itself. Neither is chat. Neither are files. Basecamp’s value comes from those things existing around the same project.",
           "So the redesign relies more heavily on interface moments to show that relationship. A visitor can see how communication, tasks, project updates and files operate together rather than encountering them as a disconnected feature checklist.",
@@ -1404,6 +1406,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Principle 03: group capabilities around jobs people recognise",
+        short: "Grouped by job",
         body: ["Instead of presenting every capability at equal weight, I organised the page around understandable product jobs."],
         list: [
           "Organise work: to-dos, scheduling and project structure.",
@@ -1418,6 +1421,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Principle 04: treat notification control as a benefit, not a setting",
+        short: "Focus as a benefit",
         body: [
           "One of Basecamp’s more interesting ideas is that collaboration software shouldn’t demand everyone’s attention all day. Notification protection can easily be presented as another settings feature. I elevated it as part of the product philosophy.",
           "The value isn’t “You can configure notifications.” It’s “Your project-management tool doesn’t need to own your attention.” That tells a much stronger product story.",
@@ -1425,6 +1429,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: "Principle 05: put proof beside the claim it supports",
+        short: "Proof beside claims",
         body: [
           "Social proof becomes less persuasive when testimonials live in an isolated carousel disconnected from the rest of the page. The redesign uses evidence closer to relevant product claims.",
           "If a section explains organisation, the proof should reinforce organisation. If the section explains collaboration, the supporting story should relate to collaboration. That turns testimonials into evidence rather than decoration.",
