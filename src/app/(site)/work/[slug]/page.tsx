@@ -110,7 +110,7 @@ function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
         {s.cards && (
           <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {s.cards.map((card, i) => (
-              <li key={card.title} className="flex flex-col gap-3 rounded-[20px] bg-surface-1 p-6 ring-1 ring-line">
+              <li key={card.title} className="flex flex-col gap-3 rounded-[20px] bg-surface-1 p-6 ring-1 ring-line sm:[&:last-child:nth-child(odd)]:col-span-2">
                 <h3 className="flex items-baseline gap-2.5 text-[20px] leading-[1.3] text-ink">
                   <span className={`${eyebrow} shrink-0`} style={{ fontStyle: "normal", WebkitTextStroke: 0 }}>
                     {String(i + 1).padStart(2, "0")}
