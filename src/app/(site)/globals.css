@@ -1801,3 +1801,10 @@ html[data-motion="paused"] .warp .warp__beam { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
   .warp__beam { display: none; }
 }
+
+/* The cover at the top of a case study: only the device, straight on the warp background (no tile behind). */
+.cv-bare .cv { background: none; overflow: visible; }
+.cv-bare .cv-wall, .cv-bare .cv-wash { display: none; }
+.cv-bare .cv-phone, .cv-bare .cv-framed { margin-top: 0; }
+.cv-bare .cv-laptop { margin-top: 0; width: 96cqw; }
+.cv-bare .bn { background: none; padding: 0; }

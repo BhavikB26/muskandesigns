@@ -175,7 +175,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                 </h1>
               </div>
               <WarpBackground className="gem-panel gem-tile px-[clamp(20px,8%,72px)] py-[clamp(20px,6%,48px)]" innerClassName="flex justify-center">
-                <div className="work-cell relative aspect-square w-full max-w-[460px] overflow-clip [container-type:size]">
+                <div className="cv-bare relative aspect-square w-full max-w-[540px] [container-type:size]">
                   <Cover slug={c.slug} />
                 </div>
               </WarpBackground>
