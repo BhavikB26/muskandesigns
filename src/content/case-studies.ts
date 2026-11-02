@@ -176,13 +176,13 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Reframing the funnel",
         body: [
-          "My original question was: how might we bridge the gap between account creation and payroll initiation so more organic visitors become quality leads that eventually run payroll?",
-          "The working hypothesis became: if we reduce the commitment required at the beginning and give visitors context first, more people will move forward, either as qualified leads or as full account signups.",
+          "My original question was: How might we bridge the gap between account creation and payroll initiation so more organic visitors become quality leads that eventually run payroll?",
+          "The working hypothesis became: If we reduce the commitment required at the beginning and give visitors context first, more people will move forward, either as qualified leads or as full account signups.",
           "That meant separating two things the original funnel had combined: interest, and account creation.",
         ],
       },
       {
-        title: "The constraint: no giant rebuild",
+        title: "The constraint: No giant rebuild",
         short: "No giant rebuild",
         body: [
           "This was a revenue-critical surface. Engineering capacity was limited.",
@@ -199,7 +199,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Experiment 01: separate “I’m ready” from “show me more”",
+        title: "Experiment 01: Separate “I’m ready” from “show me more”",
         short: "Two paths in",
         body: ["The original experience gave visitors one dominant next step: create an account. I introduced a parallel path:"],
         list: ["Create Account for high-intent visitors.", "How Gusto Works for visitors who needed context."],
@@ -216,17 +216,17 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Experiment 02: capture interest without demanding a password",
+        title: "Experiment 02: Capture interest without demanding a password",
         short: "Password-free leads",
         body: [
           "The next question was what should happen after someone chose “How Gusto Works.” Instead of immediately turning that interaction back into account creation, I designed a lightweight lead journey. Visitors could:",
         ],
         list: [
-          "identify which product areas they cared about",
-          "answer a small set of qualifying questions",
-          "submit contact information without creating a password",
-          "see product content tailored to their interests",
-          "decide later whether to sign up, speak to Sales or continue exploring",
+          "Identify which product areas they cared about",
+          "Answer a small set of qualifying questions",
+          "Submit contact information without creating a password",
+          "See product content tailored to their interests",
+          "Decide later whether to sign up, speak to Sales or continue exploring",
         ],
         after: [
           "This gave the business something the previous experience couldn’t: a qualified lead even when the visitor wasn’t ready to become an account holder.",
@@ -255,7 +255,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Experiment 03: personalise the education layer",
+        title: "Experiment 03: Personalise the education layer",
         short: "Tailored content",
         body: [
           "Once someone tells us what they care about, showing them generic product content wastes that signal. The journey therefore adapted based on the features or needs the visitor selected.",
@@ -332,7 +332,7 @@ export const caseStudies: CaseStudy[] = [
         list: ["Only 17% of installs initiated a conversation.", "Users averaged roughly 2 messages.", "Week-one retention was around 10%, with later retention falling sharply."],
         after: [
           "A mentor that waits silently for someone to formulate the perfect prompt is still, fundamentally, a chatbot.",
-          "So the project became a larger question: what would an AI product look like if it behaved more like a mentor and less like an empty text box?",
+          "So the project became a larger question: What would an AI product look like if it behaved more like a mentor and less like an empty text box?",
         ],
         sticker: { src: pp("problem3-char.png"), w: 512, h: 512, alt: "A worried developer, stuck on a problem" },
         visuals: [{ kind: "browser", shots: [shot(pp("mvp-screen.webp"), "The MVP’s floating chat over a LeetCode problem")] }],
@@ -345,11 +345,11 @@ export const caseStudies: CaseStudy[] = [
           "30+ hours of mentorship sessions. Preplaced had a large archive of one-to-one mentorship sessions. With mentor consent, I analysed more than 30 hours of sessions to understand:",
         ],
         list: [
-          "what learners ask when they’re stuck",
-          "how mentors diagnose the actual problem",
-          "when mentors give an answer versus another question",
-          "how technical guidance changes with learner ability",
-          "how mentors maintain confidence and momentum",
+          "What learners ask when they’re stuck",
+          "How mentors diagnose the actual problem",
+          "When mentors give an answer versus another question",
+          "How technical guidance changes with learner ability",
+          "How mentors maintain confidence and momentum",
         ],
         after: ["The important thing wasn’t merely the content of the answers. It was when and how mentors intervened."],
         sticker: { src: pp("problem4-char.png"), w: 512, h: 512, alt: "A learner looking unsure" },
@@ -377,19 +377,19 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Finding 01: technical questions were less random than they looked",
+        title: "Finding 01: Technical questions were less random than they looked",
         short: "Predictable questions",
         body: [
           "At first, the questions people asked mentors seemed highly specific. Once I started grouping them, patterns appeared. Learners repeatedly needed help with things like:",
         ],
         list: [
-          "understanding the problem",
-          "starting an approach",
-          "identifying an error",
-          "getting a hint",
-          "comparing approaches",
-          "optimising a solution",
-          "checking their reasoning",
+          "Understanding the problem",
+          "Starting an approach",
+          "Identifying an error",
+          "Getting a hint",
+          "Comparing approaches",
+          "Optimising a solution",
+          "Checking their reasoning",
         ],
         after: [
           "That meant the interface didn’t always need to wait for a free-form prompt. The product could anticipate useful categories of help.",
@@ -398,7 +398,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "board", shot: shot(pp("finding-notebook.png"), "My notes grouping learners’ questions into a few patterns") }],
       },
       {
-        title: "Finding 02: learners didn’t need AI to make them more dependent on AI",
+        title: "Finding 02: Learners didn’t need AI to make them more dependent on AI",
         short: "Independence over speed",
         body: [
           "A recurring fear around tools such as ChatGPT was that receiving the complete answer felt efficient in the moment but damaged the learning experience. Users wanted help without losing the act of thinking.",
@@ -407,7 +407,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Finding 03: context was the product",
+        title: "Finding 03: Context was the product",
         short: "Context builds trust",
         body: [
           "The MVP followed learners across websites through a floating chat. But users switched browser tabs constantly. When the learner moved to another problem or resource, they naturally expected the mentor to understand that new context. It didn’t always do so reliably.",
@@ -420,10 +420,10 @@ export const caseStudies: CaseStudy[] = [
         short: "YouTube’s different need",
         body: ["Coding platforms are often about being blocked. YouTube is often about something subtler:"],
         list: [
-          "losing focus",
-          "wondering whether you understood something",
-          "forgetting a question before the video ends",
-          "later needing to revise hours of content quickly",
+          "Losing focus",
+          "Wondering whether you understood something",
+          "Forgetting a question before the video ends",
+          "Later needing to revise hours of content quickly",
         ],
         after: [
           "The same AI interaction couldn’t solve both contexts. On coding platforms, the product needed to help users unstick themselves. On YouTube, it needed to help them stay engaged, test understanding and retrieve learning later.",
@@ -466,36 +466,36 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "browser", shots: [shot(pp("sol1-screen.webp"), "Easy Actions next to the code editor on LeetCode")] }],
       },
       {
-        title: "Solution 02: turning a technical constraint into a better product",
+        title: "Solution 02: Turning a technical constraint into a better product",
         short: "Side-tab layout",
         body: [
           "The floating MVP sat on top of the active webpage. It created two problems. It consumed working space. And reliable context switching between tabs was technically difficult.",
           "Engineering proposed moving the experience into a second split browser tab. Initially, this looked like a constraint I would have to design around. It became an improvement. The new side-tab architecture:",
         ],
         list: [
-          "kept the learner’s main working area clear",
-          "made the mentor visually distinct",
-          "allowed the product to follow context more reliably",
-          "created a more stable home for the interface",
+          "Kept the learner’s main working area clear",
+          "Made the mentor visually distinct",
+          "Allowed the product to follow context more reliably",
+          "Created a more stable home for the interface",
         ],
         after: [
-          "Impact: the product reached an NPS of 60. In interviews, 92% of users highlighted the mentor knowing what page they were on as a meaningful part of the experience.",
-          "The lesson was useful: sometimes engineering doesn’t hand design a limitation. It hands design the beginning of a better interaction model.",
+          "Impact: The product reached an NPS of 60. In interviews, 92% of users highlighted the mentor knowing what page they were on as a meaningful part of the experience.",
+          "The lesson was useful: Sometimes engineering doesn’t hand design a limitation. It hands design the beginning of a better interaction model.",
         ],
         visuals: [{ kind: "browser", shots: [shot(pp("sol2-after-screen.webp"), "The split side tab next to an article the learner is reading")] }],
       },
       {
-        title: "Solution 03: quizzes and dynamic follow-ups on YouTube",
+        title: "Solution 03: Quizzes and dynamic follow-ups on YouTube",
         short: "Quizzes and follow-ups",
         body: [
           "YouTube learners weren’t always blocked enough to open chat. Often they simply became passive. So waiting for an explicit question reproduced the same problem we saw in the original chat MVP.",
           "We introduced dynamic follow-up prompts directly around the video experience. The questions could:",
         ],
         list: [
-          "surface a likely doubt",
-          "invite the learner to go deeper",
-          "connect an idea to another example",
-          "test whether they understood what they had just watched",
+          "Surface a likely doubt",
+          "Invite the learner to go deeper",
+          "Connect an idea to another example",
+          "Test whether they understood what they had just watched",
         ],
         after: [
           "Quizzes appeared at deliberate intervals. Their frequency was refined through experimentation so they could restore attention without becoming another interruption. I also deliberately used lower-content areas around the player, based on observations of where learners focused during sessions.",
@@ -504,7 +504,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "browser", shots: [shot(pp("sol3-quiz-screen.webp"), "A quiz on top of a YouTube lecture")] }],
       },
       {
-        title: "Solution 04: make long-form learning retrievable",
+        title: "Solution 04: Make long-form learning retrievable",
         short: "Timestamped summaries",
         body: [
           "A two-hour video may be useful the first time and terrible as a revision interface. Interviews repeatedly surfaced the same behaviour: people saved videos, made notes, then struggled to find the exact idea again before an exam or interview.",
@@ -564,7 +564,7 @@ export const caseStudies: CaseStudy[] = [
           "This project changed how I think about AI products. The default interaction pattern is often: blank prompt → user asks → AI answers. But the user may already be doing something before they ever open the AI.",
           "The design opportunity is understanding that context well enough to know:",
         ],
-        list: ["when to offer help", "what kind of help is useful", "how much help is too much", "when the product should simply stay out of the way"],
+        list: ["When to offer help", "What kind of help is useful", "How much help is too much", "When the product should simply stay out of the way"],
         after: [
           "The strongest AI interaction isn’t always another prompt box.",
           "Sometimes the design work is deciding when the product should speak first.",
@@ -830,11 +830,11 @@ export const caseStudies: CaseStudy[] = [
         ],
         after: [
           "The redesign therefore became less about isolated screens and more about the continuity of the internship hunt.",
-          "The design question: how might Internshala reduce the work required to apply while giving early-career candidates more confidence about what’s happening throughout the journey?",
+          "The design question: How might Internshala reduce the work required to apply while giving early-career candidates more confidence about what’s happening throughout the journey?",
         ],
       },
       {
-        title: "Opportunity 01: show value before asking for a detailed profile",
+        title: "Opportunity 01: Show value before asking for a detailed profile",
         short: "Value before profile",
         body: [
           "Some users want to browse opportunities before investing time completing a full profile. The redesign therefore begins with lightweight preference capture rather than immediately requiring detailed setup.",
@@ -846,7 +846,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Opportunity 02: make searching feel like refinement",
+        title: "Opportunity 02: Make searching feel like refinement",
         short: "Smarter search",
         body: [
           "The original search experience could require too much configuration. I simplified the search hierarchy and reframed filters around the user’s preferences. Common dimensions remain easy to reach. Past searches can stay accessible. Recommended opportunities become more prominent.",
@@ -855,16 +855,16 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", shots: [shot("/work/internshala/cs/in-search-clean.webp", "Home, search and preferences", undefined, row3("Home", "Search", "Preferences (filters)"))] }],
       },
       {
-        title: "Opportunity 03: make the profile reusable but the application personal",
+        title: "Opportunity 03: Make the profile reusable but the application personal",
         short: "Reusable profile",
         body: [
           "A candidate shouldn’t have to rebuild their professional information for every application. But forcing every company to receive exactly the same application also isn’t ideal.",
           "The redesign separates those concerns. The central profile and resume become reusable foundations. During a specific application, users can make relevant edits without unintentionally changing everything in the profile. Document parsing can reduce manual profile creation further.",
-          "The principle: your information should be reusable. Your application should still be adaptable.",
+          "The principle: Your information should be reusable. Your application should still be adaptable.",
         ],
       },
       {
-        title: "Opportunity 04: break applications into smaller steps",
+        title: "Opportunity 04: Break applications into smaller steps",
         short: "Step-by-step applying",
         body: [
           "Long forms feel longer when the user has no idea how much remains. I replaced the wall-of-form pattern with progressive steps and visible progress. Each stage asks for a manageable amount of information.",
@@ -872,7 +872,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Opportunity 05: stop making people rewrite the same answer",
+        title: "Opportunity 05: Stop making people rewrite the same answer",
         short: "Saved responses",
         body: ["Internship applications often ask variations of the same questions:"],
         list: ["Why are you interested?", "Tell us about a relevant project.", "Why are you a good fit?"],
@@ -884,7 +884,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", shots: [shot("/work/internshala/cs/in-saved-clean.webp", "Application form with saved responses", undefined, row3("Application form", "Saved responses", "Save a response"))] }],
       },
       {
-        title: "Opportunity 06: drafts should behave like drafts",
+        title: "Opportunity 06: Drafts should behave like drafts",
         short: "Auto-saved drafts",
         body: [
           "Applicants frequently need information they don’t have immediately. Maybe they want to check a portfolio link. Rewrite an answer. Come back after class. Or finish from another device.",
@@ -894,7 +894,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", shots: [shot("/work/internshala/cs/in-drafts-clean.webp", "Saving an application as a draft", undefined, row3("Application form", "Save as draft pop-up", "Home"))] }],
       },
       {
-        title: "Opportunity 07: make post-application status visible",
+        title: "Opportunity 07: Make post-application status visible",
         short: "Application status",
         body: ["This became one of the most important changes. Applications can move through states such as:"],
         list: ["Submitted", "Viewed", "Shortlisted", "Interviewing", "Rejected, or another next step"],
@@ -904,7 +904,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Opportunity 08: create a path to human contact",
+        title: "Opportunity 08: Create a path to human contact",
         short: "Recruiter contact",
         body: [
           "Research also suggested that candidates value contact with real people inside the organisations they are applying to. The redesign explores two ways of bringing the employer closer.",
@@ -942,11 +942,11 @@ export const caseStudies: CaseStudy[] = [
         title: "Expected impact",
         body: ["Because this is a self-initiated project, these are design hypotheses rather than measured product results. I would expect the redesign to improve:"],
         list: [
-          "recommendation relevance, through preference-led onboarding",
-          "application completion, through progressive disclosure and drafts",
-          "repeat application efficiency, through Saved Responses and reusable profile data",
-          "candidate trust, through clearer application states",
-          "ongoing engagement, through communication and stronger post-submission utility",
+          "Recommendation relevance, through preference-led onboarding",
+          "Application completion, through progressive disclosure and drafts",
+          "Repeat application efficiency, through Saved Responses and reusable profile data",
+          "Candidate trust, through clearer application states",
+          "Ongoing engagement, through communication and stronger post-submission utility",
         ],
         after: ["Those would be the behaviours I would validate in testing before treating the redesign as successful."],
       },
@@ -1092,7 +1092,7 @@ export const caseStudies: CaseStudy[] = [
           "The existing experience allowed little more than a star rating. It lived inside a part of the app users primarily visited for invoices or repeat bookings.",
           "There was no meaningful review-writing flow, very little context around what the rating represented, and no strong reason for someone to return after checkout just to provide feedback.",
           "That affected more than review volume. Sparse property reviews reduce confidence for future travellers. Hotels lose a source of structured feedback. And OYO loses a mechanism that can improve both marketplace trust and hotel participation.",
-          "The challenge became: how might we collect richer post-stay reviews without turning feedback into another long form users don’t want to complete?",
+          "The challenge became: How might we collect richer post-stay reviews without turning feedback into another long form users don’t want to complete?",
         ],
         sticker: gif("/work/ratings-reviews/cs/12-296.webp", 541, 541, "GIF: C’mon son", "/work/ratings-reviews/cs/12-296-anim.webp"),
         visuals: [
@@ -1123,7 +1123,7 @@ export const caseStudies: CaseStudy[] = [
           "One of the most useful behavioural ideas in the project was the peak-end rule. People tend to remember experiences disproportionately through emotionally significant moments and how the experience ended.",
           "That was relevant because reviews are rarely neutral acts. Someone who had an excellent stay may want to celebrate it. Someone who had a poor stay may strongly want to explain what went wrong. An average experience creates much less motivation.",
           "The existing experience waited for the user to rediscover rating inside the product. By then, the strongest moment of intent might already have passed.",
-          "So the first design principle became: ask while the stay is still fresh.",
+          "So the first design principle became: Ask while the stay is still fresh.",
         ],
       },
       {
@@ -1174,7 +1174,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Step 01: start with one tiny commitment",
+        title: "Step 01: Start with one tiny commitment",
         short: "One-tap rating",
         body: [
           "Immediately after checkout, the app asks for a simple star rating in a bottom sheet. That first interaction intentionally doesn’t expose the entire review form. A user can respond with very little effort.",
@@ -1183,17 +1183,17 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", maxWidth: 520, shots: [shot("/work/ratings-reviews/img-entry-clear.webp", "The bottom sheet on the first app visit after checkout")] }],
       },
       {
-        title: "Step 02: explain the reward before asking for more work",
+        title: "Step 02: Explain the reward before asking for more work",
         short: "Reward up front",
         body: ["The experience clearly communicates that a high-quality review can earn a reward. Progress indicators show:"],
-        list: ["where the guest is in the journey", "how much remains", "when the reward will be received"],
+        list: ["Where the guest is in the journey", "How much remains", "When the reward will be received"],
         after: [
           "A persistent reward cue reinforces the value exchange without forcing the user to remember it.",
           "The psychology wasn’t “bribe someone for a positive review.” The reward was for completing useful feedback, regardless of whether the experience was good or bad. That distinction was important for trust.",
         ],
       },
       {
-        title: "Step 03: turn one giant review into smaller judgments",
+        title: "Step 03: Turn one giant review into smaller judgments",
         short: "Category ratings",
         body: [
           "Instead of asking “Tell us about your stay,” the experience breaks the review into categories such as Room, Cleanliness and Location. Each category receives its own rating.",
@@ -1203,7 +1203,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", maxWidth: 280, shots: [shot("/work/ratings-reviews/img-rate-clear.webp", "Category ratings for room, cleanliness and location")] }],
       },
       {
-        title: "Step 04: let the interface respond to the rating",
+        title: "Step 04: Let the interface respond to the rating",
         short: "Adaptive follow-ups",
         body: [
           "A five-star room and a two-star room shouldn’t produce exactly the same follow-up questions. After a rating, the interface surfaces contextual options that help the guest describe what worked or what didn’t.",
@@ -1211,7 +1211,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Step 05: help users through the blank-page problem",
+        title: "Step 05: Help users through the blank-page problem",
         short: "Writing prompts",
         body: [
           "Writing is a much bigger commitment than tapping a rating. To reduce that barrier, the writing step includes contextual prompts and quick suggestions.",
@@ -1221,7 +1221,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "devices", maxWidth: 280, shots: [shot("/work/ratings-reviews/img-write-clear.webp", "Writing a review with contextual suggestions")] }],
       },
       {
-        title: "Step 06 and 07: photos and traveller context",
+        title: "Step 06 and 07: Photos and traveller context",
         short: "Photos and trip type",
         body: [
           "Text tells someone what a guest thought. Photos can show what they actually experienced. The flow therefore asks users to upload property images and recognises that contribution within the reward experience. This makes the review more useful to the next person evaluating the hotel.",
@@ -1255,7 +1255,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "What I took away",
         body: ["The reward helped. But the reward wasn’t the whole design. The strongest experience came from combining:"],
-        list: ["the right timing", "small progressive commitments", "clear progress", "an obvious value exchange"],
+        list: ["The right timing", "Small progressive commitments", "Clear progress", "An obvious value exchange"],
         after: ["People are willing to do more when the product makes it clear that the effort matters."],
       },
     ],
@@ -1302,7 +1302,7 @@ export const caseStudies: CaseStudy[] = [
         after: ["So the core challenge wasn’t access to courses. It was direction."],
       },
       {
-        title: "The first product decision: don’t wait for the product",
+        title: "The first product decision: Don’t wait for the product",
         short: "WordPress pilot first",
         body: [
           "The company needed a solution immediately. Building a fully custom learning platform first would have delayed the operational benefit and forced us to make product decisions without observing how people actually learned the material.",
@@ -1342,14 +1342,14 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "A long learning plan feels less intimidating when progress is visible. The dashboard therefore makes completion concrete through information such as:",
         ],
-        list: ["percentage of the Learning Plan complete", "courses finished", "learning time", "average score", "what remains"],
+        list: ["Percentage of the Learning Plan complete", "Courses finished", "Learning time", "Average score", "What remains"],
         after: [
           "The design is intentionally action-oriented. A returning learner should understand within seconds where they left off, what they have achieved, and what they should continue.",
         ],
         visuals: [{ kind: "board", shot: shot("/work/builder-university/img-dashboard-clean.webp", "Learning time, score and the plan tracker") }],
       },
       {
-        title: "Solution 02: gamification without making work feel childish",
+        title: "Solution 02: Gamification without making work feel childish",
         short: "Light gamification",
         body: [
           "We wanted assigned learning to feel motivating. We didn’t want the product to become an elaborate points economy that required significant engineering and distracted from the actual learning.",
@@ -1363,13 +1363,13 @@ export const caseStudies: CaseStudy[] = [
           "Certificates and achievements live in a dedicated profile area and can be shared externally where appropriate.",
         ],
         after: [
-          "The principle: celebrate progress. Don’t make the reward more important than the skill.",
+          "The principle: Celebrate progress. Don’t make the reward more important than the skill.",
           "This also fit our resource constraints. We could create a sense of progression without building an enormous game system.",
         ],
         visuals: [{ kind: "board", shot: shot("/work/builder-university/img-badges-clean.webp", "Tiers, badges and course progress") }],
       },
       {
-        title: "Solution 03: don’t let the product become useless after onboarding",
+        title: "Solution 03: Don’t let the product become useless after onboarding",
         short: "Learning Hub",
         body: [
           "The original business problem was onboarding. But interviews and product discussions revealed a second use case. Existing employees sometimes needed to understand another Builder product or internal process. There was no single place to do that.",
@@ -1417,7 +1417,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Future scope",
         body: ["Because the underlying need extended beyond onboarding, the beta roadmap also included opportunities such as:"],
-        list: ["webinars", "internal event catalogues", "bookmarking", "notifications", "additional learning experiences"],
+        list: ["Webinars", "Internal event catalogues", "Bookmarking", "Notifications", "Additional learning experiences"],
         after: ["That reinforced why the Learning Hub architecture mattered. The product needed somewhere to grow."],
       },
       {
@@ -1438,7 +1438,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Reorganising a feature-rich product around what visitors need to understand first",
     meta: ["Self-initiated", "Web & Product Communication", "Sep–Oct 2024"],
     intro:
-      "Basecamp is a project-management product built around a relatively opinionated idea: teams don’t necessarily need more tools. They need a simpler place to organise work, communicate and understand what is happening. For this self-initiated redesign, I explored how Basecamp could explain a feature-rich product without making visitors understand every feature before understanding the product.",
+      "Basecamp is a project-management product built around a relatively opinionated idea: Teams don’t necessarily need more tools. They need a simpler place to organise work, communicate and understand what is happening. For this self-initiated redesign, I explored how Basecamp could explain a feature-rich product without making visitors understand every feature before understanding the product.",
     summary: {
       heading: "What I did",
       items: [
@@ -1466,11 +1466,27 @@ export const caseStudies: CaseStudy[] = [
         body: [
           "I reviewed the original page through several lenses: hierarchy, navigation, content sequence, CTA prominence, feature communication, and the relationship between marketing copy and actual product UI. Four issues appeared repeatedly.",
         ],
-        list: [
-          "01, too much to process early. The hero contained enough information that understanding the core value required more reading than it should. The product needed a stronger first answer to “What does Basecamp help my team accomplish?” before introducing everything it contains.",
-          "02, important product value appeared too deep. Some of the strongest benefits were buried inside a long page. A visitor could technically discover them, but only after substantial scrolling. That made page depth determine product understanding.",
-          "03, the hierarchy didn’t always tell visitors where to look. Information with very different importance sometimes competed visually. Without enough hierarchy, scanning becomes reading. And a landing page for a familiar but complex category needs to work for both.",
-          "04, the journey felt more like a collection of sections than an argument. The page contained useful content. What it lacked was a stronger narrative progression. Visitors shouldn’t have to assemble the positioning themselves. Each section should prepare them for the next.",
+        cards: [
+          {
+            title: "Too much to process early",
+            body: "The hero contained enough information that understanding the core value required more reading than it should. The product needed a stronger first answer to “What does Basecamp help my team accomplish?” before introducing everything it contains.",
+            tags: [],
+          },
+          {
+            title: "Important product value appeared too deep",
+            body: "Some of the strongest benefits were buried inside a long page. A visitor could technically discover them, but only after substantial scrolling. That made page depth determine product understanding.",
+            tags: [],
+          },
+          {
+            title: "The hierarchy didn’t always tell visitors where to look",
+            body: "Information with very different importance sometimes competed visually. Without enough hierarchy, scanning becomes reading. And a landing page for a familiar but complex category needs to work for both.",
+            tags: [],
+          },
+          {
+            title: "The journey felt more like a collection of sections than an argument",
+            body: "The page contained useful content. What it lacked was a stronger narrative progression. Visitors shouldn’t have to assemble the positioning themselves. Each section should prepare them for the next.",
+            tags: [],
+          },
         ],
         visuals: [{ kind: "board", shot: shot("/work/basecamp/img-why.webp", "Four problems with the existing page") }],
       },
@@ -1478,11 +1494,11 @@ export const caseStudies: CaseStudy[] = [
         title: "Reframing the landing page",
         body: [
           "The redesign wasn’t about inventing a new Basecamp brand. It was about giving the existing product story a clearer sequence.",
-          "The central question became: how might we communicate Basecamp’s breadth without making the experience feel broad and complicated?",
+          "The central question became: How might we communicate Basecamp’s breadth without making the experience feel broad and complicated?",
         ],
       },
       {
-        title: "Principle 01: lead with the job, not the inventory",
+        title: "Principle 01: Lead with the job, not the inventory",
         short: "Job before features",
         body: [
           "Instead of opening with a large amount of product detail, the redesigned hero focuses on the larger outcome: centralise work, collaborate clearly and keep projects moving.",
@@ -1491,7 +1507,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "laptop", shot: shot("/work/basecamp/img-final-hero.webp", "The redesigned hero") }],
       },
       {
-        title: "Principle 02: let the interface explain the relationship between features",
+        title: "Principle 02: Let the interface explain the relationship between features",
         short: "Features in context",
         body: [
           "A to-do list isn’t an interesting differentiator by itself. Neither is chat. Neither are files. Basecamp’s value comes from those things existing around the same project.",
@@ -1500,7 +1516,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "browser", shots: [shot("/work/basecamp/img-features.webp", "The product shown in use")] }],
       },
       {
-        title: "Principle 03: group capabilities around jobs people recognise",
+        title: "Principle 03: Group capabilities around jobs people recognise",
         short: "Grouped by job",
         body: ["Instead of presenting every capability at equal weight, I organised the page around understandable product jobs."],
         list: [
@@ -1515,7 +1531,7 @@ export const caseStudies: CaseStudy[] = [
         visuals: [{ kind: "browser", shots: [shot("/work/basecamp/img-integrations.webp", "Integrations and essential features")] }],
       },
       {
-        title: "Principle 04: treat notification control as a benefit, not a setting",
+        title: "Principle 04: Treat notification control as a benefit, not a setting",
         short: "Focus as a benefit",
         body: [
           "One of Basecamp’s more interesting ideas is that collaboration software shouldn’t demand everyone’s attention all day. Notification protection can easily be presented as another settings feature. I elevated it as part of the product philosophy.",
@@ -1523,7 +1539,7 @@ export const caseStudies: CaseStudy[] = [
         ],
       },
       {
-        title: "Principle 05: put proof beside the claim it supports",
+        title: "Principle 05: Put proof beside the claim it supports",
         short: "Proof beside claims",
         body: [
           "Social proof becomes less persuasive when testimonials live in an isolated carousel disconnected from the rest of the page. The redesign uses evidence closer to relevant product claims.",
@@ -1534,14 +1550,42 @@ export const caseStudies: CaseStudy[] = [
         title: "Restructuring the information architecture",
         short: "New page structure",
         body: ["The final page follows a clearer sequence:"],
-        list: [
-          "01, core product promise: what does Basecamp help teams accomplish?",
-          "02, a project in context: how does work actually come together?",
-          "03, essential product jobs: what are the major capability groups?",
-          "04, integrations: how does Basecamp fit into an existing workflow?",
-          "05, focus and notification control: how does it avoid becoming another source of noise?",
-          "06, social proof: does this work for real teams?",
-          "07, clear conversion point: what should I do next?",
+        cards: [
+          {
+            title: "Core product promise",
+            body: "What does Basecamp help teams accomplish?",
+            tags: [],
+          },
+          {
+            title: "A project in context",
+            body: "How does work actually come together?",
+            tags: [],
+          },
+          {
+            title: "Essential product jobs",
+            body: "What are the major capability groups?",
+            tags: [],
+          },
+          {
+            title: "Integrations",
+            body: "How does Basecamp fit into an existing workflow?",
+            tags: [],
+          },
+          {
+            title: "Focus and notification control",
+            body: "How does it avoid becoming another source of noise?",
+            tags: [],
+          },
+          {
+            title: "Social proof",
+            body: "Does this work for real teams?",
+            tags: [],
+          },
+          {
+            title: "Clear conversion point",
+            body: "What should I do next?",
+            tags: [],
+          },
         ],
         after: ["This doesn’t reduce Basecamp’s functionality. It changes the order in which someone has to understand it."],
         visuals: [{ kind: "board", shot: shot("/work/basecamp/img-ia.webp", "Information architecture of the landing page") }],
@@ -1560,13 +1604,13 @@ export const caseStudies: CaseStudy[] = [
           "Because this was a self-initiated concept rather than work commissioned or shipped by Basecamp, I would not attach fabricated conversion metrics to it.",
           "The next useful validation would be to compare the redesigned page against the existing experience on measures such as:",
         ],
-        list: ["time to correctly explain what Basecamp does", "feature comprehension", "CTA confidence", "which product benefits visitors recall after scanning"],
+        list: ["Time to correctly explain what Basecamp does", "Feature comprehension", "CTA confidence", "Which product benefits visitors recall after scanning"],
       },
       {
         title: "What I took away",
         body: [
           "Landing-page design is largely an exercise in sequencing. A page can contain every correct fact and still communicate poorly if those facts appear in the wrong order.",
-          "The question I kept returning to was: what does someone need to understand before the next thing will make sense?",
+          "The question I kept returning to was: What does someone need to understand before the next thing will make sense?",
           "Once that order is right, visual design has a much easier job.",
         ],
       },

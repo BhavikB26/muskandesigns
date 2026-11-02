@@ -124,7 +124,7 @@ export const deck: Deck = [
       },
       {
         "kind": "p",
-        "text": "These projects have such a high turnaround time! in-between these the onboarding 3rd party teams and making them up to date of Builder & it’s processes takes time & costs money"
+        "text": "These projects have such a high turnaround time! In-between these the onboarding 3rd party teams and making them up to date of Builder & it’s processes takes time & costs money"
       },
       {
         "kind": "sub",
@@ -132,7 +132,7 @@ export const deck: Deck = [
       },
       {
         "kind": "p",
-        "text": "newly onboarded experts have to understand certain processes to function well but learning this takes time & someone to teach as well"
+        "text": "Newly onboarded experts have to understand certain processes to function well but learning this takes time & someone to teach as well"
       },
       {
         "kind": "sub",

@@ -102,7 +102,7 @@ export const deck: Deck = [
     "items": [
       {
         "kind": "h",
-        "text": "But who all are user? for who all are we designing?"
+        "text": "But who all are user? For who all are we designing?"
       },
       {
         "kind": "p",
@@ -359,7 +359,7 @@ export const deck: Deck = [
       },
       {
         "kind": "p",
-        "text": "After many discussion, we finalised the user-flow. how we are going to collect reviews from user"
+        "text": "After many discussion, we finalised the user-flow. How we are going to collect reviews from user"
       }
     ]
   },

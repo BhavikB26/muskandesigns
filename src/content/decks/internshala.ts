@@ -181,11 +181,11 @@ export const deck: Deck = [
         "notes": [
           {
             "title": "A better visual experience",
-            "text": "an improved UI with better hierarchy and usability in mind will drastically improve the overall experience"
+            "text": "An improved UI with better hierarchy and usability in mind will drastically improve the overall experience"
           },
           {
             "title": "Searching",
-            "text": "finding opportunities needed to be made an effortless task making users feel like the platform is helping them on their internship hunt"
+            "text": "Finding opportunities needed to be made an effortless task making users feel like the platform is helping them on their internship hunt"
           },
           {
             "title": "Application",
@@ -193,7 +193,7 @@ export const deck: Deck = [
           },
           {
             "title": "Tracking",
-            "text": "a platform that keeps track of your applications for you and keeps you posted will be perceived as much more reliable"
+            "text": "A platform that keeps track of your applications for you and keeps you posted will be perceived as much more reliable"
           }
         ]
       }
@@ -362,12 +362,12 @@ export const deck: Deck = [
         "kind": "rows",
         "marker": "📍",
         "items": [
-          "not finding suitable job recommendations after sign-up and search filter seemed complex",
+          "Not finding suitable job recommendations after sign-up and search filter seemed complex",
           "Some users would like to browse the platform before taking he time to create a detailed profile",
           "Users could not conveniently manage their profile and resume before or during the application process",
           "The application process looks cumbersome to fill out and repeating the answer over and over for different applications is frustrating",
           "Even after filling out the lengthy forms their responses are not saved if they decide to leave and come back later",
-          "Multiple articles suggest that getting in contact with the people working in your desired organization boosts your likelihood of being hired. online applicants struggle to do that.",
+          "Multiple articles suggest that getting in contact with the people working in your desired organization boosts your likelihood of being hired. Online applicants struggle to do that.",
           "Users find it difficult to learn about the status of their application after submission and have to rely on the uncertainty of the reply from the recruiter’s side"
         ]
       },
@@ -446,7 +446,7 @@ export const deck: Deck = [
           "Drafts features for application to manage incomplete application to back to later",
           "Introducing saved responses to help users avoid repeating and fatigue",
           "More detailed application status feature to improve tracking",
-          "general UI overhaul for better intuitiveness and usability"
+          "General UI overhaul for better intuitiveness and usability"
         ]
       }
     ]
@@ -521,7 +521,7 @@ export const deck: Deck = [
             "text": "Clear communication of the platform’s benefits upon login for new users"
           },
           {
-            "text": "preferences from users to ensure relevant opportunity recommendations"
+            "text": "Preferences from users to ensure relevant opportunity recommendations"
           },
           {
             "text": "Activation by nudging users to complete their profile upon login further improving their future experience"

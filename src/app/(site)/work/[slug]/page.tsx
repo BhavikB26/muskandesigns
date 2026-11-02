@@ -93,7 +93,7 @@ function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
             {points.map(([lead, detail]) => (
               <li key={lead} className="flex flex-col gap-1.5">
                 <h3 className="text-[16px] font-medium leading-6 text-ink">{lead}</h3>
-                <p className={body}>{detail}</p>
+                <p className={body}>{detail.charAt(0).toUpperCase() + detail.slice(1)}</p>
               </li>
             ))}
           </ul>
