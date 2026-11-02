@@ -339,10 +339,12 @@ export function Showcase({ v, slug }: { v: Visual; slug: string }) {
         {caption && <figcaption className="t-body-sm px-1 text-muted">{caption}</figcaption>}
       </figure>
     );
+  // Text set directly on the panel (handwritten notes, screen names) gets a still grid, no beams behind it.
+  const quiet = v.kind === "annotated" || (v.kind === "devices" && v.shots.some((s) => s.screens?.length));
   return (
     <figure data-reveal className="flex flex-col gap-fr-sm">
       <WarpBackground
-        className={`gem-panel gem-tile ${
+        className={`gem-panel gem-tile ${quiet ? "warp--quiet" : ""} ${
           v.kind === "deck"
             ? "p-[clamp(16px,3vw,40px)]"
             : v.kind === "annotated"

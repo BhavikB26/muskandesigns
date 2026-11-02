@@ -1767,11 +1767,11 @@ html[data-theme="dark"] .resume-bubble { background: #f3efe7; color: #151412; }
 /* Warp Background behind case study visuals (ui/warp-background.tsx): a gem-tinted grid tunnel with beams. */
 .warp {
   position: relative; overflow: hidden;
-  --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 26%, transparent);
+  --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 12%, transparent);
   --warp-beam: color-mix(in oklab, var(--gem, #5a46d6) 88%, #ffffff);
 }
-.warp.gem-panel { background: color-mix(in oklab, var(--gem, #5a46d6) 12%, #ffffff); }
-html[data-theme="dark"] .warp { --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 42%, transparent); }
+.warp.gem-panel { background: color-mix(in oklab, var(--gem, #5a46d6) 8%, #ffffff); }
+html[data-theme="dark"] .warp { --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 22%, transparent); }
 html[data-theme="dark"] .warp.gem-panel { background: color-mix(in oklab, var(--gem, #5a46d6) 16%, #121110); }
 .warp__tunnel {
   position: absolute; inset: 0; overflow: hidden; pointer-events: none; clip-path: inset(0);
@@ -1790,7 +1790,8 @@ html[data-theme="dark"] .warp.gem-panel { background: color-mix(in oklab, var(--
 .warp__beam {
   position: absolute; top: 0; left: var(--x); width: 5%; aspect-ratio: 1 / var(--ratio);
   background: linear-gradient(var(--warp-beam), transparent);
-  animation: warp-beam 4s linear infinite paused;
+  opacity: 0.22;
+  animation: warp-beam 8s linear infinite paused;
 }
 .warp[data-on] .warp__beam { animation-play-state: running; }
 html[data-motion="paused"] .warp .warp__beam { animation-play-state: paused; }
@@ -1808,3 +1809,4 @@ html[data-motion="paused"] .warp .warp__beam { animation-play-state: paused; }
 .cv-bare .cv-phone, .cv-bare .cv-framed { margin-top: 0; }
 .cv-bare .cv-laptop { margin-top: 0; width: 96cqw; }
 .cv-bare .bn { background: none; padding: 0; }
+.warp--quiet .warp__beam { display: none; }
