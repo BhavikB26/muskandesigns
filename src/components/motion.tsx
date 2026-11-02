@@ -2,7 +2,7 @@
 
 import Lenis from "lenis";
 import { usePathname } from "next/navigation";
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 /*
  * Site-wide motion:
@@ -38,6 +38,37 @@ export function Motion() {
       delete (window as unknown as { __lenis?: Lenis }).__lenis;
     };
   }, []);
+
+  // New pages open at the top. Lenis outlives route changes and holds on to its old position, so it has to
+  // be reset too. Back and forward are left alone (they return to where you were), as are links to a section.
+  const firstPage = useRef(true);
+  const backOrForward = useRef(false);
+  useEffect(() => {
+    const onPop = () => {
+      backOrForward.current = true;
+    };
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+  useEffect(() => {
+    const lenis = (window as unknown as { __lenis?: Lenis }).__lenis;
+    if (firstPage.current || backOrForward.current) {
+      firstPage.current = false;
+      backOrForward.current = false;
+      lenis?.resize();
+      return;
+    }
+    if (window.location.hash) return;
+    const toTop = () => {
+      lenis?.resize();
+      lenis?.scrollTo(0, { immediate: true, force: true });
+      window.scrollTo(0, 0);
+    };
+    toTop();
+    // once more after the new page has laid out
+    const raf = requestAnimationFrame(() => requestAnimationFrame(toTop));
+    return () => cancelAnimationFrame(raf);
+  }, [pathname]);
 
   // Image parallax: [data-parallax] layers drift slightly against the scroll.
   useEffect(() => {
