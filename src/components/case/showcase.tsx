@@ -5,6 +5,7 @@ import { decks } from "@/content/decks";
 import { DeckVisual } from "@/components/case/case-parts";
 import { IosStatusIcons } from "@/components/ui/ios-status-icons";
 import { BlockBento } from "@/components/case/block-bento";
+import { WarpBackground } from "@/components/ui/warp-background";
 
 /*
  * Case study visuals (after ngan-nguyen.com and dimpalgidwani.com): every visual sits in a large rounded panel
@@ -340,7 +341,7 @@ export function Showcase({ v, slug }: { v: Visual; slug: string }) {
     );
   return (
     <figure data-reveal className="flex flex-col gap-fr-sm">
-      <div
+      <WarpBackground
         className={`gem-panel gem-tile ${
           v.kind === "deck"
             ? "p-[clamp(16px,3vw,40px)]"
@@ -350,7 +351,7 @@ export function Showcase({ v, slug }: { v: Visual; slug: string }) {
         }`}
       >
         <Body v={v} slug={slug} />
-      </div>
+      </WarpBackground>
       {caption && <figcaption className="t-body-sm px-1 text-muted">{caption}</figcaption>}
     </figure>
   );

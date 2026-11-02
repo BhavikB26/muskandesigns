@@ -8,6 +8,7 @@ import { Showcase, StickerArt } from "@/components/case/showcase";
 import { Cover } from "@/components/home/cover";
 import { GEM } from "@/components/home/feature-art";
 import { WithFooter } from "@/components/site-footer";
+import { WarpBackground } from "@/components/ui/warp-background";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { caseStudies, getCaseStudy, type CaseStudy, type Section } from "@/content/case-studies";
 import { WORK_TILES } from "@/content/work";
@@ -173,11 +174,11 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
                   {c.title}
                 </h1>
               </div>
-              <div className="gem-panel gem-tile flex justify-center px-[clamp(20px,8%,72px)] py-[clamp(20px,6%,48px)]">
+              <WarpBackground className="gem-panel gem-tile px-[clamp(20px,8%,72px)] py-[clamp(20px,6%,48px)]" innerClassName="flex justify-center">
                 <div className="work-cell relative aspect-square w-full max-w-[460px] overflow-clip [container-type:size]">
                   <Cover slug={c.slug} />
                 </div>
-              </div>
+              </WarpBackground>
               {c.links?.length ? (
                 <div className="flex flex-wrap gap-4">
                   {c.links.map((l) => (

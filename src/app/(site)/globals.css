@@ -1763,3 +1763,41 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 .group:hover > .resume-bubble, .group:focus-within > .resume-bubble { opacity: 1; transform: translate(0, -50%); }
 html[data-theme="dark"] .resume-bubble { background: #f3efe7; color: #151412; }
 @media (prefers-reduced-motion: reduce) { .resume-bubble { transition: opacity 0.18s ease; transform: translate(0, -50%); } }
+
+/* Warp Background behind case study visuals (ui/warp-background.tsx): a gem-tinted grid tunnel with beams. */
+.warp {
+  position: relative; overflow: hidden;
+  --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 26%, transparent);
+  --warp-beam: color-mix(in oklab, var(--gem, #5a46d6) 88%, #ffffff);
+}
+.warp.gem-panel { background: color-mix(in oklab, var(--gem, #5a46d6) 12%, #ffffff); }
+html[data-theme="dark"] .warp { --warp-grid: color-mix(in oklab, var(--gem, #5a46d6) 42%, transparent); }
+html[data-theme="dark"] .warp.gem-panel { background: color-mix(in oklab, var(--gem, #5a46d6) 16%, #121110); }
+.warp__tunnel {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none; clip-path: inset(0);
+  container-type: size; perspective: 100px; transform-style: preserve-3d;
+}
+.warp__wall {
+  position: absolute; container-type: inline-size; height: 100cqmax; transform-style: preserve-3d;
+  background:
+    linear-gradient(var(--warp-grid) 0 1px, transparent 1px 5%) 50% -0.5px / 5% 5%,
+    linear-gradient(90deg, var(--warp-grid) 0 1px, transparent 1px 5%) 50% 50% / 5% 5%;
+}
+.warp__wall--top { width: 100cqi; transform-origin: 50% 0%; transform: rotateX(-90deg); }
+.warp__wall--bottom { top: 100%; width: 100cqi; transform-origin: 50% 0%; transform: rotateX(-90deg); }
+.warp__wall--left { left: 0; top: 0; width: 100cqh; transform-origin: 0% 0%; transform: rotate(90deg) rotateX(-90deg); }
+.warp__wall--right { right: 0; top: 0; width: 100cqh; transform-origin: 100% 0%; transform: rotate(-90deg) rotateX(-90deg); }
+.warp__beam {
+  position: absolute; top: 0; left: var(--x); width: 5%; aspect-ratio: 1 / var(--ratio);
+  background: linear-gradient(var(--warp-beam), transparent);
+  animation: warp-beam 4s linear infinite paused;
+}
+.warp[data-on] .warp__beam { animation-play-state: running; }
+html[data-motion="paused"] .warp .warp__beam { animation-play-state: paused; }
+@keyframes warp-beam {
+  from { transform: translate(-50%, 100cqmax); }
+  to { transform: translate(-50%, -100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .warp__beam { display: none; }
+}
