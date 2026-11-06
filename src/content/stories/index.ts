@@ -5,12 +5,13 @@ import { internshala } from "./internshala";
 import { natasha } from "./natasha";
 import { oyo } from "./oyo";
 import { propilot } from "./propilot";
+import { MORE_STORIES } from "./more";
 import type { Story } from "./types";
 import { university } from "./university";
 import { zeroNoise } from "./zero-noise";
 
 export const stories: Record<string, Story> = Object.fromEntries(
-  [gusto, propilot, zeroNoise, block, internshala, natasha, oyo, university, basecamp].map((s) => [s.slug, s]),
+  [gusto, propilot, zeroNoise, block, internshala, natasha, oyo, university, basecamp, ...MORE_STORIES].map((s) => [s.slug, s]),
 );
 
 export const getStory = (slug: string): Story | undefined => stories[slug];

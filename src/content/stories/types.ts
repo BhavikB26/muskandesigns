@@ -47,10 +47,22 @@ export type Interactive =
   | { id: "natasha-modes" }
   | { id: "revenue-calculator" }
   | { id: "walkthrough"; steps: Step[] }
+  /** Two or more journeys through the same product (job seeker / employer), switched by a toggle. */
+  | { id: "paths"; paths: { label: string; steps: Step[] }[] }
   | { id: "before-after"; before: Shot; after: Shot; labels: [string, string]; frame?: "laptop" | "plain" };
 
 export type Story = {
   slug: string;
+  /** Projects beyond the main nine: listed under More projects on /work, never on the homepage. */
+  more?: {
+    /** The project name (these have no entry in case-studies.ts). */
+    name: string;
+    /** One line for the card on /work. */
+    label: string;
+    thumb: Shot;
+    /** The project colour: [tint, ink]. */
+    gem: [string, string];
+  };
   hero: {
     /** The name as set in the hero (defaults to the case study's name). */
     name?: string;
@@ -61,7 +73,8 @@ export type Story = {
     media: StoryMedia;
   };
   context: { copy: string[]; media?: StoryMedia };
-  role: { statement: string; owned: string[]; with: string[]; constraints?: string[] };
+  /** ownedLabel: the heading over `owned` ("I owned" by default; team projects say where I contributed). */
+  role: { statement: string; owned: string[]; ownedLabel?: string; with: string[]; constraints?: string[] };
   /** One line that frames the decisions. */
   approach?: string;
   decisions: Decision[];

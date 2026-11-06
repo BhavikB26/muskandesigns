@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/site-header";
 import { WithFooter } from "@/components/site-footer";
 import { Work } from "@/components/home/work";
 import { WORK_TILES } from "@/content/work";
+import { MoreWork } from "@/components/story/more-work";
 
 export const metadata: Metadata = {
   title: "Case studies",
@@ -15,6 +16,7 @@ export default function WorkIndex() {
     <WithFooter header={<SiteHeader current="Case studies" />}>
       <main id="main" tabIndex={-1} className="page-in flex w-full flex-col">
         <Work tiles={WORK_TILES} heading="All case" emphasis="studies" sub={`${WORK_TILES.length} projects: shipped work, a design system, research and a few concepts.`} headingLevel="h1" />
+        <MoreWork />
       </main>
     </WithFooter>
   );

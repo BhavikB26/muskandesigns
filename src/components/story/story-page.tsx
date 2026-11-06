@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { Toggles } from "@/components/case/case-parts";
@@ -8,6 +9,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import type { CaseStudy } from "@/content/case-studies";
 import { mediaDims } from "@/content/media-dims";
 import type { Decision, Story } from "@/content/stories/types";
+import { MORE_STORIES } from "@/content/stories/more";
 import { WORK_TILES } from "@/content/work";
 import { BlockPlayground } from "./block-playground";
 import { StoryMediaView } from "./media";
@@ -15,6 +17,7 @@ import { NatashaModes } from "./natasha-modes";
 import { RevenueCalculator } from "./revenue-calculator";
 import { BeforeAfter } from "./before-after";
 import { Walkthrough } from "./walkthrough";
+import { Paths } from "./paths";
 
 /*
  * Case study, editorial edition. After portfolio.designwithdaria.com: the product leads, labelled sections
@@ -70,7 +73,9 @@ function TopBar() {
   );
 }
 
-function Hero({ s, c }: { s: Story; c: CaseStudy }) {
+function Hero({ s, c }: { s: Story; c?: CaseStudy }) {
+  // Long names (MakeMyCareer) get a smaller size so they stay inside the hero column.
+  const name = s.hero.name ?? s.more?.name ?? c?.name ?? "";
   return (
     <header className={`${WRAP} grid items-center gap-x-[clamp(32px,5vw,80px)] gap-y-12 pb-[clamp(72px,9vw,128px)] pt-[clamp(40px,6vw,88px)] lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
       <div className="flex flex-col gap-7">
@@ -82,8 +87,12 @@ function Hero({ s, c }: { s: Story; c: CaseStudy }) {
           ))}
         </ul>
         <div className="flex flex-col gap-5">
-          <h1 className="font-serif text-[clamp(64px,8.4vw,128px)] leading-[0.9] tracking-[-0.02em] text-ink">
-            {s.hero.name ?? c.name}
+          <h1
+            className={`font-serif leading-[0.9] tracking-[-0.02em] text-ink [overflow-wrap:anywhere] ${
+              name.length > 10 ? "text-[clamp(48px,5.4vw,84px)]" : "text-[clamp(64px,8.4vw,128px)]"
+            }`}
+          >
+            {name}
             <span className="sr-only">: {s.hero.headline}</span>
           </h1>
           <p aria-hidden className="text-balance text-[clamp(22px,2.1vw,30px)] font-medium leading-[1.25] tracking-[-0.01em] text-ink">
@@ -167,9 +176,44 @@ function Module({ s }: { s: Story }) {
       return <RevenueCalculator />;
     case "walkthrough":
       return <Walkthrough steps={m.steps} />;
+    case "paths":
+      return <Paths paths={m.paths} />;
     case "before-after":
       return <BeforeAfter before={m.before} after={m.after} labels={m.labels} frame={m.frame} />;
   }
+}
+
+/** More projects: previous and next within that group, shown by their own thumbnails. */
+function NextMore({ slug }: { slug: string }) {
+  const i = MORE_STORIES.findIndex((t) => t.slug === slug);
+  const n = MORE_STORIES.length;
+  const pair: [string, Story][] = [
+    ["Previous", MORE_STORIES[(i - 1 + n) % n]],
+    ["Next", MORE_STORIES[(i + 1) % n]],
+  ];
+  return (
+    <nav aria-label="More projects" className={`${WRAP} flex flex-col gap-8 border-t border-line pt-14`}>
+      <div className="flex items-end justify-between gap-6">
+        <h2 className="font-serif text-[clamp(32px,3.4vw,48px)] leading-none text-ink">Keep reading</h2>
+        <Link href="/work#more" className="text-[15px] font-medium text-ink underline decoration-line-strong underline-offset-4 hover:text-accent">
+          All projects
+        </Link>
+      </div>
+      <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {pair.map(([k, t]) => (
+          <li key={k}>
+            <Link href={`/work/${t.slug}`} className="group flex flex-col gap-3">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] ring-1 ring-line" style={{ background: t.more!.gem[0] }}>
+                <Image src={t.more!.thumb.src} alt={t.more!.thumb.alt} fill sizes="(min-width: 640px) 45vw, 92vw" className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]" />
+              </div>
+              <span className={LABEL}>{k}</span>
+              <span className="text-[17px] font-medium leading-snug text-ink transition-colors group-hover:text-accent">{t.more!.name}: {t.more!.label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
 }
 
 function NextProjects({ slug }: { slug: string }) {
@@ -207,8 +251,8 @@ function NextProjects({ slug }: { slug: string }) {
   );
 }
 
-export function StoryPage({ s, c }: { s: Story; c: CaseStudy }) {
-  const [gem, gemInk] = GEM[s.slug];
+export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
+  const [gem, gemInk] = s.more?.gem ?? GEM[s.slug];
   return (
     <WithFooter>
       <ScrollProgress color={gemInk} />
@@ -254,7 +298,7 @@ export function StoryPage({ s, c }: { s: Story; c: CaseStudy }) {
               <dl className="grid gap-6 sm:grid-cols-3">
                 {(
                   [
-                    ["I owned", s.role.owned],
+                    [s.role.ownedLabel ?? "I owned", s.role.owned],
                     ["Worked with", s.role.with],
                     ["Constraints", s.role.constraints],
                   ] as [string, string[] | undefined][]
@@ -358,7 +402,7 @@ export function StoryPage({ s, c }: { s: Story; c: CaseStudy }) {
             </div>
           </section>
 
-          <NextProjects slug={s.slug} />
+          {s.more ? <NextMore slug={s.slug} /> : <NextProjects slug={s.slug} />}
         </main>
       </div>
     </WithFooter>

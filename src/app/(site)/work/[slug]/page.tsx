@@ -13,17 +13,20 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { caseStudies, getCaseStudy, type CaseStudy, type Section } from "@/content/case-studies";
 import { WORK_TILES } from "@/content/work";
 import { getStory } from "@/content/stories";
+import { MORE_STORIES } from "@/content/stories/more";
 import { StoryPage } from "@/components/story/story-page";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return caseStudies.map((c) => ({ slug: c.slug }));
+  return [...caseStudies.map((c) => ({ slug: c.slug })), ...MORE_STORIES.map((s) => ({ slug: s.slug }))];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const c = getCaseStudy(slug);
+  const more = getStory(slug)?.more;
+  if (!c && more) return { title: more.name, description: more.label, openGraph: { title: `${more.name}: ${more.label}` } };
   if (!c) return {};
   return { title: c.name, description: c.title, openGraph: { title: `${c.name}: ${c.title}`, description: c.intro } };
 }
@@ -149,9 +152,11 @@ function StorySection({ s, n, slug }: { s: Section; n: number; slug: string }) {
 export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const c = getCaseStudy(slug);
+  const story = getStory(slug);
+  // More projects have a story but no entry in case-studies.ts.
+  if (!c && story?.more) return <StoryPage s={story} />;
   if (!c) notFound();
   // Case studies rewritten in the editorial format use the new page.
-  const story = getStory(slug);
   if (story) return <StoryPage s={story} c={c} />;
   const i = WORK_TILES.findIndex((t) => t.slug === slug);
   const others = [1, 2].map((k) => WORK_TILES[(i + k) % WORK_TILES.length]);
