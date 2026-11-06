@@ -18,6 +18,7 @@ import { RevenueCalculator } from "./revenue-calculator";
 import { BeforeAfter } from "./before-after";
 import { Walkthrough } from "./walkthrough";
 import { Paths } from "./paths";
+import { FitText } from "./fit-text";
 
 /*
  * Case study, editorial edition. After portfolio.designwithdaria.com: the product leads, labelled sections
@@ -283,7 +284,7 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
               <SectionLabel n="02" id="h-approach">
                 Approach
               </SectionLabel>
-              {s.approach && <p className="w-full font-serif text-[clamp(30px,3.4vw,48px)] leading-[1.12] text-ink">{s.approach}</p>}
+              {s.approach && <FitText className="font-serif leading-[1.1] text-ink">{s.approach}</FitText>}
             </div>
             {s.decisions.map((d, i) => (
               <DecisionBlock key={d.title} d={d} n={i + 1} slug={s.slug} />
