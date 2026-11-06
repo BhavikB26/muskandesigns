@@ -1810,3 +1810,72 @@ html[data-motion="paused"] .warp .warp__beam { animation-play-state: paused; }
 .cv-bare .cv-laptop { margin-top: 0; width: 96cqw; }
 .cv-bare .bn { background: none; padding: 0; }
 .warp--quiet .warp__beam { display: none; }
+
+/* ───────── Case studies, editorial edition (components/story) ───────── */
+
+/* The interactive section: a dark stage in both themes, lit faintly with the project's gem colour. */
+.story-stage {
+  background:
+    radial-gradient(60% 50% at 85% 0%, color-mix(in oklab, var(--gem, #5a46d6) 30%, transparent), transparent 70%),
+    radial-gradient(50% 45% at 0% 100%, color-mix(in oklab, var(--gem, #5a46d6) 18%, transparent), transparent 70%),
+    #121019;
+  color: #f5f3ec;
+}
+
+/* Hotspots on walkthrough screens: invisible until hovered or focused, with a soft pulse to show they exist. */
+.nt-spot {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color 0.2s, background-color 0.2s;
+  animation: nt-spot 2.4s ease-in-out infinite;
+}
+.nt-spot:hover,
+.nt-spot:focus-visible {
+  outline-color: #6a00f4;
+  background-color: rgba(106, 0, 244, 0.08);
+  animation: none;
+}
+@keyframes nt-spot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(106, 0, 244, 0); }
+  50% { box-shadow: 0 0 0 4px rgba(106, 0, 244, 0.28); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nt-spot { animation: none; box-shadow: 0 0 0 3px rgba(106, 0, 244, 0.25); }
+}
+html[data-motion="paused"] .nt-spot { animation: none; box-shadow: 0 0 0 3px rgba(106, 0, 244, 0.25); }
+
+/* Zero Noise calculator slider, after the live site's: a pink fill up to the thumb. */
+.zn-range {
+  appearance: none;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+.zn-range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 99px;
+  background: linear-gradient(to right, #c2335f var(--pct), #f3d7e1 var(--pct));
+}
+.zn-range::-moz-range-track {
+  height: 6px;
+  border-radius: 99px;
+  background: linear-gradient(to right, #c2335f var(--pct), #f3d7e1 var(--pct));
+}
+.zn-range::-webkit-slider-thumb {
+  appearance: none;
+  margin-top: -9px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #c2335f;
+  box-shadow: 0 2px 6px rgba(194, 51, 95, 0.35);
+}
+.zn-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #c2335f;
+}
+.zn-range:focus-visible { outline: 2px solid #c2335f; outline-offset: 4px; border-radius: 6px; }

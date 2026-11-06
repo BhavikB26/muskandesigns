@@ -36,7 +36,7 @@ function ScreenImg({ s, sizes, className = "object-cover object-top" }: { s: Sho
 }
 
 /** An iPhone-style frame (titanium band, black border, Dynamic Island); long screens show their top. */
-function Phone({ s, sizes, status = false }: { s: Shot; sizes: string; status?: boolean }) {
+export function Phone({ s, sizes, status = false }: { s: Shot; sizes: string; status?: boolean }) {
   return (
     <div className="dv-phone">
       <div className="dv-phone__screen">
@@ -60,7 +60,7 @@ function Phone({ s, sizes, status = false }: { s: Shot; sizes: string; status?: 
 }
 
 /** A browser window; screens show whole, only pages taller than wide are shown from the top in a 4:5 viewport. */
-function Browser({ s, sizes, scroll = false, delay = 0 }: { s: Shot; sizes: string; scroll?: boolean; delay?: number }) {
+export function Browser({ s, sizes, scroll = false, delay = 0 }: { s: Shot; sizes: string; scroll?: boolean; delay?: number }) {
   return (
     <div className="dv-browser">
       <div aria-hidden className="dv-browser__bar">
@@ -96,7 +96,7 @@ function ScrollPage({ s, sizes, delay = 0, fill = false }: { s: Shot; sizes: str
 }
 
 /** A MacBook-style laptop: black glass lid with a notch, aluminium base with the opening scoop. */
-function Laptop({ s, sizes = "(min-width: 1024px) 60vw, 90vw", scroll = true, delay = 0, className = "mx-auto w-[86%]" }: { s: Shot; sizes?: string; scroll?: boolean; delay?: number; className?: string }) {
+export function Laptop({ s, sizes = "(min-width: 1024px) 60vw, 90vw", scroll = true, delay = 0, className = "mx-auto w-[86%]" }: { s: Shot; sizes?: string; scroll?: boolean; delay?: number; className?: string }) {
   const r = ratio(s);
   return (
     <div className={className}>
@@ -148,7 +148,7 @@ function Screens({ s, children }: { s: Shot; children: ReactNode }) {
 }
 
 /** A finished mockup or a plain screen: transparent ones float, solid ones get a clean rounded card. */
-function Piece({ s, sizes }: { s: Shot; sizes: string }) {
+export function Piece({ s, sizes }: { s: Shot; sizes: string }) {
   if (s.screens?.length) return <Screens s={s}>{<Piece s={{ ...s, screens: undefined }} sizes={sizes} />}</Screens>;
   return s.clear ? (
     <Img s={s} sizes={sizes} className="drop-shadow-[0_24px_30px_rgba(15,10,35,0.28)]" />
@@ -158,7 +158,7 @@ function Piece({ s, sizes }: { s: Shot; sizes: string }) {
 }
 
 /** Board: a white card at the image's true ratio. Very tall boards are kept to a readable width. */
-function Board({ s }: { s: Shot }) {
+export function Board({ s }: { s: Shot }) {
   const tall = ratio(s) > 1.25;
   return (
     <div className={`mx-auto rounded-[14px] bg-white p-[1.5%] ring-1 ring-black/5 ${SHADOW}`} style={{ maxWidth: tall ? 560 : undefined }}>

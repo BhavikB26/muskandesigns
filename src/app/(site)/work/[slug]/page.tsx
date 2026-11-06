@@ -12,6 +12,8 @@ import { WarpBackground } from "@/components/ui/warp-background";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { caseStudies, getCaseStudy, type CaseStudy, type Section } from "@/content/case-studies";
 import { WORK_TILES } from "@/content/work";
+import { getStory } from "@/content/stories";
+import { StoryPage } from "@/components/story/story-page";
 
 export const dynamicParams = false;
 
@@ -148,6 +150,9 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const c = getCaseStudy(slug);
   if (!c) notFound();
+  // Case studies rewritten in the editorial format use the new page.
+  const story = getStory(slug);
+  if (story) return <StoryPage s={story} c={c} />;
   const i = WORK_TILES.findIndex((t) => t.slug === slug);
   const others = [1, 2].map((k) => WORK_TILES[(i + k) % WORK_TILES.length]);
 
