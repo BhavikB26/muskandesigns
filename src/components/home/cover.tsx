@@ -91,6 +91,13 @@ export const COVERS: Record<string, CoverSpec> = {
     wall: ["/work/builder-university/frame-2.webp", "/work/builder-university/img-dashboard-clean.webp", "/work/builder-university/img-badges-clean.webp", "/work/builder-university/img-pilot-clean.webp"],
     wash: ["#2a8f87", "#04302c"],
   },
+  makemycareer: {
+    device: "laptop",
+    // the employer dashboard from the Projects Figma file (1:48873), cut to the laptop screen
+    screen: { src: "/work/covers/makemycareer-hd.webp", w: 1300, h: 771 },
+    wall: ["/work/makemycareer/js-jobs.webp", "/work/makemycareer/em-post-review.webp", "/work/makemycareer/em-applications-a.webp", "/work/makemycareer/js-dashboard.webp"],
+    wash: ["#7c86f8", "#1b1f66"],
+  },
   basecamp: {
     device: "laptop",
     screen: { src: "/work/covers/basecamp-hd.webp", w: 1300, h: 786 },

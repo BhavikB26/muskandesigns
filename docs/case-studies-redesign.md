@@ -77,3 +77,8 @@ Still visible in the Apps page: the "Case studies" boards (Calm Sleep onboarding
 Happy Chops home-screen UX, Smart Watch complaints dashboard). These could become case studies without unhiding anything.
 
 To confirm for MakeMyCareer: Muskan's exact screens and responsibilities, the client and dates, and whether it shipped.
+
+**2026-11-06, later:** at Muskan's request, Builder University and Basecamp were removed from the site and MakeMyCareer
+took their place in the main grid (8 case studies). MakeMyCareer has a cover like the others, set in `components/home/cover.tsx`:
+its employer dashboard on a laptop over a wall of its own screens, washed in periwinkle (`#7c86f8` → `#1b1f66`).
+More projects on /work is now empty, so the section is hidden.

@@ -25,12 +25,6 @@ const employer: Step[] = [
 
 export const makemycareer: Story = {
   slug: "makemycareer",
-  more: {
-    name: "MakeMyCareer",
-    label: "Making hiring and job discovery work together",
-    thumb: s("thumb", "MakeMyCareer’s employer dashboard"),
-    gem: ["#5b57e8", "#2a2780"],
-  },
   hero: {
     tags: ["Recruitment platform", "Web app", "Two audiences", "Team project"],
     headline: "Making hiring and job discovery work together.",

@@ -30,6 +30,7 @@ export const GEM: Record<string, [string, string]> = {
   internshala: ["#0d86d1", "#04395e"], // sapphire
   basecamp: ["#f3cd47", "#cf9e14"], // topaz
   natasha: ["#c9a7ff", "#5b2bc4"], // lavender amethyst (Natasha violet)
+  makemycareer: ["#7c86f8", "#22267a"], // periwinkle sapphire (MakeMyCareer indigo)
 };
 
 /** The gem backdrop shared by every thumbnail: a soft light at the top over the case study's gradient. */
