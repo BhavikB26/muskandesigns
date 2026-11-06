@@ -15,7 +15,6 @@ export const internshala: Story = {
     headline: "Making internship hunting feel less like a black hole.",
     line: "A self-initiated redesign of Internshala’s app around three connected moments: finding an opportunity, applying to it, and knowing what happens after you press Submit.",
     facts: [
-      { k: "Role", v: "Product Designer (solo)" },
       { k: "Type", v: "Self-initiated concept" },
       { k: "Platform", v: "Mobile app" },
       { k: "Scope", v: "Research, flows, UI" },

@@ -11,7 +11,6 @@ export const oyo: Story = {
     headline: "Turning post-stay feedback into better reviews, and new revenue.",
     line: "Guests happily reviewed OYO’s app on the app stores, but rarely the hotels they stayed in. I designed a post-checkout review journey that made giving useful feedback feel small, finite and worth it.",
     facts: [
-      { k: "Role", v: "Product Designer" },
       { k: "Company", v: "OYO" },
       { k: "Project", v: "Ratings & Reviews, Review SaaS" },
       { k: "Platform", v: "Mobile app" },

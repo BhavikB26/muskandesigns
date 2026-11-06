@@ -163,7 +163,7 @@ export function RevenueCalculator() {
             </>
           ) : (
             <>
-              <p className="text-[clamp(40px,4.6vw,60px)] font-semibold leading-none text-[#e3c6d0]">$—</p>
+              <p className="text-[clamp(40px,4.6vw,60px)] font-semibold leading-none text-[#e3c6d0]">$0</p>
               <p className="text-[16px] text-[#4a3a42]">Answer the three questions, then calculate.</p>
             </>
           )}

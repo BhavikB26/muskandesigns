@@ -24,7 +24,7 @@ const hand = Gaegu({ variable: "--font-hand", weight: ["400", "700"], subsets: [
 // Everything else (body, labels, UI): Google Sans (licensed), variable 400–700.
 const bodyFont = Google_Sans({ variable: "--font-body", subsets: ["latin"], display: "swap" });
 
-const title = "Muskan Bhatia — Product Designer";
+const title = "Muskan Bhatia, Product Designer";
 const description =
   "Muskan Bhatia is an early-career product designer with a computer science background. She has designed real products at Preplaced and Builder.ai, from an AI mentor extension to a design system.";
 
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://muskandesigns.vercel.app"
   ),
-  title: { default: title, template: "%s — Muskan Bhatia" },
+  title: { default: title, template: "%s | Muskan Bhatia" },
   description,
   applicationName: "Muskan Bhatia",
   authors: [{ name: "Muskan Bhatia", url: "https://www.linkedin.com/in/thisismuskan/" }],

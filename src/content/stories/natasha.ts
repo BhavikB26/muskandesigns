@@ -10,7 +10,6 @@ export const natasha: Story = {
     headline: "Making an AI Product Manager easy to talk to.",
     line: "I designed Natasha’s interface: a side panel, an immersive conversation and an in-page voice bar that share one interaction language.",
     facts: [
-      { k: "Role", v: "Product Designer" },
       { k: "Company", v: "Builder.ai" },
       { k: "Project", v: "Natasha, part of BLOCK 4.0" },
       { k: "Covers", v: "Chat, voice, states" },

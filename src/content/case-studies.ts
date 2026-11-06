@@ -578,9 +578,9 @@ export const caseStudies: CaseStudy[] = [
     slug: "zero-noise",
     name: "Zero Noise",
     title: "Making email revenue potential tangible in three questions",
-    meta: ["Solo design and development", "One weekend", "Claude Code", "Live website"],
+    meta: ["Claude Code", "Live website"],
     intro:
-      "Zero Noise offers email strategy and delivery for coaches, consultants, creators, and service businesses. I designed and built its website from scratch over one weekend, using Claude Code throughout.",
+      "Zero Noise offers email strategy and delivery for coaches, consultants, creators, and service businesses. I designed and built its website from scratch, using Claude Code throughout.",
     summary: {
       heading: "What shipped",
       items: [
@@ -658,7 +658,7 @@ export const caseStudies: CaseStudy[] = [
       {
         title: "Outcome and reflection",
         body: [
-          "Over one weekend, I delivered a live website combining the calculator, client proof, service comparison, and booking links.",
+          "I delivered a live website combining the calculator, client proof, service comparison, and booking links.",
           "To assess its effectiveness as an enquiry journey, I would examine calculator completion, progression into the contact form, successful submissions, and bookings.",
           "The project reinforced the importance of reviewing the connections between elements: how an input becomes an estimate, how that estimate is explained, and how the next action follows from it.",
         ],

@@ -19,9 +19,7 @@ export const gusto: Story = {
     headline: "Making signup work for people who weren’t ready to sign up.",
     line: "As an independent designer, I split Gusto’s signup funnel in two, so curious visitors could learn first and commit later without losing anyone who was ready to start.",
     facts: [
-      { k: "Role", v: "Independent Product Designer" },
       { k: "Client", v: "Gusto (freelance)" },
-      { k: "Timeline", v: "About 3 months" },
       { k: "Traffic", v: "~200K organic visitors" },
     ],
     media: { kind: "showcase", v: { kind: "laptop", shot: shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop: get started, pick the areas you care about"), scroll: true } },

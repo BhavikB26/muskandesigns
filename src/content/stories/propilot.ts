@@ -11,9 +11,7 @@ export const propilot: Story = {
     headline: "An AI mentor that speaks first.",
     line: "At Preplaced I designed ProPilot, a Chrome extension that brings mentorship into LeetCode, GeeksforGeeks and YouTube instead of waiting behind an empty text box.",
     facts: [
-      { k: "Role", v: "Product Designer" },
       { k: "Company", v: "Preplaced" },
-      { k: "Timeline", v: "Oct – Dec 2023" },
       { k: "Platform", v: "Chrome extension" },
     ],
     media: { kind: "showcase", v: { kind: "laptop", shot: shot(pp("sol1-screen.webp"), "Easy Actions next to the code editor on LeetCode"), scroll: false } },
@@ -84,7 +82,7 @@ export const propilot: Story = {
       "Most importantly, users kept recognising that it was designed to help them think, not just reveal the answer.",
     ],
     metrics: [
-      { value: "50K", label: "Users in six months" },
+      { value: "50K", label: "Users" },
       { value: "4.6", label: "Rating from ~600 users", note: "Chrome Featured status" },
       { value: "17→84%", label: "Message initiation" },
       { value: "10→50%", label: "Week-one retention" },

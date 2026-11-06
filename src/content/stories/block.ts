@@ -12,10 +12,8 @@ export const block: Story = {
     headline: "One design language for the products around Natasha.",
     line: "I helped rebuild Builder.ai’s design system, BLOCK 4.0, so a new AI Product Manager could launch inside a workspace that behaved the same everywhere.",
     facts: [
-      { k: "Role", v: "Product Designer" },
       { k: "Company", v: "Builder.ai" },
       { k: "Project", v: "BLOCK 4.0, a shared redesign" },
-      { k: "Team", v: "Head of Design, seven designers" },
     ],
     media: {
       kind: "showcase",

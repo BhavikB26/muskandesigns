@@ -32,7 +32,6 @@ export const makemycareer: Story = {
     headline: "Making hiring and job discovery work together.",
     line: "A recruitment platform with two connected sides: job seekers find and apply for roles, and employers publish openings and manage the applications that come in.",
     facts: [
-      { k: "Role", v: "Product Designer, team project" },
       { k: "Platform", v: "Web app" },
       { k: "Audiences", v: "Job seekers and employers" },
       { k: "Scope", v: "Dashboards, posting, applications" },

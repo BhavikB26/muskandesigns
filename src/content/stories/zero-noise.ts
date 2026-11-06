@@ -8,11 +8,9 @@ export const zeroNoise: Story = {
   hero: {
     tags: ["Web design", "Calculator UX", "Front-end build", "Claude Code"],
     headline: "Turning three answers into a revenue number you can believe.",
-    line: "I designed and built Zero Noise’s website in one weekend with Claude Code: an email revenue calculator that leads into client proof, services and booking.",
+    line: "I designed and built Zero Noise’s website with Claude Code: an email revenue calculator that leads into client proof, services and booking.",
     facts: [
-      { k: "Role", v: "Solo design and development" },
       { k: "Client", v: "Zero Noise, email strategy" },
-      { k: "Timeline", v: "One weekend" },
       { k: "Built with", v: "Claude Code" },
     ],
     media: { kind: "showcase", v: { kind: "browser", shots: [clip(zn("clip-desktop-still.webp"), zn("clip-desktop.webp"), "The calculator in use: picking a business type, setting the list size and offer price, then the estimate")] } },
@@ -29,10 +27,10 @@ export const zeroNoise: Story = {
     },
   },
   role: {
-    statement: "I designed and built the whole site myself over one weekend, using Claude Code from the first implementation to the final refinements.",
+    statement: "I designed and built the whole site myself, using Claude Code from the first implementation to the final refinements.",
     owned: ["The page’s journey and structure", "Calculator UX and its logic", "Build, review and launch"],
     with: ["Zero Noise (the client)"],
-    constraints: ["One weekend", "A brief whose example maths didn’t add up"],
+    constraints: ["A brief whose example maths didn’t add up"],
   },
   approach: "Three decisions about the calculator, and one about everything after it.",
   decisions: [
@@ -75,7 +73,7 @@ export const zeroNoise: Story = {
   },
   outcome: {
     copy: [
-      "In one weekend I shipped a live site that combines the calculator, client proof, a service comparison and booking links.",
+      "I shipped a live site that combines the calculator, client proof, a service comparison and booking links.",
       "To judge it as an enquiry journey I’d track calculator completion, progression into the opt-in, submissions and booked calls.",
     ],
     media: { kind: "showcase", v: { kind: "browser", shots: [clip(zn("clip-finale-still.webp"), zn("clip-finale.webp"), "The closing call to action: hovering each card in the stack brings it forward")] } },

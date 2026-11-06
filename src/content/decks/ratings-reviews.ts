@@ -139,7 +139,7 @@ export const deck: Deck = [
         "items": [
           "They are planning a vacation with their family or friends",
           "They need to book a stay for a work trip",
-          "They’re booking for someone else — like a colleague or a loved one",
+          "They’re booking for someone else, like a colleague or a loved one",
           "They’re planning to spend a night or two pampering themselves with a cushy bed and room service",
           "They’re daydreaming about a holiday and want to have a stay ready, you know, just in case 😁"
         ]
