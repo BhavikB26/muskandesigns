@@ -61,12 +61,6 @@ body {
   transition: background-color 0.5s var(--ease-out-expo), color 0.5s var(--ease-out-expo);
 }
 
-/* Graphik (Commercial Type) for headings, in place of Instrument Serif. No web licence on record, so the files
-   stay local (gitignored and vercelignored): without them every heading falls back to Instrument Serif. */
-@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikRegular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikMedium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
-@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikSemibold.otf") format("opentype"); font-weight: 600; font-style: normal; font-display: swap; }
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -80,9 +74,9 @@ body {
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
-  --font-editorial: "Graphik", var(--font-editorial-face), Georgia, serif;
-  --font-display: "Graphik", var(--font-editorial-face), Georgia, serif;
-  --font-serif: "Graphik", var(--font-editorial-face), Georgia, serif;
+  --font-editorial: var(--font-editorial-face), Georgia, serif;
+  --font-display: var(--font-editorial-face), Georgia, serif;
+  --font-serif: var(--font-editorial-face), Georgia, serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-body), ui-sans-serif, system-ui, sans-serif;
@@ -1738,8 +1732,8 @@ html[data-motion="paused"] .cv-scroll__page { animation: none; }
 }
 html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 
-/* Type: Instrument Serif for every heading, made bolder (it ships in one weight, so a hairline outline in
-   the text's own colour thickens it), and Google Sans for everything else, labels included. */
+/* Type: DM Serif Display italic for every heading (already bold, so no thickening), and Google Sans for
+   everything else, labels included. */
 :root { --font-mono-face: var(--font-body); }
 :where(h1, h2, h3, h4):not(.font-mono),
 [class*="t-display"],
@@ -1747,19 +1741,7 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
   font-family: var(--font-display); font-style: italic;
   font-weight: 400;
   font-synthesis: none;
-  -webkit-text-stroke: 0.02em currentColor;
-  letter-spacing: 0.005em;
-}
-/* Graphik is a sans: when it is present, headings are upright Medium with tight display tracking, and drop the
-   outline that thickened Instrument Serif. (Without the font, the Instrument Serif italic styling above stays.) */
-.has-graphik :where(h1, h2, h3, h4):not(.font-mono),
-.has-graphik [class*="t-display"],
-.has-graphik .case-title, .has-graphik .case-h2, .has-graphik .case-deck-h,
-.has-graphik .font-serif, .has-graphik .font-editorial, .has-graphik .font-display {
-  font-style: normal !important;
-  font-weight: 500 !important;
-  -webkit-text-stroke: 0 !important;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
 }
 
 /* Status bar icons: one SVG (ios-status-icons.tsx) matching the Internshala screens' real iOS bar. */

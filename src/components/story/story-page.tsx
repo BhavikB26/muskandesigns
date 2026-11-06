@@ -89,7 +89,7 @@ function Hero({ s, c }: { s: Story; c?: CaseStudy }) {
         <div className="flex flex-col gap-5">
           <h1
             className={`font-serif leading-[0.9] tracking-[-0.02em] text-ink [overflow-wrap:anywhere] ${
-              name.length > 10 ? "text-[clamp(48px,5.4vw,84px)]" : "text-[clamp(64px,8.4vw,128px)]"
+              name.length > 10 ? "text-[clamp(40px,4.1vw,64px)]" : "text-[clamp(52px,6.3vw,96px)]"
             }`}
           >
             {name}

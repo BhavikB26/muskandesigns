@@ -56,6 +56,3 @@ next-env.d.ts
 /.claude/
 /.impeccable/
 skills-lock.json
-
-# Graphik (Commercial Type): no web licence on record, so local preview only, never pushed or deployed
-public/fonts/graphik/

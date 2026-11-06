@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Gaegu, Google_Sans, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { DM_Serif_Display, Gaegu, Google_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Motion } from "@/components/motion";
 import { BackToTop } from "@/components/back-to-top";
 
-// Headings and italic accents: Instrument Serif (licensed). It has one weight; headings are thickened in
-// globals.css (a hairline outline in the text colour) for the bolder look.
-const editorial = Instrument_Serif({
+// Headings and italic accents: DM Serif Display (Google Fonts, open licence), set in its italic everywhere.
+// One weight, already bold, so headings need no thickening.
+const editorial = DM_Serif_Display({
   variable: "--font-editorial-face",
   weight: "400",
   style: ["normal", "italic"],
@@ -69,9 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},4000);try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}" +
-              // Graphik headings: mark the page once the (local-only) font loads, for its upright styling.
-              "try{document.fonts.load('500 1em \"Graphik\"').then(function(f){if(f.length)document.documentElement.classList.add('has-graphik')})}catch(e){}",
+              "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},4000);try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
           }}
         />
         <Motion />
