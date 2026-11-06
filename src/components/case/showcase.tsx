@@ -91,6 +91,19 @@ function ScrollPage({ s, sizes, delay = 0, fill = false }: { s: Shot; sizes: str
       <div className="dv-scroll__page" style={{ "--r": ratio(s), animationDelay: `${delay}s` } as CSSProperties}>
         <Img s={s} sizes={sizes} />
       </div>
+      {/* Sticky parts of the page (its header, a side column) stay put while the rest scrolls under them. */}
+      {s.pin?.x ? (
+        <div aria-hidden className="dv-scroll__pin" style={{ width: `${s.pin.x * 100}%` }}>
+          <div style={{ width: `${100 / s.pin.x}%` }}>
+            <Img s={{ ...s, alt: "" }} sizes={sizes} />
+          </div>
+        </div>
+      ) : null}
+      {s.pin?.top ? (
+        <div aria-hidden className="dv-scroll__pin" style={{ width: "100%", height: `${s.pin.top * 100}cqw` }}>
+          <Img s={{ ...s, alt: "" }} sizes={sizes} />
+        </div>
+      ) : null}
     </div>
   );
 }

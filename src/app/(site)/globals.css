@@ -1309,6 +1309,7 @@ html[data-theme="dark"] .bd-stroke, .th-surface--dark .bd-stroke { opacity: 0.28
 .dv-scroll { position: relative; aspect-ratio: 16 / 10; overflow: hidden; container-type: inline-size; --bar: 0; }
 /* Inside a laptop: the page area under the menu bar (3.2% of the screen's width shorter than 16:10). */
 .dv-scroll--fill { aspect-ratio: auto; height: 100%; --bar: 3.2; }
+.dv-scroll__pin { position: absolute; left: 0; top: 0; height: 100%; overflow: hidden; pointer-events: none; }
 .dv-scroll__page { animation: dv-scroll 16s cubic-bezier(0.65, 0, 0.35, 1) infinite both; will-change: transform; }
 @keyframes dv-scroll {
   0%, 14% { transform: translateY(0); }

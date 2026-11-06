@@ -12,6 +12,9 @@ const TABS: [string, string, string][] = [
   ["Insights and reporting", "carousel-6.png", "Tax-credit identification, compliance alerts and workforce costing; this last tab hands off to Create account."],
 ];
 
+// The live How Gusto Works page keeps its header and left column in place while the questions scroll.
+const GUSTO_PIN = { x: 1441 / 2880, top: 152 / 2880 };
+
 export const gusto: Story = {
   slug: "gusto",
   hero: {
@@ -22,7 +25,7 @@ export const gusto: Story = {
       { k: "Client", v: "Gusto (freelance)" },
       { k: "Traffic", v: "~200K organic visitors" },
     ],
-    media: { kind: "showcase", v: { kind: "laptop", shot: shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop: get started, pick the areas you care about"), scroll: true } },
+    media: { kind: "showcase", v: { kind: "laptop", shot: { ...shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop: get started, pick the areas you care about"), pin: GUSTO_PIN }, scroll: true } },
   },
   context: {
     copy: [
@@ -44,7 +47,7 @@ export const gusto: Story = {
       problem: "The homepage had one dominant next step, Create account, as if every visitor had arrived with the same goal.",
       explored: "A second entry, How Gusto Works, beside Create account, tested as an A/B variation while the direct path stayed exactly where it was.",
       why: "It gave people who needed context a lower-pressure route without making signup any harder for those who were ready.",
-      media: [{ kind: "showcase", v: { kind: "compare", frame: "browser", shots: [shot(g("ab-1-control.png"), "Homepage hero, control", "Control"), shot(g("ab-1-variation.png"), "Homepage hero with the How Gusto Works entry point", "Variation")] } }],
+      media: [{ kind: "showcase", v: { kind: "compare", frame: "browser", shots: [shot(g("ab-1-control-l.webp"), "Gusto.com homepage, control: Create account is the only button in the top navigation", "Control"), shot(g("ab-1-variation-l.webp"), "Gusto.com homepage, variation: How it works leads the top navigation, beside Create account", "Variation")] } }],
     },
     {
       title: "A lead without a password",
@@ -68,7 +71,7 @@ export const gusto: Story = {
       problem: "A big redesign would have been slower, riskier and impossible to attribute.",
       explored: "One behavioural hypothesis per test; questions trimmed with Sales to the ones that changed what happened next; then How Gusto Works promoted into the global navigation.",
       why: "Each change proved itself before the next, and the move into navigation brought about 80% more traffic into the journey.",
-      media: [{ kind: "showcase", v: { kind: "laptop", scroll: true, shot: shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop, the full page") } }],
+      media: [{ kind: "showcase", v: { kind: "laptop", scroll: true, shot: { ...shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop, the full page"), pin: GUSTO_PIN } } }],
     },
   ],
   interactive: {
