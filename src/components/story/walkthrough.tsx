@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Step } from "@/content/stories/types";
-import { Laptop, Phone } from "@/components/case/showcase";
+import { Browser, Laptop, Phone } from "@/components/case/showcase";
 
 /*
  * A guided walkthrough of a real flow: the steps in order on one side, the actual screen for the current step on
@@ -17,6 +17,13 @@ function Screen({ s }: { s: Step }) {
       </div>
     );
   if (s.frame === "laptop") return <Laptop s={s.shot} scroll={false} className="w-full" />;
+  if (s.frame === "browser")
+    // A web screen in a browser window, shown whole at its true ratio.
+    return (
+      <div className="shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)]">
+        <Browser s={s.shot} sizes="(min-width: 1024px) 60vw, 92vw" />
+      </div>
+    );
   if (s.frame === "device")
     // A finished mockup with its own frame: shown whole at a comfortable height.
     return (

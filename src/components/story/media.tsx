@@ -102,7 +102,7 @@ export function StoryMediaView({ m, slug }: { m: StoryMedia; slug: string }) {
       </figure>
     );
   if (m.kind === "showcase") return <Showcase v={m.v} slug={slug} />;
-  if (m.kind === "tabs") return <MediaTabs items={m.items} caption={m.caption} />;
+  if (m.kind === "tabs") return <MediaTabs items={m.items} caption={m.caption} frame={m.frame} />;
   return (
     <figure data-reveal className="flex flex-col gap-fr-sm">
       <WarpBackground className="gem-panel gem-tile warp--quiet px-[clamp(20px,5vw,72px)] py-[clamp(28px,5vw,72px)]">

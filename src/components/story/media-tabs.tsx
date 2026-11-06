@@ -2,11 +2,11 @@
 
 import { useId, useState } from "react";
 import type { Shot } from "@/content/case-studies";
-import { Board } from "@/components/case/showcase";
+import { Board, Browser } from "@/components/case/showcase";
 import { WarpBackground } from "@/components/ui/warp-background";
 
 /** Boards behind tabs (e.g. BLOCK's foundations): one visible at a time, keyboard-operable as a tablist. */
-export function MediaTabs({ items, caption }: { items: { label: string; shot: Shot }[]; caption?: string }) {
+export function MediaTabs({ items, caption, frame = "board" }: { items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" }) {
   const [i, setI] = useState(0);
   const id = useId();
   const move = (d: number) => setI((x) => (x + d + items.length) % items.length);
@@ -38,7 +38,14 @@ export function MediaTabs({ items, caption }: { items: { label: string; shot: Sh
       </div>
       <WarpBackground className="gem-panel gem-tile px-[clamp(20px,6vw,88px)] py-[clamp(28px,6vw,80px)]">
         <div role="tabpanel" id={`${id}-p`} aria-labelledby={`${id}-t${i}`}>
-          <Board key={items[i].shot.src} s={items[i].shot} />
+          {frame === "browser" ? (
+            // A web screen in a browser window, shown whole at its true ratio.
+            <div key={items[i].shot.src} className="mx-auto w-full max-w-[1000px] shadow-[0_28px_60px_-28px_rgba(15,10,35,0.55)]">
+              <Browser s={items[i].shot} sizes="(min-width: 1024px) 70vw, 92vw" />
+            </div>
+          ) : (
+            <Board key={items[i].shot.src} s={items[i].shot} />
+          )}
         </div>
       </WarpBackground>
       {caption && <figcaption className="t-body-sm px-1 text-muted">{caption}</figcaption>}

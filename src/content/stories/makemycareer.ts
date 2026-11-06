@@ -3,24 +3,26 @@ import type { Step, Story } from "./types";
 
 const m = (f: string) => `/work/makemycareer/${f}.webp`;
 const s = (f: string, alt: string) => shot(m(f), alt);
+/** The same screen at the laptop's exact ratio (tools/mockups/makemycareer-laptop.cjs), so laptops never trim its sides. */
+const l = (f: string, alt: string) => shot(m(`${f}-l`), alt);
 
 const seeker: Step[] = [
-  { title: "Start from the dashboard", body: "Interviews coming up, recommended jobs and featured companies, all in one place.", frame: "plain", shot: s("js-dashboard", "Job-seeker dashboard: stats, upcoming interviews, recommended jobs and featured companies") },
-  { title: "Scan the openings", body: "Each row shows the role, number of openings, monthly salary and location, with Apply Now and save on the row itself.", frame: "plain", shot: s("js-jobs", "Opening jobs: a list of roles with salary, location, Apply Now and save") },
-  { title: "Read the details", body: "The job page brings the description, required skills, the company and contact details together, with Apply Now at the top.", frame: "plain", shot: s("js-jobdetails", "Job details for a Junior UX Designer role at Edge Studios") },
-  { title: "Apply", body: "A short summary confirms who you are applying as and which resume goes with it, with an option to update it before submitting.", frame: "plain", shot: s("js-applysummary", "Apply Job: applicant details, attached resume and Submit Application") },
-  { title: "Track your applications", body: "Every application with its company, type, position and status (Accepted, On Hold, Pending) plus a way to get in touch.", frame: "plain", shot: s("js-applications", "Applications table with status for each application") },
+  { title: "Start from the dashboard", body: "Interviews coming up, recommended jobs and featured companies, all in one place.", frame: "browser", shot: s("js-dashboard", "Job-seeker dashboard: stats, upcoming interviews, recommended jobs and featured companies") },
+  { title: "Scan the openings", body: "Each row shows the role, number of openings, monthly salary and location, with Apply Now and save on the row itself.", frame: "browser", shot: s("js-jobs", "Opening jobs: a list of roles with salary, location, Apply Now and save") },
+  { title: "Read the details", body: "The job page brings the description, required skills, the company and contact details together, with Apply Now at the top.", frame: "browser", shot: s("js-jobdetails", "Job details for a Junior UX Designer role at Edge Studios") },
+  { title: "Apply", body: "A short summary confirms who you are applying as and which resume goes with it, with an option to update it before submitting.", frame: "browser", shot: s("js-applysummary", "Apply Job: applicant details, attached resume and Submit Application") },
+  { title: "Track your applications", body: "Every application with its company, type, position and status (Accepted, On Hold, Pending) plus a way to get in touch.", frame: "browser", shot: s("js-applications", "Applications table with status for each application") },
 ];
 
 const employer: Step[] = [
-  { title: "Start from the dashboard", body: "Applications received, shortlisted and on hold, today’s interviews and recommended candidates.", frame: "plain", shot: s("em-dashboard", "Employer dashboard: application counts, interviews and recommended candidates") },
-  { title: "Basic details", body: "Step one of four: title, job type, shift, salary range, openings, working days and hours.", frame: "plain", shot: s("em-post-basic", "Add Job, step 1: basic details") },
-  { title: "Candidate requirements", body: "Preferred skills as removable chips, then the job description and any additional requirements.", frame: "plain", shot: s("em-post-requirements", "Add Job, step 2: candidate requirements") },
-  { title: "Interview information", body: "Who candidates will meet and where: contact person, phone, email and the company address.", frame: "plain", shot: s("em-post-interview", "Add Job, step 3: interview information") },
-  { title: "Review and post", body: "Everything from the three steps on one page, with a code-of-conduct confirmation before the job goes live.", frame: "plain", shot: s("em-post-review", "Add Job, step 4: review your job post") },
-  { title: "Publish from drafts", body: "Unpublished jobs wait in Drafts with a Publish button on each row.", frame: "plain", shot: s("em-drafts", "Jobs, Drafts: unpublished jobs with Publish") },
-  { title: "Manage applications", body: "Applicants in one table with their resume, and Accept, Hold or Reject on each row.", frame: "plain", shot: s("em-applications-a", "Applications table with Accept, Hold and Reject actions") },
-  { title: "Open a candidate", body: "The full profile: contact details, about, work experience, education, software and skills, with the same three decisions at the top.", frame: "plain", shot: s("em-applications-b", "Candidate detail: Neha Gautham’s profile with Accept, Hold and Reject") },
+  { title: "Start from the dashboard", body: "Applications received, shortlisted and on hold, today’s interviews and recommended candidates.", frame: "browser", shot: s("em-dashboard", "Employer dashboard: application counts, interviews and recommended candidates") },
+  { title: "Basic details", body: "Step one of four: title, job type, shift, salary range, openings, working days and hours.", frame: "browser", shot: s("em-post-basic", "Add Job, step 1: basic details") },
+  { title: "Candidate requirements", body: "Preferred skills as removable chips, then the job description and any additional requirements.", frame: "browser", shot: s("em-post-requirements", "Add Job, step 2: candidate requirements") },
+  { title: "Interview information", body: "Who candidates will meet and where: contact person, phone, email and the company address.", frame: "browser", shot: s("em-post-interview", "Add Job, step 3: interview information") },
+  { title: "Review and post", body: "Everything from the three steps on one page, with a code-of-conduct confirmation before the job goes live.", frame: "browser", shot: s("em-post-review", "Add Job, step 4: review your job post") },
+  { title: "Publish from drafts", body: "Unpublished jobs wait in Drafts with a Publish button on each row.", frame: "browser", shot: s("em-drafts", "Jobs, Drafts: unpublished jobs with Publish") },
+  { title: "Manage applications", body: "Applicants in one table with their resume, and Accept, Hold or Reject on each row.", frame: "browser", shot: s("em-applications-a", "Applications table with Accept, Hold and Reject actions") },
+  { title: "Open a candidate", body: "The full profile: contact details, about, work experience, education, software and skills, with the same three decisions at the top.", frame: "browser", shot: s("em-applications-b", "Candidate detail: Neha Gautham’s profile with Accept, Hold and Reject") },
 ];
 
 export const makemycareer: Story = {
@@ -37,7 +39,7 @@ export const makemycareer: Story = {
     ],
     media: {
       kind: "showcase",
-      v: { kind: "browser", shots: [s("em-dashboard", "Employer dashboard"), s("js-dashboard", "Job-seeker dashboard")] },
+      v: { kind: "browser", shots: [l("em-dashboard", "Employer dashboard"), l("js-dashboard", "Job-seeker dashboard")] },
     },
   },
   context: {
@@ -48,8 +50,8 @@ export const makemycareer: Story = {
     media: {
       kind: "gallery",
       items: [
-        { shot: s("js-jobs", "Job seekers: opening jobs with Apply Now"), label: "Job seeker", frame: "laptop" },
-        { shot: s("em-jobs", "Employers: their jobs with Unpublish and Detail"), label: "Employer", frame: "laptop" },
+        { shot: l("js-jobs", "Job seekers: opening jobs with Apply Now"), label: "Job seeker", frame: "laptop" },
+        { shot: l("em-jobs", "Employers: their jobs with Unpublish and Detail"), label: "Employer", frame: "laptop" },
       ],
       caption: "The same job, seen from both sides",
     },
@@ -71,6 +73,7 @@ export const makemycareer: Story = {
       media: [
         {
           kind: "tabs",
+          frame: "browser",
           items: [
             { label: "Opening jobs", shot: s("js-jobs", "Opening jobs list") },
             { label: "Job details", shot: s("js-jobdetails", "Job details page") },
@@ -88,6 +91,7 @@ export const makemycareer: Story = {
       media: [
         {
           kind: "tabs",
+          frame: "browser",
           items: [
             { label: "1 · Basic details", shot: s("em-post-basic", "Add Job, step 1: basic details") },
             { label: "2 · Requirements", shot: s("em-post-requirements", "Add Job, step 2: candidate requirements") },
@@ -106,6 +110,7 @@ export const makemycareer: Story = {
       media: [
         {
           kind: "tabs",
+          frame: "browser",
           items: [
             { label: "Drafts", shot: s("em-drafts", "Jobs, Drafts with Publish") },
             { label: "Active", shot: s("em-active", "Jobs, Active with Unpublish") },
@@ -119,7 +124,7 @@ export const makemycareer: Story = {
       problem: "Reviewing applicants means moving between a list, a resume and a decision.",
       explored: "An applications table with the resume and Accept, Hold and Reject on every row, and a candidate page with experience, education and skills that keeps the same three actions at the top.",
       why: "Employers can decide from the list when it’s clear, or open the profile when it isn’t, without changing tools.",
-      media: [{ kind: "showcase", v: { kind: "browser", shots: [s("em-applications-a", "Applications table with Accept, Hold and Reject"), s("em-applications-b", "Candidate detail")] } }],
+      media: [{ kind: "showcase", v: { kind: "browser", shots: [l("em-applications-a", "Applications table with Accept, Hold and Reject"), l("em-applications-b", "Candidate detail")] } }],
     },
   ],
   interactive: {

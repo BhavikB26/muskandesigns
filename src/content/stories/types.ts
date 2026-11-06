@@ -19,7 +19,8 @@ export type StoryMedia =
   /** Any of the case-study visuals (device frames on the gem panel). */
   | { kind: "showcase"; v: Visual }
   /** Several boards behind tabs (foundations: colour, type, spacing). */
-  | { kind: "tabs"; items: { label: string; shot: Shot }[]; caption?: string }
+  /** frame: board (a white card, for boards) or browser (a browser window, for web screens shown whole). */
+  | { kind: "tabs"; items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" }
   /** Screens side by side, each with an optional label, at a matching height. */
   | { kind: "gallery"; items: GalleryItem[]; caption?: string }
   /** Animated states shown side by side (Natasha's voice orb), each still when motion is reduced. */
@@ -40,7 +41,7 @@ export type Decision = {
 
 /** One step of a guided walkthrough: real screens, in the real order. */
 /** device: a mockup that already includes its own frame (a transparent phone). */
-export type Step = { title: string; body: string; shot: Shot; frame: "phone" | "laptop" | "panel" | "plain" | "device" };
+export type Step = { title: string; body: string; shot: Shot; frame: "phone" | "laptop" | "panel" | "plain" | "device" | "browser" };
 
 export type Interactive =
   | { id: "block-playground" }
