@@ -56,3 +56,24 @@ Also in Portfolio-projects but not on the site: **Swiping Loop** ("Frame 1" 130:
 npm run build && npx next start -p 3111
 # open http://localhost:3111/work/builder-design-system (or any slug above)
 ```
+
+## More projects (Projects file `EfTqrb7VfQ01dMO4kDo2pD`)
+
+Projects beyond the main nine live only in `src/content/stories/` (registered in `more.ts`). They're listed under
+**More projects** on `/work` (`/work#more`) and never on the homepage.
+
+| Project | Route | Figma frames | Status |
+|---------|-------|--------------|--------|
+| MakeMyCareer (recruitment) | `/work/makemycareer` | websites 1:3. Job seeker: 1:48317, 1:49400, 1:55522, 1:55682, 1:50669. Employer: 1:48873, 1:49841, 1:49723, 1:50193, 1:50319, 1:50460, 1:58051, 1:58388, 1:58926, 1:51001, 1:51362. Landing: 1:53271 | Built (Job seeker / Employer walkthrough) |
+
+Skipped at Muskan's request (2026-11-06), because the layers are **hidden** in Figma and export blank:
+- websites `Section 1` 4502:21081: Tendercuts Backend and Delivery manager app
+- websites `Section 2` 4502:21082: landing pages for Alankit, BrightCHAMPS and others (Wealthzi among them, to confirm)
+- websites `Section 3` 4502:21083: Afinoz websites (home, personal and business loan flows, calculators, forums, about, bank and IFSC pages)
+- Apps part 1 0:1 (785 of 791 items hidden): BIO MEDOMICS (Gov project), Dox Diary, Happy Chops, Budget Guru, Tros Now,
+  Spatial Designs, Afinoz 2.0, Luxe credit, Wealthzi (app), Karikadai, Tendercuts Driver app, LEO Cards
+
+Still visible in the Apps page: the "Case studies" boards (Calm Sleep onboarding, Happy Chops, Happy Chops POS,
+Happy Chops home-screen UX, Smart Watch complaints dashboard). These could become case studies without unhiding anything.
+
+To confirm for MakeMyCareer: Muskan's exact screens and responsibilities, the client and dates, and whether it shipped.

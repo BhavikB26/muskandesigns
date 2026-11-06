@@ -15,7 +15,7 @@ export function MediaTabs({ items, caption }: { items: { label: string; shot: Sh
       <div
         role="tablist"
         aria-label={caption ?? "Boards"}
-        className="flex w-fit gap-1 self-start rounded-full bg-surface-1 p-1 ring-1 ring-line"
+        className="flex w-fit max-w-full flex-wrap gap-1 self-start rounded-[22px] bg-surface-1 p-1 ring-1 ring-line"
         onKeyDown={(e) => {
           if (e.key === "ArrowRight") move(1);
           if (e.key === "ArrowLeft") move(-1);
