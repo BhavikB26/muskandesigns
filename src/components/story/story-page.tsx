@@ -219,8 +219,13 @@ export function StoryPage({ s, c }: { s: Story; c: CaseStudy }) {
           <Hero s={s} c={c} />
 
           {/* Context */}
-          <section id="context" aria-labelledby="h-context" data-reveal className={`${WRAP} grid scroll-mt-20 gap-x-[clamp(32px,5vw,80px)] gap-y-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]`}>
-            <div className="flex flex-col gap-6 lg:sticky lg:top-24 lg:self-start">
+          <section
+            id="context"
+            aria-labelledby="h-context"
+            data-reveal
+            className={`${WRAP} grid scroll-mt-20 gap-x-[clamp(32px,5vw,80px)] gap-y-10 ${s.context.media ? "lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]" : ""}`}
+          >
+            <div className={`flex flex-col gap-6 ${s.context.media ? "lg:sticky lg:top-24 lg:self-start" : "max-w-[760px]"}`}>
               <SectionLabel n="01" id="h-context">
                 Context
               </SectionLabel>

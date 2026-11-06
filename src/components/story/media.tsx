@@ -90,13 +90,15 @@ function Caption({ children }: { children?: string }) {
 
 export function StoryMediaView({ m, slug }: { m: StoryMedia; slug: string }) {
   // A single laptop fills its column: a tighter panel than the case-study default, so the screen stays readable.
-  if (m.kind === "showcase" && m.v.kind === "laptop")
+  const single = m.kind === "showcase" ? (m.v.kind === "laptop" ? m.v.shot : m.v.kind === "browser" && m.v.shots.length === 1 ? m.v.shots[0] : null) : null;
+  if (m.kind === "showcase" && single)
     return (
       <figure data-reveal className="flex flex-col gap-fr-sm">
         <WarpBackground className="gem-panel gem-tile px-[clamp(16px,4%,48px)] pb-[clamp(20px,5%,56px)] pt-[clamp(24px,6%,64px)]">
-          <Laptop s={m.v.shot} scroll={m.v.scroll} sizes="(min-width: 1024px) 58vw, 92vw" className="mx-auto w-full" />
+          {/* Web pages sit on a laptop; a browser visual keeps its default (long pages scroll themselves). */}
+          <Laptop s={single} scroll={m.v.kind === "laptop" ? m.v.scroll : true} sizes="(min-width: 1024px) 58vw, 92vw" className="mx-auto w-full" />
         </WarpBackground>
-        <Caption>{m.v.caption}</Caption>
+        <Caption>{"caption" in m.v ? m.v.caption : undefined}</Caption>
       </figure>
     );
   if (m.kind === "showcase") return <Showcase v={m.v} slug={slug} />;

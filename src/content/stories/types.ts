@@ -39,7 +39,8 @@ export type Decision = {
 };
 
 /** One step of a guided walkthrough: real screens, in the real order. */
-export type Step = { title: string; body: string; shot: Shot; frame: "phone" | "laptop" | "panel" | "plain" };
+/** device: a mockup that already includes its own frame (a transparent phone). */
+export type Step = { title: string; body: string; shot: Shot; frame: "phone" | "laptop" | "panel" | "plain" | "device" };
 
 export type Interactive =
   | { id: "block-playground" }
