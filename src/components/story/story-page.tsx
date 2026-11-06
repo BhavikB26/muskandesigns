@@ -21,7 +21,7 @@ import { Paths } from "./paths";
 
 /*
  * Case study, editorial edition. After portfolio.designwithdaria.com: the product leads, labelled sections
- * (Context, My role, Approach, Outcome) carry short copy, and every section is built around a real visual.
+ * (Context, Approach, Outcome) carry short copy, and every section is built around a real visual.
  * Seven parts: hero, context, role, three or four decisions, an interactive piece, outcome, reflection.
  */
 
@@ -31,7 +31,6 @@ const WRAP = "mx-auto w-full max-w-[1240px] px-page";
 
 const SECTIONS = [
   { id: "context", label: "Context" },
-  { id: "role", label: "My role" },
   { id: "approach", label: "Approach" },
   { id: "try", label: "Try it" },
   { id: "outcome", label: "Outcome" },
@@ -286,46 +285,10 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
             )}
           </section>
 
-          {/* My role */}
-          <section id="role" aria-labelledby="h-role" data-reveal className={`${WRAP} scroll-mt-20`}>
-            <div className="grid gap-x-10 gap-y-8 rounded-[28px] bg-surface-1 p-[clamp(24px,4vw,56px)] ring-1 ring-line lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-              <div className="flex flex-col gap-5">
-                <SectionLabel n="02" id="h-role">
-                  My role
-                </SectionLabel>
-                <p className="text-balance text-[clamp(20px,1.7vw,24px)] font-medium leading-[1.4] text-ink">{s.role.statement}</p>
-              </div>
-              <dl className="grid gap-6 sm:grid-cols-3">
-                {(
-                  [
-                    [s.role.ownedLabel ?? "I owned", s.role.owned],
-                    ["Worked with", s.role.with],
-                    ["Constraints", s.role.constraints],
-                  ] as [string, string[] | undefined][]
-                )
-                  .filter(([, v]) => v?.length)
-                  .map(([k, v]) => (
-                    <div key={k} className="flex flex-col gap-3">
-                      <dt className={LABEL}>{k}</dt>
-                      <dd>
-                        <ul className="flex flex-col gap-2">
-                          {v!.map((x) => (
-                            <li key={x} className="text-[15.5px] leading-[1.5] text-ink">
-                              {x}
-                            </li>
-                          ))}
-                        </ul>
-                      </dd>
-                    </div>
-                  ))}
-              </dl>
-            </div>
-          </section>
-
           {/* Approach */}
           <section id="approach" aria-labelledby="h-approach" className={`${WRAP} flex scroll-mt-20 flex-col gap-[clamp(80px,9vw,140px)]`}>
             <div data-reveal className="flex flex-col gap-5">
-              <SectionLabel n="03" id="h-approach">
+              <SectionLabel n="02" id="h-approach">
                 Approach
               </SectionLabel>
               {s.approach && <p className="max-w-[30ch] text-balance font-serif text-[clamp(30px,3.4vw,48px)] leading-[1.08] text-ink">{s.approach}</p>}
@@ -341,7 +304,7 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
               <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
                 <div className="flex flex-col gap-4">
                   <h2 className="flex items-center gap-3 font-mono text-[12.5px] font-medium uppercase tracking-[0.1em] text-white/60">
-                    <span style={{ color: "color-mix(in oklab, var(--gem) 55%, white)" }}>04</span>
+                    <span style={{ color: "color-mix(in oklab, var(--gem) 55%, white)" }}>03</span>
                     <span aria-hidden className="h-px w-8 bg-white/30" />
                     Try it
                   </h2>
@@ -361,7 +324,7 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
           {/* Outcome */}
           <section id="outcome" aria-labelledby="h-outcome" data-reveal className={`${WRAP} grid scroll-mt-20 gap-x-[clamp(32px,5vw,80px)] gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
             <div className="flex flex-col gap-6">
-              <SectionLabel n="05" id="h-outcome">
+              <SectionLabel n="04" id="h-outcome">
                 Outcome
               </SectionLabel>
               {s.outcome.copy.map((p, i) => (
@@ -394,7 +357,7 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
           <section aria-labelledby="h-reflection" data-reveal className={`${WRAP}`}>
             <div className="mx-auto flex max-w-[900px] flex-col gap-6 text-center">
               <h2 id="h-reflection" className={`${LABEL} flex items-center justify-center gap-3`}>
-                <span style={{ color: "var(--gem-ink)" }}>06</span>
+                <span style={{ color: "var(--gem-ink)" }}>05</span>
                 <span aria-hidden className="h-px w-8 bg-line-strong/50" />
                 Reflection
               </h2>
