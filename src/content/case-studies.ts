@@ -13,13 +13,15 @@ import { mediaDims } from "./media-dims";
  * clear: the image has a transparent background (a mockup that floats on the panel).
  * clip: an animated recording of the screen (src is then its still frame, shown when motion is paused or reduced).
  */
-export type Shot = { src: string; w: number; h: number; alt: string; label?: string; clear?: boolean; screens?: ScreenLabel[]; clip?: string; pin?: Pin };
+export type Shot = { src: string; w: number; h: number; alt: string; label?: string; clear?: boolean; screens?: ScreenLabel[]; clip?: string; pin?: Pin; strip?: string };
 
 /**
  * Parts of a long page screenshot that stay put while the page scrolls in a device, as on the live site:
  * x, a sticky left column as a fraction of the image width; top, a sticky header as a fraction of the width.
  */
 export type Pin = { x?: number; top?: number };
+// strip: on a laptop, the colour of the page's own top edge, drawn where the macOS menu bar would be, so the site
+// runs up to the notch with no grey bar above its nav (for pages whose nav leaves the middle clear).
 
 /**
  * A screen name set as text on a mockup that shows several screens (instead of baked into the image).

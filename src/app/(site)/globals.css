@@ -1325,6 +1325,9 @@ html[data-theme="dark"] .bd-stroke, .th-surface--dark .bd-stroke { opacity: 0.28
 .dv-laptop__screen::before { content: ""; position: absolute; left: 2.2cqw; top: 1cqw; width: 1.1cqw; height: 1.1cqw; border-radius: 50%; background: #2b2b2e; opacity: 0.55; }
 .dv-laptop__screen::after { content: ""; position: absolute; right: 2.2cqw; top: 1.15cqw; width: 6cqw; height: 0.8cqw; border-radius: 0.4cqw; background: #2b2b2e; opacity: 0.35; }
 /* transparent, so no white shows at the rounded corners of dark screens; letterboxed pages get white behind */
+/* no menu bar: the page's own top colour fills the strip under the notch */
+.dv-laptop__screen--bare { background: linear-gradient(180deg, var(--strip) 0, var(--strip) 3.25cqw, #111113 3.25cqw); }
+.dv-laptop__screen--bare::before, .dv-laptop__screen--bare::after { display: none; }
 .dv-laptop__page { position: absolute; inset: 3.2cqw 0 0; overflow: hidden; }
 .dv-laptop__page:has(> img.object-contain) { background: #fff; }
 html[data-motion="paused"] .dv-scroll__page { animation: none; }

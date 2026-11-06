@@ -314,21 +314,23 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
             </div>
           </section>
 
-          {/* Outcome */}
-          <section id="outcome" aria-labelledby="h-outcome" data-reveal className={`${WRAP} grid scroll-mt-20 gap-x-[clamp(32px,5vw,80px)] gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
-            <div className="flex flex-col gap-6">
-              <SectionLabel n="04" id="h-outcome">
-                Outcome
-              </SectionLabel>
-              {s.outcome.copy.map((p, i) => (
-                <p key={i} className={i === 0 ? "text-[clamp(20px,1.7vw,24px)] font-medium leading-[1.4] text-ink" : BODY}>
-                  {p}
-                </p>
-              ))}
-            </div>
-            {/* Right half: the numbers first, then the outcome visual when there is one. */}
-            {s.outcome.metrics?.length || s.outcome.media ? (
-              <div className="flex min-w-0 flex-col gap-6 lg:pt-12">
+          {/* Outcome: the headline on the left, the rest of the copy and the numbers on the right, then the visual
+              across the full width. */}
+          <section id="outcome" aria-labelledby="h-outcome" data-reveal className={`${WRAP} flex scroll-mt-20 flex-col gap-y-10`}>
+            <div className="grid gap-x-[clamp(32px,5vw,80px)] gap-y-6 lg:grid-cols-2">
+              <div className="flex flex-col gap-6">
+                <SectionLabel n="04" id="h-outcome">
+                  Outcome
+                </SectionLabel>
+                {s.outcome.copy[0] && <p className="text-[clamp(20px,1.7vw,24px)] font-medium leading-[1.4] text-ink">{s.outcome.copy[0]}</p>}
+              </div>
+              {s.outcome.copy.length > 1 || s.outcome.metrics?.length ? (
+                <div className="flex min-w-0 flex-col gap-6 lg:pt-12">
+                  {s.outcome.copy.slice(1).map((p, i) => (
+                    <p key={i} className={BODY}>
+                      {p}
+                    </p>
+                  ))}
                 {s.outcome.metrics?.length ? (
                   <dl className="grid grid-cols-2 gap-3">
                     {s.outcome.metrics.map((m) => (
@@ -342,9 +344,10 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
                     ))}
                   </dl>
                 ) : null}
-                {s.outcome.media && <StoryMediaView m={s.outcome.media} slug={s.slug} />}
-              </div>
-            ) : null}
+                </div>
+              ) : null}
+            </div>
+            {s.outcome.media && <StoryMediaView m={s.outcome.media} slug={s.slug} />}
           </section>
 
           {/* Reflection */}

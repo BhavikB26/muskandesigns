@@ -115,7 +115,7 @@ export function Laptop({ s, sizes = "(min-width: 1024px) 60vw, 90vw", scroll = t
     <div className={`dv-laptop ${className}`}>
       <div className="dv-laptop__lid">
         {/* The screen: a menu-bar strip under the notch, so the notch never sits on the page. */}
-        <div className="dv-laptop__screen">
+        <div className={`dv-laptop__screen ${s.strip ? "dv-laptop__screen--bare" : ""}`} style={s.strip ? ({ "--strip": s.strip } as CSSProperties) : undefined}>
           <div className="dv-laptop__page">
             {/* Wider than the screen: fit the width (never trim the sides); taller: show the top. */}
             {scroll && r > 0.66 ? (

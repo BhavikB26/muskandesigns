@@ -2,6 +2,8 @@ import { shot } from "@/content/case-studies";
 import type { Story } from "./types";
 
 const n = (f: string) => `/work/natasha/v2/${f}`;
+// The top edge of the Builder.ai immersive page, so its laptop shows no menu bar above the nav.
+const NAT_TOP = "#fffafc";
 
 export const natasha: Story = {
   slug: "natasha",
@@ -14,7 +16,7 @@ export const natasha: Story = {
       { k: "Project", v: "Natasha, part of BLOCK 4.0" },
       { k: "Covers", v: "Chat, voice, states" },
     ],
-    media: { kind: "showcase", v: { kind: "laptop", shot: shot(n("imm-welcome-l.webp"), "Natasha’s immersive welcome: “Hi, I am Natasha. What would you like to build?” with a message field, Talk, and goal prompts"), scroll: false } },
+    media: { kind: "showcase", v: { kind: "laptop", shot: { ...shot(n("imm-welcome-l.webp"), "Natasha’s immersive welcome: “Hi, I am Natasha. What would you like to build?” with a message field, Talk, and goal prompts"), strip: NAT_TOP }, scroll: false } },
   },
   context: {
     copy: [
@@ -25,7 +27,7 @@ export const natasha: Story = {
       kind: "gallery",
       items: [
         { shot: shot(n("panel-welcome.webp"), "Side panel: Natasha’s welcome and three starting prompts"), label: "Side panel", frame: "panel" },
-        { shot: shot(n("imm-chat-l.webp"), "Immersive view: a response with controls and follow-up options"), label: "Immersive", frame: "laptop" },
+        { shot: { ...shot(n("imm-chat-l.webp"), "Immersive view: a response with controls and follow-up options"), strip: NAT_TOP }, label: "Immersive", frame: "laptop" },
         { shot: shot(n("panel-talk.webp"), "Voice: the listening orb with back and pause controls"), label: "Voice", frame: "panel" },
       ],
       caption: "Three ways to reach the same assistant",
@@ -40,7 +42,7 @@ export const natasha: Story = {
   approach: "Four decisions, each about a moment around the answer rather than the answer itself.",
   decisions: [
     {
-      title: "Give people a way in",
+      title: "Give people a way in",
       problem: "An empty chat box asks people to know what to say to a product manager they’ve never met.",
       explored: "A welcome that asks what you’d like to build, with goal prompts such as “Build app”, “Create store” and “Prototype”, and the message field still there for anyone ready to type.",
       why: "It shows what Natasha is for and how to begin in the same glance, so nobody has to work out the right phrasing first.",
@@ -48,7 +50,7 @@ export const natasha: Story = {
         {
           kind: "gallery",
           items: [
-            { shot: shot(n("imm-welcome-l.webp"), "Immersive welcome with goal prompts: Build app, Create store, Prototype, More"), label: "Immersive welcome", frame: "laptop" },
+            { shot: { ...shot(n("imm-welcome-l.webp"), "Immersive welcome with goal prompts: Build app, Create store, Prototype, More"), strip: NAT_TOP }, label: "Immersive welcome", frame: "laptop" },
             { shot: shot(n("panel-welcome.webp"), "Side-panel welcome with three starting prompts"), label: "Panel welcome", frame: "panel" },
           ],
         },
@@ -64,7 +66,7 @@ export const natasha: Story = {
           kind: "gallery",
           items: [
             { shot: shot(n("panel-chat.webp"), "Side panel conversation: a response with listen, dislike and copy controls and two follow-ups"), label: "Side panel", frame: "panel" },
-            { shot: shot(n("imm-chat-l.webp"), "The same response in the immersive view"), label: "Immersive", frame: "laptop" },
+            { shot: { ...shot(n("imm-chat-l.webp"), "The same response in the immersive view"), strip: NAT_TOP }, label: "Immersive", frame: "laptop" },
           ],
         },
       ],
@@ -79,7 +81,7 @@ export const natasha: Story = {
           kind: "gallery",
           items: [
             { shot: shot(n("panel-talk.webp"), "Talk mode in the side panel: the orb with back and pause"), label: "Talk", frame: "panel" },
-            { shot: shot(n("imm-inpage-l.webp"), "The in-page voice bar on a Builder.ai pricing page: Start speaking"), label: "In-page voice bar", frame: "laptop" },
+            { shot: { ...shot(n("imm-inpage-l.webp"), "The in-page voice bar on a Builder.ai pricing page: Start speaking"), strip: NAT_TOP }, label: "In-page voice bar", frame: "laptop" },
           ],
         },
       ],
@@ -114,7 +116,7 @@ export const natasha: Story = {
       "The work defined Natasha’s main surfaces, the response patterns they share and the state model around text and voice, delivered as part of BLOCK 4.0 for the launch.",
       "Next I’d test how easily people start a useful conversation, read the current voice state, interrupt a response and find the next action.",
     ],
-    media: { kind: "showcase", v: { kind: "laptop", shot: shot(n("imm-talk-l.webp"), "Natasha listening in the immersive view"), scroll: false } },
+    media: { kind: "showcase", v: { kind: "laptop", shot: { ...shot(n("imm-talk-l.webp"), "Natasha listening in the immersive view"), strip: NAT_TOP }, scroll: false } },
   },
   reflection:
     "Most of a conversation happens around the answer. Starting, waiting, switching modes and taking your turn back needed as much design as the response itself.",
