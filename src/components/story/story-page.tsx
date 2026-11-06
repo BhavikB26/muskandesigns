@@ -99,14 +99,6 @@ function Hero({ s, c }: { s: Story; c?: CaseStudy }) {
           </p>
           <p className={`${BODY} max-w-[46ch]`}>{s.hero.line}</p>
         </div>
-        <dl className="grid grid-cols-2 gap-x-6 gap-y-4 border-t border-line pt-6">
-          {s.hero.facts.map((f) => (
-            <div key={f.k} className="flex flex-col gap-1">
-              <dt className={LABEL}>{f.k}</dt>
-              <dd className="text-[15px] font-medium leading-snug text-ink">{f.v}</dd>
-            </div>
-          ))}
-        </dl>
         {s.links?.length ? (
           <div className="flex flex-wrap gap-4">
             {s.links.map((l) => (
