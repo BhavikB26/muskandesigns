@@ -23,6 +23,8 @@ export type StoryMedia =
   | { kind: "tabs"; items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" }
   /** Screens side by side, each with an optional label, at a matching height. */
   | { kind: "gallery"; items: GalleryItem[]; caption?: string }
+  /** Two web screens as overlapping browser windows on a desktop, each shown whole; labels name them. */
+  | { kind: "windows"; shots: [Shot, Shot]; labels?: [string, string]; caption?: string }
   /** Animated states shown side by side (Natasha's voice orb), each still when motion is reduced. */
   | { kind: "states"; items: { label: string; note: string; anim: string; still: string }[]; caption?: string }
   /** Strips stacked on a white canvas (component states such as Natasha's voice bar). */

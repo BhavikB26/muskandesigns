@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Shot } from "@/content/case-studies";
 import type { GalleryItem, StoryMedia } from "@/content/stories/types";
-import { Laptop, Phone, Piece, Showcase } from "@/components/case/showcase";
+import { Browser, Laptop, Phone, Piece, Showcase } from "@/components/case/showcase";
 import { WarpBackground } from "@/components/ui/warp-background";
 import { MediaTabs } from "./media-tabs";
 
@@ -84,6 +84,31 @@ function Strips({ items }: { items: { label: string; shot: Shot }[] }) {
   );
 }
 
+/**
+ * Two browser windows overlapping as they would on a desktop: the first large at the back, the second in
+ * front at the lower right. Stacked on phones. Each shows its whole screen at its true ratio.
+ */
+function Windows({ shots, labels }: { shots: [Shot, Shot]; labels?: [string, string] }) {
+  const win = "shadow-[0_30px_60px_-24px_rgba(15,10,35,0.45)]";
+  const tag = "t-caption rounded-full bg-white/90 px-3 py-1 font-medium text-[#151412] ring-1 ring-black/10";
+  return (
+    <div className="flex flex-col gap-6 sm:relative sm:block sm:pb-[22%]">
+      <div className={`flex flex-col items-start gap-2 sm:w-[72%] ${win}`}>
+        <Browser s={shots[0]} sizes="(min-width: 1024px) 45vw, 92vw" />
+      </div>
+      <div className={`flex flex-col items-start gap-2 sm:absolute sm:bottom-0 sm:right-0 sm:w-[56%] ${win}`}>
+        <Browser s={shots[1]} sizes="(min-width: 1024px) 35vw, 92vw" />
+      </div>
+      {labels && (
+        <div className="flex justify-between gap-3 sm:absolute sm:-top-10 sm:left-0 sm:right-0" aria-hidden>
+          <span className={tag}>{labels[0]}</span>
+          <span className={tag}>{labels[1]}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function Caption({ children }: { children?: string }) {
   return children ? <figcaption className="t-body-sm px-1 text-muted">{children}</figcaption> : null;
 }
@@ -96,7 +121,7 @@ export function StoryMediaView({ m, slug }: { m: StoryMedia; slug: string }) {
       <figure data-reveal className="flex flex-col gap-fr-sm">
         <WarpBackground className="gem-panel gem-tile px-[clamp(16px,4%,48px)] pb-[clamp(20px,5%,56px)] pt-[clamp(24px,6%,64px)]">
           {/* Web pages sit on a laptop; a browser visual keeps its default (long pages scroll themselves). */}
-          <Laptop s={single} scroll={m.v.kind === "laptop" ? m.v.scroll : true} sizes="(min-width: 1024px) 58vw, 92vw" className="mx-auto w-full" />
+          <Laptop s={single} scroll={m.v.kind === "laptop" ? m.v.scroll : true} sizes="(min-width: 1024px) 58vw, 92vw" className="mx-auto w-[92%]" />
         </WarpBackground>
         <Caption>{"caption" in m.v ? m.v.caption : undefined}</Caption>
       </figure>
@@ -107,6 +132,7 @@ export function StoryMediaView({ m, slug }: { m: StoryMedia; slug: string }) {
     <figure data-reveal className="flex flex-col gap-fr-sm">
       <WarpBackground className="gem-panel gem-tile warp--quiet px-[clamp(20px,5vw,72px)] py-[clamp(28px,5vw,72px)]">
         {m.kind === "gallery" && <Gallery items={m.items} />}
+        {m.kind === "windows" && <Windows shots={m.shots} labels={m.labels} />}
         {m.kind === "states" && <States items={m.items} />}
         {m.kind === "strips" && <Strips items={m.items} />}
       </WarpBackground>

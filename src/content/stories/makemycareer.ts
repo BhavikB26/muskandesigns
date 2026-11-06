@@ -39,7 +39,7 @@ export const makemycareer: Story = {
     ],
     media: {
       kind: "showcase",
-      v: { kind: "browser", shots: [l("em-dashboard", "Employer dashboard"), l("js-dashboard", "Job-seeker dashboard")] },
+      v: { kind: "laptop", shot: l("em-dashboard", "MakeMyCareer’s employer dashboard: applications, interviews and recommended candidates"), scroll: false },
     },
   },
   context: {
@@ -48,12 +48,10 @@ export const makemycareer: Story = {
       "Candidates need to find relevant roles, understand what’s being asked and apply with confidence. Employers need to publish openings, say what they expect and keep track of who applied. We designed MakeMyCareer as one platform with a workspace for each side, built on the same sidebar, search and card patterns.",
     ],
     media: {
-      kind: "gallery",
-      items: [
-        { shot: l("js-jobs", "Job seekers: opening jobs with Apply Now"), label: "Job seeker", frame: "laptop" },
-        { shot: l("em-jobs", "Employers: their jobs with Unpublish and Detail"), label: "Employer", frame: "laptop" },
-      ],
-      caption: "The same job, seen from both sides",
+      kind: "windows",
+      shots: [s("js-jobs", "Job seekers: opening jobs with Apply Now"), s("em-jobs", "Employers: their jobs with Unpublish and Detail")],
+      labels: ["Job seeker", "Employer"],
+      caption: "The same jobs, seen from both sides",
     },
   },
   role: {
@@ -124,7 +122,7 @@ export const makemycareer: Story = {
       problem: "Reviewing applicants means moving between a list, a resume and a decision.",
       explored: "An applications table with the resume and Accept, Hold and Reject on every row, and a candidate page with experience, education and skills that keeps the same three actions at the top.",
       why: "Employers can decide from the list when it’s clear, or open the profile when it isn’t, without changing tools.",
-      media: [{ kind: "showcase", v: { kind: "browser", shots: [l("em-applications-a", "Applications table with Accept, Hold and Reject"), l("em-applications-b", "Candidate detail")] } }],
+      media: [{ kind: "windows", shots: [s("em-applications-a", "Applications table with Accept, Hold and Reject"), s("em-applications-b", "Candidate detail with Accept, Hold and Reject")], labels: ["Applications", "Candidate"] }],
     },
   ],
   interactive: {
