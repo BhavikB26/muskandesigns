@@ -30,7 +30,8 @@ function framedRatio(it: GalleryItem) {
 }
 
 function Framed({ it, sizes }: { it: GalleryItem; sizes: string }) {
-  if (it.frame === "laptop") return <Laptop s={it.shot} sizes={sizes} scroll={false} className="w-full" />;
+  // Laptops in a row are inset so their bases (wider than the lid, as on a real MacBook) never meet.
+  if (it.frame === "laptop") return <Laptop s={it.shot} sizes={sizes} scroll={false} className="mx-auto w-[86%]" />;
   if (it.frame === "phone") return <Phone s={it.shot} sizes={sizes} />;
   if (it.frame === "panel") return <PanelFrame s={it.shot} sizes={sizes} />;
   return <Piece s={it.shot} sizes={sizes} />;
@@ -39,7 +40,7 @@ function Framed({ it, sizes }: { it: GalleryItem; sizes: string }) {
 export function Gallery({ items }: { items: GalleryItem[] }) {
   const sum = items.reduce((a, it) => a + framedRatio(it), 0);
   return (
-    <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-center sm:gap-[4%]">
+    <div className="flex flex-col items-center gap-8 sm:flex-row sm:items-end sm:justify-center sm:gap-[7%]">
       {items.map((it) => (
         <div key={it.shot.src + it.label} className={`flex min-w-0 flex-col items-center gap-3 sm:w-auto ${it.frame === "panel" ? "w-[58%]" : "w-[92%]"}`} style={{ flex: `${framedRatio(it)} 1 0%`, maxWidth: it.frame === "panel" ? 340 : undefined }}>
           <div className="w-full">
