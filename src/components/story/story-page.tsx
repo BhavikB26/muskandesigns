@@ -349,13 +349,13 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
 
           {/* Reflection */}
           <section aria-labelledby="h-reflection" data-reveal className={`${WRAP}`}>
-            <div className="mx-auto flex max-w-[620px] flex-col gap-6 text-center">
+            <div className="flex w-full flex-col gap-6 text-center">
               <h2 id="h-reflection" className={`${LABEL} flex items-center justify-center gap-3`}>
                 <span style={{ color: "var(--gem-ink)" }}>05</span>
                 <span aria-hidden className="h-px w-8 bg-line-strong/50" />
                 Reflection
               </h2>
-              <blockquote className="text-balance font-serif text-[clamp(20px,1.8vw,26px)] leading-[1.35] text-ink">{s.reflection}</blockquote>
+              <blockquote className="text-pretty font-serif text-[clamp(22px,2.4vw,34px)] leading-[1.3] text-ink">{s.reflection}</blockquote>
             </div>
           </section>
 
