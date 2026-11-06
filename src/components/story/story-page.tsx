@@ -283,7 +283,7 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
               <SectionLabel n="02" id="h-approach">
                 Approach
               </SectionLabel>
-              {s.approach && <p className="max-w-[30ch] text-balance font-serif text-[clamp(30px,3.4vw,48px)] leading-[1.08] text-ink">{s.approach}</p>}
+              {s.approach && <p className="w-full font-serif text-[clamp(30px,3.4vw,48px)] leading-[1.12] text-ink">{s.approach}</p>}
             </div>
             {s.decisions.map((d, i) => (
               <DecisionBlock key={d.title} d={d} n={i + 1} slug={s.slug} />
