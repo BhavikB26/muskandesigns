@@ -101,13 +101,13 @@ export type CaseStudy = {
   sections: Section[];
 };
 
-function shot(src: string, alt: string, label?: string, screens?: ScreenLabel[]): Shot {
+export function shot(src: string, alt: string, label?: string, screens?: ScreenLabel[]): Shot {
   const d = mediaDims[src];
   if (!d) throw new Error(`Missing image dimensions for ${src}`);
   return { src, w: d[0], h: d[1], alt, label, clear: d[2] === 1, screens };
 }
 /** A screen recording in a device: the still frame plus the animated clip. */
-function clip(still: string, anim: string, alt: string): Shot {
+export function clip(still: string, anim: string, alt: string): Shot {
   return { ...shot(still, alt), clip: anim };
 }
 function gif(src: string, w: number, h: number, alt: string, anim: string): Sticker {
@@ -817,7 +817,7 @@ export const caseStudies: CaseStudy[] = [
           "Conversations with Internshala users. I spoke with friends who had used Internshala and other internship platforms. Their experiences reinforced several patterns: finding truly relevant opportunities took work, editing a profile or resume around an application was cumbersome, repetitive application questions became exhausting, and application status was rarely clear enough.",
           "App-store feedback and interface audit. I also reviewed user feedback and audited the existing application for usability and visual inconsistencies. The audit surfaced issues including redundancy between bottom navigation and the hamburger menu, weak hierarchy on the homepage, small interaction areas, long scrolling pages, limited visibility of system status, and information-heavy job/application surfaces.",
         ],
-        visuals: [{ kind: "deck", id: "in-context" }, { kind: "board", shot: shot("/work/internshala/cs/in-ui.webp", "Audit of the existing app’s interface") }],
+        visuals: [{ kind: "deck", id: "in-context" }, { kind: "board", shot: shot("/work/internshala/cs/in-ui-zoom.webp", "Audit of the existing app: the internship list and details screens beside the problems found on each"), caption: "From my audit of the old app: the problems I found on the internship list and details screens" }],
       },
       {
         title: "Mapping the experience into three problem areas",
