@@ -49,7 +49,7 @@ export function Background() {
           <div data-reveal className="flex flex-col gap-fr-lg">
                         <h2 id="about-heading" className="t-display-xl">
               <MaskedText text={about.headline.lead} onReveal />{" "}
-              <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
+              <em className="font-serif italic text-ink">
                 <MaskedText text={about.headline.italic} start={about.headline.lead.split(" ").length} onReveal />
               </em>
             </h2>

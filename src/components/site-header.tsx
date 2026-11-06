@@ -15,7 +15,7 @@ const links = [
 
 /**
  * Site navigation: a translucent glass bar that stays at the top while the page scrolls under it (Apple's
- * floating material, after the glass navbars on 21st.dev / Aceternity). Her name in Instrument Serif, the
+ * floating material, after the glass navbars on 21st.dev / Aceternity). Her name in Google Sans italic, the
  * links on the liquid navbar, the résumé (an icon button) and the light/dark pull cord.
  */
 export function SiteHeader({ current = "Home" }: { current?: string }) {

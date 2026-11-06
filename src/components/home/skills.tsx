@@ -36,7 +36,7 @@ export function Skills() {
         >
           <h2 id="skills-heading" className="t-display-xl">
             <MaskedText text="What I can do" onReveal />{" "}
-            <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em]">
+            <em className="font-serif italic">
               <MaskedText text="for you" start={4} onReveal />
             </em>
           </h2>

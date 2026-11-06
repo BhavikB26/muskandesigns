@@ -47,7 +47,7 @@ export function Testimonials() {
         <div data-reveal className="flex flex-col gap-fr-sm">
           <h2 id="kind-words" className="t-display-xl">
             <MaskedText text="From people I’ve" onReveal />{" "}
-            <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
+            <em className="font-serif italic text-ink">
               <MaskedText text="worked with" start={3} onReveal />
             </em>
           </h2>

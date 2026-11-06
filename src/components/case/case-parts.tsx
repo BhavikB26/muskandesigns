@@ -203,7 +203,7 @@ export function TextBlock({ block }: { block: Extract<Block, { kind: "text" }> }
 export function Quote({ block }: { block: Extract<Block, { kind: "quote" }> }) {
   return (
     <figure data-reveal className="flex max-w-[46ch] flex-col gap-4 md:ml-[33.4%]">
-      <blockquote className="t-display-md font-serif font-normal italic text-ink">&ldquo;{block.text}&rdquo;</blockquote>
+      <blockquote className="t-display-md font-serif italic text-ink">&ldquo;{block.text}&rdquo;</blockquote>
       <figcaption className="case-caption">{block.by}</figcaption>
     </figure>
   );
@@ -384,7 +384,7 @@ function DeckText({ items }: { items: DeckItem[]; wide?: boolean }) {
                 <li key={th.title} className="flex flex-col gap-fr-md">
                   <p className="flex items-start gap-fr-sm">
                     <span className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink t-body-sm text-ink">{k + 1}</span>
-                    <span className="t-headline font-serif font-normal italic text-ink">{th.title}</span>
+                    <span className="t-headline font-serif italic text-ink">{th.title}</span>
                   </p>
                   <ul className="grid grid-cols-2 gap-fr-sm">
                     {th.notes.map((n) => (

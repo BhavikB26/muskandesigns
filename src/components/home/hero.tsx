@@ -242,7 +242,7 @@ export function HomeIntro({ next }: { next: ReactNode }) {
         <>
           <span className="sr-only">I like orchestrating intentional designs: AI products, design systems and growth flows.</span>
           <span aria-hidden>I like orchestrating</span>{" "}
-          <em className="font-serif text-[0.98em] font-normal italic tracking-[-0.02em]">
+          <em className="font-serif italic">
             <Typewriter words={["intentional designs.", "AI products.", "design systems.", "growth flows."]} />
           </em>
         </>

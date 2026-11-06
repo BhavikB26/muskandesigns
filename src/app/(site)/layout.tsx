@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, Gaegu, Google_Sans, Instrument_Sans } from "next/font/google";
+import { Gaegu, Google_Sans, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import { Motion } from "@/components/motion";
 import { BackToTop } from "@/components/back-to-top";
 
-// Headings and italic accents: DM Serif Display (Google Fonts, open licence), set in its italic everywhere.
-// One weight, already bold, so headings need no thickening.
-const editorial = DM_Serif_Display({
-  variable: "--font-editorial-face",
-  weight: "400",
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 // Internshala's type specimen is set in the typeface she chose for it (loaded only when used).
 const instrumentSans = Instrument_Sans({ variable: "--font-instrument-sans", subsets: ["latin"], display: "swap", preload: false });
@@ -21,8 +12,8 @@ const instrumentSans = Instrument_Sans({ variable: "--font-instrument-sans", sub
 // 300/400/700; 700 is its semibold-ish weight. Loaded only when used.
 const hand = Gaegu({ variable: "--font-hand", weight: ["400", "700"], subsets: ["latin"], display: "swap", preload: false });
 
-// Everything else (body, labels, UI): Google Sans (licensed), variable 400–700.
-const bodyFont = Google_Sans({ variable: "--font-body", subsets: ["latin"], display: "swap" });
+// Google Sans (licensed), variable 400-700, for everything: body and labels upright, headings and accents in its italic.
+const bodyFont = Google_Sans({ variable: "--font-body", style: ["normal", "italic"], subsets: ["latin"], display: "swap" });
 
 const title = "Muskan Bhatia, Product Designer";
 const description =
@@ -63,7 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${editorial.variable} ${instrumentSans.variable} ${hand.variable} ${bodyFont.variable} h-full antialiased`}
+      className={`${instrumentSans.variable} ${hand.variable} ${bodyFont.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-ink" suppressHydrationWarning>
         <script

@@ -73,7 +73,7 @@ export function Work({
         <div data-reveal className="flex flex-col gap-fr-sm">
           <Heading id="work-heading" className="t-display-xl">
             <MaskedText text={heading} onReveal />{" "}
-            <em className="font-serif text-[0.96em] font-normal italic tracking-[-0.03em] text-ink">
+            <em className="font-serif italic text-ink">
               <MaskedText text={emphasis} start={heading.split(" ").length} onReveal />
             </em>
           </Heading>

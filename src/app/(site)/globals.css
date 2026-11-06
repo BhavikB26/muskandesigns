@@ -74,9 +74,9 @@ body {
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
-  --font-editorial: var(--font-editorial-face), Georgia, serif;
-  --font-display: var(--font-editorial-face), Georgia, serif;
-  --font-serif: var(--font-editorial-face), Georgia, serif;
+  --font-editorial: var(--font-body), Arial, Helvetica, sans-serif;
+  --font-display: var(--font-body), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-body), Arial, Helvetica, sans-serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-body), ui-sans-serif, system-ui, sans-serif;
@@ -852,7 +852,7 @@ html[data-motion="paused"] .anim-still { display: block; }
   border-radius: 20px;
   background: var(--color-surface-1);
   box-shadow: inset 0 0 0 1px var(--color-line);
-  /* Highlighted statements read as a quote: Instrument Serif italic. */
+  /* Highlighted statements read as a quote: Google Sans italic. */
   font-family: var(--font-serif); font-style: italic;
   font-style: italic;
   font-weight: 400;
@@ -1732,16 +1732,15 @@ html[data-motion="paused"] .cv-scroll__page { animation: none; }
 }
 html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 
-/* Type: DM Serif Display italic for every heading (already bold, so no thickening), and Google Sans for
-   everything else, labels included. */
+/* Type: Google Sans throughout; headings and the former serif accents use its true italic. */
 :root { --font-mono-face: var(--font-body); }
 :where(h1, h2, h3, h4):not(.font-mono),
 [class*="t-display"],
 .case-title, .case-h2, .case-deck-h {
   font-family: var(--font-display); font-style: italic;
-  font-weight: 400;
+  font-weight: 500;
   font-synthesis: none;
-  letter-spacing: 0;
+  letter-spacing: -0.025em;
 }
 
 /* Status bar icons: one SVG (ios-status-icons.tsx) matching the Internshala screens' real iOS bar. */
@@ -1749,11 +1748,11 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
 .dv-phone__icons { height: 3.1cqw; width: auto; }
 .th-iphone__status, .dv-phone__status { font-weight: 600; letter-spacing: -0.01em; }
 
-/* Every Instrument Serif word is set in its italic. */
+/* Every heading and accent word is set in Google Sans italic. */
 :where(h1, h2, h3, h4):not(.font-mono),
 [class*="t-display"],
 .case-title, .case-h2, .case-deck-h,
-.font-serif, .font-editorial, .font-display { font-style: italic; }
+.font-serif, .font-editorial, .font-display { font-style: italic; font-weight: 500; letter-spacing: -0.025em; }
 
 /* The bubble beside the résumé icon, inside the header bar. */
 .resume-bubble {
