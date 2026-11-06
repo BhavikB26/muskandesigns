@@ -325,36 +325,37 @@ export function StoryPage({ s, c }: { s: Story; c?: CaseStudy }) {
                   {p}
                 </p>
               ))}
-              {s.outcome.metrics?.length ? (
-                <dl className="grid grid-cols-2 gap-3 pt-2">
-                  {s.outcome.metrics.map((m) => (
-                    <div key={m.label} className="flex flex-col gap-1 rounded-[18px] bg-surface-1 p-5 ring-1 ring-line">
-                      <dd className="order-first font-serif text-[clamp(40px,4vw,56px)] leading-none" style={{ color: "var(--gem-ink)" }}>
-                        {m.value}
-                      </dd>
-                      <dt className="text-[14.5px] leading-snug text-ink">{m.label}</dt>
-                      {m.note && <p className="text-[13px] leading-snug text-muted">{m.note}</p>}
-                    </div>
-                  ))}
-                </dl>
-              ) : null}
             </div>
-            {s.outcome.media && (
-              <div className="min-w-0">
-                <StoryMediaView m={s.outcome.media} slug={s.slug} />
+            {/* Right half: the numbers first, then the outcome visual when there is one. */}
+            {s.outcome.metrics?.length || s.outcome.media ? (
+              <div className="flex min-w-0 flex-col gap-6 lg:pt-12">
+                {s.outcome.metrics?.length ? (
+                  <dl className="grid grid-cols-2 gap-3">
+                    {s.outcome.metrics.map((m) => (
+                      <div key={m.label} className="flex flex-col gap-1 rounded-[18px] bg-surface-1 p-5 ring-1 ring-line">
+                        <dd className="order-first font-serif text-[clamp(40px,4vw,56px)] leading-none" style={{ color: "var(--gem-ink)" }}>
+                          {m.value}
+                        </dd>
+                        <dt className="text-[14.5px] leading-snug text-ink">{m.label}</dt>
+                        {m.note && <p className="text-[13px] leading-snug text-muted">{m.note}</p>}
+                      </div>
+                    ))}
+                  </dl>
+                ) : null}
+                {s.outcome.media && <StoryMediaView m={s.outcome.media} slug={s.slug} />}
               </div>
-            )}
+            ) : null}
           </section>
 
           {/* Reflection */}
           <section aria-labelledby="h-reflection" data-reveal className={`${WRAP}`}>
-            <div className="mx-auto flex max-w-[900px] flex-col gap-6 text-center">
+            <div className="mx-auto flex max-w-[620px] flex-col gap-6 text-center">
               <h2 id="h-reflection" className={`${LABEL} flex items-center justify-center gap-3`}>
                 <span style={{ color: "var(--gem-ink)" }}>05</span>
                 <span aria-hidden className="h-px w-8 bg-line-strong/50" />
                 Reflection
               </h2>
-              <blockquote className="text-balance font-serif text-[clamp(28px,3.2vw,46px)] leading-[1.15] text-ink">{s.reflection}</blockquote>
+              <blockquote className="text-balance font-serif text-[clamp(20px,1.8vw,26px)] leading-[1.35] text-ink">{s.reflection}</blockquote>
             </div>
           </section>
 
