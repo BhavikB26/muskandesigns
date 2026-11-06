@@ -52,8 +52,8 @@ function SectionLabel({ n, children, id }: { n: string; children: ReactNode; id?
 function TopBar() {
   return (
     <div className="sticky top-0 z-30 border-b border-line/70 bg-background/80 backdrop-blur-md">
-      <nav aria-label="Case study" className={`${WRAP} flex h-14 items-center justify-between gap-6`}>
-        <Link href="/" className="font-serif text-[22px] leading-none text-ink">
+      <nav aria-label="Case study" className={`${WRAP} flex h-14 items-center justify-between gap-6 md:grid md:grid-cols-[1fr_auto_1fr]`}>
+        <Link href="/" className="justify-self-start whitespace-nowrap font-serif text-[18px] leading-none text-ink sm:text-[20px]">
           Muskan Bhatia
         </Link>
         <ul className="hidden items-center gap-6 md:flex">
@@ -65,7 +65,7 @@ function TopBar() {
             </li>
           ))}
         </ul>
-        <Link href="/work" className="text-[14px] font-medium text-ink hover:text-accent">
+        <Link href="/work" className="justify-self-end text-[14px] font-medium text-ink hover:text-accent">
           All work <span aria-hidden>→</span>
         </Link>
       </nav>

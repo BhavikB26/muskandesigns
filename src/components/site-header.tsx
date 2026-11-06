@@ -22,14 +22,14 @@ export function SiteHeader({ current = "Home" }: { current?: string }) {
   return (
     <header id="site-header" className="glass-bar sticky top-0 z-40 w-full px-page transition-[background-color,box-shadow,color] duration-500">
       <HeaderTone headerId="site-header" />
-      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-6">
-        <Link href="/" className="whitespace-nowrap font-serif text-[26px] tracking-tight text-ink sm:text-3xl">
+      <div className="mx-auto flex h-[68px] max-w-[1280px] items-center justify-between gap-6 lg:grid lg:grid-cols-[1fr_auto_1fr]">
+        <Link href="/" className="justify-self-start whitespace-nowrap font-serif text-[20px] tracking-tight text-ink sm:text-[22px]">
           Muskan Bhatia
         </Link>
         <div className="hidden lg:block">
           <SiteNav links={links} current={current} />
         </div>
-        <div className="flex items-center gap-2 self-stretch">
+        <div className="flex items-center gap-2 self-stretch justify-self-end">
           <div className="group relative flex items-center">
             <a
               href="/resume.pdf"
