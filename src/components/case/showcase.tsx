@@ -99,7 +99,7 @@ function ScrollPage({ s, sizes, delay = 0, fill = false }: { s: Shot; sizes: str
 export function Laptop({ s, sizes = "(min-width: 1024px) 60vw, 90vw", scroll = true, delay = 0, className = "mx-auto w-[86%]" }: { s: Shot; sizes?: string; scroll?: boolean; delay?: number; className?: string }) {
   const r = ratio(s);
   return (
-    <div className={className}>
+    <div className={`dv-laptop ${className}`}>
       <div className="dv-laptop__lid">
         {/* The screen: a menu-bar strip under the notch, so the notch never sits on the page. */}
         <div className="dv-laptop__screen">
