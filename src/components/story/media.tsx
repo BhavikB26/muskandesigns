@@ -16,7 +16,7 @@ const SHADOW = "shadow-[0_28px_60px_-28px_rgba(15,10,35,0.5)]";
 export function PanelFrame({ s, sizes }: { s: Shot; sizes: string }) {
   return (
     <div className={`overflow-hidden rounded-[18px] bg-white ring-1 ring-black/10 ${SHADOW}`}>
-      <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes={sizes} className="block h-auto w-full" />
+      <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes={sizes} quality={95} className="block h-auto w-full" />
     </div>
   );
 }
@@ -76,7 +76,7 @@ function Strips({ items }: { items: { label: string; shot: Shot }[] }) {
         <li key={it.label} className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-5">
           <span className="t-caption w-[150px] shrink-0 font-medium uppercase tracking-[0.08em] text-[#3a3733]">{it.label}</span>
           <div className={`min-w-0 flex-1 overflow-hidden rounded-[14px] bg-white ring-1 ring-black/5 ${SHADOW}`}>
-            <Image src={it.shot.src} alt={it.shot.alt} width={it.shot.w} height={it.shot.h} sizes="(min-width: 1024px) 60vw, 90vw" className="block h-auto w-full" />
+            <Image src={it.shot.src} alt={it.shot.alt} width={it.shot.w} height={it.shot.h} sizes="(min-width: 1024px) 60vw, 90vw" quality={95} className="block h-auto w-full" />
           </div>
         </li>
       ))}

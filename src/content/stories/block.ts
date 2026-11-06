@@ -46,9 +46,9 @@ export const block: Story = {
         {
           kind: "tabs",
           items: [
-            { label: "Colour", shot: shot(b("img-colors.webp"), "Foundational, semantic and basic colour tokens") },
-            { label: "Type", shot: shot(b("img-typography.webp"), "Display, heading and body type styles") },
-            { label: "Spacing", shot: shot(b("img-spacing.webp"), "The spacing scale and corner-radius tokens") },
+            { label: "Colour", shot: shot(b("v2/board-colors.webp"), "Foundational colours: brand, green, tertiary and cloud scales with their tokens") },
+            { label: "Type", shot: shot(b("v2/board-type.webp"), "Display and heading type styles with weight, size and line height") },
+            { label: "Spacing", shot: shot(b("v2/board-spacing.webp"), "The spacing scale, from 2px to 128px") },
           ],
           caption: "Foundations from the BLOCK file: colour, type and spacing",
         },
@@ -59,14 +59,14 @@ export const block: Story = {
       problem: "Different products needed different mixes of information, visuals and actions in the same component.",
       explored: "With the product teams I found a shared anatomy: configurable content regions, an optional visual, a bottom action area, horizontal and vertical layouts, and defined states.",
       why: "One base card now carries information, progress, Kanban, chart and list families across Cloud, Studio and Enterprise, and stays understandable to maintain.",
-      media: [{ kind: "showcase", v: { kind: "board", shot: shot(b("img-cards.webp"), "The base card: layout, atoms and component properties"), caption: "The base card’s anatomy and properties" } }],
+      media: [{ kind: "showcase", v: { kind: "board", shot: shot(b("v2/board-basecard.webp"), "The base card in its top-bottom and left-right layouts"), caption: "The base card in both layouts; hover and focused states are defined for each" } }],
     },
     {
       title: "Give Natasha a permanent address",
       problem: "Every pixel given to navigation or the assistant is taken from the product’s main task.",
       explored: "A workspace shell of header, sidebar, page controls and a flexible content area, with an “Ask Natasha” entry in both the expanded and collapsed sidebar.",
       why: "People always know where to reach the assistant, and collapsible navigation plus separate panels let each product trade space for context when it needs to.",
-      media: [{ kind: "showcase", v: { kind: "board", shot: shot(b("img-nav-states.webp"), "Expanded and collapsed navigation with default, hover and focus states"), caption: "Expanded and collapsed navigation, with default, hover and focus states" } }],
+      media: [{ kind: "showcase", v: { kind: "board", shot: shot(b("v2/board-navstates.webp"), "The sidebar collapsed, then expanded in default, hover and focus states, with Ask Natasha at the bottom"), caption: "The sidebar: collapsed, default, hover and focus" } }],
     },
     {
       title: "Treat conversation states as components",

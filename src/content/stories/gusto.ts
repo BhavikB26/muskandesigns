@@ -24,7 +24,7 @@ export const gusto: Story = {
       { k: "Timeline", v: "About 3 months" },
       { k: "Traffic", v: "~200K organic visitors" },
     ],
-    media: { kind: "showcase", v: { kind: "devices", shots: [shot(g("final-desktop.png"), "The redesigned journey on desktop: How Gusto Works with a prefilled account form")] } },
+    media: { kind: "showcase", v: { kind: "laptop", shot: shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop: get started, pick the areas you care about"), scroll: true } },
   },
   context: {
     copy: [
@@ -70,14 +70,14 @@ export const gusto: Story = {
       problem: "A big redesign would have been slower, riskier and impossible to attribute.",
       explored: "One behavioural hypothesis per test; questions trimmed with Sales to the ones that changed what happened next; then How Gusto Works promoted into the global navigation.",
       why: "Each change proved itself before the next, and the move into navigation brought about 80% more traffic into the journey.",
-      media: [{ kind: "showcase", v: { kind: "laptop", scroll: true, shot: shot(g("howworks-desktop-page.png"), "How Gusto Works on desktop") } }],
+      media: [{ kind: "showcase", v: { kind: "laptop", scroll: true, shot: shot(g("howworks-desktop-hd.webp"), "How Gusto Works on desktop, the full page") } }],
     },
   ],
   interactive: {
     title: "Browse How Gusto Works",
     prompt: "This is the education layer from experiment 02: one tab per product area. Step through it the way a visitor who picked those areas would.",
     note: "Screens from the shipped How Gusto Works page.",
-    module: { id: "walkthrough", steps: TABS.map(([title, f, body]) => ({ title, body, frame: "plain", shot: shot(g(f), `How Gusto Works, ${title} tab`) })) },
+    module: { id: "walkthrough", steps: TABS.map(([title, f, body]) => ({ title, body, frame: "laptop", shot: shot(g(f.replace(".png", "-l.webp")), `How Gusto Works, ${title} tab`) })) },
   },
   outcome: {
     copy: [

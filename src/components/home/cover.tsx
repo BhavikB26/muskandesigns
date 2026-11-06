@@ -64,7 +64,7 @@ export const COVERS: Record<string, CoverSpec> = {
     status: true,
     screen: { src: "/work/covers/natasha-hd.webp", w: 1300, h: 2716 },
     phoneWall: true,
-    wall: ["/work/natasha/panel-welcome.webp", "/work/natasha/panel-conversation.webp"],
+    wall: ["/work/natasha/v2/panel-welcome.webp", "/work/natasha/v2/panel-chat.webp"],
     wash: ["#cdb2ff", "#4a1fb8"],
   },
   internshala: {
@@ -72,7 +72,7 @@ export const COVERS: Record<string, CoverSpec> = {
     screen: { src: "/work/covers/internshala-hd.webp", w: 984, h: 2212 },
     wallClear: true,
     phoneWall: true,
-    wall: ["/work/internshala/cs/in-tracking-clean.webp", "/work/internshala/cs/in-chats-clean.webp"],
+    wall: ["/work/internshala/cs/in-tracking-hd.webp", "/work/internshala/cs/in-chats-hd.webp"],
     wash: ["#3aa6e6", "#03304f"],
   },
   "ratings-reviews": {
@@ -94,7 +94,7 @@ export const COVERS: Record<string, CoverSpec> = {
   makemycareer: {
     device: "laptop",
     // the employer dashboard from the Projects Figma file (1:48873), cut to the laptop screen
-    screen: { src: "/work/covers/makemycareer-hd.webp", w: 1300, h: 771 },
+    screen: { src: "/work/covers/makemycareer-hd.webp", w: 2600, h: 1542 },
     wall: ["/work/makemycareer/js-jobs.webp", "/work/makemycareer/em-post-review.webp", "/work/makemycareer/em-applications-a.webp", "/work/makemycareer/js-dashboard.webp"],
     wash: ["#7c86f8", "#1b1f66"],
   },

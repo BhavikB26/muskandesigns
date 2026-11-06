@@ -2,11 +2,11 @@
 
 import { useId, useState } from "react";
 import type { Shot } from "@/content/case-studies";
-import { Board, Browser } from "@/components/case/showcase";
+import { Board, Browser, Laptop } from "@/components/case/showcase";
 import { WarpBackground } from "@/components/ui/warp-background";
 
 /** Boards behind tabs (e.g. BLOCK's foundations): one visible at a time, keyboard-operable as a tablist. */
-export function MediaTabs({ items, caption, frame = "board" }: { items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" }) {
+export function MediaTabs({ items, caption, frame = "board" }: { items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" | "laptop" }) {
   const [i, setI] = useState(0);
   const id = useId();
   const move = (d: number) => setI((x) => (x + d + items.length) % items.length);
@@ -38,7 +38,10 @@ export function MediaTabs({ items, caption, frame = "board" }: { items: { label:
       </div>
       <WarpBackground className="gem-panel gem-tile px-[clamp(20px,6vw,88px)] py-[clamp(28px,6vw,80px)]">
         <div role="tabpanel" id={`${id}-p`} aria-labelledby={`${id}-t${i}`}>
-          {frame === "browser" ? (
+          {frame === "laptop" ? (
+            // A web screen on the same laptop as everywhere else; tall pages scroll inside it.
+            <Laptop key={items[i].shot.src} s={items[i].shot} sizes="(min-width: 1024px) 70vw, 92vw" scroll className="mx-auto w-[86%]" />
+          ) : frame === "browser" ? (
             // A web screen in a browser window, shown whole at its true ratio.
             <div key={items[i].shot.src} className="mx-auto w-full max-w-[1000px] shadow-[0_28px_60px_-28px_rgba(15,10,35,0.55)]">
               <Browser s={items[i].shot} sizes="(min-width: 1024px) 70vw, 92vw" />

@@ -18,9 +18,9 @@ const ratio = (s: Shot) => s.h / s.w;
 
 function Img({ s, sizes, className = "", fill = false }: { s: Shot; sizes: string; className?: string; fill?: boolean }) {
   return fill ? (
-    <Image src={s.src} alt={s.alt} fill sizes={sizes} className={className} />
+    <Image src={s.src} alt={s.alt} fill sizes={sizes} quality={95} className={className} />
   ) : (
-    <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes={sizes} className={`block h-auto w-full ${className}`} />
+    <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes={sizes} quality={95} className={`block h-auto w-full ${className}`} />
   );
 }
 
@@ -104,10 +104,11 @@ export function Laptop({ s, sizes = "(min-width: 1024px) 60vw, 90vw", scroll = t
         {/* The screen: a menu-bar strip under the notch, so the notch never sits on the page. */}
         <div className="dv-laptop__screen">
           <div className="dv-laptop__page">
+            {/* Wider than the screen: fit the width (never trim the sides); taller: show the top. */}
             {scroll && r > 0.66 ? (
               <ScrollPage s={s} sizes={sizes} delay={delay} fill />
             ) : (
-              <ScreenImg s={s} sizes={sizes} className={r < 0.5 ? "object-contain object-top" : "object-cover object-top"} />
+              <ScreenImg s={s} sizes={sizes} className={r < 0.585 ? "object-contain object-top" : "object-cover object-top"} />
             )}
           </div>
         </div>

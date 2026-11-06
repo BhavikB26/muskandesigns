@@ -20,7 +20,7 @@ export const internshala: Story = {
       { k: "Platform", v: "Mobile app" },
       { k: "Scope", v: "Research, flows, UI" },
     ],
-    media: { kind: "showcase", v: { kind: "devices", shots: [shot(i("in-search-clean.webp"), "Home, search and preferences", undefined, row3("Home", "Search", "Preferences"))] } },
+    media: { kind: "showcase", v: { kind: "devices", shots: [shot(i("in-search-hd.webp"), "Home, search and preferences", undefined, row3("Home", "Search", "Preferences"))] } },
   },
   context: {
     copy: [
@@ -49,14 +49,14 @@ export const internshala: Story = {
       problem: "“Why are you interested?” and “Tell us about a project” come up on almost every application, each time from a blank page.",
       explored: "Saved Responses: reuse a previous answer as a starting point, then tailor it. The reusable profile stays separate from what each application sends.",
       why: "It removes the blank-page work so effort goes into editing for relevance, without making every application generic.",
-      media: [{ kind: "showcase", v: { kind: "devices", shots: [shot(i("in-saved-clean.webp"), "Application form with saved responses", undefined, row3("Application form", "Saved responses", "Save a response"))] } }],
+      media: [{ kind: "showcase", v: { kind: "devices", shots: [shot(i("in-saved-hd.webp"), "Application form with saved responses", undefined, row3("Application form", "Saved responses", "Save a response"))] } }],
     },
     {
       title: "Let drafts behave like drafts",
       problem: "Applicants often leave mid-form to find a link, rewrite an answer or finish after class, and leaving meant losing work.",
       explored: "Applications broken into steps with visible progress, auto-saved when abandoned and surfaced in a dedicated Drafts area.",
       why: "Interruption becomes a normal part of the workflow instead of a failure.",
-      media: [{ kind: "showcase", v: { kind: "devices", shots: [shot(i("in-drafts-clean.webp"), "Saving an application as a draft", undefined, row3("Application form", "Save as draft pop-up", "Home"))] } }],
+      media: [{ kind: "showcase", v: { kind: "devices", shots: [shot(i("in-drafts-hd.webp"), "Saving an application as a draft", undefined, row3("Application form", "Save as draft pop-up", "Home"))] } }],
     },
     {
       title: "Make what happens after Submit visible",
@@ -69,9 +69,9 @@ export const internshala: Story = {
           v: {
             kind: "devices",
             shots: [
-              shot(i("in-tracking-clean.webp"), "Applications with status tags", undefined, [{ text: "Applications", x: 50, y: 100 }]),
-              shot(i("in-chats-clean.webp"), "Messages with recruiters", undefined, [{ text: "Chats", x: 50, y: 100 }]),
-              shot(i("in-notify-clean.webp"), "Status notifications", undefined, [{ text: "Notifications", x: 50, y: 100 }]),
+              shot(i("in-tracking-hd.webp"), "Applications with status tags", undefined, [{ text: "Applications", x: 50, y: 100 }]),
+              shot(i("in-chats-hd.webp"), "Messages with recruiters", undefined, [{ text: "Chats", x: 50, y: 100 }]),
+              shot(i("in-notify-hd.webp"), "Status notifications", undefined, [{ text: "Notifications", x: 50, y: 100 }]),
             ],
           },
         },
@@ -85,11 +85,11 @@ export const internshala: Story = {
     module: {
       id: "walkthrough",
       steps: [
-        { title: "A home that knows you", body: "Preferences from onboarding drive the recommendations, with a nudge to complete the profile once it’s clearly worth it.", frame: "device", shot: shot(i("in-onboarding-2.webp"), "A new user’s home with recommended internships and profile strength") },
-        { title: "Come back to a draft", body: "Left halfway? The application waits in Drafts, marked Incomplete, one tap from where you stopped.", frame: "device", shot: shot(i("in-drafts-2.webp"), "Applications, Drafts tab: an incomplete application to finish") },
-        { title: "See where each one stands", body: "Every application carries its state, from Pending review to Application viewed to Shortlisted.", frame: "device", shot: shot(i("in-tracking-clean.webp"), "Applications with status tags") },
-        { title: "Hear it when it changes", body: "A shortlist or a recruiter’s message arrives as a notification, instead of waiting to be discovered.", frame: "device", shot: shot(i("in-notify-clean.webp"), "Lock-screen notifications: shortlisted, and a message from a recruiter") },
-        { title: "Talk to a real person", body: "Recruiter messages live inside the application experience, so discovering, applying, tracking and talking stay connected.", frame: "device", shot: shot(i("in-chats-clean.webp"), "Chats with recruiters, tagged with application status") },
+        { title: "A home that knows you", body: "Preferences from onboarding drive the recommendations, with a nudge to complete the profile once it’s clearly worth it.", frame: "device", shot: shot(i("in-onboarding-2-hd.webp"), "A new user’s home with recommended internships and profile strength") },
+        { title: "Come back to a draft", body: "Left halfway? The application waits in Drafts, marked Incomplete, one tap from where you stopped.", frame: "device", shot: shot(i("in-drafts-2-hd.webp"), "Applications, Drafts tab: an incomplete application to finish") },
+        { title: "See where each one stands", body: "Every application carries its state, from Pending review to Application viewed to Shortlisted.", frame: "device", shot: shot(i("in-tracking-hd.webp"), "Applications with status tags") },
+        { title: "Hear it when it changes", body: "A shortlist or a recruiter’s message arrives as a notification, instead of waiting to be discovered.", frame: "device", shot: shot(i("in-notify-hd.webp"), "Lock-screen notifications: shortlisted, and a message from a recruiter") },
+        { title: "Talk to a real person", body: "Recruiter messages live inside the application experience, so discovering, applying, tracking and talking stay connected.", frame: "device", shot: shot(i("in-chats-hd.webp"), "Chats with recruiters, tagged with application status") },
       ],
     },
   },

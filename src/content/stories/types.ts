@@ -20,7 +20,7 @@ export type StoryMedia =
   | { kind: "showcase"; v: Visual }
   /** Several boards behind tabs (foundations: colour, type, spacing). */
   /** frame: board (a white card, for boards) or browser (a browser window, for web screens shown whole). */
-  | { kind: "tabs"; items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" }
+  | { kind: "tabs"; items: { label: string; shot: Shot }[]; caption?: string; frame?: "board" | "browser" | "laptop" }
   /** Screens side by side, each with an optional label, at a matching height. */
   | { kind: "gallery"; items: GalleryItem[]; caption?: string }
   /** Two web screens as overlapping browser windows on a desktop, each shown whole; labels name them. */

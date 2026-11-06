@@ -16,7 +16,7 @@ function Screen({ s }: { s: Step }) {
         <Phone s={s.shot} sizes="300px" />
       </div>
     );
-  if (s.frame === "laptop") return <Laptop s={s.shot} scroll={false} className="w-full" />;
+  if (s.frame === "laptop") return <Laptop s={s.shot} sizes="(min-width: 1024px) 60vw, 92vw" scroll className="mx-auto w-[94%]" />;
   if (s.frame === "browser")
     // A web screen in a browser window, shown whole at its true ratio.
     return (
@@ -28,7 +28,7 @@ function Screen({ s }: { s: Step }) {
     // A finished mockup with its own frame: shown whole at a comfortable height.
     return (
       <div className="mx-auto" style={{ width: `min(100%, ${Math.round((560 * s.shot.w) / s.shot.h)}px)` }}>
-        <Image src={s.shot.src} alt={s.shot.alt} width={s.shot.w} height={s.shot.h} sizes="(min-width: 1024px) 40vw, 80vw" className="block h-auto w-full drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]" />
+        <Image src={s.shot.src} alt={s.shot.alt} width={s.shot.w} height={s.shot.h} sizes="(min-width: 1024px) 40vw, 80vw" quality={95} className="block h-auto w-full drop-shadow-[0_24px_30px_rgba(0,0,0,0.45)]" />
       </div>
     );
   // Tall pages scroll inside their card rather than stretching the stage.
@@ -36,7 +36,7 @@ function Screen({ s }: { s: Step }) {
   return (
     <div className={`mx-auto overflow-hidden rounded-[16px] bg-white ring-1 ring-white/15 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] ${s.frame === "panel" ? "max-w-[340px]" : ""}`}>
       <div className={tall && s.frame !== "panel" ? "max-h-[min(640px,70vh)] overflow-y-auto overscroll-contain" : ""} tabIndex={tall ? 0 : undefined} aria-label={tall ? `${s.shot.alt} (scrolls)` : undefined}>
-        <Image src={s.shot.src} alt={s.shot.alt} width={s.shot.w} height={s.shot.h} sizes="(min-width: 1024px) 60vw, 92vw" className="block h-auto w-full" />
+        <Image src={s.shot.src} alt={s.shot.alt} width={s.shot.w} height={s.shot.h} sizes="(min-width: 1024px) 60vw, 92vw" quality={95} className="block h-auto w-full" />
       </div>
     </div>
   );
