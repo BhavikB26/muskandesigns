@@ -61,10 +61,11 @@ body {
   transition: background-color 0.5s var(--ease-out-expo), color 0.5s var(--ease-out-expo);
 }
 
-/* Ngetic Modern (Nirmana Visual) for headings, in place of Instrument Serif. Personal-use licence only, so
-   the files stay local (gitignored and vercelignored): without them every heading falls back to Instrument Serif. */
-@font-face { font-family: "Ngetic Modern"; src: url("/fonts/ngetic/NgeticModern-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: "Ngetic Modern"; src: url("/fonts/ngetic/NgeticModern-Italic.otf") format("opentype"); font-weight: 400; font-style: italic; font-display: swap; }
+/* Graphik (Commercial Type) for headings, in place of Instrument Serif. No web licence on record, so the files
+   stay local (gitignored and vercelignored): without them every heading falls back to Instrument Serif. */
+@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikRegular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikMedium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Graphik"; src: url("/fonts/graphik/GraphikSemibold.otf") format("opentype"); font-weight: 600; font-style: normal; font-display: swap; }
 
 @theme inline {
   --color-background: var(--background);
@@ -79,9 +80,9 @@ body {
   --color-accent-soft: var(--color-accent-soft);
   --color-live: var(--color-live);
   --font-sans: var(--font-body);
-  --font-editorial: "Ngetic Modern", var(--font-editorial-face), Georgia, serif;
-  --font-display: "Ngetic Modern", var(--font-editorial-face), Georgia, serif;
-  --font-serif: "Ngetic Modern", var(--font-editorial-face), Georgia, serif;
+  --font-editorial: "Graphik", var(--font-editorial-face), Georgia, serif;
+  --font-display: "Graphik", var(--font-editorial-face), Georgia, serif;
+  --font-serif: "Graphik", var(--font-editorial-face), Georgia, serif;
   /* Hindi, Chinese and Japanese greeting words use the visitor's system fonts (no extra downloads). */
   --font-scripts: "Noto Sans Devanagari", "Nirmala UI", Mangal, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP";
   --font-mono: var(--font-body), ui-sans-serif, system-ui, sans-serif;
@@ -1749,14 +1750,16 @@ html[data-motion="paused"] .bn * { animation-play-state: paused !important; }
   -webkit-text-stroke: 0.02em currentColor;
   letter-spacing: 0.005em;
 }
-/* Ngetic Modern is already heavy and sets its spaces tight: no thickening outline, and a little more room
-   between words. (Applies only when the font is present; the Instrument Serif fallback keeps the outline.) */
-.has-ngetic :where(h1, h2, h3, h4):not(.font-mono),
-.has-ngetic [class*="t-display"],
-.has-ngetic .case-title, .has-ngetic .case-h2, .has-ngetic .case-deck-h,
-.has-ngetic .font-serif, .has-ngetic .font-editorial, .has-ngetic .font-display {
+/* Graphik is a sans: when it is present, headings are upright Medium with tight display tracking, and drop the
+   outline that thickened Instrument Serif. (Without the font, the Instrument Serif italic styling above stays.) */
+.has-graphik :where(h1, h2, h3, h4):not(.font-mono),
+.has-graphik [class*="t-display"],
+.has-graphik .case-title, .has-graphik .case-h2, .has-graphik .case-deck-h,
+.has-graphik .font-serif, .has-graphik .font-editorial, .has-graphik .font-display {
+  font-style: normal !important;
+  font-weight: 500 !important;
   -webkit-text-stroke: 0 !important;
-  word-spacing: 0.14em;
+  letter-spacing: -0.025em;
 }
 
 /* Status bar icons: one SVG (ios-status-icons.tsx) matching the Internshala screens' real iOS bar. */
