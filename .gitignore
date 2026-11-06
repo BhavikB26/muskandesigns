@@ -56,3 +56,6 @@ next-env.d.ts
 /.claude/
 /.impeccable/
 skills-lock.json
+
+# Ngetic Modern (Nirmana Visual) is licensed for personal use only: local preview, never pushed or deployed
+public/fonts/ngetic/

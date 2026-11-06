@@ -69,7 +69,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},4000);try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}",
+              "document.documentElement.classList.add('js');setTimeout(function(){if(!window.__motion)document.documentElement.classList.remove('js')},4000);try{var t=localStorage.getItem('theme');if(t==='dark')document.documentElement.dataset.theme='dark'}catch(e){}" +
+              // Ngetic Modern headings: mark the page once the (local-only) font loads, for its spacing tweaks.
+              "try{document.fonts.load('italic 1em \"Ngetic Modern\"').then(function(f){if(f.length)document.documentElement.classList.add('has-ngetic')})}catch(e){}",
           }}
         />
         <Motion />
